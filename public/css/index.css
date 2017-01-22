@@ -1,0 +1,33 @@
+* {
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+}
+body {
+  background: none repeat scroll 0 0 #0b192f;
+  color: #fff;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+/* For mobile phones: */
+[class*="m-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .m-1 {width:8.3333%;}
+  .m-2 {width:16.6666%;}
+  .m-five {width:20%;}
+  .m-3 {width:25%;}
+  .m-4 {width:33.3333%;}
+  .m-5 {width:41.6666%;}
+  .m-6 {width:50%;}
+  .m-7 {width:58.3333%;}
+  .m-8 {width:66.6666%;}
+  .m-9 {width:75%;}
+  .m-10 {width:83.3333%;}
+  .m-11 {width:91.6666%;}
+  .m-12 {width:100%;}
+}

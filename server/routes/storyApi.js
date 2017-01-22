@@ -1,8 +1,21 @@
 var express = require('express');
 var api = express.Router();
 var storyDb = require('../dbFetch/storyDB.js');
+const conn = require('../utils/connections.js');
+const error = {
+  code:'BS101',
+  msg:'Internal Error'
+}
 
 /* GET home page. */
+api.route('/search')
+  .get(function(req, res){
+      const searchString = req.query.q
+      searchByNames(searchString,function(stories){
+        res.send(stories);
+      })
+  })
+
 api.route('/')
   .get(function(req, res){
       getStories(function(stories){
@@ -20,43 +33,50 @@ api.route('/')
           })
           break;
         default:
-          res.send('No attr key found'); //give proper error case
+          res.send(error); //give proper error case
       }
     })
 
 function getStories(callback){
-    var AWS = require('aws-sdk');
-    AWS.config.update({
-      region: 'us-west-2',
-      endpoint: 'http://localhost:8000'
-    });
-    var dynamodb = new AWS.DynamoDB();
-    var docClient = new AWS.DynamoDB.DocumentClient();
+    const docClient = conn.getDocClient();
     var params = {
         IndexName: "RecentIndex",
-        KeyConditionExpression: "#y = :yr",
+        KeyConditionExpression: "#l = :lang",
         ExpressionAttributeNames:{
-            "#y": "year"
+            "#l": "lang"
         },
         ExpressionAttributeValues: {
-            ":yr":2017
+            ":lang":"telugu"
         },
         Limit: 10,
         ScanIndexForward:false
     };
-     storyDb.queryStories(params,docClient,callback);
+     storyDb.query(params,docClient,callback);
+}
+
+function searchByNames(sub,callback){
+    const docClient = conn.getDocClient();
+    var params = {
+        IndexName: "RecentIndex",
+        KeyConditionExpression: "#l = :lang",
+        FilterExpression: "contains(#name, :v_sub)",
+        ExpressionAttributeNames:{
+            "#l": "lang",
+            "#name": "name"
+        },
+        ExpressionAttributeValues: {
+            ":lang":"telugu",
+            ":v_sub":sub
+        },
+        ScanIndexForward:false
+    };
+    console.log('hello')
+   storyDb.query(params,docClient,callback);
 }
 
 function updateSocialElements(id,element,callback)
 {
-    var AWS = require('aws-sdk');
-    AWS.config.update({
-      region: 'us-west-2',
-      endpoint: 'http://localhost:8000'
-    });
-    var dynamodb = new AWS.DynamoDB();
-    var docClient = new AWS.DynamoDB.DocumentClient();
-
+    const docClient = conn.getDocClient();
     let responseData
     function scoreSuccess(data){
       callback(responseData);

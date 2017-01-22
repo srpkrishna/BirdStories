@@ -1,0 +1,75 @@
+.storyItem {
+  width: 100%;
+  position: static;
+  float:left;
+}
+
+.clr0{
+  /*background-color: #d12767;*/
+  background: none repeat scroll 0 0 #B71757;
+}
+
+.clr1{
+  background: none repeat scroll 0 0 #0D7E71;
+}
+
+.clr2{
+  background: none repeat scroll 0 0 #b1660e;
+}
+
+.clr3{
+  background: none repeat scroll 0 0 #2d95bb;
+}
+
+.image{
+  width:30%;
+  position: static;
+  float:right;
+}
+
+.info{
+  width:70%;
+  padding: 1rem;
+  position: static;
+  float:left;
+}
+
+.name{
+  font-size: 2.0rem;
+  font-weight: 100;
+  line-height: 1em;
+  margin: 0 0 1.2rem;
+}
+
+.shortText{
+  font-size: 0.9rem;
+  opacity: 0.6;
+  line-height: 1.6em;
+}
+.author{
+  font-weight: 100;
+  opacity: 0.8;
+  text-align: right;
+  margin:1.25rem 1rem 0 0;
+}
+
+@media only screen and (min-width: 480px) {
+  .storyItem {
+    width: 29.8%;
+    margin: 0.5rem;
+  }
+
+  .image{
+    width: 100%;
+  }
+
+  .info{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .storyItem {
+    width: 23.2%;
+  }
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './css/index.css';
 import { Router, Route, IndexRoute , browserHistory } from 'react-router';
 import App from './app';
 import About from './about';

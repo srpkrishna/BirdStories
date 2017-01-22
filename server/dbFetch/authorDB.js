@@ -1,14 +1,13 @@
-const tableName = "Story"
+const tableName = "Author"
 const error = {
-  code:'BS100',
+  code:'BS200',
   msg:'Internal Error'
 }
 
-var query = function(storyParams,docClient,callback){
-  console.log('hello')
-  storyParams["TableName"] = tableName
+var query = function(params,docClient,callback){
+  params["TableName"] = tableName
   console.log("calling db")
-  docClient.query(storyParams, function(err, data) {
+  docClient.query(params, function(err, data) {
       if (err) {
           console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
           callback(error);
@@ -22,24 +21,26 @@ var query = function(storyParams,docClient,callback){
   });
 }
 
-var update = function(updateParams,docClient,callback){
-  updateParams["TableName"] = tableName
+var scan = function(params,docClient,callback){
+  params["TableName"] = tableName
   console.log("calling db")
-
-  docClient.update(updateParams, function(err, data) {
+  docClient.scan(params, function(err, data) {
       if (err) {
           console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
           callback(error);
       } else {
-          console.log("Query succeeded."+ data);
-          callback(data);
+          console.log("Query succeeded.");
+          data.Items.forEach(function(item) {
+              console.log(" -", item);
+          });
+          callback(data.Items);
       }
   });
 }
 
-var stories = {
+var authors = {
     query:query,
-    update:update
+    scan:scan
   };
 
-module.exports = stories;
+module.exports = authors;

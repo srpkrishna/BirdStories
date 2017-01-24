@@ -1,0 +1,13 @@
+.search{
+  text-align: center;
+  width: 100%;
+}
+
+input[type=text] {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    background-color: white;
+    padding:1rem;
+}

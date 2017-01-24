@@ -6,11 +6,13 @@ import About from './about';
 import Author from './author';
 import NoMatch from './noMatch';
 import Stories from './stories/stories';
+import Search from './search/search';
 
 ReactDOM.render(
   (<Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Stories}/>
+      <Route path="search" component={Search}/>
       <Route path="about" component={About}/>
       <Route path="author" component={Author}>
         <Route path="/author/:authorId" component={Author}/>

@@ -31,3 +31,15 @@ body {
   .m-11 {width:91.6666%;}
   .m-12 {width:100%;}
 }
+
+a{
+  text-decoration:none
+}
+
+.right{
+    float:right;
+}
+
+.left{
+    float:right;
+}

@@ -35,22 +35,26 @@
 }
 
 .name{
-  font-size: 2.0rem;
+  font-size: 1.5rem;
   font-weight: 100;
   line-height: 1em;
   margin: 0 0 1.2rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .shortText{
   font-size: 0.9rem;
   opacity: 0.6;
-  line-height: 1.6em;
+  line-height: 1.4em;
+  height: 2.8em;
+  overflow: hidden;
 }
 .author{
   font-weight: 100;
   opacity: 0.8;
   text-align: right;
-  margin:1.25rem 1rem 0 0;
+  margin:1.2rem 0 0 0;
 }
 
 @media only screen and (min-width: 480px) {

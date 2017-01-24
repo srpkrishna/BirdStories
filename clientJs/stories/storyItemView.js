@@ -5,14 +5,14 @@ import styles from '../css/storyItem.css';
 
 const View = ({ story,index, updateSocial }) => {
 
-  const imgSrc = "/img/"+(index%3)+".jpg"
+  const imgSrc = "/img/p"+(index%3)+".jpg"
   const className = "storyItem clr"+(index%4)
   return (
         <a className={className}>
           <img className="image" src={imgSrc}></img>
           <div className="info">
             <div className="name">{story.name}</div>
-            <div className="shortText">chima chitaki vela chiru kursi andhakaram ayyindhi</div>
+            <div className="shortText">Edho okasari ala chima basics vasthe vaser chitaki vela chiru kursi andhakaram ayyindhi</div>
             <div className="author"> - By {story.author}</div>
           </div>
         </a>

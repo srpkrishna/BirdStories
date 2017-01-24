@@ -9,9 +9,23 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <a className="App-logo">Bird
+          <Link className="App-logo" to="/">Bird
             <span>Stories</span>
-          </a>
+          </Link>
+          <ul className="App-menu">
+            <li>
+              <Link to="/search" activeClassName="active" ><i className="material-icons">search</i>Search</Link>
+            </li>
+            <li>
+              <Link to="/write" activeClassName="active" ><i className="material-icons">create</i>Write</Link>
+            </li>
+            <li>
+              <Link to="/contact" activeClassName="active" ><i className="material-icons">phone</i>Contact</Link>
+            </li>
+            <li>
+              <Link to="/about" activeClassName="active" ><i className="material-icons">info</i>About</Link>
+            </li>
+          </ul>
         </div>
         {this.props.children}
       </div>

@@ -1,32 +1,4 @@
-var server={requestURL:"", reqType:"",reqdata:"",callBackSuccess:""};
 var BaseURL = "/api/";
-var errorMessage = "internal_error";
-
-function servercall_success(msg)
-{
-	try{
-
-		server.callBackSuccess(msg);
-
-	}catch(e){
-
-	}
-};
-
-function servercall_error(msg)
-{
-		var data;
-		if(404 === msg.status){
-			server.callBackSuccess(data,"matches_not_found");
-		}else if(408 === msg.status || 200 > msg.status || 3 === msg.code){
-			server.callBackSuccess(data,"network_failed");
-		}else if(401 === msg.status){
-			server.callBackSuccess(data,"invalid_session");
-		}else{
-			server.callBackSuccess(data,errorMessage);
-		}
-
-};
 
 const serverCall = {
 	fetch:function(url,successFunction){
@@ -37,18 +9,13 @@ const serverCall = {
 		try
 		{
 			var body = JSON.stringify(reqdata);
-			server.reqType = reqType;
-			server.reqdata = body;
-			server.callBackSuccess = successFunction;
-			server.requestURL = reqURL;
-
 			var type = contentType;
 			if(!contentType)
 			{
 					type = "application/json";
 			}
 
-			makeServerCall(reqType,BaseURL+reqURL,body,servercall_success,servercall_error,type);
+			makeServerCall(reqType,BaseURL+reqURL,body,successFunction,successFunction,type);
 		}
 		catch (e)
 		{

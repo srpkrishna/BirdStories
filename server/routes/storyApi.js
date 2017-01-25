@@ -68,6 +68,7 @@ function searchByNames(sub,callback){
             ":lang":"telugu",
             ":v_sub":sub
         },
+        Limit: 10,
         ScanIndexForward:false
     };
     console.log('hello')

@@ -27434,7 +27434,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.55em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  display: inline-block;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.App-search{\n  padding-left: 0.5rem !important;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 2rem 1.25rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover, .App-header li .active{\n  background: none repeat scroll 0 0 #0b192f;\n}\n\n\n\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n", ""]);
+	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.55em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  display: none;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.material-icons{\n  padding-right: 0.1rem !important;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 2rem 1.25rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f;\n}\n\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header ul{\n    display: inline-block;\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -30627,9 +30627,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _storyItem = __webpack_require__(/*! ../css/storyItem.css */ 291);
+	var _item = __webpack_require__(/*! ../css/item.css */ 315);
 	
-	var _storyItem2 = _interopRequireDefault(_storyItem);
+	var _item2 = _interopRequireDefault(_item);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30639,8 +30639,8 @@
 	      updateSocial = _ref.updateSocial;
 	
 	
-	  var imgSrc = "/img/p" + index % 3 + ".jpg";
-	  var className = "storyItem clr" + index % 4;
+	  var imgSrc = "/img/" + index % 3 + ".jpg";
+	  var className = "item clr" + index % 4;
 	  return _react2.default.createElement(
 	    'a',
 	    { className: className },
@@ -30660,7 +30660,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'author' },
+	        { className: 'bottomRight' },
 	        ' - By ',
 	        story.author
 	      )
@@ -30672,52 +30672,8 @@
 	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
 
 /***/ },
-/* 291 */
-/*!***************************!*\
-  !*** ./css/storyItem.css ***!
-  \***************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./storyItem.css */ 292);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./storyItem.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./storyItem.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 292 */
-/*!*******************************************!*\
-  !*** ../~/css-loader!./css/storyItem.css ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 236)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".storyItem {\n  width: 100%;\n  position: static;\n  float:left;\n}\n\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.image{\n  width:30%;\n  position: static;\n  float:right;\n}\n\n.info{\n  width:70%;\n  padding: 1rem;\n  position: static;\n  float:left;\n}\n\n.name{\n  font-size: 1.5rem;\n  font-weight: 100;\n  line-height: 1em;\n  margin: 0 0 1.2rem;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.shortText{\n  font-size: 0.9rem;\n  opacity: 0.6;\n  line-height: 1.4em;\n  height: 2.8em;\n  overflow: hidden;\n}\n.author{\n  font-weight: 100;\n  opacity: 0.8;\n  text-align: right;\n  margin:1.2rem 0 0 0;\n}\n\n@media only screen and (min-width: 480px) {\n  .storyItem {\n    width: 29.8%;\n    margin: 0.5rem;\n  }\n\n  .image{\n    width: 100%;\n  }\n\n  .info{\n    width: 100%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .storyItem {\n    width: 23.2%;\n  }\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
+/* 291 */,
+/* 292 */,
 /* 293 */
 /*!*************************!*\
   !*** ./css/stories.css ***!
@@ -30893,34 +30849,12 @@
   \************************/
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	var server = { requestURL: "", reqType: "", reqdata: "", callBackSuccess: "" };
 	var BaseURL = "/api/";
-	var errorMessage = "internal_error";
-	
-	function servercall_success(msg) {
-		try {
-	
-			server.callBackSuccess(msg);
-		} catch (e) {}
-	};
-	
-	function servercall_error(msg) {
-		var data;
-		if (404 === msg.status) {
-			server.callBackSuccess(data, "matches_not_found");
-		} else if (408 === msg.status || 200 > msg.status || 3 === msg.code) {
-			server.callBackSuccess(data, "network_failed");
-		} else if (401 === msg.status) {
-			server.callBackSuccess(data, "invalid_session");
-		} else {
-			server.callBackSuccess(data, errorMessage);
-		}
-	};
 	
 	var serverCall = {
 		fetch: function fetch(url, successFunction) {
@@ -30929,17 +30863,12 @@
 		connect: function connect(reqType, reqURL, reqdata, successFunction, contentType) {
 			try {
 				var body = JSON.stringify(reqdata);
-				server.reqType = reqType;
-				server.reqdata = body;
-				server.callBackSuccess = successFunction;
-				server.requestURL = reqURL;
-	
 				var type = contentType;
 				if (!contentType) {
 					type = "application/json";
 				}
 	
-				makeServerCall(reqType, BaseURL + reqURL, body, servercall_success, servercall_error, type);
+				makeServerCall(reqType, BaseURL + reqURL, body, successFunction, successFunction, type);
 			} catch (e) {
 				if (e instanceof TypeError) {
 					alert("Type Error encountered. The description is " + e.message);
@@ -31971,9 +31900,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _searchController = __webpack_require__(/*! ./searchController */ 312);
+	
+	var _searchController2 = _interopRequireDefault(_searchController);
+	
 	var _search = __webpack_require__(/*! ../css/search.css */ 307);
 	
 	var _search2 = _interopRequireDefault(_search);
+	
+	var _searchActions = __webpack_require__(/*! ./searchActions */ 309);
+	
+	var _searchActions2 = _interopRequireDefault(_searchActions);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
+	
+	var _searchStore = __webpack_require__(/*! ./searchStore */ 310);
+	
+	var _searchStore2 = _interopRequireDefault(_searchStore);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -31986,19 +31929,35 @@
 	var Search = function (_Component) {
 	  _inherits(Search, _Component);
 	
-	  function Search() {
+	  function Search(props) {
 	    _classCallCheck(this, Search);
 	
-	    return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+	
+	    _this.state = { value: '' };
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(Search, [{
+	    key: 'handleChange',
+	    value: function handleChange(event) {
+	      this.setState({ value: event.target.value });
+	      var obj = _searchActions2.default.search(event.target.value);
+	      _searchStore2.default.dispatch(obj);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'search' },
-	        _react2.default.createElement('input', { type: 'text', name: 'search', placeholder: 'Search..', className: 'm-9' })
+	        _react2.default.createElement('input', { type: 'text', name: 'search', placeholder: 'Search..', className: 'm-9', value: this.state.value, onChange: this.handleChange }),
+	        _react2.default.createElement(
+	          _reactRedux.Provider,
+	          { store: _searchStore2.default },
+	          _react2.default.createElement(_searchController2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -32049,7 +32008,409 @@
 	
 	
 	// module
-	exports.push([module.id, ".search{\n  text-align: center;\n  width: 100%;\n}\n\ninput[type=text] {\n    box-sizing: border-box;\n    border: 1px solid #ccc;\n    border-radius: 2px;\n    font-size: 1.2rem;\n    background-color: white;\n    padding:1rem;\n}\n", ""]);
+	exports.push([module.id, ".search{\n  text-align: center;\n  width: 100%;\n  padding: 0.5rem 0.5rem;\n}\n\ninput[type=text] {\n    box-sizing: border-box;\n    border: 1px solid #ccc;\n    border-radius: 2px;\n    font-size: 1.2rem;\n    background-color: white;\n    padding:0.75rem;\n}\n\n@media only screen and (min-width: 480px) {\n    .search{\n      padding: 0; \n    }\n\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 309 */
+/*!*********************************!*\
+  !*** ./search/searchActions.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 311);
+	
+	var _searchConstants2 = _interopRequireDefault(_searchConstants);
+	
+	var _server = __webpack_require__(/*! ../util/server */ 297);
+	
+	var _server2 = _interopRequireDefault(_server);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function pendingSearch() {
+	  return {
+	    type: _searchConstants2.default.SearchPendingEvent
+	  };
+	}
+	
+	function searchAuthorsSuccess(results) {
+	  return {
+	    type: _searchConstants2.default.SearchAuthorsChangeEvent,
+	    results: results
+	  };
+	}
+	
+	function searchStoriesSuccess(results) {
+	  return {
+	    type: _searchConstants2.default.SearchStoriesChangeEvent,
+	    results: results
+	  };
+	}
+	
+	// function filterAuthorsSuccess(results){
+	//   return {
+	//     type:Constants.FilterAuthorsChangeEvent,
+	//     results:results
+	//   };
+	// }
+	//
+	// function filterStoriesSuccess(results){
+	//   return {
+	//     type:Constants.FilterStoriesChangeEvent,
+	//     results:results
+	//   };
+	// }
+	
+	function search(value) {
+	  return function (dispatch, getState) {
+	    dispatch(pendingSearch());
+	
+	    if (value.length < 2) {
+	      return;
+	    }
+	
+	    var isHardFetch = true;
+	
+	    // if(value.length > 2)
+	    // {
+	    //   let prevString = getState().searchString;
+	    //   let diff = prevString.length - value.length
+	    //   if((diff == 1 || diff == -1) && (prevString.includes(value) || value.includes(prevString)){
+	    //     isHardFetch = false;
+	    //   }
+	    // }
+	
+	    searchStories(value, dispatch, getState, isHardFetch);
+	    searchAuthors(value, dispatch, getState, isHardFetch);
+	  };
+	}
+	
+	// function shouldSearchServerForStories(state){
+	//    if(state.stories.count == 10){
+	//       return true;
+	//    }
+	// }
+	
+	function searchStories(value, dispatch, getState, shdFetch) {
+	
+	  // const isStorySearchNeeded = shdFetch
+	  // if(!isStorySearchNeeded)
+	  // {
+	  //    isStorySearchNeeded = shouldSearchServerForStories(getState());
+	  // }
+	  //
+	  // if(isStorySearchNeeded)
+	  // {
+	  var param = encodeURI(value);
+	  _server2.default.fetch('stories/search?q=' + param, function (data) {
+	    dispatch(searchStoriesSuccess(data));
+	  });
+	  // }
+	}
+	
+	// function shouldSearchServerForAuthors(state){
+	//    if(state.authors.count == 10){
+	//       return true;
+	//    }
+	// }
+	
+	function searchAuthors(value, dispatch, getState, shdFetch) {
+	  // const isAuthorSearchNeeded = shdFetch
+	  //
+	  // if(!isAuthorSearchNeeded)
+	  // {
+	  //   shouldSearchServerForStories(getState());
+	  // }
+	
+	  //if(isAuthorSearchNeeded){
+	  var param = encodeURI(value);
+	  _server2.default.fetch('authors/search?q=' + param, function (data) {
+	    dispatch(searchAuthorsSuccess(data));
+	  });
+	  //}
+	}
+	
+	var Actions = {
+	  search: search
+	};
+	
+	exports.default = Actions;
+
+/***/ },
+/* 310 */
+/*!*******************************!*\
+  !*** ./search/searchStore.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 311);
+	
+	var _searchConstants2 = _interopRequireDefault(_searchConstants);
+	
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 299);
+	
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+	
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 300);
+	
+	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
+	
+	var _redux = __webpack_require__(/*! redux */ 252);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var defaultState = {
+	  stories: [],
+	  authors: []
+	};
+	
+	var reducer = function reducer(state, action) {
+	  switch (action.type) {
+	    case _searchConstants2.default.SearchPendingEvent:
+	      return defaultState;
+	    case _searchConstants2.default.SearchStoriesChangeEvent:
+	      var newState = Object.assign({}, state);
+	      newState.stories = action.results;
+	      return newState;
+	    case _searchConstants2.default.SearchAuthorsChangeEvent:
+	      var newState = Object.assign({}, state);
+	      newState.authors = action.results;
+	      return newState;
+	    default:
+	      return state;
+	  }
+	};
+	
+	var loggerMiddleware = (0, _reduxLogger2.default)();
+	var store = (0, _redux.createStore)(reducer, defaultState, (0, _redux.applyMiddleware)(_reduxThunk2.default, // lets us dispatch() functions
+	loggerMiddleware // neat middleware that logs actions
+	));
+	exports.default = store;
+
+/***/ },
+/* 311 */
+/*!***********************************!*\
+  !*** ./search/searchConstants.js ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	            value: true
+	});
+	var Constants = {
+	            SearchPendingEvent: 'search_pending_event',
+	            SearchAuthorsChangeEvent: 'search_authors_change_event',
+	            SearchStoriesChangeEvent: 'search_stories_change_event'
+	};
+	exports.default = Constants;
+
+/***/ },
+/* 312 */
+/*!************************************!*\
+  !*** ./search/searchController.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
+	
+	var _searchView = __webpack_require__(/*! ./searchView */ 313);
+	
+	var _searchView2 = _interopRequireDefault(_searchView);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    stories: state.stories,
+	    authors: state.authors
+	  };
+	};
+	
+	var SearchContainer = (0, _reactRedux.connect)(mapStateToProps)(_searchView2.default);
+	
+	exports.default = SearchContainer;
+
+/***/ },
+/* 313 */
+/*!******************************!*\
+  !*** ./search/searchView.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _storyItemView = __webpack_require__(/*! ../stories/storyItemView */ 290);
+	
+	var _storyItemView2 = _interopRequireDefault(_storyItemView);
+	
+	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 314);
+	
+	var _authorItemView2 = _interopRequireDefault(_authorItemView);
+	
+	var _search = __webpack_require__(/*! ../css/search.css */ 307);
+	
+	var _search2 = _interopRequireDefault(_search);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var stories = _ref.stories,
+	      authors = _ref.authors;
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'storiesBlock' },
+	      stories.map(function (story, i) {
+	        return _react2.default.createElement(_storyItemView2.default, { story: story, key: i, index: i });
+	      })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'authorsBlock' },
+	      authors.map(function (author, i) {
+	        return _react2.default.createElement(_authorItemView2.default, { author: author, key: i, index: i });
+	      })
+	    )
+	  );
+	};
+	
+	exports.default = View;
+
+/***/ },
+/* 314 */
+/*!**********************************!*\
+  !*** ./author/authorItemView.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _item = __webpack_require__(/*! ../css/item.css */ 315);
+	
+	var _item2 = _interopRequireDefault(_item);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var author = _ref.author,
+	      index = _ref.index;
+	
+	
+	  var imgSrc = "/img/p" + index % 3 + ".jpg";
+	  var className = "item clrWhite";
+	  return _react2.default.createElement(
+	    'a',
+	    { className: className },
+	    _react2.default.createElement('img', { className: 'image', src: imgSrc }),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'info' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'name' },
+	        author.profile.fullName
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'shortText' },
+	        author.profile.intro
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'bottomRight' },
+	        author.profile.qual
+	      )
+	    )
+	  );
+	};
+	
+	exports.default = View;
+	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
+
+/***/ },
+/* 315 */
+/*!**********************!*\
+  !*** ./css/item.css ***!
+  \**********************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../~/css-loader!./item.css */ 316);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./item.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./item.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 316 */
+/*!**************************************!*\
+  !*** ../~/css-loader!./css/item.css ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 236)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".item {\n  width: 100%;\n  position: static;\n  float:left;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.image{\n  width:30%;\n  position: static;\n  float:right;\n}\n\n.info{\n  width:70%;\n  padding: 1rem;\n  position: static;\n  float:left;\n}\n\n.name{\n  font-size: 1.5rem;\n  font-weight: 100;\n  line-height: 1em;\n  margin: 0 0 1.2rem;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.shortText{\n  font-size: 0.9rem;\n  opacity: 0.6;\n  line-height: 1.4em;\n  height: 2.8em;\n  overflow: hidden;\n}\n.bottomRight{\n  font-weight: 100;\n  opacity: 0.8;\n  text-align: right;\n  margin:1.2rem 0 0 0;\n}\n\n@media only screen and (min-width: 480px) {\n  .item {\n    width: 29.8%;\n    margin: 0.5rem;\n  }\n\n  .image{\n    width: 100%;\n  }\n\n  .info{\n    width: 100%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .item {\n    width: 23.2%;\n  }\n}\n", ""]);
 	
 	// exports
 

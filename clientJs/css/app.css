@@ -5,13 +5,6 @@
   max-width: 71.25rem;
 }
 
-@media only screen and (min-width: 768px) {
-  .App {
-    padding: 0 0.625rem;
-    text-align: left;
-  }
-}
-
 /*@media screen and (min-width:1024px) {
   .App{max-width:1024px;}
 }*/
@@ -38,7 +31,7 @@
 .App-header ul{
   float: right;
   padding: 0;
-  display: inline-block;
+  display: none;
   padding-right: 1.0em;
 }
 
@@ -49,8 +42,8 @@
     padding: 0;
 }
 
-.App-search{
-  padding-left: 0.5rem !important;
+.material-icons{
+  padding-right: 0.1rem !important;
 }
 
 .App-header li a{
@@ -61,15 +54,27 @@
   display: inline-flex;
   vertical-align: middle;
 }
-.App-header li a:hover, .App-header li .active{
+.App-header li a:hover{
+    background: none repeat scroll 0 0 #283D5F;
+  }
+.App-header li .active{
   background: none repeat scroll 0 0 #0b192f;
 }
-
-
 
 
 @media only screen and (min-width: 480px) {
   .App-header {
     margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    padding: 0 0.625rem;
+    text-align: left;
+  }
+
+  .App-header ul{
+    display: inline-block;
   }
 }

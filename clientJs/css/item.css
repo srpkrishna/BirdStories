@@ -1,9 +1,13 @@
-.storyItem {
+.item {
   width: 100%;
   position: static;
   float:left;
 }
 
+.clrWhite{
+  background: none repeat scroll 0 0 #FFF;
+  color:#0b192f;
+}
 .clr0{
   /*background-color: #d12767;*/
   background: none repeat scroll 0 0 #B71757;
@@ -50,7 +54,7 @@
   height: 2.8em;
   overflow: hidden;
 }
-.author{
+.bottomRight{
   font-weight: 100;
   opacity: 0.8;
   text-align: right;
@@ -58,7 +62,7 @@
 }
 
 @media only screen and (min-width: 480px) {
-  .storyItem {
+  .item {
     width: 29.8%;
     margin: 0.5rem;
   }
@@ -73,7 +77,7 @@
 }
 
 @media only screen and (min-width: 960px) {
-  .storyItem {
+  .item {
     width: 23.2%;
   }
 }

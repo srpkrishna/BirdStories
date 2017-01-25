@@ -26,7 +26,8 @@ function searchByNames(sub,callback){
         },
         ExpressionAttributeValues: {
             ":v_sub":sub
-        }
+        },
+        Limit:10
     };
     console.log('hello')
    authorDb.scan(params,docClient,callback);

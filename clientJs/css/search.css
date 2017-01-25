@@ -1,6 +1,7 @@
 .search{
   text-align: center;
   width: 100%;
+  padding: 0.5rem 0.5rem;
 }
 
 input[type=text] {
@@ -9,5 +10,12 @@ input[type=text] {
     border-radius: 2px;
     font-size: 1.2rem;
     background-color: white;
-    padding:1rem;
+    padding:0.75rem;
+}
+
+@media only screen and (min-width: 480px) {
+    .search{
+      padding: 0; 
+    }
+
 }

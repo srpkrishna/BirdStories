@@ -5,14 +5,32 @@ import styles from './css/app.css';
 import { Link } from 'react-router'
 
 class App extends Component {
+
+  constructor(){
+    super()
+    this.state = {"showMenu":""};
+     this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  toggleMenu() {
+    this.setState((prevState, props) => ({
+      showMenu: (prevState.showMenu === "") ? "show" : ""
+    }));
+  }
+
   render() {
+
+    const menuClassName = "menu "+this.state.showMenu
     return (
       <div className="App">
         <div className="App-header">
+          <ul className="menuIcon" onClick={this.toggleMenu}>
+            <li><a><i className="material-icons">menu</i></a></li>
+          </ul>
           <Link className="App-logo" to="/">Bird
             <span>Stories</span>
           </Link>
-          <ul className="App-menu">
+          <ul className={menuClassName} onClick={this.toggleMenu}>
             <li>
               <Link to="/search" activeClassName="active" ><i className="material-icons">search</i>Search</Link>
             </li>

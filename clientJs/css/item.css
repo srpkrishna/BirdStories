@@ -45,6 +45,7 @@
   margin: 0 0 1.2rem;
   overflow: hidden;
   white-space: nowrap;
+  text-align: left;
 }
 
 .shortText{
@@ -53,6 +54,7 @@
   line-height: 1.4em;
   height: 2.8em;
   overflow: hidden;
+  text-align: left;
 }
 .bottomRight{
   font-weight: 100;

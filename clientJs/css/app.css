@@ -12,7 +12,7 @@
 .App-logo{
   font-size: 2.3rem;
   color: #fff;
-  padding: 0.55em;
+  padding: 0.57em;
   display: inline-block;
 }
 
@@ -31,9 +31,26 @@
 .App-header ul{
   float: right;
   padding: 0;
-  display: none;
   padding-right: 1.0em;
 }
+
+.App-header ul.menu{
+  height: 0;
+  opacity: 0;
+}
+
+.App-header ul.menu.show{
+  height: 5.5rem;
+  opacity: 1;
+}
+
+.App-header .menuIcon{
+  float: left;
+  padding: 0;
+  padding-left: 1.0em;
+  position: absolute;
+}
+
 
 .App-header li {
     float: left;
@@ -48,7 +65,7 @@
 
 .App-header li a{
   font-size: 1.1rem;
-  padding: 2rem 1.25rem;
+  padding: 1.9rem 1.2rem;
   color: #fff;
   letter-spacing: 0px;
   display: inline-flex;
@@ -74,7 +91,14 @@
     text-align: left;
   }
 
-  .App-header ul{
-    display: inline-block;
+  .App-header ul.menu{
+    height: auto;
+    opacity: 1;
   }
+
+  .App-header .menuIcon{
+    height: 0;
+    opacity: 0;
+  }
+
 }

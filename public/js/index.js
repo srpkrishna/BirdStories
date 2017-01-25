@@ -27300,18 +27300,50 @@
 	  function App() {
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	
+	    _this.state = { "showMenu": "" };
+	    _this.toggleMenu = _this.toggleMenu.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(App, [{
+	    key: 'toggleMenu',
+	    value: function toggleMenu() {
+	      this.setState(function (prevState, props) {
+	        return {
+	          showMenu: prevState.showMenu === "" ? "show" : ""
+	        };
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	
+	      var menuClassName = "menu " + this.state.showMenu;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'App' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'App-header' },
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'menuIcon', onClick: this.toggleMenu },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                null,
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'menu'
+	                )
+	              )
+	            )
+	          ),
 	          _react2.default.createElement(
 	            _reactRouter.Link,
 	            { className: 'App-logo', to: '/' },
@@ -27324,7 +27356,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'ul',
-	            { className: 'App-menu' },
+	            { className: menuClassName, onClick: this.toggleMenu },
 	            _react2.default.createElement(
 	              'li',
 	              null,
@@ -27434,7 +27466,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.55em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  display: none;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.material-icons{\n  padding-right: 0.1rem !important;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 2rem 1.25rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f;\n}\n\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header ul{\n    display: inline-block;\n  }\n}\n", ""]);
+	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header ul.menu{\n  height: 0;\n  opacity: 0;\n}\n\n.App-header ul.menu.show{\n  height: 5.5rem;\n  opacity: 1;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n  padding-left: 1.0em;\n  position: absolute;\n}\n\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.material-icons{\n  padding-right: 0.1rem !important;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f;\n}\n\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header ul.menu{\n    height: auto;\n    opacity: 1;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n  }\n\n}\n", ""]);
 	
 	// exports
 
@@ -30627,7 +30659,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _item = __webpack_require__(/*! ../css/item.css */ 315);
+	var _item = __webpack_require__(/*! ../css/item.css */ 291);
 	
 	var _item2 = _interopRequireDefault(_item);
 	
@@ -30661,7 +30693,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'bottomRight' },
-	        ' - By ',
+	        ' - ',
 	        story.author
 	      )
 	    )
@@ -30672,8 +30704,52 @@
 	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
 
 /***/ },
-/* 291 */,
-/* 292 */,
+/* 291 */
+/*!**********************!*\
+  !*** ./css/item.css ***!
+  \**********************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../~/css-loader!./item.css */ 292);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./item.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./item.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 292 */
+/*!**************************************!*\
+  !*** ../~/css-loader!./css/item.css ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 236)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".item {\n  width: 100%;\n  position: static;\n  float:left;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.image{\n  width:30%;\n  position: static;\n  float:right;\n}\n\n.info{\n  width:70%;\n  padding: 1rem;\n  position: static;\n  float:left;\n}\n\n.name{\n  font-size: 1.5rem;\n  font-weight: 100;\n  line-height: 1em;\n  margin: 0 0 1.2rem;\n  overflow: hidden;\n  white-space: nowrap;\n  text-align: left;\n}\n\n.shortText{\n  font-size: 0.9rem;\n  opacity: 0.6;\n  line-height: 1.4em;\n  height: 2.8em;\n  overflow: hidden;\n  text-align: left;\n}\n.bottomRight{\n  font-weight: 100;\n  opacity: 0.8;\n  text-align: right;\n  margin:1.2rem 0 0 0;\n}\n\n@media only screen and (min-width: 480px) {\n  .item {\n    width: 29.8%;\n    margin: 0.5rem;\n  }\n\n  .image{\n    width: 100%;\n  }\n\n  .info{\n    width: 100%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .item {\n    width: 23.2%;\n  }\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
 /* 293 */
 /*!*************************!*\
   !*** ./css/stories.css ***!
@@ -30714,7 +30790,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".stories{\n  text-align: center;\n  width: 100%;\n}\n", ""]);
+	exports.push([module.id, ".stories{\n  width: 100%;\n}\n", ""]);
 	
 	// exports
 
@@ -31900,21 +31976,21 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _searchController = __webpack_require__(/*! ./searchController */ 312);
+	var _searchController = __webpack_require__(/*! ./searchController */ 307);
 	
 	var _searchController2 = _interopRequireDefault(_searchController);
 	
-	var _search = __webpack_require__(/*! ../css/search.css */ 307);
+	var _search = __webpack_require__(/*! ../css/search.css */ 310);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _searchActions = __webpack_require__(/*! ./searchActions */ 309);
+	var _searchActions = __webpack_require__(/*! ./searchActions */ 312);
 	
 	var _searchActions2 = _interopRequireDefault(_searchActions);
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
 	
-	var _searchStore = __webpack_require__(/*! ./searchStore */ 310);
+	var _searchStore = __webpack_require__(/*! ./searchStore */ 314);
 	
 	var _searchStore2 = _interopRequireDefault(_searchStore);
 	
@@ -31969,6 +32045,154 @@
 
 /***/ },
 /* 307 */
+/*!************************************!*\
+  !*** ./search/searchController.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
+	
+	var _searchView = __webpack_require__(/*! ./searchView */ 308);
+	
+	var _searchView2 = _interopRequireDefault(_searchView);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    stories: state.stories,
+	    authors: state.authors
+	  };
+	};
+	
+	var SearchContainer = (0, _reactRedux.connect)(mapStateToProps)(_searchView2.default);
+	
+	exports.default = SearchContainer;
+
+/***/ },
+/* 308 */
+/*!******************************!*\
+  !*** ./search/searchView.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _storyItemView = __webpack_require__(/*! ../stories/storyItemView */ 290);
+	
+	var _storyItemView2 = _interopRequireDefault(_storyItemView);
+	
+	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 309);
+	
+	var _authorItemView2 = _interopRequireDefault(_authorItemView);
+	
+	var _search = __webpack_require__(/*! ../css/search.css */ 310);
+	
+	var _search2 = _interopRequireDefault(_search);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var stories = _ref.stories,
+	      authors = _ref.authors;
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'storiesBlock' },
+	      stories.map(function (story, i) {
+	        return _react2.default.createElement(_storyItemView2.default, { story: story, key: i, index: i });
+	      })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'authorsBlock' },
+	      authors.map(function (author, i) {
+	        return _react2.default.createElement(_authorItemView2.default, { author: author, key: i, index: i });
+	      })
+	    )
+	  );
+	};
+	
+	exports.default = View;
+
+/***/ },
+/* 309 */
+/*!**********************************!*\
+  !*** ./author/authorItemView.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _item = __webpack_require__(/*! ../css/item.css */ 291);
+	
+	var _item2 = _interopRequireDefault(_item);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var author = _ref.author,
+	      index = _ref.index;
+	
+	
+	  var imgSrc = "/img/p" + index % 3 + ".jpg";
+	  var className = "item clrWhite";
+	  return _react2.default.createElement(
+	    'a',
+	    { className: className },
+	    _react2.default.createElement('img', { className: 'image', src: imgSrc }),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'info' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'name' },
+	        author.profile.fullName
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'shortText' },
+	        author.profile.intro
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'bottomRight' },
+	        author.profile.qual
+	      )
+	    )
+	  );
+	};
+	
+	exports.default = View;
+	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
+
+/***/ },
+/* 310 */
 /*!************************!*\
   !*** ./css/search.css ***!
   \************************/
@@ -31977,7 +32201,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./search.css */ 308);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./search.css */ 311);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
@@ -31997,7 +32221,7 @@
 	}
 
 /***/ },
-/* 308 */
+/* 311 */
 /*!****************************************!*\
   !*** ../~/css-loader!./css/search.css ***!
   \****************************************/
@@ -32014,7 +32238,7 @@
 
 
 /***/ },
-/* 309 */
+/* 312 */
 /*!*********************************!*\
   !*** ./search/searchActions.js ***!
   \*********************************/
@@ -32026,7 +32250,7 @@
 	  value: true
 	});
 	
-	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 311);
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 313);
 	
 	var _searchConstants2 = _interopRequireDefault(_searchConstants);
 	
@@ -32146,7 +32370,26 @@
 	exports.default = Actions;
 
 /***/ },
-/* 310 */
+/* 313 */
+/*!***********************************!*\
+  !*** ./search/searchConstants.js ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	            value: true
+	});
+	var Constants = {
+	            SearchPendingEvent: 'search_pending_event',
+	            SearchAuthorsChangeEvent: 'search_authors_change_event',
+	            SearchStoriesChangeEvent: 'search_stories_change_event'
+	};
+	exports.default = Constants;
+
+/***/ },
+/* 314 */
 /*!*******************************!*\
   !*** ./search/searchStore.js ***!
   \*******************************/
@@ -32158,7 +32401,7 @@
 	  value: true
 	});
 	
-	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 311);
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 313);
 	
 	var _searchConstants2 = _interopRequireDefault(_searchConstants);
 	
@@ -32201,219 +32444,6 @@
 	loggerMiddleware // neat middleware that logs actions
 	));
 	exports.default = store;
-
-/***/ },
-/* 311 */
-/*!***********************************!*\
-  !*** ./search/searchConstants.js ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	            value: true
-	});
-	var Constants = {
-	            SearchPendingEvent: 'search_pending_event',
-	            SearchAuthorsChangeEvent: 'search_authors_change_event',
-	            SearchStoriesChangeEvent: 'search_stories_change_event'
-	};
-	exports.default = Constants;
-
-/***/ },
-/* 312 */
-/*!************************************!*\
-  !*** ./search/searchController.js ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
-	
-	var _searchView = __webpack_require__(/*! ./searchView */ 313);
-	
-	var _searchView2 = _interopRequireDefault(_searchView);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    stories: state.stories,
-	    authors: state.authors
-	  };
-	};
-	
-	var SearchContainer = (0, _reactRedux.connect)(mapStateToProps)(_searchView2.default);
-	
-	exports.default = SearchContainer;
-
-/***/ },
-/* 313 */
-/*!******************************!*\
-  !*** ./search/searchView.js ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _storyItemView = __webpack_require__(/*! ../stories/storyItemView */ 290);
-	
-	var _storyItemView2 = _interopRequireDefault(_storyItemView);
-	
-	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 314);
-	
-	var _authorItemView2 = _interopRequireDefault(_authorItemView);
-	
-	var _search = __webpack_require__(/*! ../css/search.css */ 307);
-	
-	var _search2 = _interopRequireDefault(_search);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var View = function View(_ref) {
-	  var stories = _ref.stories,
-	      authors = _ref.authors;
-	
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'storiesBlock' },
-	      stories.map(function (story, i) {
-	        return _react2.default.createElement(_storyItemView2.default, { story: story, key: i, index: i });
-	      })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'authorsBlock' },
-	      authors.map(function (author, i) {
-	        return _react2.default.createElement(_authorItemView2.default, { author: author, key: i, index: i });
-	      })
-	    )
-	  );
-	};
-	
-	exports.default = View;
-
-/***/ },
-/* 314 */
-/*!**********************************!*\
-  !*** ./author/authorItemView.js ***!
-  \**********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _item = __webpack_require__(/*! ../css/item.css */ 315);
-	
-	var _item2 = _interopRequireDefault(_item);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var View = function View(_ref) {
-	  var author = _ref.author,
-	      index = _ref.index;
-	
-	
-	  var imgSrc = "/img/p" + index % 3 + ".jpg";
-	  var className = "item clrWhite";
-	  return _react2.default.createElement(
-	    'a',
-	    { className: className },
-	    _react2.default.createElement('img', { className: 'image', src: imgSrc }),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'info' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'name' },
-	        author.profile.fullName
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'shortText' },
-	        author.profile.intro
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'bottomRight' },
-	        author.profile.qual
-	      )
-	    )
-	  );
-	};
-	
-	exports.default = View;
-	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
-
-/***/ },
-/* 315 */
-/*!**********************!*\
-  !*** ./css/item.css ***!
-  \**********************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./item.css */ 316);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./item.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./item.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 316 */
-/*!**************************************!*\
-  !*** ../~/css-loader!./css/item.css ***!
-  \**************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 236)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".item {\n  width: 100%;\n  position: static;\n  float:left;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.image{\n  width:30%;\n  position: static;\n  float:right;\n}\n\n.info{\n  width:70%;\n  padding: 1rem;\n  position: static;\n  float:left;\n}\n\n.name{\n  font-size: 1.5rem;\n  font-weight: 100;\n  line-height: 1em;\n  margin: 0 0 1.2rem;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.shortText{\n  font-size: 0.9rem;\n  opacity: 0.6;\n  line-height: 1.4em;\n  height: 2.8em;\n  overflow: hidden;\n}\n.bottomRight{\n  font-weight: 100;\n  opacity: 0.8;\n  text-align: right;\n  margin:1.2rem 0 0 0;\n}\n\n@media only screen and (min-width: 480px) {\n  .item {\n    width: 29.8%;\n    margin: 0.5rem;\n  }\n\n  .image{\n    width: 100%;\n  }\n\n  .info{\n    width: 100%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .item {\n    width: 23.2%;\n  }\n}\n", ""]);
-	
-	// exports
-
 
 /***/ }
 /******/ ]);

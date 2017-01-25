@@ -3,6 +3,7 @@
   -moz-box-sizing:border-box;
   box-sizing:border-box;
   margin:0;
+  transition: all 0.2s ease;
 }
 body {
   background: none repeat scroll 0 0 #0b192f;
@@ -34,6 +35,10 @@ body {
 
 a{
   text-decoration:none
+}
+
+li{
+  list-style: none outside none;
 }
 
 .right{

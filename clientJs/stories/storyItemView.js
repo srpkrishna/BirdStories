@@ -13,7 +13,7 @@ const View = ({ story,index, updateSocial }) => {
           <div className="info">
             <div className="name">{story.name}</div>
             <div className="shortText">Edho okasari ala chima basics vasthe vaser chitaki vela chiru kursi andhakaram ayyindhi</div>
-            <div className="bottomRight"> - By {story.author}</div>
+            <div className="bottomRight"> - {story.author}</div>
           </div>
         </a>
   )

@@ -1,6 +1,8 @@
 var express = require('express');
 var api = express.Router();
 var storyDb = require('../dbFetch/storyDB.js');
+var AWS = require('aws-sdk');
+
 const conn = require('../utils/connections.js');
 const error = {
   code:'BS101',
@@ -14,6 +16,29 @@ api.route('/search')
       searchByNames(searchString,function(stories){
         res.send(stories);
       })
+  })
+
+
+api.route('/:author/:name')
+  .get(function(req, res){
+    console.log(req.params.author);
+    console.log(req.params.name);
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4"});
+    console.log(req.params.name);
+    var bucketName = 'bsstory';
+    var keyName = 'phani/sample/story.json';
+    var regio
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(error)
+      }else {
+        var fileContents = data.Body.toString();
+        console.log(fileContents);
+        var json = JSON.parse(fileContents);
+        res.send(fileContents);
+      }
+    });
   })
 
 api.route('/')

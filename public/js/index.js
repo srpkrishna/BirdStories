@@ -79,7 +79,7 @@
 	
 	var _stories2 = _interopRequireDefault(_stories);
 	
-	var _search = __webpack_require__(/*! ./search/search */ 306);
+	var _search = __webpack_require__(/*! ./search/search */ 308);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
@@ -92,6 +92,13 @@
 	    _reactRouter.Route,
 	    { path: '/', component: _app2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _stories2.default }),
+	    _react2.default.createElement(
+	      _reactRouter.Route,
+	      { path: 'stories', component: _stories2.default },
+	      _react2.default.createElement(_reactRouter.Route, { path: '/stories/:author', component: _stories2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/stories/:author/:name', component: _stories2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _stories2.default })
+	    ),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'search', component: _search2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'about', component: _about2.default }),
 	    _react2.default.createElement(
@@ -27304,6 +27311,7 @@
 	
 	    _this.state = { "showMenu": "" };
 	    _this.toggleMenu = _this.toggleMenu.bind(_this);
+	    _this.hideMenu = _this.hideMenu.bind(_this);
 	    return _this;
 	  }
 	
@@ -27315,6 +27323,11 @@
 	          showMenu: prevState.showMenu === "" ? "show" : ""
 	        };
 	      });
+	    }
+	  }, {
+	    key: 'hideMenu',
+	    value: function hideMenu() {
+	      this.state = { showMenu: "" };
 	    }
 	  }, {
 	    key: 'render',
@@ -27346,7 +27359,7 @@
 	          ),
 	          _react2.default.createElement(
 	            _reactRouter.Link,
-	            { className: 'App-logo', to: '/' },
+	            { className: 'App-logo', to: '/', onClick: this.hideMenu },
 	            'Bird',
 	            _react2.default.createElement(
 	              'span',
@@ -27356,10 +27369,10 @@
 	          ),
 	          _react2.default.createElement(
 	            'ul',
-	            { className: menuClassName, onClick: this.toggleMenu },
+	            { className: menuClassName, onClick: this.hideMenu },
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: menuClassName },
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { to: '/search', activeClassName: 'active' },
@@ -27373,7 +27386,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: menuClassName },
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { to: '/write', activeClassName: 'active' },
@@ -27387,7 +27400,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: menuClassName },
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { to: '/contact', activeClassName: 'active' },
@@ -27401,7 +27414,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: menuClassName },
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { to: '/about', activeClassName: 'active' },
@@ -27466,7 +27479,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header ul.menu{\n  height: 0;\n  opacity: 0;\n}\n\n.App-header ul.menu.show{\n  height: 5.5rem;\n  opacity: 1;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n  padding-left: 1.0em;\n  position: absolute;\n}\n\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.material-icons{\n  padding-right: 0.1rem !important;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f;\n}\n\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header ul.menu{\n    height: auto;\n    opacity: 1;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header .menu{\n  max-height: 0;\n  opacity: 0;\n}\n\n.App-header .menu.show{\n  max-height: 10rem;\n  opacity: 1;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n  padding-left: 1.0em;\n  position: absolute;\n}\n\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.material-icons{\n  padding-right: 0.1rem !important;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f;\n}\n\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header .menu{\n    max-height: 10rem;\n    opacity: 1;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n  }\n\n}\n", ""]);
 	
 	// exports
 
@@ -27968,7 +27981,11 @@
 	
 	var _storiesController2 = _interopRequireDefault(_storiesController);
 	
-	var _storiesStore = __webpack_require__(/*! ./storiesStore */ 298);
+	var _viewerController = __webpack_require__(/*! ./viewerController */ 298);
+	
+	var _viewerController2 = _interopRequireDefault(_viewerController);
+	
+	var _storiesStore = __webpack_require__(/*! ./storiesStore */ 300);
 	
 	var _storiesStore2 = _interopRequireDefault(_storiesStore);
 	
@@ -27989,23 +28006,70 @@
 	var Stories = function (_Component) {
 	  _inherits(Stories, _Component);
 	
-	  function Stories() {
+	  _createClass(Stories, [{
+	    key: 'getStateObject',
+	    value: function getStateObject(data) {
+	      var state = {
+	        shdShowViewer: false
+	      };
+	      if (data.author && data.name) {
+	        state.shdShowViewer = true;
+	        state.author = data.author;
+	        state.id = data.name;
+	      }
+	
+	      if (data.location.state) {
+	        var story = data.location.state;
+	        state.shdShowViewer = true;
+	        state.author = data.author;
+	        state.id = data.name;
+	        state.story = story;
+	      }
+	
+	      if (state.shdShowViewer) {
+	        var obj = _storiesActions2.default.getStoryContent();
+	        _storiesStore2.default.dispatch(obj);
+	      } else {
+	        var obj = _storiesActions2.default.fetchStoriesIfNeeded();
+	        _storiesStore2.default.dispatch(obj);
+	      }
+	
+	      return state;
+	    }
+	  }, {
+	    key: 'locationChange',
+	    value: function locationChange() {
+	      console.log(location.pathname);
+	    }
+	  }]);
+	
+	  function Stories(props) {
 	    _classCallCheck(this, Stories);
 	
-	    var _this = _possibleConstructorReturn(this, (Stories.__proto__ || Object.getPrototypeOf(Stories)).call(this));
+	    var _this = _possibleConstructorReturn(this, (Stories.__proto__ || Object.getPrototypeOf(Stories)).call(this, props));
 	
-	    var obj = _storiesActions2.default.fetchStories();
-	    _storiesStore2.default.dispatch(obj);
+	    _this.state = _this.getStateObject(props);
+	
 	    return _this;
 	  }
 	
 	  _createClass(Stories, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.state = this.getStateObject(nextProps);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	
+	      var tag = _react2.default.createElement(_storiesController2.default, null);
+	      if (this.state.shdShowViewer) {
+	        tag = _react2.default.createElement(_viewerController2.default, null);
+	      }
 	      return _react2.default.createElement(
 	        _reactRedux.Provider,
 	        { store: _storiesStore2.default },
-	        _react2.default.createElement(_storiesController2.default, null)
+	        tag
 	      );
 	    }
 	  }]);
@@ -30663,6 +30727,8 @@
 	
 	var _item2 = _interopRequireDefault(_item);
 	
+	var _reactRouter = __webpack_require__(/*! react-router */ 178);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var View = function View(_ref) {
@@ -30673,9 +30739,14 @@
 	
 	  var imgSrc = "/img/" + index % 3 + ".jpg";
 	  var className = "item clr" + index % 4;
+	  var link = "/stories/" + story.author + "/" + story.timestamp;
+	  var linkObj = {
+	    pathname: link,
+	    state: { selected: story }
+	  };
 	  return _react2.default.createElement(
-	    'a',
-	    { className: className },
+	    _reactRouter.Link,
+	    { to: linkObj, className: className },
 	    _react2.default.createElement('img', { className: 'image', src: imgSrc }),
 	    _react2.default.createElement(
 	      'div',
@@ -30744,7 +30815,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".item {\n  width: 100%;\n  position: static;\n  float:left;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.image{\n  width:30%;\n  position: static;\n  float:right;\n}\n\n.info{\n  width:70%;\n  padding: 1rem;\n  position: static;\n  float:left;\n}\n\n.name{\n  font-size: 1.5rem;\n  font-weight: 100;\n  line-height: 1em;\n  margin: 0 0 1.2rem;\n  overflow: hidden;\n  white-space: nowrap;\n  text-align: left;\n}\n\n.shortText{\n  font-size: 0.9rem;\n  opacity: 0.6;\n  line-height: 1.4em;\n  height: 2.8em;\n  overflow: hidden;\n  text-align: left;\n}\n.bottomRight{\n  font-weight: 100;\n  opacity: 0.8;\n  text-align: right;\n  margin:1.2rem 0 0 0;\n}\n\n@media only screen and (min-width: 480px) {\n  .item {\n    width: 29.8%;\n    margin: 0.5rem;\n  }\n\n  .image{\n    width: 100%;\n  }\n\n  .info{\n    width: 100%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .item {\n    width: 23.2%;\n  }\n}\n", ""]);
+	exports.push([module.id, ".item {\n  width: 100%;\n  position: static;\n  float:left;\n  color:#FFF;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.image{\n  width:30%;\n  position: static;\n  float:right;\n}\n\n.info{\n  width:70%;\n  padding: 1rem;\n  position: static;\n  float:left;\n}\n\n.name{\n  font-size: 1.5rem;\n  font-weight: 100;\n  line-height: 1em;\n  margin: 0 0 1.2rem;\n  overflow: hidden;\n  white-space: nowrap;\n  text-align: left;\n}\n\n.shortText{\n  font-size: 0.9rem;\n  opacity: 0.6;\n  line-height: 1.4em;\n  height: 2.8em;\n  overflow: hidden;\n  text-align: left;\n}\n.bottomRight{\n  font-weight: 100;\n  opacity: 0.8;\n  text-align: right;\n  margin:1.2rem 0 0 0;\n}\n\n@media only screen and (min-width: 480px) {\n  .item {\n    width: 29.8%;\n    margin: 0.5rem;\n  }\n\n  .image{\n    width: 100%;\n  }\n\n  .info{\n    width: 100%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .item {\n    width: 23.2%;\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -30844,10 +30915,10 @@
 	
 	function shouldFetchStories(state) {
 	  var stories = state.stories;
-	  if (!posts) {
+	  if (!state.isFetching) {
 	    return true;
-	  } else if (state.isFetching) {
-	    return false;
+	  } else if (!stories || stories.length == 0) {
+	    return true;
 	  } else {
 	    return stories.didInvalidate;
 	  }
@@ -30855,7 +30926,7 @@
 	
 	function fetchStoriesIfNeeded() {
 	  return function (dispatch, getState) {
-	    if (shouldFetchPosts(getState())) {
+	    if (shouldFetchStories(getState())) {
 	      return dispatch(fetchStories());
 	    };
 	  };
@@ -30892,9 +30963,25 @@
 	  };
 	}
 	
+	function contentSuccess(data) {
+	  return {
+	    type: _storiesConstants2.default.StoryContentSuccess,
+	    content: data
+	  };
+	}
+	
+	function getStoryContent() {
+	  return function (dispatch) {
+	    _server2.default.fetch('stories/author/name', function (data) {
+	      dispatch(contentSuccess(data));
+	    });
+	  };
+	}
+	
 	var Actions = {
 	  fetchStories: fetchStories,
-	  pendingFetch: pendingFetch,
+	  fetchStoriesIfNeeded: fetchStoriesIfNeeded,
+	  getStoryContent: getStoryContent,
 	  updateSocial: updateSocial
 	};
 	
@@ -30914,7 +31001,8 @@
 	});
 	var Constants = {
 	            StoriesChangeEvent: 'stories_change_event',
-	            StoryChangeEvent: 'story_change_event'
+	            StoryChangeEvent: 'story_change_event',
+	            StoryContentSuccess: 'story_content_success'
 	};
 	exports.default = Constants;
 
@@ -30925,12 +31013,13 @@
   \************************/
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	var BaseURL = "/api/";
+	var S3URL = "https://s3.ap-south-1.amazonaws.com/bsstory/";
 	
 	var serverCall = {
 		fetch: function fetch(url, successFunction) {
@@ -30983,6 +31072,81 @@
 
 /***/ },
 /* 298 */
+/*!*************************************!*\
+  !*** ./stories/viewerController.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
+	
+	var _viewer = __webpack_require__(/*! ./viewer */ 299);
+	
+	var _viewer2 = _interopRequireDefault(_viewer);
+	
+	var _storiesActions = __webpack_require__(/*! ./storiesActions */ 295);
+	
+	var _storiesActions2 = _interopRequireDefault(_storiesActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    content: state.content
+	  };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    updateSocial: function updateSocial(index, key) {
+	      var obj = _storiesActions2.default.updateSocial(index, key);
+	      dispatch(obj);
+	    }
+	  };
+	};
+	
+	var StoriesContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_viewer2.default);
+	
+	exports.default = StoriesContainer;
+
+/***/ },
+/* 299 */
+/*!***************************!*\
+  !*** ./stories/viewer.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var content = _ref.content;
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    JSON.stringify(content)
+	  );
+	};
+	
+	exports.default = View;
+
+/***/ },
+/* 300 */
 /*!*********************************!*\
   !*** ./stories/storiesStore.js ***!
   \*********************************/
@@ -30998,11 +31162,11 @@
 	
 	var _storiesConstants2 = _interopRequireDefault(_storiesConstants);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 299);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 301);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reduxLogger = __webpack_require__(/*! redux-logger */ 300);
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 302);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
@@ -31012,10 +31176,13 @@
 	
 	var defaultState = {
 	  stories: [],
-	  isFetching: true
+	  isFetching: false
 	};
 	
-	var reducer = function reducer(state, action) {
+	var reducer = function reducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+	  var action = arguments[1];
+	
 	  switch (action.type) {
 	    case _storiesConstants2.default.StoriesChangeEvent:
 	      var newState = Object.assign({}, state);
@@ -31037,20 +31204,23 @@
 	        isFetching: state.isFetching,
 	        stories: array
 	      };
-	
+	    case _storiesConstants2.default.StoryContentSuccess:
+	      var newState = Object.assign({}, state);
+	      newState.content = action.content;
+	      return newState;
 	    default:
 	      return state;
 	  }
 	};
 	
 	var loggerMiddleware = (0, _reduxLogger2.default)();
-	var store = (0, _redux.createStore)(reducer, defaultState, (0, _redux.applyMiddleware)(_reduxThunk2.default, // lets us dispatch() functions
+	var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default, // lets us dispatch() functions
 	loggerMiddleware // neat middleware that logs actions
 	));
 	exports.default = store;
 
 /***/ },
-/* 299 */
+/* 301 */
 /*!*************************************!*\
   !*** ../~/redux-thunk/lib/index.js ***!
   \*************************************/
@@ -31081,7 +31251,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 300 */
+/* 302 */
 /*!**************************************!*\
   !*** ../~/redux-logger/lib/index.js ***!
   \**************************************/
@@ -31095,11 +31265,11 @@
 	  value: true
 	});
 	
-	var _core = __webpack_require__(/*! ./core */ 301);
+	var _core = __webpack_require__(/*! ./core */ 303);
 	
-	var _helpers = __webpack_require__(/*! ./helpers */ 302);
+	var _helpers = __webpack_require__(/*! ./helpers */ 304);
 	
-	var _defaults = __webpack_require__(/*! ./defaults */ 305);
+	var _defaults = __webpack_require__(/*! ./defaults */ 307);
 	
 	var _defaults2 = _interopRequireDefault(_defaults);
 	
@@ -31202,7 +31372,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 301 */
+/* 303 */
 /*!*************************************!*\
   !*** ../~/redux-logger/lib/core.js ***!
   \*************************************/
@@ -31215,9 +31385,9 @@
 	});
 	exports.printBuffer = printBuffer;
 	
-	var _helpers = __webpack_require__(/*! ./helpers */ 302);
+	var _helpers = __webpack_require__(/*! ./helpers */ 304);
 	
-	var _diff = __webpack_require__(/*! ./diff */ 303);
+	var _diff = __webpack_require__(/*! ./diff */ 305);
 	
 	var _diff2 = _interopRequireDefault(_diff);
 	
@@ -31346,7 +31516,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 304 */
 /*!****************************************!*\
   !*** ../~/redux-logger/lib/helpers.js ***!
   \****************************************/
@@ -31373,7 +31543,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 303 */
+/* 305 */
 /*!*************************************!*\
   !*** ../~/redux-logger/lib/diff.js ***!
   \*************************************/
@@ -31386,7 +31556,7 @@
 	});
 	exports.default = diffLogger;
 	
-	var _deepDiff = __webpack_require__(/*! deep-diff */ 304);
+	var _deepDiff = __webpack_require__(/*! deep-diff */ 306);
 	
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 	
@@ -31472,7 +31642,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 304 */
+/* 306 */
 /*!*******************************!*\
   !*** ../~/deep-diff/index.js ***!
   \*******************************/
@@ -31904,7 +32074,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 305 */
+/* 307 */
 /*!*****************************************!*\
   !*** ../~/redux-logger/lib/defaults.js ***!
   \*****************************************/
@@ -31958,7 +32128,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 306 */
+/* 308 */
 /*!**************************!*\
   !*** ./search/search.js ***!
   \**************************/
@@ -31976,21 +32146,21 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _searchController = __webpack_require__(/*! ./searchController */ 307);
+	var _searchController = __webpack_require__(/*! ./searchController */ 309);
 	
 	var _searchController2 = _interopRequireDefault(_searchController);
 	
-	var _search = __webpack_require__(/*! ../css/search.css */ 310);
+	var _search = __webpack_require__(/*! ../css/search.css */ 312);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _searchActions = __webpack_require__(/*! ./searchActions */ 312);
+	var _searchActions = __webpack_require__(/*! ./searchActions */ 314);
 	
 	var _searchActions2 = _interopRequireDefault(_searchActions);
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
 	
-	var _searchStore = __webpack_require__(/*! ./searchStore */ 314);
+	var _searchStore = __webpack_require__(/*! ./searchStore */ 316);
 	
 	var _searchStore2 = _interopRequireDefault(_searchStore);
 	
@@ -32044,7 +32214,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 307 */
+/* 309 */
 /*!************************************!*\
   !*** ./search/searchController.js ***!
   \************************************/
@@ -32058,7 +32228,7 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
 	
-	var _searchView = __webpack_require__(/*! ./searchView */ 308);
+	var _searchView = __webpack_require__(/*! ./searchView */ 310);
 	
 	var _searchView2 = _interopRequireDefault(_searchView);
 	
@@ -32076,7 +32246,7 @@
 	exports.default = SearchContainer;
 
 /***/ },
-/* 308 */
+/* 310 */
 /*!******************************!*\
   !*** ./search/searchView.js ***!
   \******************************/
@@ -32096,11 +32266,11 @@
 	
 	var _storyItemView2 = _interopRequireDefault(_storyItemView);
 	
-	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 309);
+	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 311);
 	
 	var _authorItemView2 = _interopRequireDefault(_authorItemView);
 	
-	var _search = __webpack_require__(/*! ../css/search.css */ 310);
+	var _search = __webpack_require__(/*! ../css/search.css */ 312);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
@@ -32133,7 +32303,7 @@
 	exports.default = View;
 
 /***/ },
-/* 309 */
+/* 311 */
 /*!**********************************!*\
   !*** ./author/authorItemView.js ***!
   \**********************************/
@@ -32192,7 +32362,7 @@
 	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
 
 /***/ },
-/* 310 */
+/* 312 */
 /*!************************!*\
   !*** ./css/search.css ***!
   \************************/
@@ -32201,7 +32371,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./search.css */ 311);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./search.css */ 313);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
@@ -32221,7 +32391,7 @@
 	}
 
 /***/ },
-/* 311 */
+/* 313 */
 /*!****************************************!*\
   !*** ../~/css-loader!./css/search.css ***!
   \****************************************/
@@ -32238,7 +32408,7 @@
 
 
 /***/ },
-/* 312 */
+/* 314 */
 /*!*********************************!*\
   !*** ./search/searchActions.js ***!
   \*********************************/
@@ -32250,7 +32420,7 @@
 	  value: true
 	});
 	
-	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 313);
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 315);
 	
 	var _searchConstants2 = _interopRequireDefault(_searchConstants);
 	
@@ -32370,7 +32540,7 @@
 	exports.default = Actions;
 
 /***/ },
-/* 313 */
+/* 315 */
 /*!***********************************!*\
   !*** ./search/searchConstants.js ***!
   \***********************************/
@@ -32389,7 +32559,7 @@
 	exports.default = Constants;
 
 /***/ },
-/* 314 */
+/* 316 */
 /*!*******************************!*\
   !*** ./search/searchStore.js ***!
   \*******************************/
@@ -32401,15 +32571,15 @@
 	  value: true
 	});
 	
-	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 313);
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 315);
 	
 	var _searchConstants2 = _interopRequireDefault(_searchConstants);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 299);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 301);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reduxLogger = __webpack_require__(/*! redux-logger */ 300);
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 302);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	

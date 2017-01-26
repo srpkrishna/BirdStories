@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
-import View from './storiesView'
+import View from './viewer'
 import  Actions from './storiesActions';
 
 const mapStateToProps = (state) => {
   return {
-    stories: state.stories,
-    isFetching:state.isFetching
+    content: state.content
   }
 }
 

@@ -3,14 +3,14 @@
 import Constants from './storiesConstants';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware,combineReducers } from 'redux';
 
 const defaultState = {
   stories: [],
-  isFetching:true
+  isFetching:false
 };
 
-const reducer = (state, action) => {
+const reducer = (state=defaultState, action) => {
     switch (action.type) {
       case Constants.StoriesChangeEvent:
         var newState = Object.assign({}, state);
@@ -32,7 +32,10 @@ const reducer = (state, action) => {
           isFetching:state.isFetching,
           stories:array
         }
-
+      case Constants.StoryContentSuccess:
+        var newState = Object.assign({}, state);
+        newState.content = action.content;
+        return newState;
       default:
         return state;
     }
@@ -41,7 +44,6 @@ const reducer = (state, action) => {
 const loggerMiddleware = createLogger()
 const store = createStore(
   reducer,
-  defaultState,
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware // neat middleware that logs actions

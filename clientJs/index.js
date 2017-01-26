@@ -12,6 +12,11 @@ ReactDOM.render(
   (<Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Stories}/>
+      <Route path="stories" component={Stories}>
+        <Route path="/stories/:author" component={Stories}/>
+        <Route path="/stories/:author/:name" component={Stories}/>
+        <Route path="*" component={Stories}/>
+      </Route>
       <Route path="search" component={Search}/>
       <Route path="about" component={About}/>
       <Route path="author" component={Author}>

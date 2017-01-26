@@ -34,13 +34,13 @@
   padding-right: 1.0em;
 }
 
-.App-header ul.menu{
-  height: 0;
+.App-header .menu{
+  max-height: 0;
   opacity: 0;
 }
 
-.App-header ul.menu.show{
-  height: 5.5rem;
+.App-header .menu.show{
+  max-height: 10rem;
   opacity: 1;
 }
 
@@ -91,8 +91,8 @@
     text-align: left;
   }
 
-  .App-header ul.menu{
-    height: auto;
+  .App-header .menu{
+    max-height: 10rem;
     opacity: 1;
   }
 

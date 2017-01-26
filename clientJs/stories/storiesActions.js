@@ -28,10 +28,10 @@ function updateSuccess(attributes,index){
 
 function shouldFetchStories(state) {
   const stories = state.stories
-  if (!posts) {
+  if (!state.isFetching) {
     return true;
-  } else if (state.isFetching) {
-    return false;
+  } else if (!stories || stories.length == 0) {
+    return true;
   } else {
     return stories.didInvalidate;
   }
@@ -39,7 +39,7 @@ function shouldFetchStories(state) {
 
 function fetchStoriesIfNeeded() {
   return function(dispatch, getState){
-    if (shouldFetchPosts(getState())) {
+    if (shouldFetchStories(getState())) {
       return dispatch(fetchStories())
     };
   };
@@ -76,9 +76,25 @@ function updateSocial(index,element){
   }
 }
 
+function contentSuccess(data){
+  return {
+    type:Constants.StoryContentSuccess,
+    content:data,
+  };
+}
+
+function getStoryContent(){
+  return function(dispatch) {
+    Server.fetch('stories/author/name',function(data){
+        dispatch(contentSuccess(data))
+    });
+  }
+}
+
 const Actions = {
     fetchStories:fetchStories,
-    pendingFetch:pendingFetch,
+    fetchStoriesIfNeeded:fetchStoriesIfNeeded,
+    getStoryContent:getStoryContent,
     updateSocial:updateSocial
 };
 

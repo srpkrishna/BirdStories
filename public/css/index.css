@@ -13,11 +13,38 @@ body {
 }
 
 /* For mobile phones: */
-[class*="m-"] {
-    width: 100%;
-}
+/*.m-1 {width:25%;}
+.m-2 {width:25%;}
+.m-five {width:20%;}
+.m-3 {width:25%;}
+.m-4 {width:50%;}
+.m-5 {width:50%;}
+.m-6 {width:50%;}
+.m-7 {width:75%%;}
+.m-8 {width:75%%;}
+.m-9 {width:75%;}
+.m-10 {width:100%;}
+.m-11 {width:100%;}
+.m-12 {width:100%;}
+
 
 @media only screen and (min-width: 480px) {
+  .m-1 {width:25%;}
+  .m-2 {width:25%;}
+  .m-five {width:20%;}
+  .m-3 {width:25%;}
+  .m-4 {width:50%;}
+  .m-5 {width:50%;}
+  .m-6 {width:50%;}
+  .m-7 {width:75%%;}
+  .m-8 {width:75%%;}
+  .m-9 {width:75%;}
+  .m-10 {width:100%;}
+  .m-11 {width:100%;}
+  .m-12 {width:100%;}
+}
+
+@media only screen and (min-width: 768px) {
   .m-1 {width:8.3333%;}
   .m-2 {width:16.6666%;}
   .m-five {width:20%;}
@@ -31,6 +58,28 @@ body {
   .m-10 {width:83.3333%;}
   .m-11 {width:91.6666%;}
   .m-12 {width:100%;}
+}*/
+
+.a1{
+  width:25%;
+}
+
+@media only screen and (min-width: 480px) {
+  .a1{
+    width:20%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .a1{
+    width:15%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .a1{
+    width:10%;
+  }
 }
 
 a{

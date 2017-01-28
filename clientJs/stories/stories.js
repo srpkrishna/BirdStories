@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Controller from './storiesController';
-import Viewer from './viewerController';
+import Viewer from './viewer/viewerController';
 import Store from './storiesStore';
 import  Actions from './storiesActions';
 import { Provider } from 'react-redux';
@@ -21,10 +21,10 @@ class Stories extends Component {
     }
 
     if(data.location.state){
-      const story = data.location.state
+      const story = data.location.state.selected
       state.shdShowViewer = true;
-      state.author = data.author;
-      state.id = data.name;
+      state.author = story.author;
+      state.id = story.name;
       state.story = story;
     }
 
@@ -54,7 +54,7 @@ class Stories extends Component {
 
     let tag = <Controller />
     if(this.state.shdShowViewer){
-        tag = <Viewer />
+        tag = <Viewer story={this.state.story}/>
     }
     return(
       <Provider store={Store} >

@@ -79,7 +79,7 @@
 	
 	var _stories2 = _interopRequireDefault(_stories);
 	
-	var _search = __webpack_require__(/*! ./search/search */ 308);
+	var _search = __webpack_require__(/*! ./search/search */ 312);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
@@ -27981,11 +27981,11 @@
 	
 	var _storiesController2 = _interopRequireDefault(_storiesController);
 	
-	var _viewerController = __webpack_require__(/*! ./viewerController */ 298);
+	var _viewerController = __webpack_require__(/*! ./viewer/viewerController */ 298);
 	
 	var _viewerController2 = _interopRequireDefault(_viewerController);
 	
-	var _storiesStore = __webpack_require__(/*! ./storiesStore */ 300);
+	var _storiesStore = __webpack_require__(/*! ./storiesStore */ 304);
 	
 	var _storiesStore2 = _interopRequireDefault(_storiesStore);
 	
@@ -28019,10 +28019,10 @@
 	      }
 	
 	      if (data.location.state) {
-	        var story = data.location.state;
+	        var story = data.location.state.selected;
 	        state.shdShowViewer = true;
-	        state.author = data.author;
-	        state.id = data.name;
+	        state.author = story.author;
+	        state.id = story.name;
 	        state.story = story;
 	      }
 	
@@ -28064,7 +28064,7 @@
 	
 	      var tag = _react2.default.createElement(_storiesController2.default, null);
 	      if (this.state.shdShowViewer) {
-	        tag = _react2.default.createElement(_viewerController2.default, null);
+	        tag = _react2.default.createElement(_viewerController2.default, { story: this.state.story });
 	      }
 	      return _react2.default.createElement(
 	        _reactRedux.Provider,
@@ -31072,9 +31072,9 @@
 
 /***/ },
 /* 298 */
-/*!*************************************!*\
-  !*** ./stories/viewerController.js ***!
-  \*************************************/
+/*!********************************************!*\
+  !*** ./stories/viewer/viewerController.js ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31085,19 +31085,20 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
 	
-	var _viewer = __webpack_require__(/*! ./viewer */ 299);
+	var _viewerView = __webpack_require__(/*! ./viewerView */ 299);
 	
-	var _viewer2 = _interopRequireDefault(_viewer);
+	var _viewerView2 = _interopRequireDefault(_viewerView);
 	
-	var _storiesActions = __webpack_require__(/*! ./storiesActions */ 295);
+	var _storiesActions = __webpack_require__(/*! ../storiesActions */ 295);
 	
 	var _storiesActions2 = _interopRequireDefault(_storiesActions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var mapStateToProps = function mapStateToProps(state) {
+	var mapStateToProps = function mapStateToProps(state, ownprops) {
 	  return {
-	    content: state.content
+	    content: state.content,
+	    story: ownprops.story
 	  };
 	};
 	
@@ -31110,15 +31111,110 @@
 	  };
 	};
 	
-	var StoriesContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_viewer2.default);
+	var Container = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_viewerView2.default);
 	
-	exports.default = StoriesContainer;
+	exports.default = Container;
 
 /***/ },
 /* 299 */
-/*!***************************!*\
-  !*** ./stories/viewer.js ***!
-  \***************************/
+/*!**************************************!*\
+  !*** ./stories/viewer/viewerView.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _viewer = __webpack_require__(/*! ../../css/viewer.css */ 300);
+	
+	var _viewer2 = _interopRequireDefault(_viewer);
+	
+	var _body = __webpack_require__(/*! ./body */ 302);
+	
+	var _body2 = _interopRequireDefault(_body);
+	
+	var _header = __webpack_require__(/*! ./header */ 303);
+	
+	var _header2 = _interopRequireDefault(_header);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var content = _ref.content,
+	      story = _ref.story;
+	
+	  var tag = "";
+	  if (content) tag = _react2.default.createElement(_body2.default, { content: content });
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(_header2.default, { story: story }),
+	    tag,
+	    _react2.default.createElement('div', { className: 'contentFooter' })
+	  );
+	};
+	
+	exports.default = View;
+
+/***/ },
+/* 300 */
+/*!************************!*\
+  !*** ./css/viewer.css ***!
+  \************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../~/css-loader!./viewer.css */ 301);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./viewer.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./viewer.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 301 */
+/*!****************************************!*\
+  !*** ../~/css-loader!./css/viewer.css ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 236)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".contentHeader{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1rem;\n  background: none repeat scroll 0 0 #ccc;\n}\n\n.contentHeader img{\n  border-radius: 50%;\n  border: 0.1rem solid white;\n}\n.contentHeader .title{\n  font-size: 1.8rem;\n  color: #162b4d;\n}\n\n\n.contentHeader ul{\n    float: right;\n    display: none;\n}\n\n.contentHeader li{\n  font-size: 1.1rem;\n  padding: 1.0rem 1.2rem;\n  color: #B71757;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n}\n\n.contentBody p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n}\n\n@media only screen and (min-width: 480px) {\n  .contentHeader ul{\n      display: inline-block;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n\n}\n\n@media only screen and (min-width: 960px) {\n\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 302 */
+/*!********************************!*\
+  !*** ./stories/viewer/body.js ***!
+  \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31136,17 +31232,114 @@
 	var View = function View(_ref) {
 	  var content = _ref.content;
 	
+	  var htmlContent = [];
+	  var styles = content.styles;
+	  var i = 0;
+	  var _iteratorNormalCompletion = true;
+	  var _didIteratorError = false;
+	  var _iteratorError = undefined;
+	
+	  try {
+	    for (var _iterator = content.content[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	      var paraObj = _step.value;
+	
+	      var paraStyle = styles[paraObj.style];
+	      if (!paraStyle) {
+	        paraStyle = styles["default"];
+	      }
+	
+	      // if(paraObj.imgsrc){
+	      //   htmlContent.push(<img src={paraObj.imgsrc} />)
+	      // }
+	
+	      htmlContent.push(_react2.default.createElement(
+	        'p',
+	        { style: paraStyle, key: i },
+	        paraObj.text
+	      ));
+	      i++;
+	    }
+	  } catch (err) {
+	    _didIteratorError = true;
+	    _iteratorError = err;
+	  } finally {
+	    try {
+	      if (!_iteratorNormalCompletion && _iterator.return) {
+	        _iterator.return();
+	      }
+	    } finally {
+	      if (_didIteratorError) {
+	        throw _iteratorError;
+	      }
+	    }
+	  }
+	
 	  return _react2.default.createElement(
 	    'div',
-	    null,
-	    JSON.stringify(content)
+	    { className: 'contentBody' },
+	    htmlContent
 	  );
 	};
 	
 	exports.default = View;
 
 /***/ },
-/* 300 */
+/* 303 */
+/*!**********************************!*\
+  !*** ./stories/viewer/header.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var View = function View(_ref) {
+	  var story = _ref.story;
+	
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'contentHeader' },
+	    _react2.default.createElement('img', { className: 'authorImage a1', src: '/img/a.jpeg' }),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'title' },
+	      story.name
+	    ),
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'actions' },
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Read Later'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Like'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Share'
+	      )
+	    )
+	  );
+	};
+	
+	exports.default = View;
+
+/***/ },
+/* 304 */
 /*!*********************************!*\
   !*** ./stories/storiesStore.js ***!
   \*********************************/
@@ -31162,11 +31355,11 @@
 	
 	var _storiesConstants2 = _interopRequireDefault(_storiesConstants);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 301);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 305);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reduxLogger = __webpack_require__(/*! redux-logger */ 302);
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 306);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
@@ -31220,7 +31413,7 @@
 	exports.default = store;
 
 /***/ },
-/* 301 */
+/* 305 */
 /*!*************************************!*\
   !*** ../~/redux-thunk/lib/index.js ***!
   \*************************************/
@@ -31251,7 +31444,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 302 */
+/* 306 */
 /*!**************************************!*\
   !*** ../~/redux-logger/lib/index.js ***!
   \**************************************/
@@ -31265,11 +31458,11 @@
 	  value: true
 	});
 	
-	var _core = __webpack_require__(/*! ./core */ 303);
+	var _core = __webpack_require__(/*! ./core */ 307);
 	
-	var _helpers = __webpack_require__(/*! ./helpers */ 304);
+	var _helpers = __webpack_require__(/*! ./helpers */ 308);
 	
-	var _defaults = __webpack_require__(/*! ./defaults */ 307);
+	var _defaults = __webpack_require__(/*! ./defaults */ 311);
 	
 	var _defaults2 = _interopRequireDefault(_defaults);
 	
@@ -31372,7 +31565,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 303 */
+/* 307 */
 /*!*************************************!*\
   !*** ../~/redux-logger/lib/core.js ***!
   \*************************************/
@@ -31385,9 +31578,9 @@
 	});
 	exports.printBuffer = printBuffer;
 	
-	var _helpers = __webpack_require__(/*! ./helpers */ 304);
+	var _helpers = __webpack_require__(/*! ./helpers */ 308);
 	
-	var _diff = __webpack_require__(/*! ./diff */ 305);
+	var _diff = __webpack_require__(/*! ./diff */ 309);
 	
 	var _diff2 = _interopRequireDefault(_diff);
 	
@@ -31516,7 +31709,7 @@
 	}
 
 /***/ },
-/* 304 */
+/* 308 */
 /*!****************************************!*\
   !*** ../~/redux-logger/lib/helpers.js ***!
   \****************************************/
@@ -31543,7 +31736,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 305 */
+/* 309 */
 /*!*************************************!*\
   !*** ../~/redux-logger/lib/diff.js ***!
   \*************************************/
@@ -31556,7 +31749,7 @@
 	});
 	exports.default = diffLogger;
 	
-	var _deepDiff = __webpack_require__(/*! deep-diff */ 306);
+	var _deepDiff = __webpack_require__(/*! deep-diff */ 310);
 	
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 	
@@ -31642,7 +31835,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 306 */
+/* 310 */
 /*!*******************************!*\
   !*** ../~/deep-diff/index.js ***!
   \*******************************/
@@ -32074,7 +32267,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 307 */
+/* 311 */
 /*!*****************************************!*\
   !*** ../~/redux-logger/lib/defaults.js ***!
   \*****************************************/
@@ -32128,7 +32321,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 308 */
+/* 312 */
 /*!**************************!*\
   !*** ./search/search.js ***!
   \**************************/
@@ -32146,21 +32339,21 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _searchController = __webpack_require__(/*! ./searchController */ 309);
+	var _searchController = __webpack_require__(/*! ./searchController */ 313);
 	
 	var _searchController2 = _interopRequireDefault(_searchController);
 	
-	var _search = __webpack_require__(/*! ../css/search.css */ 312);
+	var _search = __webpack_require__(/*! ../css/search.css */ 316);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _searchActions = __webpack_require__(/*! ./searchActions */ 314);
+	var _searchActions = __webpack_require__(/*! ./searchActions */ 318);
 	
 	var _searchActions2 = _interopRequireDefault(_searchActions);
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
 	
-	var _searchStore = __webpack_require__(/*! ./searchStore */ 316);
+	var _searchStore = __webpack_require__(/*! ./searchStore */ 320);
 	
 	var _searchStore2 = _interopRequireDefault(_searchStore);
 	
@@ -32214,7 +32407,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 309 */
+/* 313 */
 /*!************************************!*\
   !*** ./search/searchController.js ***!
   \************************************/
@@ -32228,7 +32421,7 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 243);
 	
-	var _searchView = __webpack_require__(/*! ./searchView */ 310);
+	var _searchView = __webpack_require__(/*! ./searchView */ 314);
 	
 	var _searchView2 = _interopRequireDefault(_searchView);
 	
@@ -32246,7 +32439,7 @@
 	exports.default = SearchContainer;
 
 /***/ },
-/* 310 */
+/* 314 */
 /*!******************************!*\
   !*** ./search/searchView.js ***!
   \******************************/
@@ -32266,11 +32459,11 @@
 	
 	var _storyItemView2 = _interopRequireDefault(_storyItemView);
 	
-	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 311);
+	var _authorItemView = __webpack_require__(/*! ../author/authorItemView */ 315);
 	
 	var _authorItemView2 = _interopRequireDefault(_authorItemView);
 	
-	var _search = __webpack_require__(/*! ../css/search.css */ 312);
+	var _search = __webpack_require__(/*! ../css/search.css */ 316);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
@@ -32303,7 +32496,7 @@
 	exports.default = View;
 
 /***/ },
-/* 311 */
+/* 315 */
 /*!**********************************!*\
   !*** ./author/authorItemView.js ***!
   \**********************************/
@@ -32362,7 +32555,7 @@
 	//<button onClick={() => updateSocial(index,'views')}> +1 </button>
 
 /***/ },
-/* 312 */
+/* 316 */
 /*!************************!*\
   !*** ./css/search.css ***!
   \************************/
@@ -32371,7 +32564,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./search.css */ 313);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./search.css */ 317);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 237)(content, {});
@@ -32391,7 +32584,7 @@
 	}
 
 /***/ },
-/* 313 */
+/* 317 */
 /*!****************************************!*\
   !*** ../~/css-loader!./css/search.css ***!
   \****************************************/
@@ -32408,7 +32601,7 @@
 
 
 /***/ },
-/* 314 */
+/* 318 */
 /*!*********************************!*\
   !*** ./search/searchActions.js ***!
   \*********************************/
@@ -32420,7 +32613,7 @@
 	  value: true
 	});
 	
-	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 315);
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 319);
 	
 	var _searchConstants2 = _interopRequireDefault(_searchConstants);
 	
@@ -32540,7 +32733,7 @@
 	exports.default = Actions;
 
 /***/ },
-/* 315 */
+/* 319 */
 /*!***********************************!*\
   !*** ./search/searchConstants.js ***!
   \***********************************/
@@ -32559,7 +32752,7 @@
 	exports.default = Constants;
 
 /***/ },
-/* 316 */
+/* 320 */
 /*!*******************************!*\
   !*** ./search/searchStore.js ***!
   \*******************************/
@@ -32571,15 +32764,15 @@
 	  value: true
 	});
 	
-	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 315);
+	var _searchConstants = __webpack_require__(/*! ./searchConstants */ 319);
 	
 	var _searchConstants2 = _interopRequireDefault(_searchConstants);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 301);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 305);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reduxLogger = __webpack_require__(/*! redux-logger */ 302);
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 306);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	

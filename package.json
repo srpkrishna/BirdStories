@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./bin/www | webpack -d --watch ",
+    "dev": "node ./bin/www | webpack -d --watch",
     "prod": "webpack -p | node ./bin/www"
   },
   "author": "Radha Phani Krishna Sunkara",

@@ -27,16 +27,16 @@ api.route('/:author/:name')
     console.log(req.params.name);
     var bucketName = 'bsstory';
     var keyName = 'phani/sample/story.json';
-    var regio
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
+        //console.log(err);
         res.send(error)
       }else {
         var fileContents = data.Body.toString();
-        console.log(fileContents);
+        //console.log(fileContents);
         var json = JSON.parse(fileContents);
-        res.send(fileContents);
+        res.send(json);
       }
     });
   })

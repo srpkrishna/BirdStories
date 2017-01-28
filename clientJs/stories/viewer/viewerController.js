@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import View from './viewer'
-import  Actions from './storiesActions';
+import View from './viewerView'
+import  Actions from '../storiesActions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,ownprops) => {
   return {
-    content: state.content
+    content: state.content,
+    story:ownprops.story
   }
 }
 
@@ -17,9 +18,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const StoriesContainer = connect(
+const Container = connect(
   mapStateToProps,
   mapDispatchToProps
 )(View)
 
-export default StoriesContainer
+export default Container

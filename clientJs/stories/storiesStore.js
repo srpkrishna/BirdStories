@@ -34,7 +34,15 @@ const reducer = (state=defaultState, action) => {
         }
       case Constants.StoryContentSuccess:
         var newState = Object.assign({}, state);
-        newState.content = action.content;
+        newState.selectedContent = action.content;
+        return newState;
+      case Constants.StoryAuthorDetailsSuccess:
+        var newState = Object.assign({}, state);
+        newState.selectedAuthor = action.author;
+        return newState;
+      case Constants.StoryDetailsSuccess:
+        var newState = Object.assign({}, state);
+        newState.selectedStory = action.story;
         return newState;
       default:
         return state;

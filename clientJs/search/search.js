@@ -1,17 +1,31 @@
 'use strict';
 import React, { Component } from 'react';
 import Controller from './searchController';
-import styles from '../css/search.css';
 import  Actions from './searchActions';
 import { Provider } from 'react-redux';
 import Store from './searchStore';
 
 class Search extends Component {
 
+  getStateObject(data){
+      var value = ''
+      if(data.location.query){
+        value = data.location.query
+      }
+      const obj = Actions.search(value);
+      Store.dispatch(obj)
+
+      this.state = {value: value};
+  }
+
   constructor(props){
     super()
     this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.state = this.getStateObject(nextProps)
   }
 
   handleChange(event) {

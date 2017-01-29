@@ -18,13 +18,11 @@ api.route('/search')
       })
   })
 
-
-api.route('/:author/:name')
+api.route('/content/:authorId/:id')
   .get(function(req, res){
-    console.log(req.params.author);
-    console.log(req.params.name);
+    console.log(req.params.authorId);
+    console.log(req.params.id);
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4"});
-    console.log(req.params.name);
     var bucketName = 'bsstory';
     var keyName = 'phani/sample/story.json';
     var params = {Bucket: bucketName, Key: keyName};
@@ -39,6 +37,31 @@ api.route('/:author/:name')
         res.send(json);
       }
     });
+  })
+
+api.route('/story/:authorId/:id')
+  .get(function(req, res){
+      const authorId = req.params.authorId
+      const id = Number(req.params.id)
+
+      if(!authorId || !id){
+          res.send(error);
+      }
+      getStory(authorId,id,function(stories){
+        if(stories && stories.length > 0){
+            res.send(stories[0]);
+        }else {
+            res.send({});
+        }
+      })
+  })
+
+api.route('/:authorId')
+  .get(function(req, res){
+      const authorId = req.params.authorId
+      getAuthorStories(authorId,function(stories){
+        res.send(stories);
+      })
   })
 
 api.route('/')
@@ -62,6 +85,39 @@ api.route('/')
       }
     })
 
+api.route('*')
+  .get(function(req, res){
+      res.send('no api found');
+  })
+
+function getStory(authorId,id,callback){
+  const docClient = conn.getDocClient();
+  var params = {
+      KeyConditionExpression: "#author = :authorId and #ts = :timestamp",
+      ExpressionAttributeNames:{
+          "#author" : "author",
+          "#ts" : "timestamp"
+      },
+      ExpressionAttributeValues: {
+          ":authorId":authorId,
+          ":timestamp":id
+      }
+  };
+  storyDb.query(params,docClient,callback);
+}
+function getAuthorStories(authorId,callback){
+    const docClient = conn.getDocClient();
+    var params = {
+        KeyConditionExpression: "author = :id",
+        ExpressionAttributeValues: {
+            ":id":authorId
+        },
+        Limit: 10,
+        ScanIndexForward:false
+    };
+    storyDb.query(params,docClient,callback);
+
+}
 function getStories(callback){
     const docClient = conn.getDocClient();
     var params = {
@@ -96,7 +152,6 @@ function searchByNames(sub,callback){
         Limit: 10,
         ScanIndexForward:false
     };
-    console.log('hello')
    storyDb.query(params,docClient,callback);
 }
 

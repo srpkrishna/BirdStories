@@ -2,10 +2,11 @@ import { connect } from 'react-redux'
 import View from './viewerView'
 import  Actions from '../storiesActions';
 
-const mapStateToProps = (state,ownprops) => {
+const mapStateToProps = (state) => {
   return {
-    content: state.content,
-    story:ownprops.story
+    content: state.selectedContent,
+    story:state.selectedStory,
+    author:state.selectedAuthor
   }
 }
 

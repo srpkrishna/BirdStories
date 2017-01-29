@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import View from './searchView'
+import View from './authorView'
 
 const mapStateToProps = (state) => {
   return {
     stories:state.stories,
-    authors:state.authors
+    author:state.author
   }
 }
 

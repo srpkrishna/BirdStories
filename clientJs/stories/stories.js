@@ -14,32 +14,48 @@ class Stories extends Component {
     let state = {
       shdShowViewer:false
     }
-    if(data.author && data.name){
-        state.shdShowViewer = true;
-        state.author = data.author;
-        state.id = data.name;
+
+    var authorId,id,story,author;
+
+    if(data.location.query.a && data.location.query.id){
+        authorId = data.location.query.a;
+        id = data.location.query.id;
     }
 
     if(data.location.state){
-      const story = data.location.state.selected
-      state.shdShowViewer = true;
-      state.author = story.author;
-      state.id = story.name;
-      state.story = story;
+      story = data.location.state.story;
+      author = data.location.state.author;
     }
 
-    if(state.shdShowViewer){
-      var obj = Actions.getStoryContent();
+    //can't load controller without these values
+    if(authorId && id){
+      var obj;
+      if(story){
+        obj = Actions.storyDetailsSuccess(story);
+      }else{
+        obj = Actions.getStoryDetails(authorId,id);
+      }
+
+      Store.dispatch(obj);
+
+      if(author){
+        obj = Actions.storyAuthorDetailsSuccess(author);
+      }else {
+        obj = Actions.getAuthorDetails(authorId)
+      }
+
+      Store.dispatch(obj);
+
+      obj = Actions.getStoryContent(authorId,id);
       Store.dispatch(obj)
+      state.shdShowViewer = true;
+
     }else{
       var obj = Actions.fetchStoriesIfNeeded();
       Store.dispatch(obj)
     }
 
     return state;
-  }
-  locationChange(){
-    console.log(location.pathname);
   }
   constructor(props){
     super(props)
@@ -54,7 +70,7 @@ class Stories extends Component {
 
     let tag = <Controller />
     if(this.state.shdShowViewer){
-        tag = <Viewer story={this.state.story}/>
+        tag = <Viewer />
     }
     return(
       <Provider store={Store} >

@@ -64,21 +64,38 @@ body {
   width:25%;
 }
 
+.a2{
+  width:35%;
+}
+
 @media only screen and (min-width: 480px) {
   .a1{
     width:20%;
   }
+
+  .a2{
+    width:28%;
+  }
+
 }
 
 @media only screen and (min-width: 768px) {
   .a1{
     width:15%;
   }
+
+  .a2{
+    width:21%;
+  }
 }
 
 @media only screen and (min-width: 960px) {
   .a1{
     width:10%;
+  }
+
+  .a2{
+    width:14%;
   }
 }
 

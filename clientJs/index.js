@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute , browserHistory } from 'react-router';
 import App from './app';
 import About from './about';
-import Author from './author';
+import Author from './author/author';
 import NoMatch from './noMatch';
 import Stories from './stories/stories';
 import Search from './search/search';
@@ -13,9 +13,7 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={Stories}/>
       <Route path="stories" component={Stories}>
-        <Route path="/stories/:author" component={Stories}/>
-        <Route path="/stories/:author/:name" component={Stories}/>
-        <Route path="*" component={Stories}/>
+        <Route path="/stories/story" component={Stories}/>
       </Route>
       <Route path="search" component={Search}/>
       <Route path="about" component={About}/>
@@ -23,7 +21,7 @@ ReactDOM.render(
         <Route path="/author/:authorId" component={Author}/>
       </Route>
     </Route>
-    <Route path="*" component={NoMatch}/>
+    <Route path="*" component={Stories}/>
   </Router>),
   document.getElementById('root')
 );

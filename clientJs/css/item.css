@@ -26,20 +26,20 @@
   background: none repeat scroll 0 0 #2d95bb;
 }
 
-.image{
+.item .image{
   width:30%;
   position: static;
   float:right;
 }
 
-.info{
+.item .info{
   width:70%;
   padding: 1rem;
   position: static;
   float:left;
 }
 
-.name{
+.item .name{
   font-size: 1.5rem;
   font-weight: 100;
   line-height: 1em;
@@ -49,7 +49,7 @@
   text-align: left;
 }
 
-.shortText{
+.item .shortText{
   font-size: 0.9rem;
   opacity: 0.6;
   line-height: 1.4em;
@@ -57,7 +57,7 @@
   overflow: hidden;
   text-align: left;
 }
-.bottomRight{
+.item .bottomRight{
   font-weight: 100;
   opacity: 0.8;
   text-align: right;
@@ -70,11 +70,11 @@
     margin: 0.5rem;
   }
 
-  .image{
+  .item .image{
     width: 100%;
   }
 
-  .info{
+  .item .info{
     width: 100%;
   }
 }

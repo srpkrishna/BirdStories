@@ -1,26 +1,24 @@
 'use strict';
 
-import Constants from './searchConstants';
+import Constants from './authorConstants';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 
 const defaultState = {
-  stories:[],
-  authors:[]
+  author:{},
+  stories:[]
 };
 
 const reducer = (state=defaultState, action) => {
     switch (action.type) {
-      case Constants.SearchPendingEvent:
-        return defaultState;
-      case Constants.SearchStoriesChangeEvent:
+      case Constants.AuthorStoriesFetch:
         var newState = Object.assign({}, state);
-        newState.stories =  action.results;
+        newState.stories =  action.stories;
         return newState;
-      case Constants.SearchAuthorsChangeEvent:
+      case Constants.AuthorDetailsFetch:
         var newState = Object.assign({}, state);
-        newState.authors =  action.results;
+        newState.author =  action.author;
         return newState;
       default:
         return state;
@@ -35,4 +33,5 @@ const store = createStore(
     loggerMiddleware // neat middleware that logs actions
   )
 )
+
 export default store

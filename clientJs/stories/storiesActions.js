@@ -83,10 +83,40 @@ function contentSuccess(data){
   };
 }
 
-function getStoryContent(){
+function getStoryContent(authorId,id){
   return function(dispatch) {
-    Server.fetch('stories/author/name',function(data){
+    Server.fetch('stories/content/'+authorId+'/'+id,function(data){
         dispatch(contentSuccess(data))
+    });
+  }
+}
+
+function storyDetailsSuccess(data){
+  return {
+    type:Constants.StoryDetailsSuccess,
+    story:data,
+  };
+}
+
+function getStoryDetails(authorId,id){
+  return function(dispatch) {
+    Server.fetch('stories/story/'+authorId+'/'+id,function(data){
+        dispatch(storyDetailsSuccess(data))
+    });
+  }
+}
+
+function storyAuthorDetailsSuccess(data){
+  return {
+    type:Constants.StoryAuthorDetailsSuccess,
+    author:data,
+  };
+}
+
+function getAuthorDetails(authorId){
+  return function(dispatch) {
+    Server.fetch('authors/'+authorId,function(data){
+        dispatch(storyAuthorDetailsSuccess(data))
     });
   }
 }
@@ -95,7 +125,11 @@ const Actions = {
     fetchStories:fetchStories,
     fetchStoriesIfNeeded:fetchStoriesIfNeeded,
     getStoryContent:getStoryContent,
-    updateSocial:updateSocial
+    updateSocial:updateSocial,
+    getAuthorDetails:getAuthorDetails,
+    storyAuthorDetailsSuccess:storyAuthorDetailsSuccess,
+    getStoryDetails:getStoryDetails,
+    storyDetailsSuccess:storyDetailsSuccess
 };
 
 export default Actions

@@ -15,7 +15,38 @@ api.route('/search')
       })
   })
 
+  api.route('/:authorId')
+    .get(function(req, res){
+        const authorId = req.params.authorId;
+        console.log(authorId)
+        getAuthorDetails(authorId,function(authors){
+          if(authors && authors.length > 0){
+              res.send(authors[0]);
+          }else {
+              res.send({});
+          }
+        })
+    })
 
+  api.route('*')
+    .get(function(req, res){
+        res.send('no api found');
+    })
+
+function getAuthorDetails(authorId,callback){
+    const docClient = conn.getDocClient();
+    var params = {
+        IndexName: "ProfileIndex",
+        KeyConditionExpression: "#pen = :id",
+        ExpressionAttributeNames:{
+            "#pen": "penName"
+        },
+        ExpressionAttributeValues: {
+            ":id":authorId
+        }
+    };
+   authorDb.query(params,docClient,callback);
+}
 function searchByNames(sub,callback){
     const docClient = conn.getDocClient();
     var params = {
@@ -29,7 +60,6 @@ function searchByNames(sub,callback){
         },
         Limit:10
     };
-    console.log('hello')
    authorDb.scan(params,docClient,callback);
 }
 

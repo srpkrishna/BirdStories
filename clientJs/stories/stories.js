@@ -29,7 +29,10 @@ class Stories extends Component {
 
     //can't load controller without these values
     if(authorId && id){
-      var obj;
+
+      var obj = Actions.getStoryContent(authorId,id);
+      Store.dispatch(obj)
+
       if(story){
         obj = Actions.storyDetailsSuccess(story);
       }else{
@@ -45,9 +48,6 @@ class Stories extends Component {
       }
 
       Store.dispatch(obj);
-
-      obj = Actions.getStoryContent(authorId,id);
-      Store.dispatch(obj)
       state.shdShowViewer = true;
 
     }else{

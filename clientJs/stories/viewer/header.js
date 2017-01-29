@@ -5,7 +5,7 @@ import styles from '../../css/header.css';
 const View = ({story})=>{
   return(
     <div className="contentHeader" >
-      <img className="a1" src="/img/a.jpeg"></img>
+      <img className="a1" src="https://s3.ap-south-1.amazonaws.com/bsstory/phani/profile.jpg"></img>
       <div className="title">{story.name}</div>
       <ul className="actions">
         <li className="info">{story.author}</li>

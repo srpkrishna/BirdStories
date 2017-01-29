@@ -22,17 +22,17 @@ api.route('/content/:authorId/:id')
   .get(function(req, res){
     console.log(req.params.authorId);
     console.log(req.params.id);
-    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4"});
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var keyName = 'phani/sample/story.json';
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
-        //console.log(err);
+        console.log(err);
         res.send(error)
       }else {
         var fileContents = data.Body.toString();
-        //console.log(fileContents);
+        console.log(data);
         var json = JSON.parse(fileContents);
         res.send(json);
       }

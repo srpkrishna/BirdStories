@@ -15,9 +15,12 @@ const View = ({content}) => {
         paraStyle = styles["default"];
       }
 
-      // if(paraObj.imgsrc){
-      //   htmlContent.push(<img src={paraObj.imgsrc} />)
-      // }
+      if(paraObj.imgsrc){
+        let imgStyle = styles[paraObj.imgstyle];
+        if(!imgStyle)
+          imgStyle = styles["defaultImg"];
+        htmlContent.push(<img style={imgStyle} src={paraObj.imgsrc} key={'img'+i} />)
+      }
 
       htmlContent.push(<p style={paraStyle} key={i}>{paraObj.text}</p>);
       i++;

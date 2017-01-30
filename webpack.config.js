@@ -1,3 +1,16 @@
+var webpack = require('webpack');
+var plugins =[
+  new webpack.DefinePlugin({
+    'process.env':{
+      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }
+  })
+]
+
+if(process.env.NODE_ENV === "production"){
+    plugins.push(new webpack.optimize.UglifyJsPlugin())
+}
+
 module.exports = {
   context: __dirname + "/clientJs",
   entry: __dirname + "/clientJs"+"/index.js",
@@ -8,6 +21,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
   },
+  plugins:plugins,
   module: {
     loaders: [
       {

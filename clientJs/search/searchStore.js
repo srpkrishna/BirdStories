@@ -27,12 +27,15 @@ const reducer = (state=defaultState, action) => {
     }
 }
 
-const loggerMiddleware = createLogger()
+const middlewares = [thunkMiddleware];// lets us dispatch() functions
+
+if (process.env.NODE_ENV !== "production") {
+  const loggerMiddleware = createLogger();// neat middleware that logs actions
+  middlewares.push(loggerMiddleware);
+}
+
 const store = createStore(
   reducer,
-  applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-    loggerMiddleware // neat middleware that logs actions
-  )
+  applyMiddleware(...middlewares)
 )
 export default store

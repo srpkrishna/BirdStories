@@ -2,14 +2,6 @@
 import  Constants from './storiesConstants';
 import Server from '../util/server';
 
-function pendingFetch(){
-  return {
-    type:Constants.StoriesChangeEvent,
-    isFetching:true,
-    stories:[]
-  };
-}
-
 function fetchSuccess(stories){
   return {
     type:Constants.StoriesChangeEvent,
@@ -47,7 +39,6 @@ function fetchStoriesIfNeeded() {
 
 function fetchStories(){
   return function(dispatch) {
-    dispatch(pendingFetch())
     Server.fetch('stories',function(data){
         dispatch(fetchSuccess(data))
     });

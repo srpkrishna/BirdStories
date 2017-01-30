@@ -18,7 +18,6 @@ api.route('/search')
   api.route('/:authorId')
     .get(function(req, res){
         const authorId = req.params.authorId;
-        console.log(authorId)
         getAuthorDetails(authorId,function(authors){
           if(authors && authors.length > 0){
               res.send(authors[0]);

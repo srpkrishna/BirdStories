@@ -2,7 +2,7 @@
   text-align: center;
   display: inline-block;
   width: 100%;
-  padding: 1rem;
+  padding: 1.2rem;
   background: none repeat scroll 0 0 #ccc;
 }
 
@@ -24,19 +24,31 @@
 
 .contentHeader li{
   font-size: 1.1rem;
-  padding: 1.0rem 1.2rem;
-  color: #B71757;
+  padding: 1.0rem;
   letter-spacing: 0px;
   display: inline-flex;
   vertical-align: middle;
   float:right;
+  padding-right: 0;
+  padding-bottom: 0;
 }
 
 .contentHeader li.info{
-  color: #fff;
+  color: #162b4d;
   float: left;
+  padding-right: 1.0rem;
+  padding-left: 0;
+  padding-top: 1.8rem;
 }
 
+.contentHeader .share{
+  display: block;
+  cursor: pointer;
+}
+.contentHeader .authTitle{
+  text-align: right;
+  color: #162b4d;
+}
 @media only screen and (min-width: 768px) {
   .contentHeader ul{
       display: inline-block;

@@ -1,20 +1,27 @@
 'use strict';
 import React from 'react';
 import styles from '../../css/header.css';
+import Social from '../../util/social.js';
+import { Link } from 'react-router';
 
-const View = ({story})=>{
+const View = ({story,authorLink,updateSocial})=>{
+  var shareUrl = window.location.href;
+  var title = story.name + " - "+"sukatha.com"
+
+
   return(
     <div className="contentHeader" >
-      <img className="a1" src="https://s3.ap-south-1.amazonaws.com/bsstory/phani/profile.jpg"></img>
+      <div className="authTitle">- {story.author}</div>
+      <Link to={authorLink}>
+        <img className="a1" src="https://s3.ap-south-1.amazonaws.com/bsstory/phani/profile.jpg"></img>
+      </Link>
       <div className="title">{story.name}</div>
       <ul className="actions">
-        <li className="info">{story.author}</li>
-        <li className="info">{story.social.views} views</li>
-        <li className="info">{story.social.favs} likes</li>
-        <li>Read Later</li>
-        <li>Like</li>
-        <li>Share</li>
+        <li className="info">{story.social.views}Views</li>
+        <li className="info">{story.social.favs}Likes</li>
+        <Social shareUrl={shareUrl} title={title} updateSocial={updateSocial}/>
       </ul>
+
     </div>
   )
 }

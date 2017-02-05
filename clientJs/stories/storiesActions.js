@@ -10,11 +10,10 @@ function fetchSuccess(stories){
   };
 }
 
-function updateSuccess(attributes,index){
+function updateSuccess(attributes){
   return {
     type:Constants.StoryChangeEvent,
-    attributes:attributes,
-    index:index
+    attributes:attributes
   };
 }
 
@@ -45,11 +44,10 @@ function fetchStories(){
   }
 }
 
-function updateSocial(index,element){
+function updateSocial(element){
 
   return function(dispatch,getState) {
-    const stories = getState().stories
-    const story = stories[index]
+    const story = getState().selectedStory
     const storyId = {
       author:story.author,
       timestamp:story.timestamp
@@ -61,8 +59,8 @@ function updateSocial(index,element){
       updateKey:element
     }
     Server.connect('POST','stories',body,function(data){
-        console.log(data);
-        dispatch(updateSuccess(data,index))
+        //console.log(data);
+        dispatch(updateSuccess(data))
     });
   }
 }

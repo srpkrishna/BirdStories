@@ -1,0 +1,73 @@
+
+  .login{
+    float: left;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .login div{
+    padding-top: 4rem;
+    padding: 0.5rem;
+    margin: 2rem;
+    margin-bottom: 0.1rem;
+    font-size: 1.2rem;
+  }
+
+
+  .login li {
+    background: #dd4b39;
+    color: white;
+    width: 13rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 2rem;
+    padding-left: 0;
+    display: inline-block;
+    margin-bottom: 1rem;
+	}
+  
+  .login li span.icon {
+	  background: url('../img/g+.png') transparent 2px 40% no-repeat;
+	  display: inline-block;
+	  vertical-align: middle;
+	  width: 35px;
+	  height: 35px;
+	  border-right: #bb3f30 1px solid;
+    padding-right: 2.8rem;
+	}
+
+
+
+  .login li span.buttonText {
+	  display: inline-block;
+	  vertical-align: middle;
+	  padding-left: 35px;
+	  padding-right: 35px;
+	  font-size: 16px;
+	}
+
+	.login #fbBtn
+	{
+		 background:#3B579D
+	}
+
+	.login #fbBtn span.icon
+	{
+		 background: url('../img/fb.png') transparent 0px 5% no-repeat;
+		 border-right: #344673 1px solid;
+
+	}
+
+  @media only screen and (min-width: 768px) {
+    .login div{
+      font-size: 1.5rem;
+      line-height: 7rem;
+    }
+  }
+
+  @media only screen and (min-width: 1100px) {
+    .login div{
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }

@@ -17,21 +17,32 @@ const reducer = (state=defaultState, action) => {
         newState.isFetching = action.isFetching;
         newState.stories =  action.stories;
         return newState;
-      case Constants.StoryChangeEvent:
-        let array = state.stories.map((story, index) => {
-            if (index === action.index) {
-              return Object.assign({}, story, {
-                social: action.attributes.social,
-                score: action.attributes.score
-              })
-            }
-            return story
-          })
 
-        return {
-          isFetching:state.isFetching,
-          stories:array
+      case Constants.StoryChangeEvent:
+        var newState = Object.assign({}, state);
+        var viewerStory = Object.assign({}, state.selectedStory);
+        var selectedStory = Object.assign({}, viewerStory, {
+          social: action.attributes.social,
+          score: action.attributes.score
+        })
+
+        newState.selectedStory = selectedStory
+        if(state.stories && state.stories.length > 0){
+          let array = state.stories.map((story) => {
+              if (story.author === viewerStory.author &&
+                    story.timestamp === viewerStory.timestamp) {
+                return Object.assign({}, story, {
+                  social: action.attributes.social,
+                  score: action.attributes.score
+                })
+              }
+              return story
+            })
+
+          newState.stories = array;
         }
+        return newState;
+
       case Constants.StoryContentSuccess:
         var newState = Object.assign({}, state);
         newState.selectedContent = action.content;
@@ -39,6 +50,12 @@ const reducer = (state=defaultState, action) => {
       case Constants.StoryAuthorDetailsSuccess:
         var newState = Object.assign({}, state);
         newState.selectedAuthor = action.author;
+        const link = "/author/"+action.author.penName;
+        const linkObj = {
+            pathname:link,
+            state:action.author
+        }
+        newState.authorLink = linkObj;
         return newState;
       case Constants.StoryDetailsSuccess:
         var newState = Object.assign({}, state);

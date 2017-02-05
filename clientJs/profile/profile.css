@@ -1,23 +1,28 @@
-.authorProfile{
+.profile{
   display: inline-block;
   text-align: center;
   width: 100%;
   padding: 1rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.6);
 }
 
-.authorProfile .authorImage{
+.profile .block{
+  width: 100%;
+  display: inline-block;
+}
+.profile .authorImage{
   border: 0.1rem solid white;
   float:left;
 }
 
-.authorProfile ul{
+.profile ul.personal{
   float: left;
-  padding-top: 3%;
+  padding-top: 2.8%;
   padding-left: 5%;
+  width: 65%;
 }
 
-.authorProfile li{
+.profile .personal li{
   font-size: 1.2rem;
   padding: 0.5rem 0;
   letter-spacing: 0px;
@@ -26,7 +31,7 @@
   white-space: nowrap;
 }
 
-.authorProfile p{
+.profile p{
   text-indent: 20%;
   text-align: left;
   word-spacing: 0.3rem;
@@ -35,6 +40,9 @@
   float: left;
 }
 
-/*.authorProfile .item{
-  border: 0.05rem solid #162b4d;
-}*/
+.profile .sideHeader{
+  width: 100%;
+  float: left;
+  text-align: left;
+  padding-top: 2rem;
+}

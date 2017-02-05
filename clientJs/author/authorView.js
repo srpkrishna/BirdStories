@@ -20,7 +20,7 @@ const View = ({ stories,author}) => {
   if(author && author.penName){
     authorDiv = <div className="authorProfile" >
       <img className="authorImage a2" src="/img/a.jpeg"></img>
-      <ul className="profile">
+      <ul>
         <li>{author.profile.fullName}</li>
         <li>{author.profile.qual}</li>
         <li>{author.profile.prof}</li>

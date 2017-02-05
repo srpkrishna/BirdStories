@@ -7,16 +7,16 @@ import Store from './searchStore';
 
 class Search extends Component {
 
-  getStateObject(data){
-      var value = ''
-      if(data.location.query){
-        value = data.location.query
-      }
-      const obj = Actions.search(value);
-      Store.dispatch(obj)
-
-      this.state = {value: value};
-  }
+  // getStateObject(data){
+  //     var value = ''
+  //     if(data.location.query){
+  //       value = data.location.query
+  //     }
+  //     const obj = Actions.search(value);
+  //     Store.dispatch(obj)
+  //
+  //     this.state = {value: value};
+  // }
 
   constructor(props){
     super()
@@ -24,9 +24,9 @@ class Search extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
-    this.state = this.getStateObject(nextProps)
-  }
+  // componentWillReceiveProps(nextProps){
+  //   this.getStateObject(nextProps)
+  // }
 
   handleChange(event) {
     this.setState({value: event.target.value});

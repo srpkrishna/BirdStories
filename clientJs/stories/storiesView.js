@@ -4,12 +4,12 @@ import React from 'react';
 import  StoryItem from './storyItemView';
 import styles from '../css/stories.css';
 
-const View = ({ stories, updateSocial}) => {
+const View = ({ stories}) => {
 
   var storyDivs = '';
   if(stories){
     storyDivs = stories.map(function(story,i) {
-      return <StoryItem story={story} updateSocial={updateSocial} key={i} index={i} />;
+      return <StoryItem story={story} key={i} index={i} />;
     })
   }
 

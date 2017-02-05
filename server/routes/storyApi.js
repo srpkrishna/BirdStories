@@ -112,8 +112,8 @@ function getAuthorStories(authorId,callback){
         ScanIndexForward:false
     };
     storyDb.query(params,docClient,callback);
-
 }
+
 function getStories(callback){
     const docClient = conn.getDocClient();
     var params = {

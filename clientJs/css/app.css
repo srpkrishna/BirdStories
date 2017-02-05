@@ -34,6 +34,52 @@
   padding-right: 1.0em;
 }
 
+.App-header li {
+    float: left;
+    list-style: none outside none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.App-header li a{
+  font-size: 1.1rem;
+  padding: 1.9rem 1.2rem;
+  color: #fff;
+  letter-spacing: 0px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+.App-header li a:hover{
+    background: none repeat scroll 0 0 #283D5F;
+  }
+.App-header li .active{
+  background: none repeat scroll 0 0 #0b192f !important;
+}
+
+.App-header .social{
+  padding:1rem;
+}
+
+.App-header .social li{
+   padding-top: 0.1rem;
+}
+
+.App-header .social li a{
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #283d5f;
+  border: 1px solid white;
+}
+
+.App-header .social li a i{
+  font-size: 30px !important;
+}
+
+.App-header .social li a div{
+  width: 40px !important;
+  height:40px !important;
+}
+
 .App-header .menu{
   max-height: 0;
   opacity: 0;
@@ -51,33 +97,17 @@
   position: absolute;
 }
 
-
-.App-header li {
-    float: left;
-    list-style: none outside none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.material-icons{
-  padding-right: 0.1rem !important;
-}
-
-.App-header li a{
-  font-size: 1.1rem;
-  padding: 1.9rem 1.2rem;
-  color: #fff;
-  letter-spacing: 0px;
-  display: inline-flex;
-  vertical-align: middle;
-}
-.App-header li a:hover{
-    background: none repeat scroll 0 0 #283D5F;
+@media only screen and (max-width: 350px) {
+  .App-header .menuIcon {
+    padding-left: 0m;
+    position: static;
   }
-.App-header li .active{
-  background: none repeat scroll 0 0 #0b192f;
+  .App-logo{
+     float: left;
+     padding-left: 0;
+     padding-right: 0;
+  }
 }
-
 
 @media only screen and (min-width: 480px) {
   .App-header {

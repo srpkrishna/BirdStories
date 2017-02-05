@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import  Actions from './authorActions';
 import { Provider } from 'react-redux';
 import Store from './authorStore';
-import Controller from './authorController'
+import Controller from './authorController';
 
 class Author extends Component {
 

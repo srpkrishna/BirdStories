@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 const View = ({ author,index }) => {
 
-  const imgSrc = "/img/p"+(index%3)+".jpg"
+  const imgSrc = "/img/a.jpeg"
   const className = "item clrWhite"
   const link = "/author/"+author.penName;
   const linkObj = {

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var api = require('./server/routes/api');
 var storyApi = require('./server/routes/storyApi');
 var authorApi = require('./server/routes/authorApi');
+var profileApi = require('./server/routes/profileApi');
 
 var app = express();
 
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/stories', storyApi);
 app.use('/api/authors', authorApi);
+app.use('/api/profile',profileApi);
 app.use('/api', api);
 
 app.use('/*', function(req, res, next) {

@@ -1,23 +1,37 @@
 'use strict';
-import React from 'react';
+import React, { Component } from 'react';
 import styles from '../../css/viewer.css';
-import Body from './body'
-import Header from './header'
+import Body from './body';
+import Header from './header';
+import Footer from './footer';
+import Social from '../../util/social.js';
 
-const View = ({content,story,author}) => {
-  var tag = []
-  if(content && story && author){
-    tag.push(<Header story={story} key={0}/>)
-    tag.push(<Body content={content} key={1}/>)
-    tag.push(<div className="contentFooter" key={2}/>)
+class View extends Component {
+
+  componentWillUnmount(){
+      this.props.updateSocial("views");
   }
 
+  render(){
+    var content = this.props.content;
+    var story = this.props.story;
+    var author = this.props.author;
+    var authorLink = this.props.authorLink;
+    var updateSocial = this.props.updateSocial;
+    var tag = []
+    if(content && story && author){
+      tag.push(<Header story={story} authorLink={authorLink} updateSocial={updateSocial} key={0}/>)
+      tag.push(<Body content={content} key={1}/>)
+      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} key={2}/>)
+    }
 
-  return(
-    <div>
-      {tag}
-    </div>
-  )
+    return(
+      <div>
+        {tag}
+      </div>
+    )
+  }
 }
+
 
 export default View;

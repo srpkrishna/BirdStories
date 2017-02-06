@@ -27229,7 +27229,7 @@
 	
 	
 	// module
-	exports.push([module.id, "* {\n  -webkit-box-sizing:border-box;\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  margin:0;\n  transition: all 0.2s ease;\n}\nbody {\n  background: none repeat scroll 0 0 #0b192f;\n  color: #fff;\n  font-weight: 300;\n  font-size: 16px;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f !important;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.a1{\n  width:25%;\n}\n\n.a2{\n  width:35%;\n}\n\n.a3{\n  width:100%;\n}\n\n@media only screen and (min-width: 480px) {\n  .a1{\n    width:20%;\n  }\n\n  .a2{\n    width:28%;\n  }\n\n}\n\n@media only screen and (min-width: 768px) {\n  .a1{\n    width:15%;\n  }\n\n  .a2{\n    width:21%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .a1{\n    width:10%;\n  }\n\n  .a2{\n    width:14%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\na{\n  text-decoration:none\n}\n\nli{\n  list-style: none outside none;\n}\n\n.right{\n    float:right;\n}\n\n.left{\n    float:right;\n}\n", ""]);
+	exports.push([module.id, "* {\n  -webkit-box-sizing:border-box;\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  margin:0;\n}\nbody {\n  background: none repeat scroll 0 0 #0b192f;\n  color: #fff;\n  font-weight: 300;\n  font-size: 16px;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f !important;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.a1{\n  width:25%;\n}\n\n.a2{\n  width:35%;\n}\n\n.a3{\n  width:100%;\n}\n\n@media only screen and (min-width: 480px) {\n  .a1{\n    width:20%;\n  }\n\n  .a2{\n    width:28%;\n  }\n\n}\n\n@media only screen and (min-width: 768px) {\n  .a1{\n    width:15%;\n  }\n\n  .a2{\n    width:21%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .a1{\n    width:10%;\n  }\n\n  .a2{\n    width:14%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\na{\n  text-decoration:none\n}\n\nli{\n  list-style: none outside none;\n}\n\n.right{\n    float:right;\n}\n\n.left{\n    float:right;\n}\n", ""]);
 	
 	// exports
 
@@ -27764,11 +27764,11 @@
 	          _react2.default.createElement(
 	            _reactRouter.Link,
 	            { className: 'App-logo', to: '/', onClick: this.hideMenu },
-	            'Bird',
+	            window.getString("companyMain"),
 	            _react2.default.createElement(
 	              'span',
 	              null,
-	              'Stories'
+	              window.getString("companySub")
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -27785,7 +27785,7 @@
 	                  { className: 'material-icons' },
 	                  'search'
 	                ),
-	                'Search'
+	                window.getString("search")
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -27799,7 +27799,7 @@
 	                  { className: 'material-icons' },
 	                  'create'
 	                ),
-	                'Write'
+	                window.getString("write")
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -27813,12 +27813,41 @@
 	                  { className: 'material-icons' },
 	                  'phone'
 	                ),
-	                'Contact Us'
+	                window.getString("contactUs")
 	              )
 	            )
 	          )
 	        ),
-	        component
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'App-body' },
+	          component
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'App-footer' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'about' },
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/about' },
+	              ' ',
+	              window.getString("aboutus")
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'rights' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              window.getString("copyright"),
+	              _react2.default.createElement('br', null),
+	              window.getString("rights")
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -28248,7 +28277,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f !important;\n}\n\n.App-header .social{\n  padding:1rem;\n}\n\n.App-header .social li{\n   padding-top: 0.1rem;\n}\n\n.App-header .social li a{\n  padding: 0.5rem;\n  border-radius: 50%;\n  background-color: #283d5f;\n  border: 1px solid white;\n}\n\n.App-header .social li a i{\n  font-size: 30px !important;\n}\n\n.App-header .social li a div{\n  width: 40px !important;\n  height:40px !important;\n}\n\n.App-header .menu{\n  max-height: 0;\n  opacity: 0;\n}\n\n.App-header .menu.show{\n  max-height: 10rem;\n  opacity: 1;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n  padding-left: 1.0em;\n  position: absolute;\n}\n\n@media only screen and (max-width: 350px) {\n  .App-header .menuIcon {\n    padding-left: 0m;\n    position: static;\n  }\n  .App-logo{\n     float: left;\n     padding-left: 0;\n     padding-right: 0;\n  }\n}\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header .menu{\n    max-height: 10rem;\n    opacity: 1;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.App-header li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header li .active{\n  background: none repeat scroll 0 0 #0b192f !important;\n}\n\n.App-header .social{\n  padding:1rem;\n}\n\n.App-header .social li{\n   padding-top: 0.1rem;\n}\n\n.App-header .social li a{\n  padding: 0.5rem;\n  border-radius: 50%;\n  background-color: #283d5f;\n  border: 1px solid white;\n}\n\n.App-header .social li a i{\n  font-size: 30px !important;\n}\n\n.App-header .social li a div{\n  width: 40px !important;\n  height:40px !important;\n}\n\n.App-header .menu{\n  max-height: 0;\n  opacity: 0;\n}\n\n.App-header .menu.show{\n  max-height: 10rem;\n  opacity: 1;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n  padding-left: 1.0em;\n  position: absolute;\n}\n\n.App-footer{\n  background: none repeat scroll 0 0 #162b4d;\n  display: inline-block;\n  margin-bottom: 0;\n  margin-top: 1.25rem;\n  padding: 1.7rem;\n  position: relative;\n  width: 100%;\n  color: #637693;\n  font-size: 0.9rem;\n}\n\n.App-footer .rights{\n    float:left;\n    text-align: center;\n    width: 100%;\n\n}\n\n.App-footer .about{\n    float:right;\n    text-align: center;\n    padding: 0.5rem;\n    width: 100%;\n    padding-bottom: 1rem;\n}\n\n.App-footer .about a{\n  color: #637693;\n  font-size: 0.9rem;\n}\n\n.App-body{\n  min-height: 34rem;\n}\n\n@media only screen and (max-width: 350px) {\n  .App-header .menuIcon {\n    padding-left: 0;\n    position: static;\n  }\n  .App-logo{\n     float: left;\n     padding-left: 0;\n     padding-right: 0;\n  }\n}\n\n@media only screen and (min-width: 480px) {\n  .App-header {\n    margin-bottom: 1rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n  .App {\n    padding: 0 0.625rem;\n    text-align: left;\n  }\n\n  .App-header .menu{\n    max-height: 10rem;\n    opacity: 1;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n  }\n\n  .App-footer .rights{\n      width:66.6%;\n      text-align:left;\n  }\n\n  .App-footer .about{\n      width:33.3%;\n      text-align:right;\n      padding-bottom: 0;\n  }\n\n}\n", ""]);
 	
 	// exports
 
@@ -28260,7 +28289,7 @@
   \******************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28271,6 +28300,10 @@
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _about = __webpack_require__(/*! ./css/about.css */ 470);
+	
+	var _about2 = _interopRequireDefault(_about);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -28290,71 +28323,125 @@
 	  }
 	
 	  _createClass(About, [{
-	    key: "render",
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      setTimeout(function () {
+	        $(".about .block .a").css({ 'opacity': '1.0' });
+	      }, 10);
+	      setTimeout(function () {
+	        $(".about .block .b").css({ 'opacity': '1.0' });
+	      }, 2000);
+	      setTimeout(function () {
+	        $(".about .block .c").css({ 'opacity': '1.0' });
+	      }, 4000);
+	      setTimeout(function () {
+	        $(".about .d").css({ 'opacity': '1.0' });
+	      }, 6000);
+	      setTimeout(function () {
+	        $(".about .e").css({ 'opacity': '1.0' });
+	      }, 6000);
+	      setTimeout(function () {
+	        $(".about .f").css({ 'opacity': '1.0' });
+	      }, 6000);
+	      setTimeout(function () {
+	        $(".about .g").css({ 'opacity': '1.0' });
+	      }, 6000);
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "about" },
+	        'div',
+	        { className: 'about' },
 	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "Theres always room for a story that can transport people to another place.\u201D \u2015 J.K. Rowling"
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "\u201CIf history were taught in the form of stories, it would never be forgotten.\u201D - Rudyard Kipling"
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "\u201CYou become writer by writing. It is a yoga.\u201D \u2015 R.K. Narayan"
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "\"Once Upon a time, there lived a king.....\" Did that take you down the memory lane to the golden days of your life where you forgot yourself in the lap of your grandparents? If yes, Bingo! That\u2019s what we do. We firmly believe in the philosophy of storytelling and what can be a better medium than native language for telling effective stories! This thought was the driving force behind the inception of  \u201CSuKatha\u201D."
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "block" },
+	          'div',
+	          { className: 'block quote' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "header" },
-	            "Our Vision"
+	            'p',
+	            { className: 'a' },
+	            window.getString("quote1"),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              window.getString("auth1")
+	            )
 	          ),
 	          _react2.default.createElement(
-	            "p",
-	            null,
-	            "We want to be the one-stop-destination for native creative content of highest quality and diversity. Building sustainable interest in native language in the era of massive globalization while providing a global stage for creative talent is our motto!"
+	            'p',
+	            { className: 'b' },
+	            window.getString("quote2"),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              window.getString("auth2")
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'c' },
+	            window.getString("quote3"),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              window.getString("auth3")
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "block" },
+	          'div',
+	          { className: 'block idea d' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "header" },
-	            "Who are we?"
-	          ),
-	          _react2.default.createElement(
-	            "p",
+	            'span',
 	            null,
-	            "We are an online platform to connect talented and passionate writers with ardent readers across the world. We encourage all types of creative works in the form of short stories, poems, lyrics, Arts, cartoons, captivating articles, and many more. After all, every art form tells a story!"
+	            window.getString("ideaTag")
+	          ),
+	          window.getString("idea"),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            window.getString("companyCaps")
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "block" },
+	          'div',
+	          { className: 'block e' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "header" },
-	            "What do we do?"
+	            'div',
+	            { className: 'header' },
+	            window.getString("vision")
 	          ),
 	          _react2.default.createElement(
-	            "p",
+	            'p',
 	            null,
-	            "We deeply believe in the fact that a win-win relationship is the only sustainable mode of engagement with our writers/readers. This motivates us to strive for the betterment of our partners. Apart from bridging the gap between readers and writers by creating greater visibility, we help our writers enhance the quality of their work through various means, giving our readers the best possible experience in the process."
+	            window.getString("visionInfo")
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'block f' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'header' },
+	            window.getString("whoAreWe")
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            window.getString("whoAreWeInfo")
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'block g' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'header' },
+	            window.getString("whatDoWeDo")
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            window.getString("whatDoWeDoInfo")
 	          )
 	        )
 	      );
@@ -32367,7 +32454,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".profile{\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  padding: 1rem;\n  color: rgba(255,255,255,0.6);\n}\n\n.profile .block{\n  width: 100%;\n  display: inline-block;\n}\n.profile .authorImage{\n  border: 0.1rem solid white;\n  float:left;\n}\n\n.profile ul.personal{\n  float: left;\n  padding-top: 2.8%;\n  padding-left: 5%;\n  width: 65%;\n}\n\n.profile .personal li{\n  font-size: 1.2rem;\n  padding: 0.5rem 0;\n  letter-spacing: 0px;\n  text-align: left;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.profile p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n  float: left;\n}\n\n.profile .sideHeader{\n  width: 100%;\n  float: left;\n  text-align: left;\n  padding-top: 2rem;\n}\n", ""]);
+	exports.push([module.id, ".profile{\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  padding: 1rem;\n  color: rgba(255,255,255,0.6);\n}\n\n.profile .block{\n  width: 100%;\n  display: inline-block;\n}\n.profile .authorImage{\n  border: 0.1rem solid white;\n  float:left;\n}\n\n.profile ul.personal{\n  float: left;\n  padding-left: 3%;\n  width: 65%;\n}\n\n.profile .personal li{\n  font-size: 1.2rem;\n  padding: 0.5rem 0;\n  letter-spacing: 0px;\n  text-align: left;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.profile p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n  float: left;\n}\n\n.profile .sideHeader{\n  width: 100%;\n  float: left;\n  text-align: left;\n  padding-top: 2rem;\n}\n\n@media only screen and (max-width: 400px) {\n  .profile .personal li{\n    padding:0.2rem 0;\n  }\n\n  .profile ul.personal{\n    padding-left: 5%;\n  }\n\n}\n", ""]);
 	
 	// exports
 
@@ -40577,6 +40664,52 @@
 	
 	var store = (0, _redux.createStore)(reducer, _redux.applyMiddleware.apply(undefined, middlewares));
 	exports.default = store;
+
+/***/ },
+/* 470 */
+/*!***********************!*\
+  !*** ./css/about.css ***!
+  \***********************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../~/css-loader!./about.css */ 471);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 236)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./about.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./about.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 471 */
+/*!***************************************!*\
+  !*** ../~/css-loader!./css/about.css ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 235)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".block {\n    padding: 1rem;\n    text-align: center;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 1.2rem;\n    word-spacing: 0.1rem;\n    line-height: 1.8rem;\n}\n\n.block.quote {\n    padding-top: 3rem;\n}\n\n.block.quote p {\n  padding-bottom: 1.5rem;\n  font-style: italic;\n  color: rgba(255, 255, 255, 0.6);\n}\n\n\n.block span{\n    white-space: nowrap;\n    color: #d12767;\n}\n\n.block.idea {\n    word-spacing: 0.1rem;\n}\n\n.header {\n    padding: 0.5rem;\n    color: #637693;\n}\n\n.a{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.b{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.c{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.d{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.e{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.f{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.g{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n", ""]);
+	
+	// exports
+
 
 /***/ }
 /******/ ]);

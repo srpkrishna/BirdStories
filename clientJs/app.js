@@ -127,23 +127,37 @@ class App extends Component {
               {tag}
             </li>
           </ul>
-          <Link className="App-logo" to="/" onClick={this.hideMenu}>Bird
-            <span>Stories</span>
+          <Link className="App-logo" to="/" onClick={this.hideMenu}>{window.getString("companyMain")}
+            <span>{window.getString("companySub")}</span>
           </Link>
 
           <ul className={menuClassName} onClick={this.hideMenu}>
             <li className={menuClassName}>
-              <Link to="/search" activeClassName="active" ><i className="material-icons">search</i>Search</Link>
+              <Link to="/search" activeClassName="active" ><i className="material-icons">search</i>{window.getString("search")}</Link>
             </li>
             <li className={menuClassName}>
-              <Link to="/write" activeClassName="active" ><i className="material-icons">create</i>Write</Link>
+              <Link to="/write" activeClassName="active" ><i className="material-icons">create</i>{window.getString("write")}</Link>
             </li>
             <li className={menuClassName}>
-              <Link to="/contact" activeClassName="active" ><i className="material-icons">phone</i>Contact Us</Link>
+              <Link to="/contact" activeClassName="active" ><i className="material-icons">phone</i>{window.getString("contactUs")}</Link>
             </li>
           </ul>
         </div>
+        <div className="App-body">
         {component}
+        </div>
+        <div className="App-footer">
+          <div className="about">
+            <Link to="/about"> {window.getString("aboutus")}</Link>
+          </div>
+
+          <div className="rights">
+            <p>
+              {window.getString("copyright")}<br />{window.getString("rights")}
+            </p>
+          </div>
+
+        </div>
       </div>
     );
   }

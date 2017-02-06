@@ -17,8 +17,7 @@
 
 .profile ul.personal{
   float: left;
-  padding-top: 2.8%;
-  padding-left: 5%;
+  padding-left: 3%;
   width: 65%;
 }
 
@@ -45,4 +44,15 @@
   float: left;
   text-align: left;
   padding-top: 2rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .profile .personal li{
+    padding:0.2rem 0;
+  }
+
+  .profile ul.personal{
+    padding-left: 5%;
+  }
+
 }

@@ -1,0 +1,68 @@
+.block {
+    padding: 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+    word-spacing: 0.1rem;
+    line-height: 1.8rem;
+}
+
+.block.quote {
+    padding-top: 3rem;
+}
+
+.block.quote p {
+  padding-bottom: 1.5rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+.block span{
+    white-space: nowrap;
+    color: #d12767;
+}
+
+.block.idea {
+    word-spacing: 0.1rem;
+}
+
+.header {
+    padding: 0.5rem;
+    color: #637693;
+}
+
+.a{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.b{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.c{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.d{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.e{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.f{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.g{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}

@@ -97,9 +97,45 @@
   position: absolute;
 }
 
+.App-footer{
+  background: none repeat scroll 0 0 #162b4d;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-top: 1.25rem;
+  padding: 1.7rem;
+  position: relative;
+  width: 100%;
+  color: #637693;
+  font-size: 0.9rem;
+}
+
+.App-footer .rights{
+    float:left;
+    text-align: center;
+    width: 100%;
+
+}
+
+.App-footer .about{
+    float:right;
+    text-align: center;
+    padding: 0.5rem;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.App-footer .about a{
+  color: #637693;
+  font-size: 0.9rem;
+}
+
+.App-body{
+  min-height: 34rem;
+}
+
 @media only screen and (max-width: 350px) {
   .App-header .menuIcon {
-    padding-left: 0m;
+    padding-left: 0;
     position: static;
   }
   .App-logo{
@@ -129,6 +165,17 @@
   .App-header .menuIcon{
     height: 0;
     opacity: 0;
+  }
+
+  .App-footer .rights{
+      width:66.6%;
+      text-align:left;
+  }
+
+  .App-footer .about{
+      width:33.3%;
+      text-align:right;
+      padding-bottom: 0;
   }
 
 }

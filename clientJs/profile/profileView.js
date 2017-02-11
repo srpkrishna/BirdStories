@@ -24,14 +24,21 @@ const View = ({ stories,author}) => {
     </div>
   }
 
+  var imgSrc = "/img/a.jpeg"
+  const imageStyle = {
+    background: 'url(' + imgSrc + ') no-repeat center',
+    backgroundSize:'cover'
+  }
+
   if(author && author.penName){
     authorDiv = <div className="block">
-      <img className="authorImage a2" src="/img/a.jpeg"></img>
+      <div className="authorImage a2" src={imgSrc} style={imageStyle}></div>
       <ul className="personal">
         <li>{author.profile.fullName}</li>
         <li>{author.email}</li>
         <li>{author.penName}</li>
       </ul>
+      <p>{author.profile.intro} </p>
     </div>
   }
   return(

@@ -16,10 +16,14 @@ const View = ({ story,index,author }) => {
       state:{story:story,author:author}
   }
 
+  const imageStyle = {
+    background: 'url(' + imgSrc + ') no-repeat center',
+    backgroundSize:'cover'
+  }
 
   return (
         <Link to={linkObj} className={className} >
-          <img className="image" src={imgSrc}></img>
+          <div className="image" src={imgSrc} style={imageStyle}></div>
           <div className="info">
             <div className="name">{story.name}</div>
             <ul className="shortText">

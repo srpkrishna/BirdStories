@@ -101,7 +101,7 @@
   background: none repeat scroll 0 0 #162b4d;
   display: inline-block;
   margin-bottom: 0;
-  margin-top: 1.25rem;
+  margin-top: 0;
   padding: 1.7rem;
   position: relative;
   width: 100%;
@@ -130,7 +130,8 @@
 }
 
 .App-body{
-  min-height: 34rem;
+  min-height: 32em;
+  background: #f0f0f0;;
 }
 
 @media only screen and (max-width: 350px) {
@@ -148,6 +149,10 @@
 @media only screen and (min-width: 480px) {
   .App-header {
     margin-bottom: 1rem;
+  }
+
+  .App-footer{
+    margin-top: 1.25rem;
   }
 }
 
@@ -176,6 +181,13 @@
       width:33.3%;
       text-align:right;
       padding-bottom: 0;
+  }
+
+  #header{
+    background: none repeat scroll 0 0 #162b4d;
+    position: absolute;
+    width: 100%;
+    height: 5.3em;
   }
 
 }

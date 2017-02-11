@@ -1,0 +1,25 @@
+.contact {
+  min-height: 32rem;
+}
+.contact .block {
+    padding: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+    word-spacing: 0.1rem;
+    line-height: 1.8rem;
+}
+
+.contact .block span{
+    white-space: nowrap;
+    color: #d12767;
+}
+
+.contact .block.idea {
+    word-spacing: 0.1rem;
+}
+
+.contact .header {
+    padding: 0.5rem;
+    padding-left: 0;
+    color: #637693;
+}

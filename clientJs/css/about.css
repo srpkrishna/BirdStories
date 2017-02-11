@@ -1,68 +1,69 @@
-.block {
+.about .block {
     padding: 1rem;
-    text-align: center;
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.2rem;
     word-spacing: 0.1rem;
     line-height: 1.8rem;
 }
 
-.block.quote {
+.about .block.quote {
     padding-top: 3rem;
+    text-align: center;
 }
 
-.block.quote p {
+.about .block.quote p {
   padding-bottom: 1.5rem;
   font-style: italic;
   color: rgba(255, 255, 255, 0.6);
 }
 
 
-.block span{
+.about .block span{
     white-space: nowrap;
     color: #d12767;
 }
 
-.block.idea {
+.about .block.idea {
     word-spacing: 0.1rem;
 }
 
-.header {
+.about .header {
     padding: 0.5rem;
+    padding-left: 0;
     color: #637693;
 }
 
-.a{
+.about .a{
   opacity: 0;
   transition:opacity 0.5s linear;
 }
 
-.b{
+.about .b{
   opacity: 0;
   transition:opacity 0.5s linear;
 }
 
-.c{
+.about .c{
   opacity: 0;
   transition:opacity 0.5s linear;
 }
 
-.d{
+.about .d{
   opacity: 0;
   transition:opacity 0.5s linear;
 }
 
-.e{
+.about .e{
   opacity: 0;
   transition:opacity 0.5s linear;
 }
 
-.f{
+.about .f{
   opacity: 0;
   transition:opacity 0.5s linear;
 }
 
-.g{
+.about .g{
   opacity: 0;
   transition:opacity 0.5s linear;
 }

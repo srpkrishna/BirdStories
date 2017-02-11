@@ -21,7 +21,7 @@ require(["jquery-2.2.1.min", "l20n.min","https://apis.google.com/js/api:client.j
     window.l20n.registerLocales ('en-US', ['en-US']);
     window.l20n.linkResource (function (locale) {
             $ ("head").append ("<meta http-equiv='Content-Language' content = '" + locale + "'/>");
-            return "locales/" + locale + ".l20n";
+            return "/locales/" + locale + ".l20n";
         });
     window.l20n.requestLocales();
     window.l20n.ready (function () {

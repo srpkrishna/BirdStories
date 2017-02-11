@@ -14,9 +14,14 @@ const View = ({ author,index }) => {
       state:author
   }
 
+  const imageStyle = {
+    background: 'url(' + imgSrc + ') no-repeat center',
+    backgroundSize:'cover'
+  }
+
   return (
         <Link to={linkObj} className={className} >
-          <img className="image" src={imgSrc}></img>
+          <div className="image" src={imgSrc} style={imageStyle}></div>
           <div className="info">
             <div className="name">{author.profile.fullName}</div>
             <div className="shortText">{author.profile.intro}</div>

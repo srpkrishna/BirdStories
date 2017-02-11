@@ -1,0 +1,82 @@
+.launch .block {
+  padding-top:15%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 3rem;
+  word-spacing: 0.1rem;
+  line-height: 1.8rem;
+}
+
+.launch .block .quote{
+  padding: 1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.8rem;
+  padding-left: 12rem;
+}
+
+
+.launch .block span{
+    white-space: nowrap;
+    color: #d12767;
+}
+
+.launch .block.d span{
+  padding-left: 0.1rem;
+}
+
+.launch .a{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.launch .b{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.launch .c{
+  opacity: 0;
+  top: -1.5rem;
+  transition: all 1s ease-in-out;
+}
+
+.launch .d{
+  opacity: 0;
+  font-size: 2.5rem;
+  transition:opacity 0.5s linear;
+}
+
+.launch .e{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+}
+
+.launch .f{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+  padding-top: 3rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.launch .g{
+  opacity: 0;
+  transition:opacity 0.5s linear;
+  white-space: nowrap;
+  color: #d12767;
+}
+
+@media only screen and (max-width: 700px) {
+    .launch .block {
+      padding: 0;
+      padding-top:30%;
+    }
+    .launch .block .quote{
+      padding-left: 0;
+      text-align: right;
+      padding-right: 1rem;
+    }
+}

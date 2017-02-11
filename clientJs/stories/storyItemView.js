@@ -15,9 +15,14 @@ const View = ({ story,index,author }) => {
       query:query,
       state:{story:story,author:author}
   }
+
+  const imageStyle = {
+    background: 'url(' + imgSrc + ') no-repeat center',
+    backgroundSize:'cover'
+  }
   return (
         <Link to={linkObj} className={className} >
-          <img className="image" src={imgSrc}></img>
+          <div className="image" style={imageStyle}></div>
           <div className="info">
             <div className="name">{story.name}</div>
             <div className="shortText">Edho okasari ala chima basics vasthe vaser chitaki vela chiru kursi andhakaram ayyindhi</div>

@@ -1,11 +1,11 @@
 <companyMain "Su">
 <companySub "Katha">
-<write "Write">
+<write "Writer">
 <search "Search">
 <contactUs "Contact Us">
 <copyright "Copyright 2017. All rights reserved.">
 <rights "All content and images are owned by SuKatha.com">
-<aboutus "About us">
+<aboutUs "About us">
 <quote1 "“There's always room for a story that can transport people to another place.”">
 <auth1 "― J.K. Rowling">
 <quote2 "“If history were taught in the form of stories, it would never be forgotten.”">
@@ -21,3 +21,10 @@
 <whoAreWeInfo "We are an online platform to connect talented and passionate writers with ardent readers across the world. We encourage all types of creative works in the form of short stories, poems, lyrics, Arts, cartoons, captivating articles, and many more. After all, every art form tells a story!">
 <whatDoWeDo "What do we do?">
 <whatDoWeDoInfo "We deeply believe in the fact that a win-win relationship is the only sustainable mode of engagement with our writers/readers. This motivates us to strive for the betterment of our partners. Apart from bridging the gap between readers and writers by creating greater visibility, we help our writers enhance the quality of their work through various means, giving our readers the best possible experience in the process.">
+<contactIntro "We are here to help our writers/readers in all possible ways round the clock.  No unanswered emails waiting in the abyss and no long delays in the communication! We promise to give you a prompt response.  ">
+<contactWriter "Want to publish/ introduce us to an amazing writer?">
+<contactWriterInfo "Write to us at storyboard@sukatha.com to send your stories/writings,  to refer a writer friend and for all other publishing related queries.">
+<contactMarketing "Want to partner with us for marketing?">
+<contactMarketingInfo "Write to us at marketing@sukatha.com for all marketing related queries">
+<contactSupport "We listen to you and believe in continuous learning!">
+<contactSupportInfo "Write to us at feedback@sukatha.com for any type of queries/concerns/suggestions related to SUKATHA">

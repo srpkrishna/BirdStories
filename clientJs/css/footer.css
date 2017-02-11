@@ -3,7 +3,7 @@
   display: inline-block;
   width: 100%;
   padding: 1.2rem;
-  background: none repeat scroll 0 0 #ccc;
+  background-image: url(../img/bg.png);
 }
 
 .contentFooter ul{
@@ -27,5 +27,5 @@
 }
 
 .contentFooter .authTitle a{
-  color: #d12767;
+  color: rgba(255, 255, 255, 0.8);
 }

@@ -116,6 +116,10 @@ class App extends Component {
         component = <Login google={this.state.gApi} fb={this.state.fbApi} />
     }
 
+    // <li className={menuClassName}>
+    //           <Link to="/write" activeClassName="active" ><i className="material-icons">create</i>{window.getString("write")}</Link>
+    //         </li>
+
     return (
       <div className="App">
         <div className="App-header">
@@ -127,7 +131,7 @@ class App extends Component {
               {tag}
             </li>
           </ul>
-          <Link className="App-logo" to="/" onClick={this.hideMenu}>{window.getString("companyMain")}
+          <Link className="App-logo" to="/stories" onClick={this.hideMenu}>{window.getString("companyMain")}
             <span>{window.getString("companySub")}</span>
           </Link>
 
@@ -136,19 +140,14 @@ class App extends Component {
               <Link to="/search" activeClassName="active" ><i className="material-icons">search</i>{window.getString("search")}</Link>
             </li>
             <li className={menuClassName}>
-              <Link to="/write" activeClassName="active" ><i className="material-icons">create</i>{window.getString("write")}</Link>
-            </li>
-            <li className={menuClassName}>
               <Link to="/contact" activeClassName="active" ><i className="material-icons">phone</i>{window.getString("contactUs")}</Link>
             </li>
           </ul>
         </div>
-        <div className="App-body">
         {component}
-        </div>
         <div className="App-footer">
           <div className="about">
-            <Link to="/about"> {window.getString("aboutus")}</Link>
+            <Link to="/about"> {window.getString("aboutUs")}</Link>
           </div>
 
           <div className="rights">

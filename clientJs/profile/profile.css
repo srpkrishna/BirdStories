@@ -3,7 +3,9 @@
   text-align: center;
   width: 100%;
   padding: 1rem;
-  color: rgba(255,255,255,0.6);
+  /*color: rgba(255,255,255,0.6);*/
+  color: #162b4d;
+  background: #f0f0f0;
 }
 
 .profile .block{
@@ -13,12 +15,13 @@
 .profile .authorImage{
   border: 0.1rem solid white;
   float:left;
+  height: 10rem;
 }
 
 .profile ul.personal{
   float: left;
-  padding-left: 3%;
-  width: 65%;
+  padding-top: 2.7%;
+  padding-left: 5%;
 }
 
 .profile .personal li{
@@ -55,4 +58,15 @@
     padding-left: 5%;
   }
 
+  .profile .authorImage{
+    height: 7.5rem;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  /*.profile{
+    padding: 1rem;
+  }*/
 }

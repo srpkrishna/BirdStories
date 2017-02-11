@@ -3,17 +3,20 @@
   text-align: center;
   width: 100%;
   padding: 1rem;
-  color: rgba(255,255,255,0.7);
+  /*color: rgba(255,255,255,0.7);*/
+  color: #162b4d;
+  background: #f0f0f0;
 }
 
 .authorProfile .authorImage{
   border: 0.1rem solid white;
   float:left;
+  height: 10rem;
 }
 
 .authorProfile ul{
   float: left;
-  padding-top: 3%;
+  padding-top: 2.7%;
   padding-left: 5%;
 }
 
@@ -38,3 +41,16 @@
 /*.authorProfile .item{
   border: 0.05rem solid #162b4d;
 }*/
+
+
+/*@media only screen and (min-width: 768px) {
+
+  .authorProfile{
+    padding: 1rem;
+  }
+}*/
+@media only screen and (max-width: 400px) {
+  .authorProfile .authorImage{
+    height: 7.5rem;
+  }
+}

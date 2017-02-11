@@ -11,12 +11,13 @@ import Author from './author/author';
 import NoMatch from './noMatch';
 import Stories from './stories/stories';
 import Search from './search/search';
+import Launch from './launch';
 
 
 ReactDOM.render(
   (<Router history={browserHistory}>
+    <Route path="/" component={Launch}/>
     <Route path="/" component={App}>
-      <IndexRoute component={Stories}/>
       <Route path="stories" component={Stories}>
         <Route path="/stories/story" component={Stories}/>
       </Route>
@@ -27,11 +28,10 @@ ReactDOM.render(
       </Router>
       <Route path="profile" component={Profile} requireAuth={true}/>
       <Route path="about" component={About}/>
-      <Route path="contact" component={About}/>
+      <Route path="contact" component={Contact}/>
       <Route path="write" component={Write} requireAuth={true} />
       <Route path="*" component={Stories}/>
     </Route>
-    <Route path="*" component={NoMatch}/>
   </Router>),
   document.getElementById('root')
 );

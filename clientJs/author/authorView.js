@@ -17,9 +17,15 @@ const View = ({ stories,author}) => {
     </div>
   }
 
+  var imgSrc = "/img/a.jpeg"
+  const imageStyle = {
+    background: 'url(' + imgSrc + ') no-repeat center',
+    backgroundSize:'cover'
+  }
+
   if(author && author.penName){
     authorDiv = <div className="authorProfile" >
-      <img className="authorImage a2" src="/img/a.jpeg"></img>
+      <div className="authorImage a2" src={imgSrc} style={imageStyle}></div>
       <ul>
         <li>{author.profile.fullName}</li>
         <li>{author.profile.qual}</li>

@@ -17,6 +17,7 @@ class About extends Component {
   render() {
     return (
       <div className="about">
+        <div className="pageHeader">{window.getString("aboutUs")}</div>
         <div className="block quote" >
           <p className="a">{window.getString("quote1")}<span>{window.getString("auth1")}</span></p>
           <p className="b">{window.getString("quote2")}<span>{window.getString("auth2")}</span></p>

@@ -30,18 +30,22 @@ class Search extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    var value = event.target.value.toLowerCase();
     const obj = Actions.search(event.target.value);
     Store.dispatch(obj)
   }
 
   render() {
     return (
-      <div className="search">
-        <input type="text" name="search" placeholder="Search.." className="m-9" value={this.state.value} onChange={this.handleChange}></input>
+      <div className="App-body">
+        <div className="search">
+          <input type="text" name="search" placeholder="Search.." className="m-9" value={this.state.value} onChange={this.handleChange}></input>
+        </div>
         <Provider store={Store}>
           <Controller />
         </Provider>
       </div>
+
     );
   }
 }

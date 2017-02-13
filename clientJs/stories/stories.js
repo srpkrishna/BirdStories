@@ -66,6 +66,10 @@ class Stories extends Component {
     this.state = this.getStateObject(nextProps)
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   render(){
 
     let tag = <Controller />

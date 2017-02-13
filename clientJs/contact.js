@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import Styles from './css/contact.css';
 
 class Contact extends Component {
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+  
   render() {
     return (
       <div className="contact">

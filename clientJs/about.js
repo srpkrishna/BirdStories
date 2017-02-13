@@ -11,8 +11,9 @@ class About extends Component {
     setTimeout(function(){ $(".about .e").css({'opacity':'1.0'})}, 6000);
     setTimeout(function(){ $(".about .f").css({'opacity':'1.0'})}, 6000);
     setTimeout(function(){ $(".about .g").css({'opacity':'1.0'})}, 6000);
-  }
 
+    window.scrollTo(0, 0)
+  }
 
   render() {
     return (

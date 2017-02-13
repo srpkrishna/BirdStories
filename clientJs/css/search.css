@@ -1,3 +1,8 @@
+.searchBody{
+  min-height: 32em;
+  background: #f0f0f0;;
+}
+
 .search{
   text-align: center;
   width: 100%;

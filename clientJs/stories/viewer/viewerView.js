@@ -12,6 +12,10 @@ class View extends Component {
       this.props.updateSocial("views");
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   render(){
     var content = this.props.content;
     var story = this.props.story;

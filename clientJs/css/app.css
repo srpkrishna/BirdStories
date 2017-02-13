@@ -14,6 +14,8 @@
   color: #fff;
   padding: 0.57em;
   display: inline-block;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .App-logo span{
@@ -49,12 +51,43 @@
   display: inline-flex;
   vertical-align: middle;
 }
-.App-header li a:hover{
+
+.App-header .menuIcon li a:hover{
+    background: none;
+  }
+
+.App-header .menu li a:hover{
     background: none repeat scroll 0 0 #283D5F;
   }
-.App-header li .active{
+.App-header .menu li .active{
   background: none repeat scroll 0 0 #0b192f !important;
 }
+
+.App-header .menu{
+  max-height: 0;
+  opacity: 0;
+  width:0;
+  visibility: hidden;
+}
+
+.App-header .menu.show{
+  max-height: 10rem;
+  opacity: 1;
+  width: 100%;
+  background: #0b192f;
+  visibility:initial;
+}
+
+.App-header li.menu.show {
+    float: right;
+    width: auto;
+}
+
+.App-header .menuIcon{
+  float: left;
+  padding: 0;
+}
+
 
 .App-header .social{
   padding:1rem;
@@ -80,21 +113,11 @@
   height:40px !important;
 }
 
-.App-header .menu{
-  max-height: 0;
-  opacity: 0;
-}
-
-.App-header .menu.show{
-  max-height: 10rem;
-  opacity: 1;
-}
-
-.App-header .menuIcon{
-  float: left;
-  padding: 0;
-  padding-left: 1.0em;
-  position: absolute;
+.App-header .social li a:hover{
+    border: 2px solid #B71757;
+  }
+.App-header .social li .active{
+    border: 2px solid #B71757 !important;
 }
 
 .App-footer{
@@ -131,22 +154,22 @@
 
 .App-body{
   min-height: 32em;
-  background: #f0f0f0;;
 }
 
-@media only screen and (max-width: 350px) {
-  .App-header .menuIcon {
-    padding-left: 0;
-    position: static;
-  }
+/*@media only screen and (max-width: 350px) {
   .App-logo{
      float: left;
      padding-left: 0;
      padding-right: 0;
   }
-}
+}*/
 
 @media only screen and (min-width: 480px) {
+
+  .App {
+    padding: 0 0.625rem;
+  }
+
   .App-header {
     margin-bottom: 1rem;
   }
@@ -157,19 +180,28 @@
 }
 
 @media only screen and (min-width: 768px) {
+
   .App {
-    padding: 0 0.625rem;
     text-align: left;
+  }
+
+  .App-logo{
+    padding-left: 0.57rem;
+    padding-right: 0.57rem;
   }
 
   .App-header .menu{
     max-height: 10rem;
     opacity: 1;
+    width: auto;
+    visibility:initial;
   }
 
   .App-header .menuIcon{
     height: 0;
     opacity: 0;
+    width: 0;
+    visibility: hidden;
   }
 
   .App-footer .rights{

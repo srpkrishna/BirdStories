@@ -11,6 +11,11 @@ const center = {
 }
 
 class NoMatch extends Component {
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+  
   render() {
     return (
       <h3 style={center}> No Page found. Click to <Link to="/" style={pink}>Home</Link></h3>

@@ -35,9 +35,13 @@ class Search extends Component {
     Store.dispatch(obj)
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     return (
-      <div className="App-body">
+      <div className="searchBody">
         <div className="search">
           <input type="text" name="search" placeholder="Search.." className="m-9" value={this.state.value} onChange={this.handleChange}></input>
         </div>

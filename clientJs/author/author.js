@@ -38,6 +38,10 @@ class Author extends Component {
     this.state = this.getStateObject(nextProps)
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     return (
       <Provider store={Store}>

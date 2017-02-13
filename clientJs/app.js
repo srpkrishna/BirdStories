@@ -144,7 +144,10 @@ class App extends Component {
             </li>
           </ul>
         </div>
-        {component}
+
+        <div className="App-body">
+          {component}
+        </div>
         <div className="App-footer">
           <div className="about">
             <Link to="/about"> {window.getString("aboutUs")}</Link>

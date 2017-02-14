@@ -1,18 +1,18 @@
 'use strict';
 import React from 'react';
-import Styles from './profile.css'
-import StoryTile from './storyListView.js'
+import Styles from './profile.css';
+import StoryTile from './storyListView.js';
 
-/*<div className="sideHeader">Personal Info:</div>
-<p>{author.profile.qual}</p>
-<p>{author.profile.prof}</p>
-<div className="sideHeader">Intro:</div>
-<p>{author.profile.intro} </p>*/
+const View = ({stories,author}) => {
 
-const View = ({ stories,author}) => {
+  if(!author && !stories){
+    history.back()
+  }
 
   var storyDiv = '';
   var authorDiv = '';
+  var className='';
+
   if(stories && stories.length > 0){
     storyDiv = <div className="block">
       <div className="sideHeader">My Stories:</div>
@@ -31,6 +31,7 @@ const View = ({ stories,author}) => {
   }
 
   if(author && author.penName){
+    className="profile"
     authorDiv = <div className="block">
       <div className="authorImage a2" src={imgSrc} style={imageStyle}></div>
       <ul className="personal">
@@ -42,7 +43,7 @@ const View = ({ stories,author}) => {
     </div>
   }
   return(
-    <div className="profile">
+    <div className={className}>
       {authorDiv}
 
       {storyDiv}

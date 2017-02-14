@@ -1,3 +1,16 @@
 .stories{
   width: 100%;
+  display:inline-block;
+}
+
+@media only screen and (min-width: 480px) {
+  .stories{
+    padding-left: 1rem
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .stories{
+    padding-left: 0rem
+  }
 }

@@ -25,7 +25,7 @@
     display: inline-block;
     margin-bottom: 1rem;
 	}
-  
+
   .login li span.icon {
 	  background: url('../img/g+.png') transparent 2px 40% no-repeat;
 	  display: inline-block;
@@ -58,7 +58,7 @@
 
 	}
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 769px) {
     .login div{
       font-size: 1.5rem;
       line-height: 7rem;

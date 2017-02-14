@@ -24,6 +24,9 @@ const View = ({ stories,author}) => {
   }
 
   if(author && author.penName){
+
+    document.title = author.penName + " -"+window.getString("companyPromo");
+
     authorDiv = <div className="authorProfile" >
       <div className="authorImage a2" src={imgSrc} style={imageStyle}></div>
       <ul>

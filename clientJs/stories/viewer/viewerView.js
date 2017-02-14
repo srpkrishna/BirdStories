@@ -14,6 +14,12 @@ class View extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
+
+    if(this.props.story)
+    {
+      document.title = this.props.story.name + " -"+window.getString("companyPromo");
+    }
+
   }
 
   render(){

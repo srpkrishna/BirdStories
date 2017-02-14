@@ -9,21 +9,22 @@ const error = {
 }
 
 api.all('*',function(req, res, next) {
-  var token = req.body.token;
-  var service = req.body.service;
-  conn.authorize(service,token,function(success){
-      if(success){
-        next();
-      }else{
-        res.status(401).send('unauthorized');
-        return;
-      }
-  })
+  next();
+  // var token = req.body.token;
+  // var service = req.body.service;
+  // conn.authorize(service,token,function(success){
+  //     if(success){
+  //       next();
+  //     }else{
+  //       res.status(401).send('unauthorized');
+  //       return;
+  //     }
+  // })
 });
 
 api.route('/me')
   .post(function(req, res){
-    var email = 'phani@email.com';
+    var email = req.body.id;//'phani@email.com';
     var resBody = {}
     getAuthorDetails(email,function(authData){
       console.log(authData);

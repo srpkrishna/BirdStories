@@ -1,6 +1,8 @@
 .searchBody{
   min-height: 32em;
-  background: #f0f0f0;;
+  background: #f0f0f0;
+  display: inline-block;
+  width: 100%;
 }
 
 .search{
@@ -29,9 +31,13 @@ input[type=text] {
     input[type=text] {
       width: 80%;
     }
+
+    .searchBody{
+        padding: 0 0.625rem;
+    }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
     input[type=text]{
       width: 66%;
     }

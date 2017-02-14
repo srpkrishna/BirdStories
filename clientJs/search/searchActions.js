@@ -3,8 +3,9 @@
 import  Constants from './searchConstants';
 import Server from '../util/server';
 
-function pendingSearch(){
+function pendingSearch(value){
   return {
+    searchText:value,
     type:Constants.SearchPendingEvent
   };
 }
@@ -39,7 +40,7 @@ function searchStoriesSuccess(results){
 
 function search(value){
   return function(dispatch,getState) {
-    dispatch(pendingSearch())
+    dispatch(pendingSearch(value))
 
     if(value.length<2){
       return

@@ -13,6 +13,7 @@ class About extends Component {
     setTimeout(function(){ $(".about .g").css({'opacity':'1.0'})}, 6000);
 
     window.scrollTo(0, 0)
+    document.title = window.getString("aboutUs") + " -"+window.getString("companyPromo");
   }
 
   render() {

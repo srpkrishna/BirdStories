@@ -11,13 +11,14 @@ class Profile extends Component {
 
     if(props.location.state && props.location.state.user)
     {
-      var obj = Actions.getMyDetails(props.location.state);
+      var obj = Actions.getMyDetails(props.location.state.user);
       Store.dispatch(obj)
     }
 
   }
   componentDidMount() {
     window.scrollTo(0, 0)
+    document.title = window.getString("companyMain")+window.getString("companySub");
   }
   render() {
     return (

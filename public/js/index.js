@@ -27232,7 +27232,7 @@
 	
 	
 	// module
-	exports.push([module.id, "* {\n  -webkit-box-sizing:border-box;\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  margin:0;\n}\nbody {\n  background: none repeat scroll 0 0 #0b192f;\n  color: #fff;\n  font-weight: 300;\n  font-size: 16px;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f !important;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.pageHeader{\n  text-align: center;\n  font-size: 1.7rem;\n  color: #637693;\n}\n.a1{\n  width:25%;\n}\n\n.a2{\n  width:35%;\n}\n\n.a3{\n  width:100%;\n}\n\n@media only screen and (min-width: 480px) {\n  .a1{\n    width:20%;\n  }\n\n  .a2{\n    width:28%;\n  }\n\n}\n\n@media only screen and (min-width: 768px) {\n  .a1{\n    width:15%;\n  }\n\n  .a2{\n    width:21%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .a1{\n    width:10%;\n  }\n\n  .a2{\n    width:14%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\na{\n  text-decoration:none\n}\n\nli{\n  list-style: none outside none;\n}\n\n.right{\n    float:right;\n}\n\n.left{\n    float:right;\n}\n", ""]);
+	exports.push([module.id, "* {\n  -webkit-box-sizing:border-box;\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  margin:0;\n}\nbody {\n  background: none repeat scroll 0 0 #0b192f;\n  color: #fff;\n  font-weight: 300;\n  font-size: 16px;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f !important;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.pageHeader{\n  text-align: center;\n  font-size: 1.7rem;\n  color: #637693;\n}\n.a1{\n  width:25%;\n}\n\n.a2{\n  width:35%;\n}\n\n.a3{\n  width:100%;\n}\n\n@media only screen and (min-width: 480px) {\n  .a1{\n    width:20%;\n  }\n\n  .a2{\n    width:28%;\n  }\n\n}\n\n@media only screen and (min-width: 769px) {\n  .a1{\n    width:15%;\n  }\n\n  .a2{\n    width:21%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .a1{\n    width:10%;\n  }\n\n  .a2{\n    width:14%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\na{\n  text-decoration:none\n}\n\nli{\n  list-style: none outside none;\n}\n\n.right{\n    float:right;\n}\n\n.left{\n    float:right;\n}\n\n.noResults{\n  text-align: center;\n  padding: 2rem;\n  color: #0b192f;\n  font-size: 1.1rem;\n}\n", ""]);
 	
 	// exports
 
@@ -28206,7 +28206,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n  .login{\n    float: left;\n    text-align: center;\n    padding-left: 0;\n  }\n\n  .login div{\n    padding-top: 4rem;\n    padding: 0.5rem;\n    margin: 2rem;\n    margin-bottom: 0.1rem;\n    font-size: 1.2rem;\n  }\n\n\n  .login li {\n    background: #dd4b39;\n    color: white;\n    width: 13rem;\n    border-radius: 5px;\n    padding: 0.5rem;\n    margin: 2rem;\n    padding-left: 0;\n    display: inline-block;\n    margin-bottom: 1rem;\n\t}\n  \n  .login li span.icon {\n\t  background: url(" + __webpack_require__(/*! ../img/g+.png */ 243) + ") transparent 2px 40% no-repeat;\n\t  display: inline-block;\n\t  vertical-align: middle;\n\t  width: 35px;\n\t  height: 35px;\n\t  border-right: #bb3f30 1px solid;\n    padding-right: 2.8rem;\n\t}\n\n\n\n  .login li span.buttonText {\n\t  display: inline-block;\n\t  vertical-align: middle;\n\t  padding-left: 35px;\n\t  padding-right: 35px;\n\t  font-size: 16px;\n\t}\n\n\t.login #fbBtn\n\t{\n\t\t background:#3B579D\n\t}\n\n\t.login #fbBtn span.icon\n\t{\n\t\t background: url(" + __webpack_require__(/*! ../img/fb.png */ 244) + ") transparent 0px 5% no-repeat;\n\t\t border-right: #344673 1px solid;\n\n\t}\n\n  @media only screen and (min-width: 768px) {\n    .login div{\n      font-size: 1.5rem;\n      line-height: 7rem;\n    }\n  }\n\n  @media only screen and (min-width: 1100px) {\n    .login div{\n      font-size: 1.5rem;\n      line-height: 2rem;\n    }\n  }\n", ""]);
+	exports.push([module.id, "\n  .login{\n    float: left;\n    text-align: center;\n    padding-left: 0;\n  }\n\n  .login div{\n    padding-top: 4rem;\n    padding: 0.5rem;\n    margin: 2rem;\n    margin-bottom: 0.1rem;\n    font-size: 1.2rem;\n  }\n\n\n  .login li {\n    background: #dd4b39;\n    color: white;\n    width: 13rem;\n    border-radius: 5px;\n    padding: 0.5rem;\n    margin: 2rem;\n    padding-left: 0;\n    display: inline-block;\n    margin-bottom: 1rem;\n\t}\n\n  .login li span.icon {\n\t  background: url(" + __webpack_require__(/*! ../img/g+.png */ 243) + ") transparent 2px 40% no-repeat;\n\t  display: inline-block;\n\t  vertical-align: middle;\n\t  width: 35px;\n\t  height: 35px;\n\t  border-right: #bb3f30 1px solid;\n    padding-right: 2.8rem;\n\t}\n\n\n\n  .login li span.buttonText {\n\t  display: inline-block;\n\t  vertical-align: middle;\n\t  padding-left: 35px;\n\t  padding-right: 35px;\n\t  font-size: 16px;\n\t}\n\n\t.login #fbBtn\n\t{\n\t\t background:#3B579D\n\t}\n\n\t.login #fbBtn span.icon\n\t{\n\t\t background: url(" + __webpack_require__(/*! ../img/fb.png */ 244) + ") transparent 0px 5% no-repeat;\n\t\t border-right: #344673 1px solid;\n\n\t}\n\n  @media only screen and (min-width: 769px) {\n    .login div{\n      font-size: 1.5rem;\n      line-height: 7rem;\n    }\n  }\n\n  @media only screen and (min-width: 1100px) {\n    .login div{\n      font-size: 1.5rem;\n      line-height: 2rem;\n    }\n  }\n", ""]);
 	
 	// exports
 
@@ -28270,7 +28270,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n  padding-left: 0;\n  padding-right: 0;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n\n.App-header .menuIcon li a:hover{\n    background: none;\n  }\n\n.App-header .menu li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header .menu li .active{\n  background: none repeat scroll 0 0 #0b192f !important;\n}\n\n.App-header .menu{\n  max-height: 0;\n  opacity: 0;\n  width:0;\n  visibility: hidden;\n}\n\n.App-header .menu.show{\n  max-height: 10rem;\n  opacity: 1;\n  width: 100%;\n  background: #0b192f;\n  visibility:initial;\n}\n\n.App-header li.menu.show {\n    float: right;\n    width: auto;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n}\n\n\n.App-header .social{\n  padding:1rem;\n}\n\n.App-header .social li{\n   padding-top: 0.1rem;\n}\n\n.App-header .social li a{\n  padding: 0.5rem;\n  border-radius: 50%;\n  background-color: #283d5f;\n  border: 1px solid white;\n}\n\n.App-header .social li a i{\n  font-size: 30px !important;\n}\n\n.App-header .social li a div{\n  width: 40px !important;\n  height:40px !important;\n}\n\n.App-header .social li a:hover{\n    border: 2px solid #B71757;\n  }\n.App-header .social li .active{\n    border: 2px solid #B71757 !important;\n}\n\n.App-footer{\n  background: none repeat scroll 0 0 #162b4d;\n  display: inline-block;\n  margin-bottom: 0;\n  margin-top: 0;\n  padding: 1.7rem;\n  position: relative;\n  width: 100%;\n  color: #637693;\n  font-size: 0.9rem;\n}\n\n.App-footer .rights{\n    float:left;\n    text-align: center;\n    width: 100%;\n\n}\n\n.App-footer .about{\n    float:right;\n    text-align: center;\n    padding: 0.5rem;\n    width: 100%;\n    padding-bottom: 1rem;\n}\n\n.App-footer .about a{\n  color: #637693;\n  font-size: 0.9rem;\n}\n\n.App-body{\n  min-height: 32em;\n}\n\n/*@media only screen and (max-width: 350px) {\n  .App-logo{\n     float: left;\n     padding-left: 0;\n     padding-right: 0;\n  }\n}*/\n\n@media only screen and (min-width: 480px) {\n\n  .App {\n    padding: 0 0.625rem;\n  }\n\n  .App-header {\n    margin-bottom: 1rem;\n  }\n\n  .App-footer{\n    margin-top: 1.25rem;\n  }\n}\n\n@media only screen and (min-width: 768px) {\n\n  .App {\n    text-align: left;\n  }\n\n  .App-logo{\n    padding-left: 0.57rem;\n    padding-right: 0.57rem;\n  }\n\n  .App-header .menu{\n    max-height: 10rem;\n    opacity: 1;\n    width: auto;\n    visibility:initial;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n  }\n\n  .App-footer .rights{\n      width:66.6%;\n      text-align:left;\n  }\n\n  .App-footer .about{\n      width:33.3%;\n      text-align:right;\n      padding-bottom: 0;\n  }\n\n  #header{\n    background: none repeat scroll 0 0 #162b4d;\n    position: absolute;\n    width: 100%;\n    height: 5.3em;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".App {\n  text-align: center;\n  margin: 0 auto;\n  padding: 0 auto;\n  max-width: 71.25rem;\n}\n\n/*@media screen and (min-width:1024px) {\n  .App{max-width:1024px;}\n}*/\n\n.App-logo{\n  font-size: 2.3rem;\n  color: #fff;\n  padding: 0.57em;\n  display: inline-block;\n  padding-left: 0;\n  padding-right: 0;\n}\n\n.App-logo span{\n    color: #d12767;\n}\n\n.App-header {\n  background: none repeat scroll 0 0 #162b4d;\n  position: relative;\n  width: 100%;\n  font-weight: 100;\n  letter-spacing: -1px;\n}\n\n.App-header ul{\n  float: right;\n  padding: 0;\n  padding-right: 1.0em;\n}\n\n.App-header li {\n    float: left;\n    list-style: none outside none;\n    cursor: pointer;\n    padding: 0;\n}\n\n.App-header li a{\n  font-size: 1.1rem;\n  padding: 1.9rem 1.2rem;\n  color: #fff;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n}\n\n.App-header .menuIcon li a:hover{\n    background: none;\n  }\n\n.App-header .menu li a:hover{\n    background: none repeat scroll 0 0 #283D5F;\n  }\n.App-header .menu li .active{\n  background: none repeat scroll 0 0 #0b192f !important;\n}\n\n.App-header .menu{\n  max-height: 0;\n  opacity: 0;\n  width:0;\n  visibility: hidden;\n}\n\n.App-header .menu.show{\n  max-height: 10rem;\n  opacity: 1;\n  width: 100%;\n  background: #0b192f;\n  visibility:initial;\n}\n\n.App-header li.menu.show {\n    float: right;\n    width: auto;\n}\n\n.App-header .menuIcon{\n  float: left;\n  padding: 0;\n}\n\n\n.App-header .social{\n  padding:1rem;\n}\n\n.App-header .social li{\n   padding-top: 0.1rem;\n}\n\n.App-header .social li a{\n  padding: 0.5rem;\n  border-radius: 50%;\n  background-color: #283d5f;\n  border: 1px solid white;\n}\n\n.App-header .social li a i{\n  font-size: 30px !important;\n}\n\n.App-header .social li a div{\n  width: 40px !important;\n  height:40px !important;\n}\n\n.App-header .social li a:hover{\n    border: 2px solid #B71757;\n  }\n.App-header .social li .active{\n    border: 2px solid #B71757 !important;\n}\n\n.App-footer{\n  background: none repeat scroll 0 0 #162b4d;\n  display: inline-block;\n  margin-bottom: 0;\n  margin-top: 0;\n  padding: 1.7rem;\n  position: relative;\n  width: 100%;\n  color: #637693;\n  font-size: 0.9rem;\n}\n\n.App-footer .rights{\n    float:left;\n    text-align: center;\n    width: 100%;\n\n}\n\n.App-footer .about{\n    float:right;\n    text-align: center;\n    padding: 0.5rem;\n    width: 100%;\n    padding-bottom: 1rem;\n}\n\n.App-footer .about a{\n  color: #637693;\n  font-size: 0.9rem;\n}\n\n.App-body{\n  min-height: 32em;\n}\n\n/*@media only screen and (max-width: 350px) {\n  .App-logo{\n     float: left;\n     padding-left: 0;\n     padding-right: 0;\n  }\n}*/\n\n@media only screen and (min-width: 480px) {\n\n  .App-header {\n    margin-bottom: 1rem;\n  }\n\n  .App-footer{\n    margin-top: 1.25rem;\n  }\n}\n\n@media only screen and (min-width: 769px) {\n\n  .App {\n    text-align: left;\n    padding: 0 0.625rem;\n  }\n\n  .App-logo{\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n\n  .App-header .menu{\n    max-height: 10rem;\n    opacity: 1;\n    width: auto;\n    visibility:initial;\n  }\n\n  .App-header .menuIcon{\n    height: 0;\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n  }\n\n  .App-footer .rights{\n      width:66.6%;\n      text-align:left;\n  }\n\n  .App-footer .about{\n      width:33.3%;\n      text-align:right;\n      padding-bottom: 0;\n  }\n\n  #header{\n    background: none repeat scroll 0 0 #162b4d;\n    position: absolute;\n    width: 100%;\n    height: 5.3em;\n  }\n\n}\n", ""]);
 	
 	// exports
 
@@ -28341,6 +28341,7 @@
 	      }, 6000);
 	
 	      window.scrollTo(0, 0);
+	      document.title = window.getString("aboutUs") + " -" + window.getString("companyPromo");
 	    }
 	  }, {
 	    key: 'render',
@@ -28543,6 +28544,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
+	      document.title = window.getString("contactUs") + " -" + window.getString("companyPromo");
 	    }
 	  }, {
 	    key: 'render',
@@ -28769,7 +28771,7 @@
 	    var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 	
 	    if (props.location.state && props.location.state.user) {
-	      var obj = _profileActions2.default.getMyDetails(props.location.state);
+	      var obj = _profileActions2.default.getMyDetails(props.location.state.user);
 	      _profileStore2.default.dispatch(obj);
 	    }
 	
@@ -28780,6 +28782,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
+	      document.title = window.getString("companyMain") + window.getString("companySub");
 	    }
 	  }, {
 	    key: 'render',
@@ -32507,19 +32510,19 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/*<div className="sideHeader">Personal Info:</div>
-	<p>{author.profile.qual}</p>
-	<p>{author.profile.prof}</p>
-	<div className="sideHeader">Intro:</div>
-	<p>{author.profile.intro} </p>*/
-	
 	var View = function View(_ref) {
 	  var stories = _ref.stories,
 	      author = _ref.author;
 	
 	
+	  if (!author && !stories) {
+	    history.back();
+	  }
+	
 	  var storyDiv = '';
 	  var authorDiv = '';
+	  var className = '';
+	
 	  if (stories && stories.length > 0) {
 	    storyDiv = _react2.default.createElement(
 	      'div',
@@ -32542,6 +32545,7 @@
 	  };
 	
 	  if (author && author.penName) {
+	    className = "profile";
 	    authorDiv = _react2.default.createElement(
 	      'div',
 	      { className: 'block' },
@@ -32575,7 +32579,7 @@
 	  }
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'profile' },
+	    { className: className },
 	    authorDiv,
 	    storyDiv
 	  );
@@ -32624,7 +32628,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".profile{\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  padding: 1rem;\n  /*color: rgba(255,255,255,0.6);*/\n  color: #162b4d;\n  background: #f0f0f0;\n}\n\n.profile .block{\n  width: 100%;\n  display: inline-block;\n}\n.profile .authorImage{\n  border: 0.1rem solid white;\n  float:left;\n  height: 10rem;\n}\n\n.profile ul.personal{\n  float: left;\n  padding-top: 2.7%;\n  padding-left: 5%;\n}\n\n.profile .personal li{\n  font-size: 1.2rem;\n  padding: 0.5rem 0;\n  letter-spacing: 0px;\n  text-align: left;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.profile p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n  float: left;\n}\n\n.profile .sideHeader{\n  width: 100%;\n  float: left;\n  text-align: left;\n  padding-top: 2rem;\n}\n\n@media only screen and (max-width: 400px) {\n  .profile .personal li{\n    padding:0.2rem 0;\n  }\n\n  .profile ul.personal{\n    padding-left: 5%;\n  }\n\n  .profile .authorImage{\n    height: 7.5rem;\n  }\n\n}\n\n@media only screen and (min-width: 768px) {\n\n  /*.profile{\n    padding: 1rem;\n  }*/\n}\n", ""]);
+	exports.push([module.id, ".profile{\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  padding: 1rem;\n  /*color: rgba(255,255,255,0.6);*/\n  color: #162b4d;\n  background: #f0f0f0;\n}\n\n.profile .block{\n  width: 100%;\n  display: inline-block;\n}\n.profile .authorImage{\n  border: 0.1rem solid white;\n  float:left;\n  height: 10rem;\n}\n\n.profile ul.personal{\n  float: left;\n  padding-top: 2.7%;\n  padding-left: 5%;\n}\n\n.profile .personal li{\n  font-size: 1.2rem;\n  padding: 0.5rem 0;\n  letter-spacing: 0px;\n  text-align: left;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.profile p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n  float: left;\n}\n\n.profile .sideHeader{\n  width: 100%;\n  float: left;\n  text-align: left;\n  padding-top: 2rem;\n}\n\n@media only screen and (max-width: 400px) {\n  .profile .personal li{\n    padding:0.2rem 0;\n  }\n\n  .profile ul.personal{\n    padding-left: 5%;\n  }\n\n  .profile .authorImage{\n    height: 7.5rem;\n  }\n\n}\n\n@media only screen and (min-width: 769px) {\n\n  /*.profile{\n    padding: 1rem;\n  }*/\n}\n", ""]);
 	
 	// exports
 
@@ -33149,6 +33153,9 @@
 	  };
 	
 	  if (author && author.penName) {
+	
+	    document.title = author.penName + " -" + window.getString("companyPromo");
+	
 	    authorDiv = _react2.default.createElement(
 	      'div',
 	      { className: 'authorProfile' },
@@ -33306,7 +33313,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".authorProfile{\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  padding: 1rem;\n  /*color: rgba(255,255,255,0.7);*/\n  color: #162b4d;\n  background: #f0f0f0;\n}\n\n.authorProfile .authorImage{\n  border: 0.1rem solid white;\n  float:left;\n  height: 10rem;\n}\n\n.authorProfile ul{\n  float: left;\n  padding-top: 2.7%;\n  padding-left: 5%;\n}\n\n.authorProfile li{\n  font-size: 1.2rem;\n  padding: 0.5rem 0;\n  letter-spacing: 0px;\n  text-align: left;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.authorProfile p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n  float: left;\n}\n\n/*.authorProfile .item{\n  border: 0.05rem solid #162b4d;\n}*/\n\n\n/*@media only screen and (min-width: 768px) {\n\n  .authorProfile{\n    padding: 1rem;\n  }\n}*/\n@media only screen and (max-width: 400px) {\n  .authorProfile .authorImage{\n    height: 7.5rem;\n  }\n}\n", ""]);
+	exports.push([module.id, ".authorProfile{\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  padding: 1rem;\n  /*color: rgba(255,255,255,0.7);*/\n  color: #162b4d;\n  background: #f0f0f0;\n}\n\n.authorProfile .authorImage{\n  border: 0.1rem solid white;\n  float:left;\n  height: 10rem;\n}\n\n.authorProfile ul{\n  float: left;\n  padding-top: 2.7%;\n  padding-left: 5%;\n}\n\n.authorProfile li{\n  font-size: 1.2rem;\n  padding: 0.5rem 0;\n  letter-spacing: 0px;\n  text-align: left;\n  overflow: hidden;\n  white-space: nowrap;\n}\n\n.authorProfile p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n  float: left;\n}\n\n/*.authorProfile .item{\n  border: 0.05rem solid #162b4d;\n}*/\n\n\n/*@media only screen and (min-width: 769px) {\n\n  .authorProfile{\n    padding: 1rem;\n  }\n}*/\n@media only screen and (max-width: 400px) {\n  .authorProfile .authorImage{\n    height: 7.5rem;\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -33501,6 +33508,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
+	      document.title = window.getString("companyMain") + window.getString("companySub");
 	    }
 	  }, {
 	    key: 'render',
@@ -33656,7 +33664,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".stories{\n  width: 100%;\n}\n", ""]);
+	exports.push([module.id, ".stories{\n  width: 100%;\n  display:inline-block;\n}\n\n@media only screen and (min-width: 480px) {\n  .stories{\n    padding-left: 1rem\n  }\n}\n\n@media only screen and (min-width: 769px) {\n  .stories{\n    padding-left: 0rem\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -33939,6 +33947,10 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
+	
+	      if (this.props.story) {
+	        document.title = this.props.story.name + " -" + window.getString("companyPromo");
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -34009,7 +34021,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n}\n\n.contentBody p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n}\n", ""]);
+	exports.push([module.id, "\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n}\n\n.contentBody p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 1rem 0rem;\n}\n", ""]);
 	
 	// exports
 
@@ -34213,7 +34225,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".contentHeader{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background-image: url(" + __webpack_require__(/*! ../img/bg.png */ 346) + ");\n}\n\n.contentHeader img{\n  border-radius: 50%;\n  border: 0.13rem solid white;\n}\n.contentHeader .title{\n  font-size: 1.8rem;\n  color: rgba(255, 255, 255, 0.8);\n}\n\n\n.contentHeader ul{\n    width: 100%;\n    display: none;\n    padding:0;\n}\n\n.contentHeader li{\n  font-size: 1.1rem;\n  padding: 1.0rem;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n  float:right;\n  padding-right: 0;\n  padding-bottom: 0;\n}\n\n.contentHeader li.info{\n  color: #162b4d;\n  float: left;\n  padding-right: 1.0rem;\n  padding-left: 0;\n  padding-top: 1.8rem;\n}\n\n.contentHeader .share{\n  display: block;\n  cursor: pointer;\n}\n.contentHeader .authTitle{\n  text-align: right;\n  color: #162b4d;\n}\n@media only screen and (min-width: 768px) {\n  .contentHeader ul{\n      display: inline-block;\n  }\n}\n", ""]);
+	exports.push([module.id, ".contentHeader{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background-image: url(" + __webpack_require__(/*! ../img/bg.png */ 346) + ");\n}\n\n.contentHeader img{\n  border-radius: 50%;\n  border: 0.13rem solid white;\n}\n.contentHeader .title{\n  font-size: 1.8rem;\n  color: rgba(255, 255, 255, 0.8);\n}\n\n\n.contentHeader ul{\n    width: 100%;\n    display: none;\n    padding:0;\n}\n\n.contentHeader li{\n  font-size: 1.1rem;\n  padding: 1.0rem;\n  letter-spacing: 0px;\n  display: inline-flex;\n  vertical-align: middle;\n  float:right;\n  padding-right: 0;\n  padding-bottom: 0;\n}\n\n.contentHeader li.info{\n  color: #162b4d;\n  float: left;\n  padding-right: 1.0rem;\n  padding-left: 0;\n  padding-top: 1.8rem;\n}\n\n.contentHeader .share{\n  display: block;\n  cursor: pointer;\n}\n.contentHeader .authTitle{\n  text-align: right;\n  color: #162b4d;\n}\n@media only screen and (min-width: 769px) {\n  .contentHeader ul{\n      display: inline-block;\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -40410,40 +40422,15 @@
 	var Search = function (_Component) {
 	  _inherits(Search, _Component);
 	
-	  // getStateObject(data){
-	  //     var value = ''
-	  //     if(data.location.query){
-	  //       value = data.location.query
-	  //     }
-	  //     const obj = Actions.search(value);
-	  //     Store.dispatch(obj)
-	  //
-	  //     this.state = {value: value};
-	  // }
-	
 	  function Search(props) {
 	    _classCallCheck(this, Search);
 	
-	    var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
-	
-	    _this.state = { value: '' };
-	    _this.handleChange = _this.handleChange.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+	    // const obj = Actions.search('');
+	    // Store.dispatch(obj)
 	  }
 	
-	  // componentWillReceiveProps(nextProps){
-	  //   this.getStateObject(nextProps)
-	  // }
-	
 	  _createClass(Search, [{
-	    key: 'handleChange',
-	    value: function handleChange(event) {
-	      this.setState({ value: event.target.value });
-	      var value = event.target.value.toLowerCase();
-	      var obj = _searchActions2.default.search(event.target.value);
-	      _searchStore2.default.dispatch(obj);
-	    }
-	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
@@ -40452,18 +40439,9 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'searchBody' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'search' },
-	          _react2.default.createElement('input', { type: 'text', name: 'search', placeholder: 'Search..', className: 'm-9', value: this.state.value, onChange: this.handleChange })
-	        ),
-	        _react2.default.createElement(
-	          _reactRedux.Provider,
-	          { store: _searchStore2.default },
-	          _react2.default.createElement(_searchController2.default, null)
-	        )
+	        _reactRedux.Provider,
+	        { store: _searchStore2.default },
+	        _react2.default.createElement(_searchController2.default, null)
 	      );
 	    }
 	  }]);
@@ -40492,16 +40470,31 @@
 	
 	var _searchView2 = _interopRequireDefault(_searchView);
 	
+	var _searchActions = __webpack_require__(/*! ./searchActions */ 472);
+	
+	var _searchActions2 = _interopRequireDefault(_searchActions);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
+	    searchText: state.searchText,
 	    stories: state.stories,
 	    authors: state.authors
 	  };
 	};
 	
-	var Container = (0, _reactRedux.connect)(mapStateToProps)(_searchView2.default);
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    handleChange: function handleChange(event) {
+	      var value = event.target.value.toLowerCase();
+	      var obj = _searchActions2.default.search(value);
+	      dispatch(obj);
+	    }
+	  };
+	};
+	
+	var Container = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_searchView2.default);
 	
 	exports.default = Container;
 
@@ -40537,25 +40530,59 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var View = function View(_ref) {
-	  var stories = _ref.stories,
-	      authors = _ref.authors;
+	  var searchText = _ref.searchText,
+	      stories = _ref.stories,
+	      authors = _ref.authors,
+	      handleChange = _ref.handleChange;
+	
+	
+	  var noResultTag = "";
+	  if (searchText.length >= 2 && stories.length == 0 && authors.length == 0) {
+	    noResultTag = _react2.default.createElement(
+	      'div',
+	      null,
+	      window.getString("noResults")
+	    );
+	  }
+	
+	  var storiesDiv = "";
+	  if (searchText.length >= 2) {
+	    storiesDiv = stories.map(function (story, i) {
+	      return _react2.default.createElement(_storyItemView2.default, { story: story, key: i, index: i });
+	    });
+	  }
+	
+	  var authorsDiv = "";
+	  if (searchText.length >= 2) {
+	    authorsDiv = authors.map(function (author, i) {
+	      return _react2.default.createElement(_authorItemView2.default, { author: author, key: i, index: i });
+	    });
+	  }
 	
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { className: 'searchBody' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'search' },
+	      _react2.default.createElement('input', { type: 'text', name: 'search', placeholder: 'Search..', className: 'm-9', value: searchText, onChange: function onChange(evt) {
+	          handleChange(evt);
+	        } })
+	    ),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'storiesBlock' },
-	      stories.map(function (story, i) {
-	        return _react2.default.createElement(_storyItemView2.default, { story: story, key: i, index: i });
-	      })
+	      storiesDiv
 	    ),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'authorsBlock' },
-	      authors.map(function (author, i) {
-	        return _react2.default.createElement(_authorItemView2.default, { author: author, key: i, index: i });
-	      })
+	      authorsDiv
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'noResults' },
+	      noResultTag
 	    )
 	  );
 	};
@@ -40675,7 +40702,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".searchBody{\n  min-height: 32em;\n  background: #f0f0f0;;\n}\n\n.search{\n  text-align: center;\n  width: 100%;\n  padding: 0.6rem;\n\n}\n\ninput[type=text] {\n    box-sizing: border-box;\n    border: 1px solid #ccc;\n    border-radius: 2px;\n    font-size: 1.2rem;\n    background-color: white;\n    padding:0.75rem;\n    width: 100%;\n    height: 44px;\n    vertical-align: top;\n    border-radius: 2px;\n    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);\n    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);\n}\n\n@media only screen and (min-width: 480px) {\n    input[type=text] {\n      width: 80%;\n    }\n}\n\n@media only screen and (min-width: 768px) {\n    input[type=text]{\n      width: 66%;\n    }\n\n    .search{\n      padding: 1rem\n    }\n}\n", ""]);
+	exports.push([module.id, ".searchBody{\n  min-height: 32em;\n  background: #f0f0f0;\n  display: inline-block;\n  width: 100%;\n}\n\n.search{\n  text-align: center;\n  width: 100%;\n  padding: 0.6rem;\n\n}\n\ninput[type=text] {\n    box-sizing: border-box;\n    border: 1px solid #ccc;\n    border-radius: 2px;\n    font-size: 1.2rem;\n    background-color: white;\n    padding:0.75rem;\n    width: 100%;\n    height: 44px;\n    vertical-align: top;\n    border-radius: 2px;\n    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);\n    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);\n}\n\n@media only screen and (min-width: 480px) {\n    input[type=text] {\n      width: 80%;\n    }\n\n    .searchBody{\n        padding: 0 0.625rem;\n    }\n}\n\n@media only screen and (min-width: 769px) {\n    input[type=text]{\n      width: 66%;\n    }\n\n    .search{\n      padding: 1rem\n    }\n}\n", ""]);
 	
 	// exports
 
@@ -40703,8 +40730,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function pendingSearch() {
+	function pendingSearch(value) {
 	  return {
+	    searchText: value,
 	    type: _searchConstants2.default.SearchPendingEvent
 	  };
 	}
@@ -40739,7 +40767,7 @@
 	
 	function search(value) {
 	  return function (dispatch, getState) {
-	    dispatch(pendingSearch());
+	    dispatch(pendingSearch(value));
 	
 	    if (value.length < 2) {
 	      return;
@@ -40861,6 +40889,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var defaultState = {
+	  searchText: "",
 	  stories: [],
 	  authors: []
 	};
@@ -40871,7 +40900,9 @@
 	
 	  switch (action.type) {
 	    case _searchConstants2.default.SearchPendingEvent:
-	      return defaultState;
+	      var newState = Object.assign({}, state);
+	      newState.searchText = action.searchText;
+	      return newState;
 	    case _searchConstants2.default.SearchStoriesChangeEvent:
 	      var newState = Object.assign({}, state);
 	      newState.stories = action.results;

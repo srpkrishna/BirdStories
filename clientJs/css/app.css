@@ -166,10 +166,6 @@
 
 @media only screen and (min-width: 480px) {
 
-  .App {
-    padding: 0 0.625rem;
-  }
-
   .App-header {
     margin-bottom: 1rem;
   }
@@ -179,15 +175,16 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
 
   .App {
     text-align: left;
+    padding: 0 0.625rem;
   }
 
   .App-logo{
-    padding-left: 0.57rem;
-    padding-right: 0.57rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .App-header .menu{

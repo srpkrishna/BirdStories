@@ -5,8 +5,9 @@ class Contact extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
+    document.title = window.getString("contactUs") + " -"+window.getString("companyPromo");
   }
-  
+
   render() {
     return (
       <div className="contact">

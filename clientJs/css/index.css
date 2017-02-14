@@ -60,7 +60,7 @@ body {
 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
   .a1{
     width:15%;
   }
@@ -102,4 +102,11 @@ li{
 
 .left{
     float:right;
+}
+
+.noResults{
+  text-align: center;
+  padding: 2rem;
+  color: #0b192f;
+  font-size: 1.1rem;
 }

@@ -6,6 +6,7 @@ import createLogger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 
 const defaultState = {
+  searchText:"",
   stories:[],
   authors:[]
 };
@@ -13,7 +14,9 @@ const defaultState = {
 const reducer = (state=defaultState, action) => {
     switch (action.type) {
       case Constants.SearchPendingEvent:
-        return defaultState;
+        var newState = Object.assign({}, state);
+        newState.searchText =  action.searchText;
+        return newState;
       case Constants.SearchStoriesChangeEvent:
         var newState = Object.assign({}, state);
         newState.stories =  action.results;

@@ -8,22 +8,36 @@
 
 .contentFooter ul{
     width: 100%;
-    padding:0;
+    padding:1.0rem 0  ;
     display: block;
     text-align: center;
     float:left;
 }
 
 .contentFooter li{
-  padding: 1.0rem;
+  padding: 0 1.0rem;
   display: inline-block;
   cursor: pointer;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
+}
+
+.contentFooter li:active{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.contentFooter li:active::after{
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
 .contentFooter .authTitle{
   text-align: right;
   font-size: 1.3rem;
   cursor: pointer;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .contentFooter .authTitle a{

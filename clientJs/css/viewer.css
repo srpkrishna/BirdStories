@@ -6,6 +6,7 @@
   padding: 1.2rem;
   background: none repeat scroll 0 0 #fff;
   color: #162b4d;
+  font-family: 'Noto Sans', sans-serif;
 
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -21,4 +22,8 @@
   word-spacing: 0.3rem;
   line-height: 1.8;
   padding: 1rem 0rem;
+}
+
+.contentBody img{
+  max-width: 100%;
 }

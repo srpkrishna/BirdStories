@@ -44,7 +44,20 @@
 .contentHeader .share{
   display: block;
   cursor: pointer;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
+
+.contentHeader .share li:active{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.contentHeader .share li:active::after{
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
 .contentHeader .authTitle{
   text-align: right;
   color: #162b4d;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import like from '../img/like.png';
+
 import {
   ShareButtons,
   ShareCounts,
@@ -41,18 +43,17 @@ class Share extends Component {
       size = this.props.size
 
     }
-
-    var likeSize = size-8;
+    var imgSrc = "/img/like.png"
     var likeStyle = {
-      fontSize:likeSize+'px',
-      padding:'3px',
-      borderRadius:'50%',
-      backgroundColor:'#162b4d'
+      width:size+'px',
+      height:size+'px',
+      background: 'url(' + like + ') no-repeat center',
+      backgroundSize:'cover'
     }
 
     return (
       <ul className="share">
-        <li onClick={this.likeClick} ><i className="material-icons" style={likeStyle}>plus_one</i></li>
+
         <li onClick={this.shareClick} >
           <FacebookShareButton
             url={shareUrl}
@@ -84,7 +85,7 @@ class Share extends Component {
               round />
           </GooglePlusShareButton>
         </li>
-
+        <li onClick={this.likeClick} ><div style={likeStyle} ></div></li>
       </ul>
     );
   }

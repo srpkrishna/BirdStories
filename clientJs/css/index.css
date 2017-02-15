@@ -110,3 +110,14 @@ li{
   color: #0b192f;
   font-size: 1.1rem;
 }
+
+a{
+    display: block;
+    transition: -webkit-transform 0.25s ease;
+    transition: transform 0.25s ease;
+}
+
+a:hover{
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
+}

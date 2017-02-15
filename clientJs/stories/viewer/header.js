@@ -18,7 +18,7 @@ const View = ({story,authorLink,updateSocial})=>{
       <div className="title">{story.name}</div>
       <ul className="actions">
         <li className="info">{story.social.views}Views</li>
-        <li className="info">{story.social.favs}Likes</li>
+        <li className="info">{story.social.likes}Likes</li>
         <Social shareUrl={shareUrl} title={title} updateSocial={updateSocial}/>
       </ul>
 

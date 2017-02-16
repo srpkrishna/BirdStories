@@ -15,11 +15,12 @@ class Stories extends Component {
       shdShowViewer:false
     }
 
-    var authorId,id,story,author;
+    var authorId,id,story,author,name;
 
-    if(data.location.query.a && data.location.query.id){
+    if(data.location.query.a && data.location.query.t && data.location.query.n){
         authorId = data.location.query.a;
-        id = data.location.query.id;
+        id = data.location.query.t;
+        name = data.location.query.n
     }
 
     if(data.location.state){
@@ -28,9 +29,9 @@ class Stories extends Component {
     }
 
     //can't load controller without these values
-    if(authorId && id){
+    if(authorId && id && name){
 
-      var obj = Actions.getStoryContent(authorId,id);
+      var obj = Actions.getStoryContent(authorId,name);
       Store.dispatch(obj)
 
       if(story){

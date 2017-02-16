@@ -60,7 +60,8 @@ function updateSocial(element){
     }
     Server.connect('POST','stories',body,function(data){
         //console.log(data);
-        dispatch(updateSuccess(data))
+        if(!data.code)
+          dispatch(updateSuccess(data))
     });
   }
 }
@@ -72,9 +73,9 @@ function contentSuccess(data){
   };
 }
 
-function getStoryContent(authorId,id){
+function getStoryContent(authorId,name){
   return function(dispatch) {
-    Server.fetch('stories/content/'+authorId+'/'+id,function(data){
+    Server.fetch('stories/content/'+authorId+'/'+name,function(data){
         dispatch(contentSuccess(data))
     });
   }

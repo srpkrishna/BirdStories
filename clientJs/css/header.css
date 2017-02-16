@@ -18,7 +18,6 @@
 
 .contentHeader ul{
     width: 100%;
-    display: none;
     padding:0;
 }
 
@@ -42,7 +41,7 @@
 }
 
 .contentHeader .share{
-  display: block;
+  display: none;
   cursor: pointer;
   transition: -webkit-transform 0.25s ease;
   transition: transform 0.25s ease;
@@ -63,7 +62,7 @@
   color: #162b4d;
 }
 @media only screen and (min-width: 769px) {
-  .contentHeader ul{
-      display: inline-block;
+  .contentHeader .share{
+      display:block;
   }
 }

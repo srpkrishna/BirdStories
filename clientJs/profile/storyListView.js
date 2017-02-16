@@ -25,7 +25,7 @@ const View = ({ story,index,author }) => {
         <Link to={linkObj} className={className} >
           <div className="image" src={imgSrc} style={imageStyle}></div>
           <div className="info">
-            <div className="name">{story.name}</div>
+            <div className="name">{story.displayName}</div>
             <ul className="shortText">
               <li>{story.social.reads} Reads</li>
               <li>{story.social.shares} Shares</li>

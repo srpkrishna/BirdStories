@@ -9,6 +9,11 @@ const error = {
   msg:'Internal Error'
 }
 
+const alreadyUpdated = {
+  code:'BS102',
+  msg:'alreadyUpdated'
+}
+
 /* GET home page. */
 api.route('/search')
   .get(function(req, res){
@@ -18,11 +23,11 @@ api.route('/search')
       })
   })
 
-api.route('/content/:authorId/:id')
+api.route('/content/:authorId/:name')
   .get(function(req, res){
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
-    var keyName = 'phani/sample/story.json';
+    var keyName = req.params.authorId+'/'+req.params.name+'/story.json';
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
@@ -63,6 +68,7 @@ api.route('/:authorId')
 api.route('/')
   .get(function(req, res){
       getStories(function(stories){
+
         res.send(stories);
       })
   })
@@ -72,6 +78,15 @@ api.route('/')
       switch(attr){
         case 'social':
           var key = req.body.updateKey;
+          if(key === "reads" || key === "favs"){
+            var storyId = id["author"]+id["timestamp"]+key
+            if(req.session[storyId]){
+              res.send(alreadyUpdated);
+              return;
+            }else{
+              req.session[storyId] = true;
+            }
+          }
           updateSocialElements(id,key,function(result){
             res.send(result);
           })
@@ -154,16 +169,17 @@ function searchByNames(sub,callback){
 function updateSocialElements(id,element,callback)
 {
     const docClient = conn.getDocClient();
-    let responseData
-    function scoreSuccess(data){
-      callback(responseData);
-    }
+    // let responseData
+    // function scoreSuccess(data){
+    //   callback(responseData);
+    // }
 
     function socialSuccess(data){
         const score = getScore(data.Attributes.social);
-        responseData = data.Attributes;
-        responseData.score = score;
-        updateScore(id,score,docClient,scoreSuccess);
+        var responseData = data.Attributes;
+        callback(responseData);
+        // responseData.score = score;
+        // updateScore(id,score,docClient,scoreSuccess);
     }
 
     updateSocial(id,element,docClient,socialSuccess)

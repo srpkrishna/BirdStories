@@ -9,7 +9,8 @@ const View = ({ story,index,author }) => {
   const imgSrc = "/img/"+(index%3)+".jpg"
   const className = "item clr"+(index%4)
   const link = "/stories/story"
-  const query = {a:story.author,id:story.timestamp}
+  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  const query = {t:story.timestamp,a:story.author,n:name}
   const linkObj = {
       pathname:link,
       query:query,
@@ -24,9 +25,9 @@ const View = ({ story,index,author }) => {
         <Link to={linkObj} className={className} >
           <div className="image" style={imageStyle}></div>
           <div className="info">
-            <div className="name">{story.name}</div>
-            <div className="shortText">Edho okasari ala chima basics vasthe vaser chitaki vela chiru kursi andhakaram ayyindhi</div>
-            <div className="bottomRight"> - {story.author}</div>
+            <div className="name">{story.displayName}</div>
+            <div className="shortText">{story.shortText}</div>
+            <div className="bottomRight"> - {story.author.capitalizeFirstLetter()}</div>
           </div>
         </Link>
   )

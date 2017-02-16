@@ -9,6 +9,11 @@
         <link rel="localization" href="/locales/browser.json">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
         <title>SuKatha</title>
+        <script>
+        String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        </script>
     </head>
     <body>
       <div id="root">

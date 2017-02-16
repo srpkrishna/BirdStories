@@ -11,14 +11,14 @@ const View = ({story,authorLink,updateSocial})=>{
 
   return(
     <div className="contentHeader" >
-      <div className="authTitle">- {story.author}</div>
+      <div className="authTitle">- {story.author.capitalizeFirstLetter()}</div>
       <Link to={authorLink}>
         <img className="a1" src="https://s3.ap-south-1.amazonaws.com/bsstory/phani/profile.jpg"></img>
       </Link>
-      <div className="title">{story.name}</div>
+      <div className="title">{story.displayName}</div>
       <ul className="actions">
-        <li className="info">{story.social.views}Views</li>
-        <li className="info">{story.social.likes}Likes</li>
+        <li className="info">{story.social.views} Views</li>
+        <li className="info">{story.social.likes} Likes</li>
         <Social shareUrl={shareUrl} title={title} updateSocial={updateSocial}/>
       </ul>
 

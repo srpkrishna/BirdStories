@@ -8,6 +8,7 @@ var api = require('./server/routes/api');
 var storyApi = require('./server/routes/storyApi');
 var authorApi = require('./server/routes/authorApi');
 var profileApi = require('./server/routes/profileApi');
+var session = require('cookie-session')
 
 var app = express();
 
@@ -17,6 +18,24 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.set('trust proxy', 1)
+var expiryDate = new Date(Date.now() + 48 * 60 * 60 * 1000) // 1 hour
+var domain = null
+if("production" === process.env.NODE_ENV){
+  domain = "sukatha.com"
+}
+
+app.use(session({
+  name: 'session',
+  keys: ['checkkey'],
+  cookie: {
+    httpOnly: true,
+    path: '/',
+    signed:true,
+    expires: expiryDate,
+    domain:domain
+  }
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/stories', storyApi);

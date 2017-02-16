@@ -11,7 +11,7 @@ const View = ({story,authorLink, updateSocial})=>{
   return(
     <div className="contentFooter" >
       <div className="authTitle">
-        <Link to={authorLink}>More from {story.author}</Link>
+        <Link to={authorLink}>More from {story.author.capitalizeFirstLetter()}</Link>
       </div>
       <Social shareUrl={shareUrl} title={title} updateSocial={updateSocial}/>
     </div>

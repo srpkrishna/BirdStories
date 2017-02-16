@@ -37,7 +37,7 @@ const View = ({stories,author}) => {
       <ul className="personal">
         <li>{author.profile.fullName}</li>
         <li>{author.email}</li>
-        <li>{author.penName}</li>
+        <li>{author.penName.capitalizeFirstLetter()}</li>
       </ul>
       <p>{author.profile.intro} </p>
     </div>

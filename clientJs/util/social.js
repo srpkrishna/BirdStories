@@ -29,7 +29,7 @@ class Share extends Component {
   }
 
   likeClick(){
-    this.props.updateSocial('favs');
+    this.props.updateSocial('likes');
   }
   shareClick(){
     this.props.updateSocial('shares');

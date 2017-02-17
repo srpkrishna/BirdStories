@@ -6,7 +6,8 @@
   padding: 1.2rem;
   background: none repeat scroll 0 0 #fff;
   color: #162b4d;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: notosans;
+  float: left;
 
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -21,9 +22,23 @@
   text-align: left;
   word-spacing: 0.3rem;
   line-height: 1.8;
-  padding: 1rem 0rem;
+  padding: 0.75rem 0rem;
 }
 
 .contentBody img{
   max-width: 100%;
+  border-radius: 3px;
+}
+
+@media only screen and (min-width: 480px) {
+  .contentBody img{
+    max-width: 70%;
+  }
+
+}
+
+@media only screen and (min-width: 769px) {
+  .contentBody img{
+    max-width: 50%;
+  }
 }

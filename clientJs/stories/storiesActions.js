@@ -10,10 +10,11 @@ function fetchSuccess(stories){
   };
 }
 
-function updateSuccess(attributes){
+function updateSuccess(attributes,element){
   return {
     type:Constants.StoryChangeEvent,
-    attributes:attributes
+    attributes:attributes,
+    element:element
   };
 }
 
@@ -61,7 +62,7 @@ function updateSocial(element){
     Server.connect('POST','stories',body,function(data){
         //console.log(data);
         if(!data.code)
-          dispatch(updateSuccess(data))
+          dispatch(updateSuccess(data,element))
     });
   }
 }

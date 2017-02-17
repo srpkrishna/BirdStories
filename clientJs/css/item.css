@@ -8,11 +8,21 @@
 
 .item .image{
   width:30%;
-  position: static;
+  position: relative;
   float:right;
   height:10rem;
 }
 
+.item .time{
+  padding:0.1rem 0.3rem;
+  display: inline-block;
+  color: #162b4d;
+  background-color: #f0f0f0;
+  margin-top:8.6rem;
+  border-radius: 3px 0 0 3px;
+  opacity: 0.9;
+  float: right;
+}
 .item .info{
   width:70%;
   padding: 1rem;
@@ -23,21 +33,22 @@
 .item .name{
   font-size: 1.3rem;
   font-weight: 100;
-  line-height: 1em;
-  margin: 0 0 1.2rem;
-  /*overflow: hidden;*/
+  margin: 0 0 0.5rem;
+  overflow: hidden;
   white-space: nowrap;
   text-align: left;
+  font-family: notosans;
 }
 
 .item .shortText{
-  font-size: 0.8rem;
-  opacity: 0.5;
+  font-size: 0.9rem;
+  opacity: 0.4;
   line-height: 1.4em;
   height: 2.8em;
   letter-spacing: 0.05rem;
   overflow: hidden;
   text-align: left;
+  font-family: notosans;
 }
 .item .bottomRight{
   font-weight: 100;
@@ -54,6 +65,7 @@
     width: 29.8%;
     margin-right: 1rem;
     margin-bottom: 1rem;
+    border-radius: 2px;
   }
 
   .item .image{
@@ -61,6 +73,9 @@
     height:12rem;
   }
 
+  .item .time{
+    margin-top: 10.6rem;
+  }
   .item .info{
     width: 100%;
   }

@@ -21,20 +21,18 @@ const reducer = (state=defaultState, action) => {
       case Constants.StoryChangeEvent:
         var newState = Object.assign({}, state);
         var viewerStory = Object.assign({}, state.selectedStory);
-        var selectedStory = Object.assign({}, viewerStory, {
-          social: action.attributes.social,
-          score: action.attributes.score
-        })
-
-        newState.selectedStory = selectedStory
+        var selectedStory = Object.assign({}, viewerStory);
+        var element = action.element;
+        selectedStory.social[element] = action.attributes.social[element]
+        newState.selectedStory = selectedStory;
+        
         if(state.stories && state.stories.length > 0){
           let array = state.stories.map((story) => {
               if (story.author === viewerStory.author &&
                     story.timestamp === viewerStory.timestamp) {
-                return Object.assign({}, story, {
-                  social: action.attributes.social,
-                  score: action.attributes.score
-                })
+                var newStory =  Object.assign({}, story)
+                newStory.social[element] = action.attributes.social[element]
+                return newStory
               }
               return story
             })

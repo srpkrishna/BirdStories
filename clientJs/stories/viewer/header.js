@@ -7,13 +7,17 @@ import { Link } from 'react-router';
 const View = ({story,authorLink,updateSocial})=>{
   var shareUrl = window.location.href;
   var title = story.name + " - "+"sukatha.com"
-
+  var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/profile.jpg"
+  const imageStyle = {
+    background: 'url(' + imgSrc + ') no-repeat center',
+    backgroundSize:'cover'
+  }
 
   return(
     <div className="contentHeader" >
       <div className="authTitle">- {story.author.capitalizeFirstLetter()}</div>
       <Link to={authorLink}>
-        <img className="a1" src="https://s3.ap-south-1.amazonaws.com/bsstory/phani/profile.jpg"></img>
+        <div className="authorImage" style={imageStyle}></div>
       </Link>
       <div className="title">{story.displayName}</div>
       <ul className="actions">

@@ -28,6 +28,7 @@
   margin: 0 0 1.2rem;
   white-space: nowrap;
   text-align: center;
+  font-family: notosans;
 }
 
 .list .shortText{
@@ -54,6 +55,7 @@
     margin: 0.5rem;
     margin-bottom: 1rem;
     margin-right: 1rem;
+    border-radius: 2px;
   }
 
   .list .image{

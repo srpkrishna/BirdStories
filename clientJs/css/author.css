@@ -36,6 +36,12 @@
   line-height: 1.8;
   padding: 1rem 0rem;
   float: left;
+  width: 100%;
+}
+
+.authorProfile .storiesBlock{
+  float: left;
+  width: 100%;
 }
 
 /*.authorProfile .item{

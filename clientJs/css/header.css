@@ -1,18 +1,27 @@
 .contentHeader{
   text-align: center;
   display: inline-block;
+  float: left;
   width: 100%;
   padding: 1.2rem;
   background-image: url(../img/bg.png);
 }
 
-.contentHeader img{
+.contentHeader a{
+  display: inline-block;
+  text-align: center;
+}
+.contentHeader .authorImage{
   border-radius: 50%;
   border: 0.13rem solid white;
+  width: 5em;
+  height: 5em;
 }
+
 .contentHeader .title{
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.8);
+  font-family: notosans;
 }
 
 
@@ -41,6 +50,8 @@
 }
 
 .contentHeader .share{
+  width: auto;
+  float: right;
   display: none;
   cursor: pointer;
   transition: -webkit-transform 0.25s ease;
@@ -61,8 +72,21 @@
   text-align: right;
   color: #162b4d;
 }
+
+@media only screen and (min-width: 480px) {
+  .contentHeader .authorImage{
+    width: 6em;
+    height: 6em;
+  }
+}
+
 @media only screen and (min-width: 769px) {
   .contentHeader .share{
       display:block;
+  }
+
+  .contentHeader .authorImage{
+    width: 7em;
+    height: 7em;
   }
 }

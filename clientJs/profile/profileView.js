@@ -24,16 +24,17 @@ const View = ({stories,author}) => {
     </div>
   }
 
-  var imgSrc = "/img/a.jpeg"
-  const imageStyle = {
-    background: 'url(' + imgSrc + ') no-repeat center',
-    backgroundSize:'cover'
-  }
+
 
   if(author && author.penName){
-    className="profile"
+    className="profile";
+    var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
+    const imageStyle = {
+      background: 'url(' + imgSrc + ') no-repeat center',
+      backgroundSize:'cover'
+    }
     authorDiv = <div className="block">
-      <div className="authorImage a2" src={imgSrc} style={imageStyle}></div>
+      <div className="authorImage a2" style={imageStyle}></div>
       <ul className="personal">
         <li>{author.profile.fullName}</li>
         <li>{author.email}</li>

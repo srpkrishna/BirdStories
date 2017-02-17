@@ -4,16 +4,22 @@
 
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="localization" href="/locales/browser.json">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+        <style>
+          @font-face {
+              font-family: notosans;
+              src: url('/font/NotoSansTelugu-Regular.ttf');
+          }
+        </style>
         <title>SuKatha</title>
         <script>
         String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
         }
         </script>
+
     </head>
     <body>
       <div id="root">

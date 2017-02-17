@@ -4,6 +4,7 @@
   width: 100%;
   padding: 1.2rem;
   background-image: url(../img/bg.png);
+  float: left;
 }
 
 .contentFooter ul{

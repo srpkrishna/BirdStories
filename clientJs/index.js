@@ -16,8 +16,8 @@ import Launch from './launch';
 
 ReactDOM.render(
   (<Router history={browserHistory}>
-    <Route path="/" component={Launch}/>
     <Route path="/" component={App}>
+      <IndexRoute component={Stories}/>
       <Route path="stories" component={Stories}>
         <Route path="/stories/story" component={Stories}/>
       </Route>

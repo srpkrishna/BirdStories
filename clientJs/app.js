@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import GAuth from './secure/gAuth'
 import FAuth from './secure/fAuth'
 import Login from  './secure/login.js'
-// import logo from './img/logo.svg';
-          /*<img src={logo} className="App-logo" alt="logo" />*/
 import styles from './css/app.css';
 import { Link } from 'react-router';
+import logo from './img/profile.svg';
 
 class App extends Component {
 
@@ -96,7 +95,7 @@ class App extends Component {
 
     const menuClassName = "menu "+this.state.showMenu
 
-    var tag = <Link to="/profile" activeClassName="active" ><i className="material-icons">perm_identity</i></Link>
+    var tag = <Link to="/profile" activeClassName="active" ><img src={logo}/></Link>
     var component = this.props.children;
     var defaultProps = component.type.defaultProps
 

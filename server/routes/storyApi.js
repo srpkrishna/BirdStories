@@ -78,7 +78,7 @@ api.route('/')
       switch(attr){
         case 'social':
           var key = req.body.updateKey;
-          if(key === "reads" || key === "favs"){
+          if(key === "reads" || key === "likes"){
             var storyId = id["author"]+id["timestamp"]+key
             if(req.session[storyId]){
               res.send(alreadyUpdated);
@@ -175,7 +175,7 @@ function updateSocialElements(id,element,callback)
     // }
 
     function socialSuccess(data){
-        const score = getScore(data.Attributes.social);
+        //const score = getScore(data.Attributes.social);
         var responseData = data.Attributes;
         callback(responseData);
         // responseData.score = score;

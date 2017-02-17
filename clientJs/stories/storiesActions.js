@@ -60,7 +60,6 @@ function updateSocial(element){
       updateKey:element
     }
     Server.connect('POST','stories',body,function(data){
-        //console.log(data);
         if(!data.code)
           dispatch(updateSuccess(data,element))
     });

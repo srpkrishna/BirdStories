@@ -27,7 +27,6 @@ api.route('/me')
     var email = req.body.id;//'phani@email.com';
     var resBody = {}
     getAuthorDetails(email,function(authData){
-      console.log(authData);
       if(authData.length < 1){
         res.send("");
         return;
@@ -58,7 +57,6 @@ function getAuthorDetails(authorId,callback){
 
 function getAuthorStories(penName,callback){
     const docClient = conn.getDocClient();
-    console.log(penName);
     var params = {
         KeyConditionExpression: "author = :id",
         ExpressionAttributeValues: {

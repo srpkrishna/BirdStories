@@ -39,7 +39,6 @@ function initGClient(listener, googleLoadSuccess) {
  * @param {boolean} val the updated signed out state.
  */
 var signinChanged = function (val) {
-  console.log('Signin state changed to ', val);
   //eventListener(val);
 };
 
@@ -49,7 +48,6 @@ var signinChanged = function (val) {
  * @param {GoogleUser} user the updated user.
  */
 var userChanged = function (response) {
-  console.log('User now: ', response);
 
   var user;
   if(response.isSignedIn()){

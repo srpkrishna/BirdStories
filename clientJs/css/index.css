@@ -61,7 +61,7 @@ body {
   }
 
   *{
-    overflow-x: inherit;
+    overflow-x: initial;
   }
 
 

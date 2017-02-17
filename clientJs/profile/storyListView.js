@@ -6,7 +6,6 @@ import styles from '../css/item.css';
 
 const View = ({ story,index,author }) => {
 
-  const imgSrc = "/img/"+(index%3)+".jpg"
   const className = "list clr"+(index%4)
   const link = "/stories/story"
   const query = {a:story.author,id:story.timestamp}
@@ -16,6 +15,8 @@ const View = ({ story,index,author }) => {
       state:{story:story,author:author}
   }
 
+  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  const imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
   const imageStyle = {
     background: 'url(' + imgSrc + ') no-repeat center',
     backgroundSize:'cover'
@@ -23,7 +24,7 @@ const View = ({ story,index,author }) => {
 
   return (
         <Link to={linkObj} className={className} >
-          <div className="image" src={imgSrc} style={imageStyle}></div>
+          <div className="image" style={imageStyle}></div>
           <div className="info">
             <div className="name">{story.displayName}</div>
             <ul className="shortText">

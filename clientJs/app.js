@@ -130,7 +130,7 @@ class App extends Component {
               {tag}
             </li>
           </ul>
-          <Link className="App-logo" to="/stories" onClick={this.hideMenu}>{window.getString("companyMain")}
+          <Link className="App-logo" to="/" onClick={this.hideMenu}>{window.getString("companyMain")}
             <span>{window.getString("companySub")}</span>
           </Link>
 

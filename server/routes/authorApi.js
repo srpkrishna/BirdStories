@@ -56,8 +56,7 @@ function searchByNames(sub,callback){
         },
         ExpressionAttributeValues: {
             ":v_sub":sub
-        },
-        Limit:10
+        }
     };
    authorDb.scan(params,docClient,callback);
 }

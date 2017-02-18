@@ -27232,7 +27232,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n* {\n  -webkit-box-sizing:border-box;\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  margin:0;\n  overflow-x: hidden;\n}\nbody {\n  background: none repeat scroll 0 0 #0b192f;\n  color: #fff;\n  font-weight: 300;\n  font-size: 16px;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f !important;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.pageHeader{\n  text-align: center;\n  font-size: 1.7rem;\n  color: #637693;\n}\n.a1{\n  width:25%;\n}\n\n.a2{\n  width:35%;\n}\n\n.a3{\n  width:100%;\n}\n\n@media only screen and (min-width: 480px) {\n  .a1{\n    width:20%;\n  }\n\n  .a2{\n    width:28%;\n  }\n\n  *{\n    overflow-x: initial;\n  }\n\n\n}\n\n@media only screen and (min-width: 769px) {\n  .a1{\n    width:15%;\n  }\n\n  .a2{\n    width:21%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .a1{\n    width:10%;\n  }\n\n  .a2{\n    width:14%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\na{\n  text-decoration:none\n}\n\nli{\n  list-style: none outside none;\n}\n\n.right{\n    float:right;\n}\n\n.left{\n    float:right;\n}\n\n.noResults{\n  text-align: center;\n  padding: 2rem;\n  color: #0b192f;\n  font-size: 1.1rem;\n}\n\na{\n    display: block;\n    transition: -webkit-transform 0.25s ease;\n    transition: transform 0.25s ease;\n}\n\na:hover{\n  -webkit-transform: scale(1.01);\n  transform: scale(1.01);\n}\n", ""]);
+	exports.push([module.id, "\n* {\n  -webkit-box-sizing:border-box;\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  margin:0;\n  overflow-x: hidden;\n}\nbody {\n  background: none repeat scroll 0 0 #0b192f;\n  color: #fff;\n  font-weight: 300;\n  font-size: 16px;\n}\n\n.clrWhite{\n  background: none repeat scroll 0 0 #FFF;\n  color:#0b192f !important;\n}\n.clr0{\n  /*background-color: #d12767;*/\n  background: none repeat scroll 0 0 #B71757;\n}\n\n.clr1{\n  background: none repeat scroll 0 0 #0D7E71;\n}\n\n.clr2{\n  background: none repeat scroll 0 0 #b1660e;\n}\n\n.clr3{\n  background: none repeat scroll 0 0 #2d95bb;\n}\n\n.pageHeader{\n  text-align: center;\n  font-size: 1.7rem;\n  padding: 0.05rem;\n  color: #637693;\n}\n.a1{\n  width:25%;\n}\n\n.a2{\n  width:35%;\n}\n\n.a3{\n  width:100%;\n}\n\n@media only screen and (min-width: 480px) {\n  .a1{\n    width:20%;\n  }\n\n  .a2{\n    width:28%;\n  }\n\n  *{\n    overflow-x: initial;\n  }\n\n\n}\n\n@media only screen and (min-width: 769px) {\n  .a1{\n    width:15%;\n  }\n\n  .a2{\n    width:21%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\n@media only screen and (min-width: 960px) {\n  .a1{\n    width:10%;\n  }\n\n  .a2{\n    width:14%;\n  }\n\n  .a3{\n    width:50%;\n  }\n}\n\na{\n  text-decoration:none\n}\n\nli{\n  list-style: none outside none;\n}\n\n.right{\n    float:right;\n}\n\n.left{\n    float:right;\n}\n\n.noResults{\n  text-align: center;\n  padding: 2rem;\n  color: #0b192f;\n  font-size: 1.1rem;\n}\n\na{\n    display: block;\n    transition: -webkit-transform 0.25s ease;\n    transition: transform 0.25s ease;\n}\n\na:hover{\n  -webkit-transform: scale(1.01);\n  transform: scale(1.01);\n}\n", ""]);
 	
 	// exports
 
@@ -28496,7 +28496,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".about .block {\n    padding: 1rem;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 1.2rem;\n    word-spacing: 0.1rem;\n    line-height: 1.8rem;\n}\n\n.about .block.quote {\n    padding-top: 3rem;\n    text-align: center;\n}\n\n.about .block.quote p {\n  padding-bottom: 1.5rem;\n  font-style: italic;\n  color: rgba(255, 255, 255, 0.6);\n}\n\n\n.about .block span{\n    white-space: nowrap;\n    color: #d12767;\n}\n\n.about .block.idea {\n    word-spacing: 0.1rem;\n}\n\n.about .header {\n    padding: 0.5rem;\n    padding-left: 0;\n    color: #637693;\n}\n\n.about .a{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .b{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .c{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .d{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .e{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .f{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .g{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n", ""]);
+	exports.push([module.id, ".about .block {\n    padding: 1rem;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 1.2rem;\n    word-spacing: 0.1rem;\n    line-height: 1.8rem;\n}\n\n.about .block.quote {\n    padding-top: 2.0rem;\n    text-align: center;\n}\n\n.about .block.quote p {\n  padding-bottom: 1.5rem;\n  font-style: italic;\n  color: rgba(255, 255, 255, 0.6);\n}\n\n\n.about .block span{\n    white-space: nowrap;\n    color: #d12767;\n}\n\n.about .block.idea {\n    word-spacing: 0.1rem;\n}\n\n.about .header {\n    padding: 0.5rem;\n    padding-left: 0;\n    color: #637693;\n}\n\n.about .a{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .b{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .c{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .d{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .e{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .f{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n\n.about .g{\n  opacity: 0;\n  transition:opacity 0.5s linear;\n}\n", ""]);
 	
 	// exports
 
@@ -34105,7 +34105,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n  font-family: notosans;\n  float: left;\n\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n}\n\n.contentBody p{\n  text-indent: 20%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 0.75rem 0rem;\n}\n\n.contentBody img{\n  max-width: 100%;\n  border-radius: 3px;\n}\n\n@media only screen and (min-width: 480px) {\n  .contentBody img{\n    max-width: 70%;\n  }\n\n}\n\n@media only screen and (min-width: 769px) {\n  .contentBody img{\n    max-width: 50%;\n  }\n}\n", ""]);
+	exports.push([module.id, "\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n  font-family: notosans;\n  float: left;\n\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n}\n\n.contentBody p{\n  text-indent: 15%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 0.75rem 0rem;\n}\n\n.contentBody img{\n  max-width: 100%;\n  border-radius: 3px;\n}\n\n@media only screen and (min-width: 480px) {\n  .contentBody img{\n    max-width: 70%;\n  }\n\n}\n\n@media only screen and (min-width: 769px) {\n  .contentBody img{\n    max-width: 50%;\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -40730,7 +40730,6 @@
 	      index = _ref.index;
 	
 	
-	  var imgSrc = "/img/a.jpeg";
 	  var className = "item clrWhite";
 	  var link = "/author/" + author.penName;
 	  var linkObj = {
@@ -40738,6 +40737,7 @@
 	    state: author
 	  };
 	
+	  var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/" + author.penName + "/profile.jpg";
 	  var imageStyle = {
 	    background: 'url(' + imgSrc + ') no-repeat center',
 	    backgroundSize: 'cover'
@@ -40746,7 +40746,7 @@
 	  return _react2.default.createElement(
 	    _reactRouter.Link,
 	    { to: linkObj, className: className },
-	    _react2.default.createElement('div', { className: 'image', src: imgSrc, style: imageStyle }),
+	    _react2.default.createElement('div', { className: 'image', style: imageStyle }),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'info' },

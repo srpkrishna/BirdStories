@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 
 const View = ({ author,index }) => {
 
-  const imgSrc = "/img/a.jpeg"
   const className = "item clrWhite"
   const link = "/author/"+author.penName;
   const linkObj = {
@@ -14,6 +13,7 @@ const View = ({ author,index }) => {
       state:author
   }
 
+  var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
   const imageStyle = {
     background: 'url(' + imgSrc + ') no-repeat center',
     backgroundSize:'cover'
@@ -21,7 +21,7 @@ const View = ({ author,index }) => {
 
   return (
         <Link to={linkObj} className={className} >
-          <div className="image" src={imgSrc} style={imageStyle}></div>
+          <div className="image" style={imageStyle}></div>
           <div className="info">
             <div className="name">{author.profile.fullName}</div>
             <div className="shortText">{author.profile.intro}</div>

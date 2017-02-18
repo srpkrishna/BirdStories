@@ -26,7 +26,7 @@ api.route('/search')
 
 api.route('/content/:authorId/:name')
   .get(function(req, res){
-    // var filepath = __dirname + '/storyFormat.json';
+    // var filepath = __dirname + '/story.json';
     // fs.readFile(filepath, "utf8", function(err, data){
     //   if(err){
     //     console.log(err);

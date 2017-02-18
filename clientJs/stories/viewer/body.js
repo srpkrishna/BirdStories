@@ -22,7 +22,23 @@ const View = ({content}) => {
         htmlContent.push(<img style={imgStyle} src={paraObj.imgsrc} key={'img'+i} />)
       }
 
-      htmlContent.push(<p style={paraStyle} key={i}>{paraObj.text}</p>);
+      if(paraObj.text){
+        var br = React.createElement('br');
+        var regex = /\n/;
+        var content = paraObj.text.split(regex).map(function(line, index) {
+          if(index > 0){
+            let breaks = [];
+            breaks.push(<br key={"break_" + index} /> )
+            breaks.push(line)
+            return breaks;
+          }else{
+            return line;
+          }
+        })
+
+        htmlContent.push(<p style={paraStyle} key={i}>{content}</p>);
+      }
+
       i++;
     }
   }else{

@@ -2,6 +2,7 @@ var express = require('express');
 var api = express.Router();
 var storyDb = require('../dbFetch/storyDB.js');
 var AWS = require('aws-sdk');
+var fs = require('fs');
 
 const conn = require('../utils/connections.js');
 const error = {
@@ -25,6 +26,15 @@ api.route('/search')
 
 api.route('/content/:authorId/:name')
   .get(function(req, res){
+    // var filepath = __dirname + '/storyFormat.json';
+    // fs.readFile(filepath, "utf8", function(err, data){
+    //   if(err){
+    //     console.log(err);
+    //   }
+    //  var story = JSON.parse(data);
+    //  res.send(story);
+    // });
+
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var keyName = req.params.authorId+'/'+req.params.name+'/story.json';

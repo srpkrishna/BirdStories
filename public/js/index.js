@@ -33499,6 +33499,7 @@
 	      } else {
 	        var obj = _storiesActions2.default.fetchStoriesIfNeeded();
 	        _storiesStore2.default.dispatch(obj);
+	        document.title = window.getString("companyMain") + window.getString("companySub");
 	      }
 	
 	      return state;
@@ -33524,7 +33525,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
-	      document.title = window.getString("companyMain") + window.getString("companySub");
 	    }
 	  }, {
 	    key: 'render',
@@ -34105,7 +34105,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n  font-family: notosans;\n  float: left;\n\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n}\n\n.contentBody p{\n  text-indent: 15%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 0.75rem 0rem;\n}\n\n.contentBody img{\n  max-width: 100%;\n  border-radius: 3px;\n}\n\n@media only screen and (min-width: 480px) {\n  .contentBody img{\n    max-width: 70%;\n  }\n\n}\n\n@media only screen and (min-width: 769px) {\n  .contentBody img{\n    max-width: 50%;\n  }\n}\n", ""]);
+	exports.push([module.id, "\n.contentBody{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background: none repeat scroll 0 0 #fff;\n  color: #162b4d;\n  font-family: notosans;\n  float: left;\n\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n}\n\n.contentBody p{\n  text-indent: 12%;\n  text-align: left;\n  word-spacing: 0.3rem;\n  line-height: 1.8;\n  padding: 0.75rem 0rem;\n}\n\n.contentBody img{\n  max-width: 100%;\n  border-radius: 3px;\n}\n\n@media only screen and (min-width: 480px) {\n  .contentBody img{\n    max-width: 70%;\n  }\n\n}\n\n@media only screen and (min-width: 769px) {\n  .contentBody img{\n    max-width: 50%;\n  }\n}\n", ""]);
 	
 	// exports
 

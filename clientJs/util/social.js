@@ -37,6 +37,7 @@ class Share extends Component {
   render(){
     const shareUrl = this.props.shareUrl;
     const title = this.props.title;
+    const pic = this.props.pic;
     var size = 36;
 
     if(this.props.size){
@@ -58,6 +59,7 @@ class Share extends Component {
           <FacebookShareButton
             url={shareUrl}
             title={title}
+            picture={pic}
             className="Demo__some-network__share-button">
             <FacebookIcon
               size={size}

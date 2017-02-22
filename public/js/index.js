@@ -33278,7 +33278,7 @@
 	        'div',
 	        { className: 'bottomRight' },
 	        ' - ',
-	        story.author.capitalizeFirstLetter()
+	        story.authorDisplayName
 	      )
 	    )
 	  );
@@ -33991,7 +33991,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      window.scrollTo(0, 0);
-	
 	      if (this.props.story) {
 	        document.title = this.props.story.name + " -" + window.getString("companyPromo");
 	      }
@@ -34241,12 +34240,15 @@
 	      updateSocial = _ref.updateSocial;
 	
 	  var shareUrl = window.location.href;
-	  var title = story.name + " - " + "sukatha.com";
+	  var title = story.displayName + " - " + "sukatha.com";
 	  var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/" + story.author + "/profile.jpg";
 	  var imageStyle = {
 	    background: 'url(' + imgSrc + ') no-repeat center',
 	    backgroundSize: 'cover'
 	  };
+	
+	  var name = story.name.replace(/\s+/g, '').toLowerCase();
+	  var coverImg = "https://s3.ap-south-1.amazonaws.com/bsstory/" + story.author + "/" + name + "/cover.jpg";
 	
 	  return _react2.default.createElement(
 	    'div',
@@ -34255,7 +34257,7 @@
 	      'div',
 	      { className: 'authTitle' },
 	      '- ',
-	      story.author.capitalizeFirstLetter()
+	      story.authorDisplayName
 	    ),
 	    _react2.default.createElement(
 	      _reactRouter.Link,
@@ -34282,7 +34284,7 @@
 	        story.social.likes,
 	        ' Likes'
 	      ),
-	      _react2.default.createElement(_social2.default, { shareUrl: shareUrl, title: title, updateSocial: updateSocial })
+	      _react2.default.createElement(_social2.default, { shareUrl: shareUrl, title: title, pic: coverImg, updateSocial: updateSocial })
 	    )
 	  );
 	};
@@ -34417,6 +34419,7 @@
 	    value: function render() {
 	      var shareUrl = this.props.shareUrl;
 	      var title = this.props.title;
+	      var pic = this.props.pic;
 	      var size = 36;
 	
 	      if (this.props.size) {
@@ -34441,6 +34444,7 @@
 	            {
 	              url: shareUrl,
 	              title: title,
+	              picture: pic,
 	              className: 'Demo__some-network__share-button' },
 	            _react2.default.createElement(FacebookIcon, {
 	              size: size,
@@ -40322,7 +40326,9 @@
 	      updateSocial = _ref.updateSocial;
 	
 	  var shareUrl = window.location.href;
-	  var title = story.name + " - " + "sukatha.com";
+	  var title = story.displayName + " - " + "sukatha.com";
+	  var name = story.name.replace(/\s+/g, '').toLowerCase();
+	  var coverImg = "https://s3.ap-south-1.amazonaws.com/bsstory/" + story.author + "/" + name + "/cover.jpg";
 	
 	  return _react2.default.createElement(
 	    'div',
@@ -40334,10 +40340,10 @@
 	        _reactRouter.Link,
 	        { to: authorLink },
 	        'More from ',
-	        story.author.capitalizeFirstLetter()
+	        story.authorDisplayName
 	      )
 	    ),
-	    _react2.default.createElement(_social2.default, { shareUrl: shareUrl, title: title, updateSocial: updateSocial })
+	    _react2.default.createElement(_social2.default, { shareUrl: shareUrl, title: title, pic: coverImg, updateSocial: updateSocial })
 	  );
 	};
 	
@@ -40384,7 +40390,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".contentFooter{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background-image: url(" + __webpack_require__(/*! ../img/bg.png */ 347) + ");\n  float: left;\n}\n\n.contentFooter ul{\n    width: 100%;\n    padding:1.0rem 0  ;\n    display: block;\n    text-align: center;\n    float:left;\n}\n\n.contentFooter li{\n  padding: 0 1.0rem;\n  display: inline-block;\n  cursor: pointer;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n}\n\n.contentFooter li:active{\n    -webkit-transform: scale(1.2);\n    transform: scale(1.2);\n}\n\n.contentFooter li:active::after{\n  -webkit-transform: scale(1);\n  transform: scale(1);\n}\n\n.contentFooter .authTitle{\n  text-align: right;\n  font-size: 1.3rem;\n  cursor: pointer;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n}\n\n.contentFooter .authTitle a{\n  color: rgba(255, 255, 255, 0.8);\n}\n", ""]);
+	exports.push([module.id, ".contentFooter{\n  text-align: center;\n  display: inline-block;\n  width: 100%;\n  padding: 1.2rem;\n  background-image: url(" + __webpack_require__(/*! ../img/bg.png */ 347) + ");\n  float: left;\n}\n\n.contentFooter ul{\n    width: 100%;\n    padding:1.0rem 0  ;\n    display: block;\n    text-align: center;\n    float:left;\n}\n\n.contentFooter li{\n  padding: 0 1.0rem;\n  display: inline-block;\n  cursor: pointer;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n}\n\n.contentFooter li:active{\n    -webkit-transform: scale(1.2);\n    transform: scale(1.2);\n}\n\n.contentFooter li:active::after{\n  -webkit-transform: scale(1);\n  transform: scale(1);\n}\n\n.contentFooter .authTitle{\n  text-align: right;\n  font-size: 1.3rem;\n  cursor: pointer;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n}\n\n.contentFooter .authTitle a{\n  display: inline-block;\n  color: rgba(255, 255, 255, 0.8);\n}\n", ""]);
 	
 	// exports
 

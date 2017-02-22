@@ -6,14 +6,16 @@ import { Link } from 'react-router';
 
 const View = ({story,authorLink, updateSocial})=>{
   var shareUrl = window.location.href;
-  var title = story.name + " - "+"sukatha.com"
+  var title = story.displayName + " - "+"sukatha.com"
+  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  const coverImg = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
 
   return(
     <div className="contentFooter" >
       <div className="authTitle">
-        <Link to={authorLink}>More from {story.author.capitalizeFirstLetter()}</Link>
+        <Link to={authorLink}>More from {story.authorDisplayName}</Link>
       </div>
-      <Social shareUrl={shareUrl} title={title} updateSocial={updateSocial}/>
+      <Social shareUrl={shareUrl} title={title} pic={coverImg} updateSocial={updateSocial}/>
     </div>
   )
 }

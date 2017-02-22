@@ -29,7 +29,7 @@ const View = ({ story,index,author }) => {
           <div className="info">
             <div className="name">{story.displayName}</div>
             <div className="shortText">{story.shortText}</div>
-            <div className="bottomRight"> - {story.author.capitalizeFirstLetter()}</div>
+            <div className="bottomRight"> - {story.authorDisplayName}</div>
           </div>
         </Link>
   )

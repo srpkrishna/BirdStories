@@ -1,5 +1,10 @@
 require.config({
     baseUrl: '/lib',
+    shim: {
+      'facebook' : {
+        exports: 'FB'
+      }
+    },
     paths: {
         util: "../util",
         js: "../js",
@@ -7,10 +12,11 @@ require.config({
         actions:"../js/actions",
         stores: "../js/stores",
         views:"../js/components/views",
-        controllers:"../js/components/controllers"
+        controllers:"../js/components/controllers",
+        'facebook': '//connect.facebook.net/en_US/sdk'
     }
 });
-require(["jquery-2.2.1.min", "l20n.min","https://apis.google.com/js/api:client.js","https://connect.facebook.net/en_US/sdk.js"], function (jquery,l20n) {
+require(["jquery-2.2.1.min", "l20n.min"], function (jquery,l20n) {
     window.l20n = L20n.getContext ();
     window.getString = function (key) {
         var value = window.l20n.getSync (key);
@@ -29,3 +35,9 @@ require(["jquery-2.2.1.min", "l20n.min","https://apis.google.com/js/api:client.j
     });
 
 });
+
+require(['facebook'], function(FB){
+  window.FB = FB;
+});
+
+require(["https://apis.google.com/js/api:client.js"]);

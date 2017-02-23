@@ -3,6 +3,17 @@ import  Constants from './storiesConstants';
 import Server from '../util/server';
 
 function fetchSuccess(stories){
+
+  if(stories && stories.length > 0){
+    var dt = new Date()
+    var index = dt.getDate() % stories.length
+    var count = 0;
+    while(count < index){
+      stories.push(stories.shift())
+      count++;
+    }
+  }
+
   return {
     type:Constants.StoriesChangeEvent,
     isFetching:false,

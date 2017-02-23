@@ -2,21 +2,37 @@
 var auth2;
 var user;
 var eventListener;
+var fcount = 0;
 /**
  * Initializes the Sign-In client.
  */
 function initFClient(listener, fbLoadSuccess) {
     eventListener = listener;
-    FB.init({
-    appId      : '1882742771959476',
-    cookie     : true,  // enable cookies to allow the server to access
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-    });
-    fbLoadSuccess();
-    checkLoginState();
+    initFB(fbLoadSuccess);
 };
+
+function initFB(fbLoadSuccess){
+
+  if("undefined" === typeof FB){
+    fcount++
+
+    if(fcount < 3)
+      setTimeout(function(){ initFB(fbLoadSuccess) }, 1000);
+
+    return
+  }
+
+  FB.init({
+  appId      : '1882742771959476',
+  cookie     : true,  // enable cookies to allow the server to access
+                      // the session
+  xfbml      : true,  // parse social plugins on this page
+  version    : 'v2.8' // use graph api version 2.8
+  });
+  fbLoadSuccess();
+  checkLoginState();
+
+}
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {

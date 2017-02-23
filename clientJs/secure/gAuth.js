@@ -1,38 +1,53 @@
 
 var auth2;
 var eventListener;
+var gcount = 0;
 /**
  * Initializes the Sign-In client.
  */
 function initGClient(listener, googleLoadSuccess) {
     eventListener = listener;
-    gapi.load('auth2', function(){
-        /**
-         * Retrieve the singleton for the GoogleAuth library and set up the
-         * client.
-         */
-        auth2 = gapi.auth2.init({
-          client_id:"113332297879-2c0bl4e42qokglovtthficb1ubvldgch.apps.googleusercontent.com",
-          cookiepolicy: 'single_host_origin',
-          scope:'profile'
-        });
-
-        if(googleLoadSuccess && auth2){
-          googleLoadSuccess(auth2)
-        }
-        // Listen for sign-in state changes.
-        auth2.isSignedIn.listen(signinChanged);
-
-        // Listen for changes to current user.
-        auth2.currentUser.listen(userChanged);
-
-        // Sign in the user if they are currently signed in.
-        if (auth2.isSignedIn.get() == true) {
-          auth2.signIn();
-        }
-    });
+    initGoogle(googleLoadSuccess);
 };
 
+
+function initGoogle(googleLoadSuccess){
+
+  if("undefined" ===  typeof gapi){
+    gcount++
+
+    if(gcount < 3)
+      setTimeout(function(){ initGoogle(googleLoadSuccess) }, 1000);
+
+    return;
+  }
+
+  gapi.load('auth2', function(){
+      /**
+       * Retrieve the singleton for the GoogleAuth library and set up the
+       * client.
+       */
+      auth2 = gapi.auth2.init({
+        client_id:"113332297879-2c0bl4e42qokglovtthficb1ubvldgch.apps.googleusercontent.com",
+        cookiepolicy: 'single_host_origin',
+        scope:'profile'
+      });
+
+      if(googleLoadSuccess && auth2){
+        googleLoadSuccess(auth2)
+      }
+      // Listen for sign-in state changes.
+      auth2.isSignedIn.listen(signinChanged);
+
+      // Listen for changes to current user.
+      auth2.currentUser.listen(userChanged);
+
+      // Sign in the user if they are currently signed in.
+      if (auth2.isSignedIn.get() == true) {
+        auth2.signIn();
+      }
+  });
+}
 /**
  * Listener method for sign-out live value.
  *

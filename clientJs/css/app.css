@@ -33,7 +33,6 @@
 .App-header ul{
   float: right;
   padding: 0;
-  padding-right: 1.0em;
 }
 
 .App-header li {
@@ -94,7 +93,8 @@
 }
 
 .App-header .social li{
-   padding-top: 0.1rem;
+   padding-top: 0.3rem;
+   padding-left: 0.3rem;
 }
 
 .App-header .social li a{
@@ -118,6 +118,13 @@
   }
 .App-header .social li .active{
     border: 2px solid #B71757 !important;
+}
+
+.App-header .logout{
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #283d5f;
+    border: 1px solid white;
 }
 
 .App-footer{
@@ -155,6 +162,7 @@
 .App-body{
   min-height: 32em;
 }
+
 
 /*@media only screen and (max-width: 350px) {
   .App-logo{

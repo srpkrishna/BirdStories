@@ -53,7 +53,7 @@ class Login extends Component{
 
 
     return (
-      <div>
+      <div className="loginPanel">
         <ul className="login a3"><div>Please login to proceed</div></ul>
         <ul className="login a3">
           <li id="GBtn" onClick={gClick} style={gStyle}>

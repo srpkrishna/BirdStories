@@ -120,12 +120,37 @@ li{
 }
 
 a{
-    display: block;
-    transition: -webkit-transform 0.25s ease;
-    transition: transform 0.25s ease;
+  display: block;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 a:hover{
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
+}
+
+button{
+  background-color: transparent;
+  font-size: 1.1em;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.25em;
+  border: 2px solid transparent;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+button:hover{
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.blur{
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
 }

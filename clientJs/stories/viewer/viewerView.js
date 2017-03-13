@@ -4,7 +4,7 @@ import styles from '../../css/viewer.css';
 import Body from './body';
 import Header from './header';
 import Footer from './footer';
-import Social from '../../util/social.js';
+import Comments from './comments';
 
 var c = 0;
 var t;
@@ -24,13 +24,10 @@ class View extends Component {
       timer_is_on:0,
       reachedBottom:false
     };
-
+    var that = this
+    setTimeout(function(){that.markAsView()},1)
   }
   componentWillUnmount(){
-      this.props.updateSocial("views");
-      if( c > this.props.story.time-1 && reachedBottom === true){
-        this.props.updateSocial("reads");
-      }
       window.removeEventListener("scroll", this.handleScroll);
       window.onblur = undefined;
       window.onfocus = undefined;
@@ -39,6 +36,16 @@ class View extends Component {
       t = undefined;
       timer_is_on = 0;
       reachedBottom = false;
+  }
+
+  markAsRead(){
+    if( this.props.story && c > this.props.story.time*0.75 && reachedBottom === true){
+      this.props.updateSocial("reads");
+    }
+  }
+
+  markAsView(){
+    this.props.updateSocial("views");
   }
 
   componentDidMount() {
@@ -56,6 +63,11 @@ class View extends Component {
 
   timedCount() {
     c = c + 1;
+
+    if( this.props.story && c > this.props.story.time*0.75){
+      this.markAsRead()
+    }
+
     var that = this;
     t = setTimeout(function(){ that.timedCount() }, 1000*60);
   }
@@ -79,8 +91,9 @@ class View extends Component {
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight * 0.95) {
+    if (windowBottom >= docHeight * 0.75 && !reachedBottom) {
       reachedBottom = true;
+      this.markAsRead()
     }
   }
 
@@ -90,12 +103,21 @@ class View extends Component {
     var author = this.props.author;
     var authorLink = this.props.authorLink;
     var updateSocial = this.props.updateSocial;
+    var publishComment = this.props.publishComment;
+    var comments = this.props.comments;
+
     var tag = []
     if(content && story && author){
       tag.push(<Header story={story} authorLink={authorLink} updateSocial={updateSocial} key={0}/>)
       tag.push(<Body content={content} key={1}/>)
-      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} key={2}/>)
+      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={2}/>)
+
+      if(comments && comments.length > 0){
+        tag.push(<Comments comments={comments} key={3} publishComment={publishComment} title={window.getString("commentText")} />)
+      }
     }
+
+
 
     return(
       <div>

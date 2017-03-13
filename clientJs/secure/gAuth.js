@@ -75,10 +75,15 @@ var userChanged = function (response) {
     user.name = profile.getName();
     user.imageUrl = profile.getImageUrl()
   }
-  eventListener(response.isSignedIn(),user)
+  eventListener("google",response.isSignedIn(),user)
 };
 
 
+function signOut(){
+  if(auth2){
+    auth2.signOut();
+  }
+}
 function signIn(){
   if(auth2){
     auth2.signIn();
@@ -87,6 +92,7 @@ function signIn(){
 
 const GAuth = {
   init:initGClient,
-  signIn:signIn
+  signIn:signIn,
+  signOut:signOut
 }
 export default GAuth

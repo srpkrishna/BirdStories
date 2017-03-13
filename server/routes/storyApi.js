@@ -150,7 +150,6 @@ function getStories(callback){
         ExpressionAttributeValues: {
             ":lang":"telugu"
         },
-        Limit: 10,
         ScanIndexForward:false
     };
      storyDb.query(params,docClient,callback);

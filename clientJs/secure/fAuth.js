@@ -48,11 +48,11 @@ function statusChangeCallback(response) {
     getProfileInfo();
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
-    eventListener(false);
+    eventListener("fb",false);
   } else {
     // The person is not logged into Facebook, so we're not sure if
     // they are logged into this app or not.
-    eventListener(false);
+    eventListener("fb",false);
   }
 }
 
@@ -62,7 +62,7 @@ function getProfileInfo(){
        user.email = response.email;
        user.name = response.name;
        user.imageUrl = response.picture.data.url
-       eventListener(true,user);
+       eventListener("fb",true,user);
      });
 }
 
@@ -81,9 +81,16 @@ function signIn(){
   },{scope: 'public_profile,email'});
 }
 
+function signOut(){
+  FB.logout(function(response) {
+  // user is now logged out
+    statusChangeCallback(response);
+  });
+}
 
 const FAuth = {
   init:initFClient,
-  signIn:signIn
+  signIn:signIn,
+  signOut:signOut
 }
 export default FAuth

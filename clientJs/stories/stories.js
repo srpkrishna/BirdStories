@@ -49,13 +49,21 @@ class Stories extends Component {
       }
 
       Store.dispatch(obj);
+
+      if(story){
+        obj = Actions.getComments(story.author,story.timestamp);
+      }else {
+        obj = Actions.getComments(authorId,id);
+      }
+      Store.dispatch(obj);
+
       state.shdShowViewer = true;
 
     }else{
       var obj = Actions.fetchStoriesIfNeeded();
       Store.dispatch(obj)
       document.title = window.getString("companyMain")+window.getString("companySub");
-    
+
     }
 
     return state;

@@ -25,7 +25,7 @@ const reducer = (state=defaultState, action) => {
         var element = action.element;
         selectedStory.social[element] = action.attributes.social[element]
         newState.selectedStory = selectedStory;
-        
+
         if(state.stories && state.stories.length > 0){
           let array = state.stories.map((story) => {
               if (story.author === viewerStory.author &&
@@ -58,6 +58,22 @@ const reducer = (state=defaultState, action) => {
       case Constants.StoryDetailsSuccess:
         var newState = Object.assign({}, state);
         newState.selectedStory = action.story;
+        return newState;
+      case Constants.StoryCommentsSuccess:
+        var newState = Object.assign({}, state);
+        newState.selectedStoryComments = action.comments;
+        return newState;
+      case Constants.StoryCommentPostSuccess:
+        var newState = Object.assign({}, state);
+
+        if(!newState.selectedStoryComments){
+          newState.selectedStoryComments = [action.comment]
+        }else{
+          var comments = Object.assign([], newState.selectedStoryComments);
+          comments.splice( 0, 0, action.comment)
+          newState.selectedStoryComments = comments
+        }
+
         return newState;
       default:
         return state;

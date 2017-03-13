@@ -5,19 +5,31 @@ import Login from  './secure/login.js'
 import styles from './css/app.css';
 import { Link } from 'react-router';
 import logo from './img/profile.svg';
+import logoutSvg from './img/logout.svg';
+
+import Popup from './util/popup';
+
+var shdLoginRequire = false;
+var reloadComp = false;
 
 class App extends Component {
 
   constructor(){
-    super()
+      super()
      this.state = {"showMenu":""};
      this.toggleMenu = this.toggleMenu.bind(this);
      this.hideMenu = this.hideMenu.bind(this);
      this.userStateListener = this.userStateListener.bind(this);
      this.googleLoadSuccess = this.googleLoadSuccess.bind(this);
      this.fbLoadSuccess = this.fbLoadSuccess.bind(this);
+     this.addLoginObserver = this.addLoginObserver.bind(this);
+     this.removeLoginObserver = this.removeLoginObserver.bind(this);
+     this.logout = this.logout.bind(this);
 
+     window.addLoginObserver =  this.addLoginObserver;
+     window.removeLoginObserver =  this.removeLoginObserver;
   }
+
   componentDidMount(){
     GAuth.init(this.userStateListener,this.googleLoadSuccess);
     FAuth.init(this.userStateListener,this.fbLoadSuccess);
@@ -55,18 +67,25 @@ class App extends Component {
     })
   }
 
-  userStateListener(isLoggedIn,user){
+  userStateListener(service,isLoggedIn,user){
     this.setState((prevState, props) => {
         var state = prevState;
 
         /*ignoring the second login of fb/google. This case shouldnt come unless
           user has given access from both
         */
-        if(isLoggedIn){
-          if(!state.user)
+        if(!state.user){
+          if(isLoggedIn){
             state.user = user;
-        }else{
-          state.user = undefined;
+          }else{
+            state.user = undefined;
+          }
+        }else if(!isLoggedIn && service === state.user.service){
+            state.user = undefined;
+        }
+
+        if(state.user && prevState.loginListener){
+          setTimeout(function(){prevState.loginListener(user)},1);
         }
 
         return state;
@@ -91,23 +110,59 @@ class App extends Component {
     }
   }
 
+  addLoginObserver(listener){
+    var user =  this.state.user
+    if(user){
+      listener(user)
+      return true;
+    }
+
+    this.setState((prevState, props) => {
+        var state = prevState;
+        state.loginListener = listener;
+        return state;
+    });
+  }
+
+  removeLoginObserver(){
+    this.setState((prevState, props) => {
+        var state = prevState;
+        state.loginListener = undefined;
+        return state;
+    });
+  }
+
+  logout(){
+    if(this.state.user.service == 'google'){
+        this.state.gApi.signOut();
+    }else{
+        this.state.fbApi.signOut();
+        this.setState((prevState, props) => {
+            var state = prevState;
+            state.user = undefined;
+            return state;
+          })
+    }
+  }
+
   render() {
 
     const menuClassName = "menu "+this.state.showMenu
 
     var tag = <Link to="/profile" activeClassName="active" ><img src={logo}/></Link>
     var component = this.props.children;
-    var defaultProps = component.type.defaultProps
+    var defaultProps = component.type.defaultProps;
+    var logout = "";
 
     if(this.state.user){
       var imgsrc = this.state.user.imageUrl
       var divStyle = {
             background: 'url(' + imgsrc + ') no-repeat center',
-            width:'3rem',
-            height:'3rem'
+            width:'42px',
+            height:'42px'
         }
       tag = <Link to="/profile"  activeClassName="active" style={divStyle}></Link>
-
+      logout = <a onClick={this.logout}><img src={logoutSvg}/></a>
       if(defaultProps && defaultProps.requireAuth){
         this.changeComponentState(component);
       }
@@ -115,9 +170,11 @@ class App extends Component {
         component = <Login google={this.state.gApi} fb={this.state.fbApi} />
     }
 
-    // <li className={menuClassName}>
-    //           <Link to="/write" activeClassName="active" ><i className="material-icons">create</i>{window.getString("write")}</Link>
-    //         </li>
+    var popup = ""
+    if(this.state.loginListener){
+      var content = <Login google={this.state.gApi} fb={this.state.fbApi} />
+      popup = <Popup content={content} onClose={this.removeLoginObserver} />
+    }
 
     return (
       <div className="App">
@@ -128,6 +185,9 @@ class App extends Component {
           <ul className="social">
             <li>
               {tag}
+            </li>
+            <li>
+              {logout}
             </li>
           </ul>
           <Link className="App-logo" to="/" onClick={this.hideMenu}>{window.getString("companyMain")}
@@ -146,6 +206,7 @@ class App extends Component {
 
         <div className="App-body">
           {component}
+          {popup}
         </div>
         <div className="App-footer">
           <div className="about">

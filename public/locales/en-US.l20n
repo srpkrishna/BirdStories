@@ -3,7 +3,16 @@
 <write "Writer">
 <search "Search">
 <noResults "No results found">
-<companyPromo "sukatha.com">
+<companyPromo "SuKatha.com">
+<commentText "Loved it?">
+<commentPublish "Publish">
+<commentReply "Reply">
+<anonymous "Anonymous">
+<comments "Comments">
+<postSuccess "Comment posted successfully.">
+<postEmpty "Enter text to publish">
+<yes "Yes">
+<no "No">
 
 <contactUs "Contact Us">
 <copyright "Copyright 2017. All rights reserved.">

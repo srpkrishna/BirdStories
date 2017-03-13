@@ -1,4 +1,9 @@
 
+  .loginPanel{
+      background: #0b192f;
+      display: inline-block;
+  }
+
   .login{
     float: left;
     text-align: center;
@@ -11,6 +16,7 @@
     margin: 2rem;
     margin-bottom: 0.1rem;
     font-size: 1.2rem;
+    cursor: pointer;
   }
 
 

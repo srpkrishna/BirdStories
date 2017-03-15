@@ -13,6 +13,11 @@ const View = ({ stories}) => {
     })
   }
 
+
+  const imageStyle = {
+    background: 'url("https://s3.ap-south-1.amazonaws.com/imagesbs/ad.png") no-repeat center',
+    backgroundSize:'cover'
+  }
   return (
     <div className="stories">
       {storyDivs}

@@ -24,7 +24,7 @@ const reducer = (state=defaultState, action) => {
 
 const middlewares = [thunkMiddleware];// lets us dispatch() functions
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "dev") {
   const loggerMiddleware = createLogger();// neat middleware that logs actions
   middlewares.push(loggerMiddleware);
 }

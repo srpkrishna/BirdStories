@@ -34,6 +34,7 @@ class View extends Component {
 
     if(this.props.replyTo){
       comment.replyTo = this.props.replyTo
+      comment.replyToName = this.props.mention
     }
 
     this.props.publishComment(comment);

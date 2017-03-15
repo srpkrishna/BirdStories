@@ -79,6 +79,13 @@ function publishComment(comment){
     return function(dispatch,getState) {
       const story = getState().selectedStory
       const postId = story.author + story.timestamp
+      const author = getState().selectedAuthor
+      if(author && author.email){
+        comment.authorEmail = author.email
+      }
+      comment.authorName = story.authorDisplayName
+      comment.storyName = story.displayName
+
       Server.connect('POST','comments/'+postId,comment,function(data){
           if(data.code){
             console.log("error publishing comments")

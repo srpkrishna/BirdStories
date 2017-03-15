@@ -3,6 +3,7 @@ var api = express.Router();
 var commentDB = require('../dbFetch/commentDB.js');
 
 const conn = require('../utils/connections.js');
+const emailClient = require('../utils/sendEmail.js');
 const error = {
   code:'BS401',
   msg:'Internal Error'
@@ -33,8 +34,37 @@ api.route('/:id')
       comment["mentionUserEmail"] = req.body.replyTo;
     }
 
+    if(req.body.authorEmail){
+      comment["authorEmail"] = req.body.authorEmail;
+    }
     postComment(comment,function(data){
       res.send(data);
+
+      if(req.body.authorEmail){
+         if(req.body.authorEmail){
+
+           var storyName = ""
+           if(req.body.storyName){
+             storyName = req.body.storyName;
+           }
+
+           var authorName = ""
+           if(req.body.authorName){
+             authorName = req.body.authorName;
+           }
+
+           var userName = ""
+           if(req.body.userName){
+             userName = req.body.userName;
+           }
+
+           emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName)
+         }
+
+         if(req.body.replyTo && req.body.replyToName){
+           emailClient.sendEmailToCommentOwner(req.body.replyTo, req.body.replyToName , storyName,userName)
+         }
+      }
     })
   })
 

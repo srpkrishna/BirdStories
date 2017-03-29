@@ -17,6 +17,10 @@ const reducer = (state=defaultState, action) => {
         newState.isFetching = action.isFetching;
         newState.stories =  action.stories;
         return newState;
+      case Constants.MoreStoriesSuccess:
+        var newState = Object.assign({}, state);
+        newState.stories =  newState.stories.concat(action.stories);
+        return newState;
 
       case Constants.StoryChangeEvent:
         var newState = Object.assign({}, state);
@@ -73,7 +77,16 @@ const reducer = (state=defaultState, action) => {
           comments.splice( 0, 0, action.comment)
           newState.selectedStoryComments = comments
         }
+        return newState;
+      case Constants.StoryMoreCommentsSuccess:
+        var newState = Object.assign({}, state);
 
+        if(!newState.selectedStoryComments){
+          newState.selectedStoryComments = [action.comment]
+        }else{
+          var comments = Object.assign([], newState.selectedStoryComments);
+          newState.selectedStoryComments = comments.concat(action.comments)
+        }
         return newState;
       default:
         return state;

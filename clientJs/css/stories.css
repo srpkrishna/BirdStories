@@ -1,8 +1,8 @@
+
 .adImage{
    width: 100%;
    text-align: center;
-   height: 12rem;
-   margin-bottom: 1rem;
+   float: left;
 }
 
 .stories{
@@ -10,14 +10,36 @@
   display:inline-block;
 }
 
+.stories .moreStories {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.stories .moreStories button {
+    color: white;
+}
+
 @media only screen and (min-width: 480px) {
   .stories{
-    padding-left: 1rem
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 99%;
+  }
+
+  .adImage{
+     margin-bottom: 1rem;
   }
 }
 
 @media only screen and (min-width: 769px) {
   .stories{
-    padding-left: 0rem
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .adImage{
+     display:block;
   }
 }

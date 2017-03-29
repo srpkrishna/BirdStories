@@ -11,7 +11,7 @@ class View extends Component {
     if(this.props.mention){
       text =  "@"+this.props.mention + "  -"
     }
-    this.state = {value: ''};
+    this.state = {value: text};
     this.publish = this.publish.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.loginSuccessful = this.loginSuccessful.bind(this);
@@ -26,10 +26,14 @@ class View extends Component {
 
   loginSuccessful(user){
 
+    var link = window.location.href;
+
+    var url = "https://www."+link.substring(link.indexOf(window.location.host),link.length-1)
     var comment = {
       text:this.state.value,
       userEmail:user.email,
-      userName:user.name
+      userName:user.name,
+      link:link
     }
 
     if(this.props.replyTo){

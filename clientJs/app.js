@@ -4,8 +4,12 @@ import FAuth from './secure/fAuth'
 import Login from  './secure/login.js'
 import styles from './css/app.css';
 import { Link } from 'react-router';
-import logo from './img/profile.svg';
+import profileSvg from './img/profile.svg';
 import logoutSvg from './img/logout.svg';
+
+import menuSvg from './img/menu.svg';
+import phoneSvg from './img/phone.svg';
+import searchSvg from './img/search.svg';
 
 import Popup from './util/popup';
 
@@ -149,7 +153,7 @@ class App extends Component {
 
     const menuClassName = "menu "+this.state.showMenu
 
-    var tag = <Link to="/profile" activeClassName="active" ><img src={logo}/></Link>
+    var tag = <Link to="/profile" activeClassName="active" ><img src={profileSvg}/></Link>
     var component = this.props.children;
     var defaultProps = component.type.defaultProps;
     var logout = "";
@@ -180,7 +184,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <ul className="menuIcon" onClick={this.toggleMenu}>
-            <li><a><i className="material-icons">menu</i></a></li>
+            <li><a><img src={menuSvg} /></a></li>
           </ul>
           <ul className="social">
             <li>
@@ -196,10 +200,10 @@ class App extends Component {
 
           <ul className={menuClassName} onClick={this.hideMenu}>
             <li className={menuClassName}>
-              <Link to="/search" activeClassName="active" ><i className="material-icons">search</i>{window.getString("search")}</Link>
+              <Link to="/search" activeClassName="active" ><img src={searchSvg}/>{window.getString("search")}</Link>
             </li>
             <li className={menuClassName}>
-              <Link to="/contact" activeClassName="active" ><i className="material-icons">phone</i>{window.getString("contactUs")}</Link>
+              <Link to="/contact" activeClassName="active" ><img src={phoneSvg}/>{window.getString("contactUs")}</Link>
             </li>
           </ul>
         </div>

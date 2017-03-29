@@ -42,10 +42,16 @@ class View extends Component {
       </li>)
     })
 
+    var moreTag = ""
+    if(this.props.comments.length >0  && this.props.comments.length%5 == 0 ){
+          moreTag = <li className="moreComments"><button onClick={this.props.showMoreComments} type="button">{window.getString("more")}</button></li>
+    }
+
     return(
       <ul className="comments">
         <div className="title">{window.getString("comments")}</div>
         {commentDivs}
+        {moreTag}
       </ul>
     )
   }

@@ -113,7 +113,7 @@ class View extends Component {
       tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={2}/>)
 
       if(comments && comments.length > 0){
-        tag.push(<Comments comments={comments} key={3} publishComment={publishComment} title={window.getString("commentText")} />)
+        tag.push(<Comments comments={comments} key={3} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
       }
     }
 

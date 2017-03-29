@@ -12,7 +12,15 @@ const error = {
 api.route('/:id')
   .get(function(req, res){
       const postId = req.params.id;
-      getComments(postId,function(comments){
+      var tsFilter = req.query.lastts;
+      if(!tsFilter){
+        tsFilter = Date.now();
+      }else{
+        tsFilter = Number(tsFilter);
+      }
+
+
+      getComments(postId,tsFilter,function(comments){
         res.send(comments);
       })
   })
@@ -58,26 +66,28 @@ api.route('/:id')
              userName = req.body.userName;
            }
 
-           emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName)
+           emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName,req.body.link)
          }
 
          if(req.body.replyTo && req.body.replyToName){
-           emailClient.sendEmailToCommentOwner(req.body.replyTo, req.body.replyToName , storyName,userName)
+           emailClient.sendEmailToCommentOwner(req.body.replyTo, req.body.replyToName , storyName,userName,req.body.link)
          }
       }
     })
   })
 
 
-function getComments(postId,callback){
+function getComments(postId,ts,callback){
     const docClient = conn.getDocClient();
     var params = {
-        KeyConditionExpression: "#id = :postId",
+        KeyConditionExpression: "#id = :postId and #ts < :timestamp",
         ExpressionAttributeNames:{
-            "#id": "postId"
+            "#id": "postId",
+            "#ts": "timestamp"
         },
         ExpressionAttributeValues: {
-            ":postId":postId
+            ":postId":postId,
+            ":timestamp":ts
         },
         Limit: 5,
         ScanIndexForward:false

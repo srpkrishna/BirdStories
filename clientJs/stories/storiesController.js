@@ -9,17 +9,18 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     updateSocial: (index,key) => {
-//       const obj = Actions.updateSocial(index,key);
-//       dispatch(obj);
-//     }
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showMoreStories:() => {
+      const obj = Actions.getMoreStories();
+      dispatch(obj);
+    }
+  }
+}
 
 const StoriesContainer = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(View)
 
 export default StoriesContainer

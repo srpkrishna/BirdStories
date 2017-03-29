@@ -1,14 +1,14 @@
 
 
-function sendEmailToAuthor(toAddress,postName,authorName,commenterName ){
+function sendEmailToAuthor(toAddress,postName,authorName,commenterName,link ){
   var text = 'Hello '+authorName+' , Your post '+postName+' got a new comment from '+commenterName+'.'
-  var html =  '<html><body>Hello '+authorName+',<br> <p> Your post <b>'+postName+'</b> got a new comment from '+commenterName+'.</p>Thanks,<br>Team SuKatha<br>'
+  var html =  '<html><body>Hello '+authorName+',<br> <p> Your post <b>'+postName+'</b> got a new comment from '+commenterName+'. To see the comment click <a href='+link+'>here.</a></p>Thanks,<br>Team SuKatha<br>'
   sendEmail(toAddress,text,html,'Ola! Your post got a new comment')
 }
 
-function sendEmailToCommentOwner(toAddress,commentOwner,postName, replierName){
+function sendEmailToCommentOwner(toAddress,commentOwner,postName, replierName,link){
   var text = 'Hello '+commentOwner+' , Your comment on '+postName+' got a new reply from '+replierName+'.'
-  var html =  '<html><body>Hello '+commentOwner+',<br> <p> Your comment on <b>'+postName+'</b> got a new reply from '+replierName+'.</p>Thanks,<br>Team SuKatha<br>'
+  var html =  '<html><body>Hello '+commentOwner+',<br> <p> Your comment on <b>'+postName+'</b> got a new reply from '+replierName+'. To see the reply click <a href='+link+'>here.</a></p>Thanks,<br>Team SuKatha<br>'
   sendEmail(toAddress,text,html,'Ola! Your comment got a new reply')
 }
 

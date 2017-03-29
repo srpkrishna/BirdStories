@@ -77,8 +77,14 @@ api.route('/:authorId')
 
 api.route('/')
   .get(function(req, res){
-      getStories(function(stories){
+      var tsFilter = req.query.lastts;
+      if(!tsFilter){
+        tsFilter = Date.now();
+      }else{
+        tsFilter = Number(tsFilter);
+      }
 
+      getStories(tsFilter,function(stories){
         res.send(stories);
       })
   })
@@ -139,18 +145,21 @@ function getAuthorStories(authorId,callback){
     storyDb.query(params,docClient,callback);
 }
 
-function getStories(callback){
+function getStories(ts,callback){
     const docClient = conn.getDocClient();
     var params = {
         IndexName: "RecentIndex",
-        KeyConditionExpression: "#l = :lang",
+        KeyConditionExpression: "#l = :lang and #ts < :timestamp",
         ExpressionAttributeNames:{
-            "#l": "lang"
+            "#l": "lang",
+            "#ts" : "timestamp"
         },
         ExpressionAttributeValues: {
-            ":lang":"telugu"
+            ":lang":"telugu",
+            ":timestamp":ts
         },
-        ScanIndexForward:false
+        ScanIndexForward:false,
+        Limit:12
     };
      storyDb.query(params,docClient,callback);
 }

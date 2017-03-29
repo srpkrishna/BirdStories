@@ -60,6 +60,16 @@
     color: #d12767;
 }
 
+.comments .moreComments{
+    text-align: center;
+}
+
+.comments .moreComments button{
+  font-size: 1.0rem;
+  color: #d12767;
+}
+
+
 @media only screen and (min-width: 480px) {
   .commentBox{
     padding: initial;

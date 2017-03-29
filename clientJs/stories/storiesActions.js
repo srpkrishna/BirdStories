@@ -48,6 +48,28 @@ function fetchStories(){
   }
 }
 
+function moreStoriesSuccess(data){
+  return {
+    type:Constants.MoreStoriesSuccess,
+    stories:data,
+  };
+}
+
+function getMoreStories(){
+    return function(dispatch,getState){
+      const stories = getState().stories
+      var story = stories[stories.length-1]
+      var q = ""
+      if(story){
+        q = "?lastts="+story.timestamp
+      }
+
+      Server.fetch('stories'+q,function(data){
+          dispatch(moreStoriesSuccess(data))
+      });
+    }
+}
+
 
 function commentsSuccess(data){
   return {
@@ -66,6 +88,33 @@ function fetchComments(authorId,id){
         });
     }
 }
+
+function moreCommentsSuccess(data){
+  return {
+    type:Constants.StoryMoreCommentsSuccess,
+    comments:data,
+  };
+}
+
+function getMoreComments(){
+    return function(dispatch,getState){
+      const story = getState().selectedStory
+      const postId = story.author + story.timestamp
+      const comments = getState().selectedStoryComments
+      var comment = comments[comments.length-1]
+      var q = ""
+      if(comment){
+        q = "?lastts="+comment.timestamp
+      }
+
+      Server.fetch('comments/'+postId+q,function(data){
+          if(!data.code){
+              dispatch(moreCommentsSuccess(data))
+          }
+        });
+    }
+}
+
 
 function commentPostedSuccessfully(comment){
   return {
@@ -189,7 +238,9 @@ const Actions = {
     getStoryDetails:getStoryDetails,
     storyDetailsSuccess:storyDetailsSuccess,
     publishComment:publishComment,
-    getComments:fetchComments
+    getComments:fetchComments,
+    getMoreComments:getMoreComments,
+    getMoreStories:getMoreStories
 };
 
 export default Actions

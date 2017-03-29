@@ -22,6 +22,10 @@ const mapDispatchToProps = (dispatch) => {
     publishComment:(comment) => {
       const obj = Actions.publishComment(comment);
       dispatch(obj);
+    },
+    showMoreComments:() =>{
+      const obj = Actions.getMoreComments();
+      dispatch(obj);
     }
   }
 }

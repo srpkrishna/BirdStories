@@ -6,6 +6,7 @@ import Viewer from './viewer/viewerController';
 import Store from './storiesStore';
 import  Actions from './storiesActions';
 import { Provider } from 'react-redux';
+import SA from '../util/analytics';
 
 
 class Stories extends Component {
@@ -63,7 +64,7 @@ class Stories extends Component {
       var obj = Actions.fetchStoriesIfNeeded();
       Store.dispatch(obj)
       document.title = window.getString("companyMain")+window.getString("companySub");
-
+      SA.sendPageView('home');
     }
 
     return state;

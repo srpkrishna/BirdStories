@@ -1,7 +1,8 @@
 'use strict';
 import React from 'react';
 import  StoryItem from '../stories/storyItemView';
-import Styles from '../css/author.css'
+import Styles from '../css/author.css';
+import SA from '../util/analytics';
 
 const View = ({ stories,author}) => {
 
@@ -21,7 +22,11 @@ const View = ({ stories,author}) => {
 
   if(author && author.penName){
 
-    document.title = author.penName + " -"+window.getString("companyPromo");
+    if( 0 > document.title.indexOf(author.penName)){
+      document.title = author.penName + " -"+window.getString("companyPromo");
+      SA.sendPageView(author.penName);
+    }
+
     var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
     const imageStyle = {
       background: 'url(' + imgSrc + ') no-repeat center',

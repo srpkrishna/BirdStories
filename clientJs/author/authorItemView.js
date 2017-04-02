@@ -4,7 +4,7 @@ import React from 'react';
 import styles from '../css/item.css';
 import { Link } from 'react-router';
 
-const View = ({ author,index }) => {
+const View = ({ author }) => {
 
   const className = "item clrWhite"
   const link = "/author/"+author.penName;

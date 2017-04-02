@@ -2,6 +2,7 @@
 import React from 'react';
 import Styles from './profile.css';
 import StoryTile from './storyListView.js';
+import SA from '../util/analytics';
 
 const View = ({stories,author}) => {
 
@@ -42,6 +43,12 @@ const View = ({stories,author}) => {
       </ul>
       <p>{author.profile.intro} </p>
     </div>
+
+    if( 0 > document.title.indexOf(author.penName)){
+      var title = 'profile-'+author.penName
+      document.title = author.penName + " -"+window.getString("companyPromo");
+      SA.sendPageView(title,title);
+    }
   }
   return(
     <div className={className}>

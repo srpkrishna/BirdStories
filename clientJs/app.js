@@ -4,17 +4,16 @@ import FAuth from './secure/fAuth'
 import Login from  './secure/login.js'
 import styles from './css/app.css';
 import { Link } from 'react-router';
+
+import SA from './util/analytics';
+
 import profileSvg from './img/profile.svg';
 import logoutSvg from './img/logout.svg';
-
 import menuSvg from './img/menu.svg';
 import phoneSvg from './img/phone.svg';
 import searchSvg from './img/search.svg';
 
 import Popup from './util/popup';
-
-var shdLoginRequire = false;
-var reloadComp = false;
 
 class App extends Component {
 
@@ -81,6 +80,11 @@ class App extends Component {
         if(!state.user){
           if(isLoggedIn){
             state.user = user;
+            var userInfo = {
+              email:user.email,
+              name:user.name
+            }
+            SA.setUserId(userInfo);
           }else{
             state.user = undefined;
           }

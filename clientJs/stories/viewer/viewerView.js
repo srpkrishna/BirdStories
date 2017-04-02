@@ -5,6 +5,7 @@ import Body from './body';
 import Header from './header';
 import Footer from './footer';
 import Comments from './comments';
+import SA from '../../util/analytics';
 
 var c = 0;
 var t;
@@ -24,8 +25,6 @@ class View extends Component {
       timer_is_on:0,
       reachedBottom:false
     };
-    var that = this
-    setTimeout(function(){that.markAsView()},1)
   }
   componentWillUnmount(){
       window.removeEventListener("scroll", this.handleScroll);
@@ -50,10 +49,6 @@ class View extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    if(this.props.story)
-    {
-      document.title = this.props.story.name + " -"+window.getString("companyPromo");
-    }
     this.timedCount();
 
     window.addEventListener("scroll", this.handleScroll);
@@ -66,10 +61,10 @@ class View extends Component {
 
     if( this.props.story && c > this.props.story.time*0.75){
       this.markAsRead()
+    }else{
+      var that = this;
+      t = setTimeout(function(){ that.timedCount() }, 1000*60);
     }
-
-    var that = this;
-    t = setTimeout(function(){ that.timedCount() }, 1000*60);
   }
 
   startCount() {
@@ -84,6 +79,14 @@ class View extends Component {
       timer_is_on = 0;
   }
 
+  storyLoaded(){
+    if( 0 > document.title.indexOf(this.props.story.name) ){
+      this.markAsView()
+      document.title = this.props.story.name + " -"+window.getString("companyPromo");
+      var name = this.props.story.name.replace(/\s+/g, '').toLowerCase();
+      SA.sendPageView(this.props.story.name,name);
+    }
+  }
 
   handleScroll() {
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
@@ -91,7 +94,7 @@ class View extends Component {
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight * 0.75 && !reachedBottom) {
+    if (windowBottom >= docHeight * 0.7 && !reachedBottom) {
       reachedBottom = true;
       this.markAsRead()
     }
@@ -115,9 +118,8 @@ class View extends Component {
       if(comments && comments.length > 0){
         tag.push(<Comments comments={comments} key={3} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
       }
+      this.storyLoaded()
     }
-
-
 
     return(
       <div>

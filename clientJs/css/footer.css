@@ -33,15 +33,25 @@
   transform: scale(1);
 }
 
-.contentFooter .authTitle{
+.contentFooter .more{
   text-align: right;
   font-size: 1.3rem;
-  cursor: pointer;
-  transition: -webkit-transform 0.25s ease;
-  transition: transform 0.25s ease;
+  padding:0;
 }
 
-.contentFooter .authTitle a{
+.contentFooter .more li{
+  padding:0;
+}
+
+.contentFooter .more .home{
+  float: left;
+}
+
+.contentFooter .more .authHome{
+  float: right;
+}
+
+.contentFooter .more a{
   display: inline-block;
   color: rgba(255, 255, 255, 0.8);
 }

@@ -8,7 +8,8 @@ const View = ({ story,index,author }) => {
 
   const className = "list clr"+(index%4)
   const link = "/stories/story"
-  const query = {a:story.author,id:story.timestamp}
+  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  const query = {t:story.timestamp,a:story.author,n:name}
   const linkObj = {
       pathname:link,
       query:query,

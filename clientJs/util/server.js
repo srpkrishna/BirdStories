@@ -1,5 +1,4 @@
 var BaseURL = "/api/";
-var S3URL = "https://s3.ap-south-1.amazonaws.com/bsstory/"
 
 const serverCall = {
 	fetch:function(url,successFunction){

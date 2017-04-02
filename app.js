@@ -9,6 +9,7 @@ var storyApi = require('./server/routes/storyApi');
 var authorApi = require('./server/routes/authorApi');
 var profileApi = require('./server/routes/profileApi');
 var commentApi = require('./server/routes/commentApi');
+var userApi = require('./server/routes/userApi');
 var session = require('cookie-session')
 
 var app = express();
@@ -43,6 +44,7 @@ app.use('/api/stories', storyApi);
 app.use('/api/authors', authorApi);
 app.use('/api/profile',profileApi);
 app.use('/api/comments', commentApi);
+app.use('/api/user',userApi);
 app.use('/api', api);
 
 app.use('/*', function(req, res, next) {

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=dev node ./bin/www | NODE_ENV=dev webpack -d --watch",
-    "start": "NODE_ENV=production webpack -p | NODE_ENV=production node ./bin/www"
+    "pack":"NODE_ENV=production webpack -p",
+    "start": "NODE_ENV=production node ./bin/www"
   },
   "author": "Radha Phani Krishna Sunkara",
   "license": "ISC",
@@ -44,6 +45,7 @@
     "style-loader": "^0.13.1",
     "svgo": "^0.7.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-node-externals": "^1.5.4"
   }
 }

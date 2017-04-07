@@ -74,7 +74,7 @@ class Competition extends Component {
            ఆ కారణం చేత తను సింహాసనాన్ని అధిష్టించటానికి అనర్హుడని తన నమ్మకం.
           </li>
           <li className="character">
-           <span className="highlight">ఖైది: </span>220-32 సంవత్సరాల మధ్యలో ఉండే అతి ముఖ్యమైన యవ్వన దశ మొత్తం జైలులో గడిపిన 32 ఏళ్ళ యువకుడు. ఎంతో జాలి గుణం కలవాడు. ఒక మెకానిక్
+           <span className="highlight">ఖైది: </span>20-32 సంవత్సరాల మధ్యలో ఉండే అతి ముఖ్యమైన యవ్వన దశ మొత్తం జైలులో గడిపిన 32 ఏళ్ళ యువకుడు. ఎంతో జాలి గుణం కలవాడు. ఒక మెకానిక్
             షెడ్ లో పనిచేస్తూ, సమాజం తనపై చూపించే వివక్షని సానుకూల దృక్పథంతో ఎదుర్కొంటూ, పోగొట్టుకున్న తన కుటుంబాన్ని తలచుకుంటూ జీవిస్తూ ఉంటాడు.
           </li>
           <li className="character">
@@ -106,6 +106,7 @@ class Competition extends Component {
           <li><span className="highlight">గడువు తేది: </span>May 7, 2017</li>
           <li><span className="highlight">మెయిల్ చిరునామా: </span>storyboard@sukatha.com</li>
           <li><span className="highlight">మరిన్ని వివరాలకు: </span>+91-9902431300</li>
+          <li><span className="highlight">గమనిక: </span>ఒక రచయిత ఒకటి కన్నా ఎక్కువ కథలు పంపవచ్చు.</li>
         </ul>
 
         <div className="home"> <Link to="/home">← Home</Link> </div>

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import View from './storiesView'
 import  Actions from './storiesActions';
+import SA from '../util/analytics';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     showMoreStories:() => {
       const obj = Actions.getMoreStories();
       dispatch(obj);
+      SA.sendEvent('Home','showmore','stories');
     }
   }
 }

@@ -87,6 +87,9 @@ class App extends Component {
             SA.setUserId(userInfo);
           }else{
             state.user = undefined;
+            if(state.fbApi && state.gApi){
+              SA.setClientId();
+            }
           }
         }else if(!isLoggedIn && service === state.user.service){
             state.user = undefined;

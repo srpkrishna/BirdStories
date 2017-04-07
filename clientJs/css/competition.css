@@ -1,0 +1,92 @@
+.competition{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  background: none repeat scroll 0 0 #fff;
+  color: #162b4d;
+  font-family: notosans;
+  float: left;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.competition .pageHeader {
+  text-align: center;
+  display: inline-block;
+  float: left;
+  width: 100%;
+  padding: 3vw;
+  background-image: url(../img/bg.png);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.competition .pageHeader .topLeftTitle {
+    float: left;
+    font-size: 1rem;
+}
+
+.competition .pageHeader .topRightTitle {
+    float: right;
+    font-size: 1rem;
+}
+.competition .pageHeader .mainTitle {
+  width: 100%;
+  padding: 1.4rem 0;
+  display: inline-block;
+}
+
+.competition .pageHeader ul.prizes {
+    padding: 0;
+    font-size: 1rem;
+    /* padding-bottom: 0.1rem; */
+    display: inline-block;
+    width: 100%;
+}
+
+.competition .pageHeader li.prize {
+    float: left;
+    display: inline-block;
+    width: 33%;
+}
+
+.competition .addressInfo {
+    display: inline-block;
+    padding: 3vw;
+    word-spacing: 0.2rem;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+.competition .highlight{
+  color: #d12767;
+}
+
+.competition ul.characters {
+    display: inline-block;
+    padding: 0 5vw;
+    word-spacing: 0.2rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.competition li.character {
+    float: left;
+    width: 100%;
+    padding: 1rem 0;
+
+}
+
+.competition ul.finalWords {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.competition .home{
+    padding: 1.5rem 0 0.5rem 0;
+    color: #d12767;
+}

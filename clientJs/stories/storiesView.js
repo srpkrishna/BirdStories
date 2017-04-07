@@ -3,6 +3,8 @@
 import React,{Component} from 'react';
 import  StoryItem from './storyItemView';
 import styles from '../css/stories.css';
+import SA from '../util/analytics';
+import { Link } from 'react-router';
 
 class View extends Component {
   constructor(props){
@@ -14,6 +16,16 @@ class View extends Component {
     this.setState({ imageStatus:false });
   }
 
+  componentWillUnmount(){
+    window.onbeforeunload = undefined;
+  }
+
+  componentDidMount() {
+    window.onbeforeunload = () => {
+        SA.sendEvent('Home','close','home');
+      }
+  }
+
   render(){
     var storyDivs = '';
     if(this.props.stories){
@@ -22,7 +34,7 @@ class View extends Component {
       })
     }
 
-    var img = <img className="adImage" src="https://s3.ap-south-1.amazonaws.com/imagesbs/ad.png" onError={this.handleImageErrored.bind(this)} />
+    var img = <Link to="/competition"> <div className="adImage">సు‘కథ’ నిర్వహించే వినూత్నమైన కథల పోటీలో పాల్గొని మీ ప్రతిభకి తగిన గుర్తింపు పొందండి. వివరాలకు ఇక్కడ క్లిక్ చేయండి. <img src="touch.png" className="adIcon"></img></div></Link>
 
     if(!this.state.imageStatus){
       img = ""

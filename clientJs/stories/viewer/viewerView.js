@@ -30,21 +30,29 @@ class View extends Component {
       window.removeEventListener("scroll", this.handleScroll);
       window.onblur = undefined;
       window.onfocus = undefined;
+      window.onbeforeunload = undefined;
 
       c = 0;
       t = undefined;
       timer_is_on = 0;
       reachedBottom = false;
+
+      var name = this.props.story.name.removeSpaceAndCapitals();
+      SA.sendEvent('Story','close',name);
   }
 
   markAsRead(){
     if( this.props.story && c > this.props.story.time*0.75 && reachedBottom === true){
       this.props.updateSocial("reads");
+      var name = this.props.story.name.removeSpaceAndCapitals();
+      SA.sendEvent('Story','read',name);
     }
   }
 
   markAsView(){
     this.props.updateSocial("views");
+    var name = this.props.story.name.removeSpaceAndCapitals();
+    SA.sendPageView(this.props.story.name,name);
   }
 
   componentDidMount() {
@@ -83,8 +91,10 @@ class View extends Component {
     if( 0 > document.title.indexOf(this.props.story.name) ){
       this.markAsView()
       document.title = this.props.story.name + " -"+window.getString("companyPromo");
-      var name = this.props.story.name.replace(/\s+/g, '').toLowerCase();
-      SA.sendPageView(this.props.story.name,name);
+      window.onbeforeunload = () => {
+          var name = this.props.story.name.removeSpaceAndCapitals();
+          SA.sendEvent('Story','close',name);
+        }
     }
   }
 

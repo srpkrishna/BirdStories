@@ -8,7 +8,7 @@ import CommentBox from './CommentBox';
 const View = ({story,authorLink, updateSocial,publishComment})=>{
   var shareUrl = window.location.href;
   var title = story.displayName + " - "+"sukatha.com"
-  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  var name = story.name.removeSpaceAndCapitals();
   const coverImg = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
 
   return(

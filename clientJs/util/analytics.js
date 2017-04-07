@@ -16,7 +16,21 @@ const SA = {
             ga('set','userId',data.id)
         }
     });
+  },
+  setClientId:function(){
+    if (typeof(Storage) !== "undefined") {
+      var clientUID = localStorage.clientUID
+      if(!clientUID){
+        clientUID = "client"+Math.floor(Math.random() * 8999999999 + 1000000000)
+        localStorage.setItem("clientUID", clientUID);
+      }
+      ga('set','userId',clientUID)
+    }
+  },
+  sendEvent:function(eventId,eventType,eventFor){
+    ga('send', 'event', eventId, eventType, eventFor);
   }
+
 }
 
 export default SA

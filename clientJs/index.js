@@ -12,6 +12,7 @@ import NoMatch from './noMatch';
 import Stories from './stories/stories';
 import Search from './search/search';
 import Launch from './launch';
+import Competition from './competition'
 
 
 ReactDOM.render(
@@ -30,6 +31,7 @@ ReactDOM.render(
       <Route path="about" component={About}/>
       <Route path="contact" component={Contact}/>
       <Route path="write" component={Write} requireAuth={true} />
+      <Route path="competition" component={Competition} />
       <Route path="*" component={Stories}/>
     </Route>
   </Router>),

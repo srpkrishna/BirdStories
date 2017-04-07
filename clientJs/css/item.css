@@ -14,14 +14,17 @@
 }
 
 .item .time{
-  padding:0.1rem 0.3rem;
+  padding: 0.1rem;
   display: inline-block;
   color: #162b4d;
   background-color: #f0f0f0;
-  margin-top:8.6rem;
-  border-radius: 3px 0 0 3px;
-  opacity: 0.9;
+  bottom: 0;
+  right: 0;
+  opacity: 0.8;
   float: right;
+  width: auto;
+  position: absolute;
+  font-size: 0.8em;
 }
 .item .info{
   width:70%;
@@ -76,7 +79,8 @@
   }
 
   .item .time{
-    margin-top: 10.6rem;
+    font-size: 0.85em;
+    padding: 0.1rem 0.3rem; 
   }
   .item .info{
     width: 100%;

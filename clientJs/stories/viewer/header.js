@@ -13,7 +13,7 @@ const View = ({story,authorLink,updateSocial})=>{
     backgroundSize:'cover'
   }
 
-  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  var name = story.name.removeSpaceAndCapitals();
   const coverImg = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
 
   return(
@@ -24,8 +24,8 @@ const View = ({story,authorLink,updateSocial})=>{
       </Link>
       <div className="title">{story.displayName}</div>
       <ul className="actions">
-        <li className="info">{story.social.views} Views</li>
-        <li className="info">{story.social.likes} Likes</li>
+        <li className="info">{story.social.views} {window.getString("views")}</li>
+        <li className="info">{story.social.likes} {window.getString("likes")}</li>
         <Social shareUrl={shareUrl} title={title} pic={coverImg} updateSocial={updateSocial}/>
       </ul>
 

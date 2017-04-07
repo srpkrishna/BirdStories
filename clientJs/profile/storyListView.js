@@ -8,7 +8,7 @@ const View = ({ story,index,author }) => {
 
   const className = "list clr"+(index%4)
   const link = "/stories/story"
-  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  var name = story.name.removeSpaceAndCapitals();
   const query = {t:story.timestamp,a:story.author,n:name}
   const linkObj = {
       pathname:link,
@@ -16,7 +16,6 @@ const View = ({ story,index,author }) => {
       state:{story:story,author:author}
   }
 
-  var name = story.name.replace(/\s+/g, '').toLowerCase();
   const imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
   const imageStyle = {
     background: 'url(' + imgSrc + ') no-repeat center',

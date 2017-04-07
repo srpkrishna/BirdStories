@@ -62,6 +62,7 @@
 
 .comments .moreComments{
     text-align: center;
+    width: 100%;
 }
 
 .comments .moreComments button{

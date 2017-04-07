@@ -3,8 +3,16 @@
    width: 100%;
    text-align: center;
    float: left;
+   color: white;
+   padding: 2rem;
+   word-spacing: 0.2rem;
+   line-height: 1.6;
 }
 
+.adIcon{
+    width: 2rem;
+    margin: -6px;
+}
 .stories{
   width: 100%;
   display:inline-block;

@@ -16,6 +16,7 @@ class Competition extends Component {
   }
 
   componentWillUnmount(){
+    SA.sendEvent('Competition','close','competition');
     window.onbeforeunload = undefined;
   }
 
@@ -102,11 +103,14 @@ class Competition extends Component {
           </li>
         </ul>
 
+        <ul className="ps">
+          <li><span className="highlight">గమనిక: </span>ఒక రచయిత ఒకటి కన్నా ఎక్కువ కథలు పంపవచ్చు. గెలిచిన కథలుతో పాటు బాగున్న ప్రతి కథ ‘సుకథ’ లో ప్రచురించబడుతుంది మరియు ₹500/- పొందుతుంది</li>
+        </ul>
+
         <ul className="finalWords">
           <li><span className="highlight">గడువు తేది: </span>May 7, 2017</li>
-          <li><span className="highlight">మెయిల్ చిరునామా: </span>storyboard@sukatha.com</li>
           <li><span className="highlight">మరిన్ని వివరాలకు: </span>+91-9902431300</li>
-          <li><span className="highlight">గమనిక: </span>ఒక రచయిత ఒకటి కన్నా ఎక్కువ కథలు పంపవచ్చు.</li>
+          <li><span className="highlight">మెయిల్ చిరునామా: </span>storyboard@sukatha.com</li>
         </ul>
 
         <div className="home"> <Link to="/home">← Home</Link> </div>

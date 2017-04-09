@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import View from './searchView'
 import Actions from './searchActions';
+import SA from '../util/analytics';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleChange: (event) => {
       var value = event.target.value.toLowerCase();
+      SA.sendEvent('Search','searching',value);
       const obj = Actions.search(value);
       dispatch(obj)
     }

@@ -1,56 +1,76 @@
 'use strict';
-import React from 'react';
+import React, { Component } from 'react';
 import  StoryItem from '../stories/storyItemView';
 import Styles from '../css/author.css';
 import SA from '../util/analytics';
 
-const View = ({ stories,author}) => {
+class View extends Component {
 
-  var storyDiv = '';
-  var authorDiv = '';
-  if(stories && stories.length > 0){
-    storyDiv = <div className="storiesBlock">
-      {
-        stories.map(function(story,i) {
-          return <StoryItem story={story} author={author} key={i} index={i} />;
-        })
+  constructor(props){
+    super(props)
+  }
+
+  componentWillUnmount(){
+
+    var name = "";
+
+    if(this.props.author && this.props.author.penName)
+      name = this.props.author.penName;
+
+    SA.sendEvent('Author','close',name);
+    window.onbeforeunload = undefined;
+  }
+
+  render(){
+
+    var stories = this.props.stories;
+    var author = this.props.author;
+    var storyDiv = '';
+    var authorDiv = '';
+    if(stories && stories.length > 0){
+      storyDiv = <div className="storiesBlock">
+        {
+          stories.map(function(story,i) {
+            return <StoryItem story={story} author={author} key={i} index={i} />;
+          })
+        }
+      </div>
+    }
+    
+    if(author && author.penName){
+
+      if( 0 > document.title.indexOf(author.penName)){
+        document.title = author.penName + " -"+window.getString("companyPromo");
+        SA.sendPageView(author.penName);
+        window.onbeforeunload = () => {
+            var name = this.props.story.name.removeSpaceAndCapitals();
+            SA.sendEvent('Author','close',author.penName);
+          }
       }
-    </div>
-  }
 
+      var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
+      const imageStyle = {
+        background: 'url(' + imgSrc + ') no-repeat center',
+        backgroundSize:'cover'
+      }
 
-
-  if(author && author.penName){
-
-    if( 0 > document.title.indexOf(author.penName)){
-      document.title = author.penName + " -"+window.getString("companyPromo");
-      SA.sendPageView(author.penName);
+      authorDiv = <div className="authorProfile" >
+        <div className="authorImage a2" style={imageStyle}></div>
+        <ul>
+          <li>{author.profile.fullName}</li>
+          <li>{author.profile.qual}</li>
+          <li>{author.profile.prof}</li>
+        </ul>
+        <p>{author.profile.intro} </p>
+        {storyDiv}
+      </div>
     }
-
-    var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
-    const imageStyle = {
-      background: 'url(' + imgSrc + ') no-repeat center',
-      backgroundSize:'cover'
-    }
-
-    authorDiv = <div className="authorProfile" >
-      <div className="authorImage a2" style={imageStyle}></div>
-      <ul>
-        <li>{author.profile.fullName}</li>
-        <li>{author.profile.qual}</li>
-        <li>{author.profile.prof}</li>
-      </ul>
-      <p>{author.profile.intro} </p>
-      {storyDiv}
-    </div>
+    return(
+      <div>
+        {authorDiv}
+      </div>
+    )
   }
-  return(
-    <div>
-      {authorDiv}
-    </div>
-  )
-
-
 }
 
 export default View;

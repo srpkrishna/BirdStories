@@ -17,10 +17,13 @@ class View extends Component {
   }
 
   componentWillUnmount(){
+    SA.sendEvent('Home','close','home');
     window.onbeforeunload = undefined;
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+    SA.sendPageView('home');
     window.onbeforeunload = () => {
         SA.sendEvent('Home','close','home');
       }

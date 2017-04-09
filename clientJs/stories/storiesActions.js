@@ -1,6 +1,7 @@
 'use strict';
 import  Constants from './storiesConstants';
 import Server from '../util/server';
+import SA from '../util/analytics';
 
 function fetchSuccess(stories){
 
@@ -112,6 +113,7 @@ function getMoreComments(){
               dispatch(moreCommentsSuccess(data))
           }
         });
+      SA.sendEvent('Story','moreComments',story.name.removeSpaceAndCapitals());
     }
 }
 
@@ -143,6 +145,7 @@ function publishComment(comment){
           }
 
       });
+      SA.sendEvent('Story','publishComment',story.name.removeSpaceAndCapitals());
     }
 }
 
@@ -176,6 +179,9 @@ function updateSocial(element){
         if(!data.code)
           dispatch(updateSuccess(data,element))
     });
+
+    if(!("views" === element || "reads" === element))
+      SA.sendEvent('Story',element,story.name.removeSpaceAndCapitals());
   }
 }
 

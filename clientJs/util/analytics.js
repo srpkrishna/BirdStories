@@ -27,8 +27,14 @@ const SA = {
       ga('set','userId',clientUID)
     }
   },
-  sendEvent:function(eventId,eventType,eventFor){
-    ga('send', 'event', eventId, eventType, eventFor);
+  sendEvent:function(eventId,eventType,eventFor,value){
+
+    if(value){
+      ga('send', 'event', eventId, eventType, value);
+    }else{
+      ga('send', 'event', eventId, eventType, eventFor);
+    }
+
   }
 
 }

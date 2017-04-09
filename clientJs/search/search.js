@@ -18,7 +18,16 @@ class Search extends Component {
     window.scrollTo(0, 0)
     document.title = window.getString("search") + " -"+window.getString("companyPromo");
     SA.sendPageView('search');
+    window.onbeforeunload = () => {
+        SA.sendEvent('Search','close','search');
+      }
   }
+
+  componentWillUnmount(){
+    SA.sendEvent('Search','close','search');
+    window.onbeforeunload = undefined;
+  }
+
 
   render() {
     return (

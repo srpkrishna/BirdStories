@@ -37,7 +37,11 @@ class View extends Component {
       timer_is_on = 0;
       reachedBottom = false;
 
-      var name = this.props.story.name.removeSpaceAndCapitals();
+      var name = "";
+
+      if(this.props.story && this.props.story.name)
+        name = this.props.story.name.removeSpaceAndCapitals();
+
       SA.sendEvent('Story','close',name);
   }
 
@@ -65,14 +69,18 @@ class View extends Component {
   }
 
   timedCount() {
-    c = c + 1;
+    var name = "";
+    if(this.props.story && this.props.story.name)
+      name = this.props.story.name.removeSpaceAndCapitals();
+    SA.sendEvent('Story','reading',name,c);
 
     if( this.props.story && c > this.props.story.time*0.75){
       this.markAsRead()
     }else{
       var that = this;
-      t = setTimeout(function(){ that.timedCount() }, 1000*60);
+      t = setTimeout(function(){ that.timedCount() }, 1000*30);
     }
+    c = c + 0.5;
   }
 
   startCount() {

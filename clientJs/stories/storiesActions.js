@@ -4,17 +4,6 @@ import Server from '../util/server';
 import SA from '../util/analytics';
 
 function fetchSuccess(stories){
-
-  // if(stories && stories.length > 0){
-  //   var dt = new Date()
-  //   var index = dt.getDate() % stories.length
-  //   var count = 0;
-  //   while(count < index){
-  //     stories.push(stories.shift())
-  //     count++;
-  //   }
-  // }
-
   return {
     type:Constants.StoriesChangeEvent,
     isFetching:false,
@@ -213,7 +202,7 @@ function storyDetailsSuccess(data){
 
 function getStoryDetails(authorId,id){
   return function(dispatch) {
-    Server.fetch('stories/story/'+authorId+'/'+id,function(data){
+    Server.fetch('stories/'+authorId+'/'+id,function(data){
         dispatch(storyDetailsSuccess(data))
     });
   }

@@ -1,15 +1,16 @@
 import { connect } from 'react-redux'
-import View from './viewerView'
-import  Actions from '../storiesActions';
+import View from '../viewer/viewerView'
+import  Actions from './seriesActions';
 
 const mapStateToProps = (state) => {
 
   return {
     content: state.selectedContent,
-    story:state.selectedStory,
+    story:state.selectedSeries,
     author:state.selectedAuthor,
     authorLink:state.authorLink,
-    comments:state.selectedStoryComments
+    comments:state.selectedSeriesComments,
+    episode:state.selectedEpisode
   }
 }
 
@@ -26,6 +27,10 @@ const mapDispatchToProps = (dispatch) => {
     showMoreComments:() =>{
       const obj = Actions.getMoreComments();
       dispatch(obj);
+    },
+    getEpisodeContent(authorId,name,episode){
+       const obj = Actions.getSeriesContent(authorId,name,episode);
+       dispatch(obj);
     }
   }
 }

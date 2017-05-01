@@ -46,8 +46,8 @@ class Competition extends Component {
             </li>
           </ul>
         </div>
-        <div className="addressInfo">ఈ క్రింది 12 పాత్రల నుండి ఏవైనా కనీసం 2 పాత్రలను ప్రధాన పాత్రలుగా చిత్రికరిస్తూ , 1500 పదాలు మించకుండా
-          కథ రాసి <span className="highlight">storyboard@sukatha.comకి మే 7వ</span> తేదీ లొపు పంపండి.. మీ సృజనా శక్తికి తగిన గుర్తింపు పొందండి!
+        <div className="addressInfo">ఈ క్రింది 12 పాత్రల నుండి ఏవైనా కనీసం 2 పాత్రలను ప్రధాన పాత్రలుగా చిత్రీకరిస్తూ , 1500 పదాలు మించకుండా
+          కథ రాసి <span className="highlight">storyboard@sukatha.comకి మే 7వ</span> తేదీ లోపు పంపండి.. మీ సృజనా శక్తికి తగిన గుర్తింపు పొందండి!
         </div>
 
         <ul className="characters">
@@ -104,7 +104,7 @@ class Competition extends Component {
         </ul>
 
         <ul className="ps">
-          <li><span className="highlight">గమనిక: </span>ఒక రచయిత ఒకటి కన్నా ఎక్కువ కథలు పంపవచ్చు. గెలిచిన కథలుతో పాటు బాగున్న ప్రతి కథ ‘సుకథ’ లో ప్రచురించబడుతుంది మరియు ₹500/- పొందుతుంది</li>
+          <li><span className="highlight">గమనిక: </span>ఒక రచయిత ఒకటి కన్నా ఎక్కువ కథలు పంపవచ్చు. గెలిచిన కథలుతో పాటు బాగున్న ప్రతి కథ ‘సుకథ’ లో ప్రచురించబడుతుంది. సాధారణ ప్రచురణకి ఎంపికైన ప్రతి కథకి ₹500/- పారితోషకం ఇవ్వబడును.</li>
         </ul>
 
         <ul className="finalWords">
@@ -113,7 +113,7 @@ class Competition extends Component {
           <li><span className="highlight">మెయిల్ చిరునామా: </span>storyboard@sukatha.com</li>
         </ul>
 
-        <div className="home"> <Link to="/home">← Home</Link> </div>
+        <div className="home"> <Link to="/">← Home</Link> </div>
       </div>
     );
   }

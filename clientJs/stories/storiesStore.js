@@ -19,7 +19,13 @@ const reducer = (state=defaultState, action) => {
         return newState;
       case Constants.MoreStoriesSuccess:
         var newState = Object.assign({}, state);
-        newState.stories =  newState.stories.concat(action.stories);
+
+        if(action.stories && action.stories.length == 0){
+          newState.reachedEnd = true;
+        }else{
+          newState.stories =  newState.stories.concat(action.stories);
+        }
+
         return newState;
 
       case Constants.StoryChangeEvent:

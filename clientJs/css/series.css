@@ -1,0 +1,28 @@
+.series{
+  width: 100%;
+  display:inline-block;
+}
+
+.series .moreSeries {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.series .moreSeries button {
+    color: white;
+}
+
+@media only screen and (min-width: 480px) {
+  .series{
+    padding-right: 0.75rem;
+    width: 99%;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .series{
+    padding-right: 0;
+    width: 100%;
+  }
+}

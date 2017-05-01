@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var api = require('./server/routes/api');
 var storyApi = require('./server/routes/storyApi');
+var seriesApi = require('./server/routes/seriesApi');
 var authorApi = require('./server/routes/authorApi');
 var profileApi = require('./server/routes/profileApi');
 var commentApi = require('./server/routes/commentApi');
 var userApi = require('./server/routes/userApi');
-var session = require('cookie-session')
+var session = require('cookie-session');
+var AWS = require('aws-sdk');
 
 var app = express();
 
@@ -41,11 +43,49 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/stories', storyApi);
+app.use('/api/series', seriesApi);
 app.use('/api/authors', authorApi);
 app.use('/api/profile',profileApi);
 app.use('/api/comments', commentApi);
 app.use('/api/user',userApi);
 app.use('/api', api);
+
+app.use('/stories/story',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = req.query.a+'/'+req.query.n+'/story.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    res.sendFile('public/index.html' , { root : __dirname});
+  }
+
+});
+
+app.use('/sitemap',function(req, res, next) {
+  var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+  var bucketName = 'sukathasamples';
+  var keyName = 'SEO/sitemap.xml';
+  var params = {Bucket: bucketName, Key: keyName};
+  s3.getObject(params, function(err, data) {
+    if (err){
+      res.send(err);
+    }else {
+      var fileContents = data.Body.toString();
+      res.set('Content-Type', 'text/xml');
+      res.send(fileContents);
+    }
+  });
+});
 
 app.use('/*', function(req, res, next) {
   res.sendFile('public/index.html' , { root : __dirname});

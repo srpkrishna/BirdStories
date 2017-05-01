@@ -1,0 +1,109 @@
+.tab {
+  width: 100%;
+  background: #162b4d;
+  color: white;
+  display: inline-block;
+  float: left;
+  text-align: left;
+}
+
+.tab button {
+  color: white;
+  padding: 1rem;
+  font-size: 1.2rem;
+  opacity: 0.5;
+
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+.tab button.highlight {
+    opacity: 1.0;
+}
+
+.homeStories{
+    width: 100%;
+    float: left;
+    display: inline-block;
+}
+
+.homeSeries {
+    width: 100%;
+    float: left;
+    display: inline-block;
+}
+
+.mobileHide{
+  display:none;
+}
+
+.adImage{
+   text-align: center;
+   float: left;
+   color: white;
+   padding:1rem;
+   word-spacing: 0.2rem;
+   line-height: 1.6;
+   /*background: #cf6100;*/
+}
+
+.adIcon{
+    width: 2rem;
+    margin: -6px;
+}
+
+@media only screen and (min-width: 480px) {
+
+  .adImage{
+     margin:0 0.75rem 0.75rem 0.75rem;
+  }
+
+  .tab{
+    display: none;
+  }
+
+  .mobileHide{
+    display: inline-block;
+  }
+
+  .homeStories{
+    width: 50%;
+    float: left;
+  }
+
+  .homeSeries{
+    float:right;
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+
+  .adImage{
+    width: 100%;
+     display:block;
+     margin:0;
+     margin-bottom: 1rem;
+  }
+
+  .homeStories{
+    width: 65%;
+  }
+
+  .homeSeries{
+    width: 35%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+
+  .homeStories{
+    width: 75%;
+  }
+
+  .homeSeries{
+    width: 25%;
+  }
+}

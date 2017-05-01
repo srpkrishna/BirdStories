@@ -16,6 +16,10 @@ const reducer = (state=defaultState, action) => {
         var newState = Object.assign({}, state);
         newState.stories =  action.stories;
         return newState;
+      case Constants.AuthorSeriesFetch:
+        var newState = Object.assign({}, state);
+        newState.series =  action.series;
+        return newState;
       case Constants.AuthorDetailsFetch:
         var newState = Object.assign({}, state);
         newState.author =  action.author;

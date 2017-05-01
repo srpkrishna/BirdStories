@@ -16,6 +16,7 @@ const reducer = (state=defaultState, action) => {
         var newState = Object.assign({}, state);
         newState.author =  action.myData.author;
         newState.stories = action.myData.stories;
+        newState.series = action.myData.series;
         return newState;
       default:
         return state;

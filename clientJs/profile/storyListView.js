@@ -2,7 +2,6 @@
 import Styles from './storyList.css'
 import React from 'react';
 import { Link } from 'react-router';
-import styles from '../css/item.css';
 
 const View = ({ story,index,author }) => {
 

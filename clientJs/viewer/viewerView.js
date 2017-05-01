@@ -1,11 +1,12 @@
 'use strict';
 import React, { Component } from 'react';
-import styles from '../../css/viewer.css';
+import styles from '../css/viewer.css';
 import Body from './body';
 import Header from './header';
 import Footer from './footer';
+import EpisodeStrip from './episodeStrip';
 import Comments from './comments';
-import SA from '../../util/analytics';
+import SA from '../util/analytics';
 
 var c = 0;
 var t;
@@ -56,7 +57,12 @@ class View extends Component {
   markAsView(){
     this.props.updateSocial("views");
     var name = this.props.story.name.removeSpaceAndCapitals();
-    SA.sendPageView(this.props.story.name,name);
+
+    if(this.props.story.episodes){
+      SA.sendPageView(this.props.story.name,name,'Story');
+    }else {
+      SA.sendPageView(this.props.story.name,name,'Series');  
+    }
   }
 
   componentDidMount() {
@@ -70,17 +76,18 @@ class View extends Component {
 
   timedCount() {
     var name = "";
-    if(this.props.story && this.props.story.name)
+    if(this.props.story && this.props.story.name && c > 0){
       name = this.props.story.name.removeSpaceAndCapitals();
-    SA.sendEvent('Story','reading',name,c);
+      SA.sendEvent('Story','reading',name,c);
+    }
 
     if( this.props.story && c > this.props.story.time*0.75){
       this.markAsRead()
     }else{
       var that = this;
-      t = setTimeout(function(){ that.timedCount() }, 1000*30);
+      t = setTimeout(function(){ that.timedCount() }, 1000*60);
     }
-    c = c + 0.5;
+    c = c + 1;
   }
 
   startCount() {
@@ -130,11 +137,19 @@ class View extends Component {
     var tag = []
     if(content && story && author){
       tag.push(<Header story={story} authorLink={authorLink} updateSocial={updateSocial} key={0}/>)
+      if(story.episodes && story.episodes.length >= Number(this.props.episode)){
+        var episode = Number(this.props.episode) - 1
+        var title = story.episodes[episode]
+        tag.push(<div className="episodeTitle">{title}</div> )
+      }
       tag.push(<Body content={content} key={1}/>)
-      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={2}/>)
+      if(story.episodes){
+        tag.push(<EpisodeStrip key={2} series={story} episode={this.props.episode} author={this.props.author} />)
+      }
+      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={3}/>)
 
       if(comments && comments.length > 0){
-        tag.push(<Comments comments={comments} key={3} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
+        tag.push(<Comments comments={comments} key={4} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
       }
       this.storyLoaded()
     }

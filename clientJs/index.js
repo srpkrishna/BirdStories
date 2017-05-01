@@ -10,6 +10,8 @@ import Profile from './profile/profile';
 import Author from './author/author';
 import NoMatch from './noMatch';
 import Stories from './stories/stories';
+import Series from './series/series';
+import Home from './home/home';
 import Search from './search/search';
 import Launch from './launch';
 import Competition from './competition'
@@ -18,9 +20,12 @@ import Competition from './competition'
 ReactDOM.render(
   (<Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Stories}/>
+      <IndexRoute component={Home}/>
       <Route path="stories" component={Stories}>
         <Route path="/stories/story" component={Stories}/>
+      </Route>
+      <Route path="seriesList" component={Series}>
+        <Route path="/seriesList/series" component={Series}/>
       </Route>
       <Route path="search" component={Search}/>
       <Router path="author">

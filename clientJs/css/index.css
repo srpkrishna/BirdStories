@@ -139,12 +139,18 @@ button{
   border: 2px solid transparent;
   transition: -webkit-transform 0.25s ease;
   transition: transform 0.25s ease;
+  transition: -moz-transition 0.25s ease;
   cursor: pointer;
+}
+
+button:focus {
+    outline: none;
 }
 
 button:hover{
   -webkit-transform: scale(1.02);
   transform: scale(1.02);
+   -moz-transition : scale(1.02);
 }
 
 .blur{

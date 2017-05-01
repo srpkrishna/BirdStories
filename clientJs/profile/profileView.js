@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Styles from './profile.css';
 import StoryTile from './storyListView.js';
+import SeriesTile from './seriesListView.js';
 import SA from '../util/analytics';
 
 class View extends Component {
@@ -23,6 +24,7 @@ class View extends Component {
 
   render(){
     var stories = this.props.stories;
+    var series = this.props.series;
     var author = this.props.author;
 
     if(!author && !stories){
@@ -30,12 +32,13 @@ class View extends Component {
     }
 
     var storyDiv = '';
+    var seriesDiv = '';
     var authorDiv = '';
     var className='';
 
     if(stories && stories.length > 0){
       storyDiv = <div className="block">
-        <div className="sideHeader">My Stories:</div>
+        <div className="sideHeader">{window.getString('stories')}:</div>
         {
           stories.map(function(story,i) {
             return <StoryTile story={story} author={author} key={i} index={i} />;
@@ -44,7 +47,16 @@ class View extends Component {
       </div>
     }
 
-
+    if(series && series.length > 0){
+      seriesDiv = <div className="block">
+        <div className="sideHeader">{window.getString('series')}:</div>
+        {
+          series.map(function(story,i) {
+            return <SeriesTile series={story} author={author} key={i} />;
+          })
+        }
+      </div>
+    }
 
     if(author && author.penName){
       className="profile";
@@ -76,8 +88,8 @@ class View extends Component {
     return(
       <div className={className}>
         {authorDiv}
-
         {storyDiv}
+        {seriesDiv}
       </div>
     )
   }

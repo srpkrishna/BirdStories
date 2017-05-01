@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import  StoryItem from '../stories/storyItemView';
+import  SeriesItem from '../series/seriesItemView';
 import Styles from '../css/author.css';
 import SA from '../util/analytics';
 
@@ -25,10 +26,13 @@ class View extends Component {
 
     var stories = this.props.stories;
     var author = this.props.author;
+    var series = this.props.series;
     var storyDiv = '';
     var authorDiv = '';
+    var seriesDiv = '';
+
     if(stories && stories.length > 0){
-      storyDiv = <div className="storiesBlock">
+      storyDiv = <div className="block stories">
         {
           stories.map(function(story,i) {
             return <StoryItem story={story} author={author} key={i} index={i} />;
@@ -36,7 +40,18 @@ class View extends Component {
         }
       </div>
     }
-    
+
+    if(series && series.length > 0){
+      seriesDiv = <div className="block series">
+        {
+          series.map(function(story,i) {
+            return <SeriesItem series={story} author={author} key={i} index={i} />;
+          })
+        }
+      </div>
+    }
+
+
     if(author && author.penName){
 
       if( 0 > document.title.indexOf(author.penName)){
@@ -63,6 +78,7 @@ class View extends Component {
         </ul>
         <p>{author.profile.intro} </p>
         {storyDiv}
+        {seriesDiv}
       </div>
     }
     return(

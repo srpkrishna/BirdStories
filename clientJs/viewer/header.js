@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
-import styles from '../../css/header.css';
-import Social from '../../util/social.js';
+import styles from '../css/header.css';
+import Social from '../util/social.js';
 import { Link } from 'react-router';
 
 const View = ({story,authorLink,updateSocial})=>{

@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-import styles from '../../css/comments.css';
+import styles from '../css/comments.css';
 
 class View extends Component {
 
@@ -15,6 +15,14 @@ class View extends Component {
     this.publish = this.publish.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.loginSuccessful = this.loginSuccessful.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    var text = '';
+    if(nextProps.mention){
+      text =  "@"+nextProps.mention + "  -"
+    }
+    this.state = {value: text};
   }
 
   handleChange(event) {
@@ -39,6 +47,7 @@ class View extends Component {
     if(this.props.replyTo){
       comment.replyTo = this.props.replyTo
       comment.replyToName = this.props.mention
+      this.props.replySuccess()
     }
 
     this.props.publishComment(comment);

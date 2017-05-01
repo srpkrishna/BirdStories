@@ -22,6 +22,8 @@
 <view "View">
 <likes "Likes">
 <like "Like">
+<stories "Stories">
+<series "Series">
 
 <contactUs "Contact Us">
 <copyright "Copyright 2017. All rights reserved.">

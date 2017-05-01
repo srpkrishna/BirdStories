@@ -41,7 +41,7 @@ api.route('/content/:authorId/:name')
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
-        res.send(error)
+        res.send(err)
       }else {
         var fileContents = data.Body.toString();
         var json = JSON.parse(fileContents);
@@ -50,7 +50,7 @@ api.route('/content/:authorId/:name')
     });
   })
 
-api.route('/story/:authorId/:id')
+api.route('/:authorId/:id')
   .get(function(req, res){
       const authorId = req.params.authorId
       const id = Number(req.params.id)
@@ -159,7 +159,7 @@ function getStories(ts,callback){
             ":timestamp":ts
         },
         ScanIndexForward:false,
-        Limit:12
+        Limit:8
     };
      storyDb.query(params,docClient,callback);
 }

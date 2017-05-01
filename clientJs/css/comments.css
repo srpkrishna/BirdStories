@@ -54,6 +54,11 @@
     padding-top: 0.25rem;
 }
 
+.comment .msg {
+    padding: 1rem 0.25rem;
+    color: #4d90fe;
+  }
+
 .comment button {
     float: right;
     font-size: 0.9rem;

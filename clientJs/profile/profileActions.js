@@ -16,6 +16,13 @@ function myStoriesSuccess(data){
   }
 }
 
+function mySeriesSuccess(data){
+  return{
+    type:Constants.MySeriesFetch,
+    stories:data
+  }
+}
+
 function getMyDetails(user){
     return function(dispatch){
       const body = {
@@ -40,8 +47,20 @@ function getMyStories(penName){
   }
 }
 
+function getMySeries(penName){
+  return function(dispatch){
+    const body = {
+      id:penName
+    }
+    Server.connect('POST','profile/series',body,function(data){
+        dispatch(mySeriesSuccess(data));
+    });
+  }
+}
+
 const Actions = {
-    getMyDetails:getMyDetails
+    getMyDetails:getMyDetails,
+    getMySeries:getMySeries
 };
 
 export default Actions

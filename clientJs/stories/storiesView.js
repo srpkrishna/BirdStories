@@ -3,31 +3,39 @@
 import React,{Component} from 'react';
 import  StoryItem from './storyItemView';
 import styles from '../css/stories.css';
-import SA from '../util/analytics';
-import { Link } from 'react-router';
+import Loader from '../util/loading';
+
+var timeoutStories = null;
 
 class View extends Component {
   constructor(props){
     super(props)
-    this.state = { imageStatus: true };
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
-  handleImageErrored() {
-    this.setState({ imageStatus:false });
+  handleScroll() {
+    const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+    const windowBottom = windowHeight + window.pageYOffset;
+    if (windowBottom >= docHeight * 0.95 && !this.props.reachedEnd) {
+      clearTimeout(timeoutStories);
+      var that = this;
+      timeoutStories = setTimeout(function(){
+          that.props.showMoreStories()
+      },600);
+    }
   }
 
   componentWillUnmount(){
-    SA.sendEvent('Home','close','home');
-    window.onbeforeunload = undefined;
+      window.removeEventListener("scroll", this.handleScroll);
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    SA.sendPageView('home');
-    window.onbeforeunload = () => {
-        SA.sendEvent('Home','close','home');
-      }
+  componentDidMount(){
+      window.addEventListener("scroll", this.handleScroll);
   }
+
 
   render(){
     var storyDivs = '';
@@ -37,22 +45,15 @@ class View extends Component {
       })
     }
 
-    var img = <Link to="/competition"> <div className="adImage">సు‘కథ’ నిర్వహించే వినూత్నమైన కథల పోటీలో పాల్గొని మీ ప్రతిభకి తగిన గుర్తింపు పొందండి. వివరాలకు ఇక్కడ క్లిక్ చేయండి. <img src="touch.png" className="adIcon"></img></div></Link>
-
-    if(!this.state.imageStatus){
-      img = ""
-    }
-
-    var moreTag = ""
-    if(this.props.stories.length >0  && this.props.stories.length%12 == 0 ){
-          moreTag = <li className="moreStories"><button onClick={this.props.showMoreStories} type="button">{window.getString("more")}</button></li>
+    var loaderDiv = ''
+    if(!this.props.reachedEnd){
+       loaderDiv = <Loader />
     }
 
     return (
       <div className="stories">
-        {img}
         {storyDivs}
-        {moreTag}
+        {loaderDiv}
       </div>
     )
   }

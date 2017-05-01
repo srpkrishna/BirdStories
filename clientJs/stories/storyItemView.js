@@ -18,7 +18,7 @@ const View = ({ story,index,author }) => {
 
   const imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
   const imageStyle = {
-    background: 'url(' + imgSrc + ') no-repeat center',
+    background: 'url(' + imgSrc + ') no-repeat center top',
     backgroundSize:'cover'
   }
 

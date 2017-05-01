@@ -18,8 +18,6 @@ var query = function(storyParams,docClient,callback){
 
 var update = function(updateParams,docClient,callback){
   updateParams["TableName"] = tableName
-  console.log("calling db")
-
   docClient.update(updateParams, function(err, data) {
       if (err) {
           console.error("Unable to query. Error:", JSON.stringify(err, null, 2));

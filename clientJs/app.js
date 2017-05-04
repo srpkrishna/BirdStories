@@ -34,8 +34,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    GAuth.init(this.userStateListener,this.googleLoadSuccess);
-    FAuth.init(this.userStateListener,this.fbLoadSuccess);
+
+    if("TooManyReqs" !== this.props.children.type.name){
+      GAuth.init(this.userStateListener,this.googleLoadSuccess);
+      FAuth.init(this.userStateListener,this.fbLoadSuccess);
+    }
+
   }
 
   toggleMenu() {

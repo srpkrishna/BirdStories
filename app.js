@@ -13,6 +13,8 @@ var commentApi = require('./server/routes/commentApi');
 var userApi = require('./server/routes/userApi');
 var session = require('cookie-session');
 var AWS = require('aws-sdk');
+var RateLimit = require('express-rate-limit');
+var BlockedStore = require('./server/utils/blockedStore.js');
 
 var app = express();
 
@@ -29,6 +31,7 @@ if("production" === process.env.NODE_ENV){
   domain = "sukatha.com"
 }
 
+app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 app.use(session({
   name: 'session',
   keys: ['checkkey'],
@@ -40,7 +43,42 @@ app.use(session({
     domain:domain
   }
 }))
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+var hackedIPStore = new BlockedStore()
+
+var hackHandler = function (req, res) {
+  hackedIPStore.addIp(req.ip)
+  res.format({
+    html: function(){
+      res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+    },
+    json: function(){
+      res.status(429).json({ message: "Your ip is temporarily blocked. Contact storyboard@sukatha.com"});
+    }
+  });
+}
+
+var limiter = new RateLimit({
+  windowMs: 50*1000, // 15 minutes
+  delayMs: 0,
+  max: 19, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again after two hours",
+  handler:hackHandler
+});
+
+app.all('/*', function(req, res, next) {
+  if(hackedIPStore.shouldBlockIp(req.ip)){
+    hackedIPStore.print()
+    res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+  }else{
+    next();  // call next() here to move on to next middleware/router
+  }
+})
+
+//  apply to all requests
+app.use('/api/',limiter);
 
 app.use('/api/stories', storyApi);
 app.use('/api/series', seriesApi);
@@ -49,6 +87,8 @@ app.use('/api/profile',profileApi);
 app.use('/api/comments', commentApi);
 app.use('/api/user',userApi);
 app.use('/api', api);
+
+
 
 app.use('/stories/story',function(req, res, next) {
   var agent = req.get('User-Agent');
@@ -66,7 +106,7 @@ app.use('/stories/story',function(req, res, next) {
       }
     });
   }else{
-    res.sendFile('public/index.html' , { root : __dirname});
+    next();
   }
 
 });

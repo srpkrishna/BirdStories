@@ -5,12 +5,14 @@
   box-sizing:border-box;
   margin:0;
   overflow-x: hidden;
+ -webkit-tap-highlight-color: rgba(0,0,0,0.3);
 }
 body {
   background: none repeat scroll 0 0 #0b192f;
   color: #fff;
   font-weight: 300;
   font-size: 16px;
+
 }
 
 .clrWhite{

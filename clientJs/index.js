@@ -15,6 +15,7 @@ import Home from './home/home';
 import Search from './search/search';
 import Launch from './launch';
 import Competition from './competition'
+import TooManyReqs from './tooManyReqs'
 
 
 ReactDOM.render(
@@ -37,6 +38,7 @@ ReactDOM.render(
       <Route path="contact" component={Contact}/>
       <Route path="write" component={Write} requireAuth={true} />
       <Route path="competition" component={Competition} />
+      <Route path="tooManyReqs" component={TooManyReqs} />
       <Route path="*" component={Stories}/>
     </Route>
   </Router>),

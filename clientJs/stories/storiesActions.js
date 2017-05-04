@@ -13,12 +13,10 @@ function fetchSuccess(stories){
 
 function shouldFetchStories(state) {
   const stories = state.stories
-  if (!state.isFetching) {
-    return true;
-  } else if (!stories || stories.length == 0) {
+  if (!stories || stories.length == 0) {
     return true;
   } else {
-    return stories.didInvalidate;
+    return false;
   }
 }
 

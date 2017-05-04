@@ -13,12 +13,10 @@ function fetchSuccess(seriesList){
 
 function shouldFetchSeriesList(state) {
   const seriesList = state.seriesList
-  if (!state.isFetching) {
-    return true;
-  } else if (!seriesList || seriesList.length == 0) {
+  if (!seriesList || seriesList.length == 0) {
     return true;
   } else {
-    return seriesList.didInvalidate;
+    return false;
   }
 }
 

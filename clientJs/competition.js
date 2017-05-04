@@ -47,7 +47,7 @@ class Competition extends Component {
           </ul>
         </div>
         <div className="addressInfo">ఈ క్రింది 12 పాత్రల నుండి ఏవైనా కనీసం 2 పాత్రలను ప్రధాన పాత్రలుగా చిత్రీకరిస్తూ , 1500 పదాలు మించకుండా
-          కథ రాసి <span className="highlight">storyboard@sukatha.comకి మే 7వ</span> తేదీ లోపు పంపండి.. మీ సృజనా శక్తికి తగిన గుర్తింపు పొందండి!
+          కథ రాసి <span className="highlight">storyboard@sukatha.comకి మే 21వ</span> తేదీ లోపు పంపండి.. మీ సృజనా శక్తికి తగిన గుర్తింపు పొందండి!
         </div>
 
         <ul className="characters">
@@ -108,7 +108,7 @@ class Competition extends Component {
         </ul>
 
         <ul className="finalWords">
-          <li><span className="highlight">గడువు తేది: </span>May 7, 2017</li>
+          <li><span className="highlight">గడువు తేది: </span>May 21, 2017</li>
           <li><span className="highlight">మరిన్ని వివరాలకు: </span>+91-9902431300</li>
           <li><span className="highlight">మెయిల్ చిరునామా: </span>storyboard@sukatha.com</li>
         </ul>

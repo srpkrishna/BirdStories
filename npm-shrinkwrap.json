@@ -54,6 +54,11 @@
       "from": "bytes@2.4.0",
       "resolved": "https://registry.npmjs.org/bytes/-/bytes-2.4.0.tgz"
     },
+    "clone": {
+      "version": "1.0.2",
+      "from": "clone@>=1.0.2 <2.0.0",
+      "resolved": "https://registry.npmjs.org/clone/-/clone-1.0.2.tgz"
+    },
     "content-disposition": {
       "version": "0.5.1",
       "from": "content-disposition@0.5.1",
@@ -74,10 +79,32 @@
       "from": "https://registry.npmjs.org/cookie-parser/-/cookie-parser-1.4.3.tgz",
       "resolved": "https://registry.npmjs.org/cookie-parser/-/cookie-parser-1.4.3.tgz"
     },
+    "cookie-session": {
+      "version": "2.0.0-alpha.3",
+      "from": "https://registry.npmjs.org/cookie-session/-/cookie-session-2.0.0-alpha.3.tgz",
+      "resolved": "https://registry.npmjs.org/cookie-session/-/cookie-session-2.0.0-alpha.3.tgz",
+      "dependencies": {
+        "debug": {
+          "version": "2.6.1",
+          "from": "debug@2.6.1",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.6.1.tgz"
+        },
+        "ms": {
+          "version": "0.7.2",
+          "from": "ms@0.7.2",
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.2.tgz"
+        }
+      }
+    },
     "cookie-signature": {
       "version": "1.0.6",
       "from": "cookie-signature@1.0.6",
       "resolved": "https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.0.6.tgz"
+    },
+    "cookies": {
+      "version": "0.6.2",
+      "from": "cookies@0.6.2",
+      "resolved": "https://registry.npmjs.org/cookies/-/cookies-0.6.2.tgz"
     },
     "core-js": {
       "version": "1.2.7",
@@ -93,6 +120,11 @@
       "version": "2.2.0",
       "from": "debug@>=2.2.0 <2.3.0",
       "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
+    },
+    "defaults": {
+      "version": "1.0.3",
+      "from": "defaults@>=1.0.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/defaults/-/defaults-1.0.3.tgz"
     },
     "depd": {
       "version": "1.1.0",
@@ -133,6 +165,11 @@
       "version": "4.14.0",
       "from": "express@>=4.14.0 <4.15.0",
       "resolved": "https://registry.npmjs.org/express/-/express-4.14.0.tgz"
+    },
+    "express-rate-limit": {
+      "version": "2.7.0",
+      "from": "express-rate-limit@latest",
+      "resolved": "https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-2.7.0.tgz"
     },
     "fbjs": {
       "version": "0.8.8",
@@ -204,6 +241,11 @@
       "from": "js-tokens@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-2.0.0.tgz"
     },
+    "keygrip": {
+      "version": "1.0.1",
+      "from": "keygrip@>=1.0.1 <1.1.0",
+      "resolved": "https://registry.npmjs.org/keygrip/-/keygrip-1.0.1.tgz"
+    },
     "lodash": {
       "version": "3.5.0",
       "from": "lodash@>=3.5.0 <3.6.0",
@@ -268,6 +310,11 @@
       "version": "1.4.7",
       "from": "node-uuid@>=1.4.1",
       "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
+    },
+    "nodemailer": {
+      "version": "3.1.7",
+      "from": "nodemailer@latest",
+      "resolved": "https://registry.npmjs.org/nodemailer/-/nodemailer-3.1.7.tgz"
     },
     "object-assign": {
       "version": "4.1.0",

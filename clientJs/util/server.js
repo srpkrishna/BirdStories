@@ -55,7 +55,14 @@ function makeServerCall(reqType,serviceUrl,reqdata,successFunction,errorFunction
 			timeout			    : 60000,
 			xhrFields       : {withCredentials: true},
 			success         : successFunction,
-			error						: errorFunction,
+			error						: function (jqXHR, exception) {
+													if (jqXHR.status === 429) {
+														window.location.replace("/tooManyReqs");
+													}else{
+														errorFunction();
+													}
+
+												},
 
 		});
 }

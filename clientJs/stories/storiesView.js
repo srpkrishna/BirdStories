@@ -19,7 +19,7 @@ class View extends Component {
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight * 0.95 && !this.props.reachedEnd) {
+    if (windowBottom >= docHeight * 0.92 && !this.props.reachedEnd) {
       clearTimeout(timeoutStories);
       var that = this;
       timeoutStories = setTimeout(function(){

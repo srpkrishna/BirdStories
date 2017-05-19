@@ -3,6 +3,8 @@ var api = express.Router();
 var storyDb = require('../dbFetch/storyDB.js');
 var AWS = require('aws-sdk');
 var fs = require('fs');
+var RateLimit = require('express-rate-limit');
+var BlockedStore = require('../utils/blockedStore.js');
 
 const conn = require('../utils/connections.js');
 const error = {
@@ -15,12 +17,60 @@ const alreadyUpdated = {
   msg:'alreadyUpdated'
 }
 
+var hackedIPStore = new BlockedStore()
+
+var hackHandler = function (req, res) {
+  hackedIPStore.addIp(req.ip)
+  res.format({
+    html: function(){
+      res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+    },
+    json: function(){
+      res.status(429).json({ message: "Your ip is temporarily blocked. Contact storyboard@sukatha.com"});
+    }
+  });
+}
+
+
+var limiter = new RateLimit({
+  windowMs: 60*1000, // 15 minutes
+  delayMs: 0,
+  max: 15, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again after two hours",
+  handler:hackHandler
+});
+
+var hackedIPStore = new BlockedStore()
+
+var hackHandler = function (req, res) {
+  hackedIPStore.addIp(req.ip)
+  res.format({
+    html: function(){
+      res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+    },
+    json: function(){
+      res.status(429).json({ message: "Your ip is temporarily blocked. Contact storyboard@sukatha.com"});
+    }
+  });
+}
+
+
+api.all('/*', function(req, res, next) {
+  if(hackedIPStore.shouldBlockIp(req.ip)){
+    hackedIPStore.print()
+    res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+  }else{
+    next();  // call next() here to move on to next middleware/router
+  }
+})
+
 /* GET home page. */
 api.route('/search')
   .get(function(req, res){
       const searchString = req.query.q
       searchByNames(searchString,function(stories){
-        res.send(stories);
+        var filtered = stories.slice(0, 3);
+        res.send(filtered);
       })
   })
 
@@ -88,7 +138,7 @@ api.route('/')
         res.send(stories);
       })
   })
-  .post(function (req, res) {
+  .post(limiter,function (req, res) {
       var id = req.body.id;
       var attr = req.body.updateAttr;
       switch(attr){
@@ -159,7 +209,7 @@ function getStories(ts,callback){
             ":timestamp":ts
         },
         ScanIndexForward:false,
-        Limit:8
+        Limit:9
     };
      storyDb.query(params,docClient,callback);
 }
@@ -180,7 +230,19 @@ function searchByNames(sub,callback){
         },
         ScanIndexForward:false
     };
-   storyDb.query(params,docClient,callback);
+    storyDb.query(params,docClient,callback);
+
+  //   var params = {
+  //       FilterExpression: "contains(#name, :v_sub)",
+  //       ExpressionAttributeNames:{
+  //           "#name": "name"
+  //       },
+  //       ExpressionAttributeValues: {
+  //           ":v_sub":sub
+  //       }
+  //   };
+  //  storyDb.scan(params,docClient,callback);
+
 }
 
 function updateSocialElements(id,element,callback)

@@ -6,6 +6,7 @@ import App from './app';
 import About from './about';
 import Contact from './contact';
 import Write from './write';
+import WritersInfo from './writersInfo';
 import Profile from './profile/profile';
 import Author from './author/author';
 import NoMatch from './noMatch';
@@ -37,6 +38,7 @@ ReactDOM.render(
       <Route path="about" component={About}/>
       <Route path="contact" component={Contact}/>
       <Route path="write" component={Write} requireAuth={true} />
+      <Route path="writersInfo" component={WritersInfo} requireAuth={true} />
       <Route path="competition" component={Competition} />
       <Route path="tooManyReqs" component={TooManyReqs} />
       <Route path="*" component={Stories}/>

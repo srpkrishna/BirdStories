@@ -46,7 +46,7 @@
    padding:1rem;
    word-spacing: 0.2rem;
    line-height: 1.6;
-   /*background: #cf6100;*/
+   background: #cf6100;
 }
 
 .adIcon{
@@ -100,10 +100,10 @@
 @media only screen and (min-width: 960px) {
 
   .homeStories{
-    width: 75%;
+    width: 76%;
   }
 
   .homeSeries{
-    width: 25%;
+    width: 24%;
   }
 }

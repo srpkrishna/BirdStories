@@ -50,20 +50,20 @@ class View extends Component {
       </li>)
     })
 
-    var query = {t:series.timestamp,a:series.author,n:name}
-    var linkObj = {
-        pathname:link,
-        query:query,
-        state:{series:series,author:author}
-    }
-
+    // var query = {t:series.timestamp,a:series.author,n:name}
+    // var linkObj = {
+    //     pathname:link,
+    //     query:query,
+    //     state:{series:series,author:author}
+    // }
+    // <li key={0} className={infoCssClass}>
+    //   <Link to={linkObj} >i</Link>
+    // </li>
     return(
       <div className="episodeStrip">
         <div className="title">Episodes</div>
         <ul className="episodes">
-          <li key={0} className={infoCssClass}>
-            <Link to={linkObj} >i</Link>
-          </li>
+
           {episodes}
         </ul>
       </div>

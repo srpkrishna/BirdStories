@@ -49,37 +49,36 @@ class Home extends Component {
     }
 
 
-    // var storiesDivison = <div className="homeStories"><Stories location={this.props.location}/></div>
-    // if(this.state.index == 1){
-    //   storiesDivison = <div className="homeStories mobileHide"><Stories location={this.props.location}/></div>
-    // }
+    var storiesDivison = <div className="homeStories"><Stories location={this.props.location}/></div>
+    if(this.state.index == 1){
+      storiesDivison = <div className="homeStories mobileHide"><Stories location={this.props.location}/></div>
+    }
 
-    // var seriesDivison = <div className="homeSeries"><Series location={this.props.location}/></div>
-    // if(this.state.index == 0){
-    //   seriesDivison = <div className="homeSeries mobileHide"><Series className="mobileHide" location={this.props.location}/></div>
-    // }
+    var seriesDivison = <div className="homeSeries"><Series location={this.props.location}/></div>
+    if(this.state.index == 0){
+      seriesDivison = <div className="homeSeries mobileHide"><Series className="mobileHide" location={this.props.location}/></div>
+    }
 
 
-    // var storiesBtn = <button onClick={()=>this.changeTab(0)}> {window.getString("stories")}</button>
-    // if(this.state.index == 0){
-    //   storiesBtn = <button className="highlight" onClick={()=> this.changeTab(0)}> {window.getString("stories")}</button>
-    // }
+    var storiesBtn = <button onClick={()=>this.changeTab(0)}> {window.getString("stories")}</button>
+    if(this.state.index == 0){
+      storiesBtn = <button className="highlight" onClick={()=> this.changeTab(0)}> {window.getString("stories")}</button>
+    }
 
-    // var seriesBtn = <button onClick={()=>this.changeTab(1)}> {window.getString("series")}</button>
-    // if(this.state.index == 1){
-    //   seriesBtn = <button className="highlight" onClick={()=>this.changeTab(1)}> {window.getString("series")}</button>
-    // }
-
-    // <div className="tab">
-    //   {storiesBtn}
-    //   {seriesBtn}
-    // </div>
-    // {storiesDivison}
-    // {seriesDivison}
+    var seriesBtn = <button onClick={()=>this.changeTab(1)}> {window.getString("series")}</button>
+    if(this.state.index == 1){
+      seriesBtn = <button className="highlight" onClick={()=>this.changeTab(1)}> {window.getString("series")}</button>
+    }
+    
     return(
       <div>
         {img}
-        <Stories location={this.props.location}/>
+        <div className="tab">
+          {storiesBtn}
+          {seriesBtn}
+        </div>
+        {storiesDivison}
+        {seriesDivison}
       </div>
     );
   }

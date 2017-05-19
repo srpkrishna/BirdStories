@@ -58,7 +58,7 @@ class Series extends Component {
     }else{
       var obj = Actions.fetchSeriesListIfNeeded();
       Store.dispatch(obj)
-      document.title = window.getString("companyMain")+window.getString("companySub");
+      document.title = window.getString("docTitle");
     }
 
     return state;

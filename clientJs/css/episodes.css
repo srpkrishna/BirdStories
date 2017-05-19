@@ -11,12 +11,13 @@
   text-align: center;
   float: left;
   width: 100%;
+  padding-top: 0.25rem;
 }
 
 .episodeStrip ul.episodes {
     background: white;
     width: 100%;
-    padding: 1.0rem 0;
+    padding: 0.75rem 0;
     display: block;
     text-align: center;
     float: left;

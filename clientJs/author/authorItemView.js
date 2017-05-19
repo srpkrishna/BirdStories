@@ -15,8 +15,8 @@ const View = ({ author }) => {
 
   var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
   const imageStyle = {
-    background: 'url(' + imgSrc + ') no-repeat center',
-    backgroundSize:'cover'
+    background: 'url(' + imgSrc + ') no-repeat center top',
+    backgroundSize:'contain'
   }
 
   return (

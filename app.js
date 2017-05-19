@@ -13,8 +13,6 @@ var commentApi = require('./server/routes/commentApi');
 var userApi = require('./server/routes/userApi');
 var session = require('cookie-session');
 var AWS = require('aws-sdk');
-var RateLimit = require('express-rate-limit');
-var BlockedStore = require('./server/utils/blockedStore.js');
 
 var app = express();
 
@@ -45,40 +43,6 @@ app.use(session({
 }))
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-var hackedIPStore = new BlockedStore()
-
-var hackHandler = function (req, res) {
-  hackedIPStore.addIp(req.ip)
-  res.format({
-    html: function(){
-      res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
-    },
-    json: function(){
-      res.status(429).json({ message: "Your ip is temporarily blocked. Contact storyboard@sukatha.com"});
-    }
-  });
-}
-
-var limiter = new RateLimit({
-  windowMs: 50*1000, // 15 minutes
-  delayMs: 0,
-  max: 19, // limit each IP to 100 requests per windowMs
-  message: "Too many requests from this IP, please try again after two hours",
-  handler:hackHandler
-});
-
-app.all('/*', function(req, res, next) {
-  if(hackedIPStore.shouldBlockIp(req.ip)){
-    hackedIPStore.print()
-    res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
-  }else{
-    next();  // call next() here to move on to next middleware/router
-  }
-})
-
-//  apply to all requests
-app.use('/api/',limiter);
 
 app.use('/api/stories', storyApi);
 app.use('/api/series', seriesApi);
@@ -111,6 +75,28 @@ app.use('/stories/story',function(req, res, next) {
 
 });
 
+app.use('/author/:id',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = req.params.id+'/author.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+
 app.use('/sitemap',function(req, res, next) {
   var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
   var bucketName = 'sukathasamples';
@@ -128,7 +114,24 @@ app.use('/sitemap',function(req, res, next) {
 });
 
 app.use('/*', function(req, res, next) {
-  res.sendFile('public/index.html' , { root : __dirname});
+
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'site.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    res.sendFile('public/index.html' , { root : __dirname});
+  }
 });
 
 // catch 404 and forward to error handler

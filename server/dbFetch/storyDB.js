@@ -28,8 +28,21 @@ var update = function(updateParams,docClient,callback){
   });
 }
 
+var scan = function(params,docClient,callback){
+  params["TableName"] = tableName
+  docClient.scan(params, function(err, data) {
+      if (err) {
+          console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+          callback(error);
+      } else {
+          callback(data.Items);
+      }
+  });
+}
+
 var stories = {
     query:query,
+    scan:scan,
     update:update
   };
 

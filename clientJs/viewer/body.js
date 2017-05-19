@@ -38,9 +38,17 @@ const View = ({content}) => {
 
         htmlContent.push(<p style={paraStyle} key={i}>{content}</p>);
       }
-
       i++;
     }
+
+    var paraStyle = {
+      color:"#d12767",
+      textIndent:0,
+      padding:"0.5rem",
+      textAlign:"center"
+    }
+    htmlContent.push(<p style={paraStyle} key={i}>{"'కిక్' ఇచ్చేవి చాలా ఉండొచ్చు. కాని అందులో ఆరోగ్యానికి హానికరం కానివి మాత్రం మీ కామెంట్స్, లైక్స్ మరియు షేర్స్!"}</p>);
+
   }else{
     //show error
   }

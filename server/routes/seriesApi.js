@@ -20,7 +20,8 @@ api.route('/search')
   .get(function(req, res){
       const searchString = req.query.q
       searchByNames(searchString,function(seriesList){
-        res.send(seriesList);
+        var filtered = seriesList.slice(0, 3);
+        res.send(filtered);
       })
   })
 

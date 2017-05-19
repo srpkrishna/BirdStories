@@ -61,7 +61,7 @@ class Stories extends Component {
     }else{
       var obj = Actions.fetchStoriesIfNeeded();
       Store.dispatch(obj)
-      document.title = window.getString("companyMain")+window.getString("companySub");
+      document.title = window.getString("docTitle");
     }
 
     return state;

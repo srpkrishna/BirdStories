@@ -12,6 +12,8 @@ var c = 0;
 var t;
 var timer_is_on = 0;
 var reachedBottom = false;
+var markedAsView = false;
+var markedAsRead = false;
 
 class View extends Component {
 
@@ -21,11 +23,6 @@ class View extends Component {
     this.stopCount = this.stopCount.bind(this);
     this.startCount = this.startCount.bind(this);
 
-    this.state = {
-      c:0,
-      timer_is_on:0,
-      reachedBottom:false
-    };
   }
   componentWillUnmount(){
       window.removeEventListener("scroll", this.handleScroll);
@@ -37,6 +34,8 @@ class View extends Component {
       t = undefined;
       timer_is_on = 0;
       reachedBottom = false;
+      markedAsView = false;
+      markedAsRead = false;
 
       var name = "";
 
@@ -46,11 +45,27 @@ class View extends Component {
       SA.sendEvent('Story','close',name);
   }
 
+  componentWillReceiveProps(nextProps){
+      if(this.props.episode && nextProps.episode && this.props.episode != nextProps.episode){
+        c = 0;
+        t = undefined;
+        timer_is_on = 0;
+        reachedBottom = false;
+        markedAsView = false;
+        markedAsRead = false;
+
+        window.scrollTo(0, 0);
+        this.timedCount();
+        this.storyLoaded();
+      }
+  }
+
   markAsRead(){
-    if( this.props.story && c > this.props.story.time*0.75 && reachedBottom === true){
+    if( this.props.story && c > this.props.story.time*0.75 && reachedBottom === true && !markedAsRead){
       this.props.updateSocial("reads");
       var name = this.props.story.name.removeSpaceAndCapitals();
       SA.sendEvent('Story','read',name);
+      markedAsRead = true;
     }
   }
 
@@ -59,9 +74,19 @@ class View extends Component {
     var name = this.props.story.name.removeSpaceAndCapitals();
 
     if(this.props.story.episodes){
-      SA.sendPageView(this.props.story.name,name,'Story');
+      var title = ""
+      var episodes = this.props.story.episodes
+      if(episodes.length >= Number(this.props.episode)){
+        var episode = Number(this.props.episode) - 1
+        title = episodes[episode]
+      }
+
+      name = name +"-"+ title;
+      SA.sendPageView(this.props.story.name,name,'Series');
     }else {
-      SA.sendPageView(this.props.story.name,name,'Series');  
+
+      SA.sendPageView(this.props.story.name,name,'Story');
+
     }
   }
 
@@ -103,14 +128,13 @@ class View extends Component {
   }
 
   storyLoaded(){
-    if( 0 > document.title.indexOf(this.props.story.name) ){
-      this.markAsView()
-      document.title = this.props.story.name + " -"+window.getString("companyPromo");
-      window.onbeforeunload = () => {
-          var name = this.props.story.name.removeSpaceAndCapitals();
-          SA.sendEvent('Story','close',name);
-        }
-    }
+    this.markAsView()
+    document.title = this.props.story.name + " -"+window.getString("companyPromo");
+    window.onbeforeunload = () => {
+        var name = this.props.story.name.removeSpaceAndCapitals();
+        SA.sendEvent('Story','close',name);
+      }
+    markedAsView = true;
   }
 
   handleScroll() {
@@ -144,6 +168,7 @@ class View extends Component {
       }
       tag.push(<Body content={content} key={1}/>)
       if(story.episodes){
+        tag.splice(1,0,<EpisodeStrip key={-1} series={story} episode={this.props.episode} author={this.props.author} />)
         tag.push(<EpisodeStrip key={2} series={story} episode={this.props.episode} author={this.props.author} />)
       }
       tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={3}/>)
@@ -151,7 +176,9 @@ class View extends Component {
       if(comments && comments.length > 0){
         tag.push(<Comments comments={comments} key={4} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
       }
-      this.storyLoaded()
+
+      if(!markedAsView)
+        this.storyLoaded()
     }
 
     return(

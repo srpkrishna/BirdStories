@@ -1,0 +1,72 @@
+
+.writersInfo{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  padding: 1.2rem;
+  background: none repeat scroll 0 0 #fff;
+  color: #162b4d;
+  font-family: notosans;
+  word-spacing: 0.3rem;
+  line-height: 1.8;
+  float: left;
+}
+
+.writersInfo p{
+  text-indent: 12%;
+  text-align: left;
+  padding: 1rem 0rem;
+}
+
+.writersInfo .header{
+  text-align: left;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+
+.writersInfo ul{
+  margin:0;
+  padding:0;
+}
+
+.writersInfo li {
+  text-align: left;
+  padding: 0.3rem 0rem;
+  text-indent: 6%;
+}
+
+.writersInfo .highlight{
+  color: #d12767;
+}
+
+.writersInfo .footer{
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 0rem;
+}
+
+.writersInfo .home{
+    padding: 1.5rem 0 0.5rem 0;
+    color: #d12767;
+    width: 100%;
+    float: left;
+    display: inline-block;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .writersInfo{
+    padding-top: 4%;
+    padding-bottom: 10%;
+  }
+
+  .writersInfo p{
+    padding-bottom: 2rem;
+  }
+
+  .writersInfo .footer{
+    padding-top: 2rem;
+  }
+}

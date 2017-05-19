@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 const View = ({story,authorLink,updateSocial})=>{
   var shareUrl = window.location.href;
-  var title = story.displayName + " - "+"SuKatha.com"
+  var title = story.displayName+ " | " + story.genre[0] + " | "+window.getString("companyPromo")
   var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/profile.jpg"
   const imageStyle = {
     background: 'url(' + imgSrc + ') no-repeat center',

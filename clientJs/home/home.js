@@ -11,7 +11,7 @@ class Home extends Component {
 
   constructor(props){
     super(props)
-    this.state = { imageStatus: true,index:0 };
+    this.state = { imageStatus: false,index:0 };
     this.changeTab =  this.changeTab.bind(this);
   }
 
@@ -69,7 +69,7 @@ class Home extends Component {
     if(this.state.index == 1){
       seriesBtn = <button className="highlight" onClick={()=>this.changeTab(1)}> {window.getString("series")}</button>
     }
-    
+
     return(
       <div>
         {img}

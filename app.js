@@ -42,6 +42,27 @@ app.use(session({
   }
 }))
 
+app.get('/', function(req, res, next) {
+
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'site.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next()
+  }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/stories', storyApi);
@@ -60,6 +81,32 @@ app.use('/stories/story',function(req, res, next) {
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var keyName = req.query.a+'/'+req.query.n+'/story.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+app.use('/seriesList/series',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var episode = "";
+    if(req.query.e){
+      episode = "/"+req.query.e
+    }
+
+    var keyName = req.query.a+'/'+req.query.n+episode+'/story.html';
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
@@ -114,24 +161,7 @@ app.use('/sitemap',function(req, res, next) {
 });
 
 app.use('/*', function(req, res, next) {
-
-  var agent = req.get('User-Agent');
-  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
-    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
-    var bucketName = 'bsstory';
-    var keyName = 'site.html';
-    var params = {Bucket: bucketName, Key: keyName};
-    s3.getObject(params, function(err, data) {
-      if (err){
-        res.send(err);
-      }else {
-        var fileContents = data.Body.toString();
-        res.send(fileContents);
-      }
-    });
-  }else{
-    res.sendFile('public/index.html' , { root : __dirname});
-  }
+  res.sendFile('public/index.html' , { root : __dirname});
 });
 
 // catch 404 and forward to error handler

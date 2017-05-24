@@ -72,4 +72,8 @@
     /*width: 24.6%;*/
     width: 22.3%;
   }
+
+  .list .info{
+    padding: 1.7rem;
+  }
 }

@@ -30,7 +30,7 @@ const View = ({ series,author }) => {
               <li>{series.social.reads} Reads</li>
               <li>{series.social.shares} Shares</li>
               <li>{series.social.views} Views</li>
-              <li>{series.social.favs} Likes</li>
+              <li>{series.social.likes} Likes</li>
             </ul>
           </div>
 

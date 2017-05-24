@@ -8,6 +8,9 @@ import EpisodeStrip from './episodeStrip';
 import Comments from './comments';
 import SA from '../util/analytics';
 
+
+var shdDisableEvents = false;
+
 var c = 0;
 var t;
 var timer_is_on = 0;
@@ -19,23 +22,37 @@ class View extends Component {
 
   constructor(props){
     super(props)
+
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = ua.indexOf("android") > -1;
+    var isOperaMini = ua.indexOf("opera mini") > -1;
+
+    if(isAndroid && isOperaMini){
+      shdDisableEvents = true
+    }
+
+
     this.handleScroll = this.handleScroll.bind(this);
     this.stopCount = this.stopCount.bind(this);
     this.startCount = this.startCount.bind(this);
 
   }
   componentWillUnmount(){
-      window.removeEventListener("scroll", this.handleScroll);
-      window.onblur = undefined;
-      window.onfocus = undefined;
-      window.onbeforeunload = undefined;
 
-      c = 0;
-      t = undefined;
-      timer_is_on = 0;
-      reachedBottom = false;
-      markedAsView = false;
-      markedAsRead = false;
+
+      if(!shdDisableEvents){
+        window.removeEventListener("scroll", this.handleScroll);
+        window.onblur = undefined;
+        window.onfocus = undefined;
+        window.onbeforeunload = undefined;
+
+        c = 0;
+        t = undefined;
+        timer_is_on = 0;
+        reachedBottom = false;
+        markedAsView = false;
+        markedAsRead = false;
+      }
 
       var name = "";
 
@@ -47,25 +64,40 @@ class View extends Component {
 
   componentWillReceiveProps(nextProps){
       if(this.props.episode && nextProps.episode && this.props.episode != nextProps.episode){
-        c = 0;
-        t = undefined;
-        timer_is_on = 0;
-        reachedBottom = false;
-        markedAsView = false;
-        markedAsRead = false;
-
         window.scrollTo(0, 0);
-        this.timedCount();
+
+        if(!shdDisableEvents){
+          c = 0;
+          t = undefined;
+          timer_is_on = 0;
+          reachedBottom = false;
+          markedAsView = false;
+          markedAsRead = false;
+          this.timedCount();
+        }
+
         this.storyLoaded();
       }
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+
+    if(!shdDisableEvents){
+      this.timedCount();
+
+      window.addEventListener("scroll", this.handleScroll);
+      window.onblur = this.stopCount;
+      window.onfocus = this.startCount;
+    }
+
+  }
+
   markAsRead(){
-    if( this.props.story && c > this.props.story.time*0.75 && reachedBottom === true && !markedAsRead){
+    if( reachedBottom && markedAsRead){
       this.props.updateSocial("reads");
       var name = this.props.story.name.removeSpaceAndCapitals();
       SA.sendEvent('Story','read',name);
-      markedAsRead = true;
     }
   }
 
@@ -90,28 +122,32 @@ class View extends Component {
     }
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    this.timedCount();
-
-    window.addEventListener("scroll", this.handleScroll);
-    window.onblur = this.stopCount;
-    window.onfocus = this.startCount;
-  }
-
   timedCount() {
     var name = "";
-    if(this.props.story && this.props.story.name && c > 0){
-      name = this.props.story.name.removeSpaceAndCapitals();
-      SA.sendEvent('Story','reading',name,c);
+    var story = this.props.story;
+
+    if(story){
+      if( story.name && c > 0){
+        name = story.name.removeSpaceAndCapitals();
+        SA.sendEvent('Story','reading',name,c);
+      }
+      var time = 10
+      if(story.time){
+        time = story.time
+      }else if(story.episodeTimes && this.props.episode && story.episodeTimes.length >= Number(this.props.episode) ){
+        var episode = Number(this.props.episode) - 1
+        time = story.episodeTimes[episode]
+      }
+
+      if(c > time*0.75){
+        markedAsRead = true;
+        this.markAsRead();
+        return
+      }
     }
 
-    if( this.props.story && c > this.props.story.time*0.75){
-      this.markAsRead()
-    }else{
-      var that = this;
-      t = setTimeout(function(){ that.timedCount() }, 1000*60);
-    }
+    var that = this;
+    t = setTimeout(function(){ that.timedCount() }, 1000*60);
     c = c + 1;
   }
 
@@ -143,7 +179,7 @@ class View extends Component {
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight * 0.7 && !reachedBottom) {
+    if (windowBottom >= docHeight * 0.65 && !reachedBottom) {
       reachedBottom = true;
       this.markAsRead()
     }
@@ -164,17 +200,17 @@ class View extends Component {
       if(story.episodes && story.episodes.length >= Number(this.props.episode)){
         var episode = Number(this.props.episode) - 1
         var title = story.episodes[episode]
-        tag.push(<div className="episodeTitle">{title}</div> )
+        tag.push(<div key={1} className="episodeTitle">{title}</div> )
       }
-      tag.push(<Body content={content} key={1}/>)
+      tag.push(<Body content={content} key={2}/>)
       if(story.episodes){
-        tag.splice(1,0,<EpisodeStrip key={-1} series={story} episode={this.props.episode} author={this.props.author} />)
-        tag.push(<EpisodeStrip key={2} series={story} episode={this.props.episode} author={this.props.author} />)
+        tag.splice(1,0,<EpisodeStrip key={3} series={story} episode={this.props.episode} author={this.props.author} />)
+        tag.push(<EpisodeStrip key={4} series={story} episode={this.props.episode} author={this.props.author} />)
       }
-      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={3}/>)
+      tag.push(<Footer story={story} authorLink={authorLink}  updateSocial={updateSocial} publishComment={publishComment} key={5}/>)
 
       if(comments && comments.length > 0){
-        tag.push(<Comments comments={comments} key={4} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
+        tag.push(<Comments comments={comments} key={6} publishComment={publishComment} showMoreComments={this.props.showMoreComments} title={window.getString("commentText")} />)
       }
 
       if(!markedAsView)

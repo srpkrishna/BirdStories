@@ -33,6 +33,7 @@ class View extends Component {
 
     if(stories && stories.length > 0){
       storyDiv = <div className="block stories">
+        <div className="sideHeader">{window.getString('stories')}:</div>
         {
           stories.map(function(story,i) {
             return <StoryItem story={story} author={author} key={i} index={i} />;
@@ -43,6 +44,7 @@ class View extends Component {
 
     if(series && series.length > 0){
       seriesDiv = <div className="block series">
+        <div className="sideHeader">{window.getString('series')}:</div>
         {
           series.map(function(story,i) {
             return <SeriesItem series={story} author={author} key={i} index={i} />;

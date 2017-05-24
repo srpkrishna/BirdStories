@@ -43,6 +43,10 @@ const View = ({ series,author }) => {
   metrics = metrics +" . "+series.social.views+views
 
   var episodeNumber = Number(episode)
+  var episodeFrequency = ""
+  if(series.episodeFrequency){
+    episodeFrequency = series.episodeFrequency
+  }
 
   return (
         <Link to={linkObj} className="seriesItem" >
@@ -52,7 +56,7 @@ const View = ({ series,author }) => {
           <div className="info">
             <div className="name">{series.displayName}</div>
             <div className="shortText">{series.shortText}</div>
-            <div className="episodeText">Latest episode - {series.episodes[episodeNumber -1]}</div>
+            <div className="episodeText">{episodeFrequency}.<span> Latest episode - {series.episodes[episodeNumber -1]}</span></div>
             <div className="bottomRight"> - {series.authorDisplayName}</div>
           </div>
         </Link>

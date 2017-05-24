@@ -49,7 +49,7 @@
 
 .seriesItem .shortText{
   font-size: 0.9rem;
-  opacity: 0.4;
+  opacity: 0.8;
   line-height: 1.4em;
   height: 2.8em;
   letter-spacing: 0.05rem;
@@ -60,7 +60,7 @@
 
 .seriesItem .episodeText{
   font-weight: 100;
-  opacity: 0.6;
+  opacity: 0.5;
   text-align: left;
   margin:0.5rem 0 0 0;
   line-height: 1.4em;
@@ -68,6 +68,11 @@
   overflow: hidden;
   font-family: notosans;
 }
+
+.seriesItem .episodeText span{
+  color: #000;
+}
+
 .seriesItem .bottomRight{
   font-weight: 100;
   opacity: 0.8;
@@ -81,7 +86,7 @@
   .seriesItem {
     margin: 0;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 3%;
   }
 
   .seriesItem .info{
@@ -89,11 +94,15 @@
   }
 
   .seriesItem .image{
-    height:16.3rem;
+    height: 15.05rem;
   }
 
   .seriesItem .name{
     margin: 0 0 0.75rem;
+  }
+
+  .seriesItem .shortText{
+    height: 4.1em;
   }
 
   .seriesItem .episodeText{
@@ -101,5 +110,22 @@
   }
   .seriesItem .bottomRight{
     margin:0.75rem 0 0 0;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .seriesItem {
+    margin-bottom:3.75%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+
+  .seriesItem .image{
+    height: 14.96rem;
+  }
+
+  .seriesItem {
+    margin-bottom:2.7%;
   }
 }

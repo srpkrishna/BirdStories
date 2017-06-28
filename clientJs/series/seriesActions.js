@@ -238,6 +238,13 @@ function getAuthorDetails(authorId){
   }
 }
 
+function clearSelectedState(series){
+  return{
+    type:Constants.SeriesClearSelectedState,
+    series:series
+  }
+}
+
 const Actions = {
     fetchSeriesList:fetchSeriesList,
     fetchSeriesListIfNeeded:fetchSeriesListIfNeeded,
@@ -250,7 +257,8 @@ const Actions = {
     publishComment:publishComment,
     getComments:fetchComments,
     getMoreComments:getMoreComments,
-    getMoreSeries:getMoreSeries
+    getMoreSeries:getMoreSeries,
+    clearSelectedState:clearSelectedState
 };
 
 export default Actions

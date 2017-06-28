@@ -30,7 +30,11 @@ class Stories extends Component {
     //can't load controller without these values
     if(authorId && id && name){
 
-      var obj = Actions.getStoryContent(authorId,name);
+
+      var obj = Actions.clearSelectedState();
+      Store.dispatch(obj)
+
+      obj = Actions.getStoryContent(authorId,name);
       Store.dispatch(obj)
 
       if(story){

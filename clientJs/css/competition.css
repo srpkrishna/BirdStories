@@ -70,7 +70,8 @@
 .competition li.character {
     float: left;
     width: 100%;
-    padding: 1rem 0;
+    padding: 2rem 0;
+    border-bottom: 1px solid;
 
 }
 
@@ -83,14 +84,14 @@
 }
 
 .competition .ps{
-  display: inline-block;
-  padding: 2vw 3vw;
-  word-spacing: 0.2rem;
-  line-height: 1.6;
-  font-size: 1.2rem;
-  float: left;
-  width: 100%;
-  text-align: left;
+    display: inline-block;
+    padding: 2vw 3vw;
+    word-spacing: 0.2rem;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    float: left;
+    width: 100%;
+    text-align: left;
 }
 
 .competition .home{
@@ -99,4 +100,76 @@
     width: 100%;
     float: left;
     display: inline-block;
+}
+
+.competition img.winnerPhoto {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    float: left;
+}
+
+.competition div.authorDetails{
+    width: 75%;
+    padding: 5%;
+    padding-top: 2%;
+    float: left;
+}
+
+.competition div.authorInfo {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+}
+
+
+
+.competition div.storyName {
+    color: #d12767;
+    text-align: center;
+    font-size: 1.2rem;
+
+}
+
+.competition .storyName.award{
+  color: #4966a6;
+}
+
+.competition img.coverImage {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.competition div.storyDetails {
+    max-width:100%;
+    text-align: left;
+    display: block;
+}
+
+.competition .authorClick{
+  color: #d12767;
+}
+
+@media only screen and (min-width: 760px) {
+  .competition div.authorInfo {
+    margin-left: 15%;
+    width: 70%;
+  }
+
+  .competition div.authorDetails{
+    padding-top: 6%;
+  }
+
+}
+
+@media only screen and (min-width: 960px) {
+  .competition div.authorInfo {
+    margin-left: 30%;
+    width: 50%;
+  }
+
+  .competition div.authorDetails{
+    padding-top: 5%;
+  }
 }

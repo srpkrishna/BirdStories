@@ -7,7 +7,7 @@ import Footer from './footer';
 import EpisodeStrip from './episodeStrip';
 import Comments from './comments';
 import SA from '../util/analytics';
-
+import Loader from '../util/loading';
 
 var shdDisableEvents = false;
 
@@ -215,6 +215,9 @@ class View extends Component {
 
       if(!markedAsView)
         this.storyLoaded()
+
+    }else{
+      tag.push(<Loader key={0}/>)
     }
 
     return(

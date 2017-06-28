@@ -15,6 +15,58 @@
               font-family: notosans;
               src: url('/font/NotoSansTelugu-Regular.ttf');
           }
+
+          .rootLoader {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            padding-top:15%;
+          }
+
+          .rootLoader > div {
+            width: 1em;
+            height: 1em;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: loadingdelay 1.5s infinite ease-in-out both;
+            animation: loadingdelay 1.5s infinite ease-in-out both;
+            background-color: #d12767;
+          }
+
+          .rootLoader .circle1 {
+            -webkit-animation-delay: -0.48s;
+            animation-delay: -0.48s;
+            background-color: #0b192f;
+
+          }
+
+          .rootLoader .circle2 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+            background-color: #d12767;
+
+          }
+
+          .rootLoader .circle3 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+            background-color: #0b192f;
+          }
+
+          @-webkit-keyframes loadingdelay {
+            0%, 80%, 100% { -webkit-transform: scale(0) }
+            40% { -webkit-transform: scale(1.0) }
+          }
+
+          @keyframes loadingdelay {
+            0%, 80%, 100% {
+              -webkit-transform: scale(0);
+              transform: scale(0);
+            } 40% {
+              -webkit-transform: scale(1.0);
+              transform: scale(1.0);
+            }
+          }
         </style>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -37,6 +89,12 @@
        <!-- End Facebook Pixel Code -->
     <body>
       <div id="root">
+        <div class="rootLoader">
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+          <div class="circle3"></div>
+          <div class="circle4"></div>
+        </div>
       </div>
     </body>
     <script src="/lib/require.js" data-main="/appConfig"></script>

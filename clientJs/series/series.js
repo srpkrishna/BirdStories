@@ -31,7 +31,10 @@ class Series extends Component {
     //can't load controller without these values
     if(authorId && id && name){
 
-      var obj = Actions.getSeriesContent(authorId,name,episode);
+      var obj = Actions.clearSelectedState();
+      Store.dispatch(obj)
+
+      obj = Actions.getSeriesContent(authorId,name,episode);
       Store.dispatch(obj)
 
       if(series){

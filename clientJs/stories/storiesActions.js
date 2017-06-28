@@ -221,6 +221,13 @@ function getAuthorDetails(authorId){
   }
 }
 
+function clearSelectedState(story){
+  return{
+    type:Constants.StoryClearSelectedState,
+    story:story
+  }
+}
+
 const Actions = {
     fetchStories:fetchStories,
     fetchStoriesIfNeeded:fetchStoriesIfNeeded,
@@ -233,7 +240,8 @@ const Actions = {
     publishComment:publishComment,
     getComments:fetchComments,
     getMoreComments:getMoreComments,
-    getMoreStories:getMoreStories
+    getMoreStories:getMoreStories,
+    clearSelectedState:clearSelectedState
 };
 
 export default Actions

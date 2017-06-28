@@ -7,6 +7,7 @@ const Constants = {
             SeriesAuthorDetailsSuccess:'series_author_details_success',
             SeriesCommentsSuccess:'series_comments_success',
             SeriesCommentPostSuccess:'series_comment_post_success',
-            SeriesMoreCommentsSuccess:'series_more_comments_success'
+            SeriesMoreCommentsSuccess:'series_more_comments_success',
+            SeriesClearSelectedState:'series_clear_selected_state'
           };
 export default Constants;

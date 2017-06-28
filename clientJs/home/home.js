@@ -42,11 +42,11 @@ class Home extends Component {
 
   render(){
 
-    var img = <Link to="/competition"> <div className="adImage">సు‘కథ’ నిర్వహించే వినూత్నమైన కథల పోటీలో పాల్గొని మీ ప్రతిభకి తగిన గుర్తింపు పొందండి. వివరాలకు ఇక్కడ క్లిక్ చేయండి. <img src="touch.png" className="adIcon"></img></div></Link>
+    var img = <Link to="/competition"> <div className="adImage">‘పాత్రకి జీవం పోయండి’ కథల పోటిలో బహుమతి గెలుచుకున్న కథల కోసం ఇక్కడ క్లిక్ చేయండి.<img src="touch.png" className="adIcon"></img></div></Link>
 
-    if(!this.state.imageStatus){
-      img = ""
-    }
+    // if(!this.state.imageStatus){
+    //   img = ""
+    // }
 
 
     var storiesDivison = <div className="homeStories"><Stories location={this.props.location}/></div>

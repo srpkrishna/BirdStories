@@ -149,7 +149,6 @@
 .App-footer .about{
     float:right;
     text-align: center;
-    padding: 0.5rem;
     width: 100%;
     padding-bottom: 1rem;
 }
@@ -157,6 +156,7 @@
 .App-footer .about a{
   color: #637693;
   font-size: 0.9rem;
+  padding: 0.2rem;
 }
 
 .App-body{

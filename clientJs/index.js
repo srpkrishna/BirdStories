@@ -15,8 +15,9 @@ import Series from './series/series';
 import Home from './home/home';
 import Search from './search/search';
 import Launch from './launch';
-import Competition from './competition'
-import TooManyReqs from './tooManyReqs'
+import Competition from './competition';
+import TooManyReqs from './tooManyReqs';
+import Policy from './policy';
 
 
 ReactDOM.render(
@@ -41,6 +42,7 @@ ReactDOM.render(
       <Route path="writersInfo" component={WritersInfo} requireAuth={true} />
       <Route path="competition" component={Competition} />
       <Route path="tooManyReqs" component={TooManyReqs} />
+      <Route path="policy" component={Policy} />
       <Route path="*" component={Stories}/>
     </Route>
   </Router>),

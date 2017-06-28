@@ -94,6 +94,22 @@ const reducer = (state=defaultState, action) => {
           newState.selectedStoryComments = comments.concat(action.comments)
         }
         return newState;
+
+      case Constants.StoryClearSelectedState:
+
+        if(!state.selectedStory){
+          return state;
+        }
+
+        var newState = Object.assign({}, state);
+        newState.selectedStoryComments = undefined;
+        newState.selectedStory = undefined;
+        newState.selectedAuthor = undefined;
+        newState.selectedContent = undefined;
+        return newState;
+
+      return state;
+
       default:
         return state;
     }

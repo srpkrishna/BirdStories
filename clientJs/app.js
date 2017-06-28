@@ -226,8 +226,8 @@ class App extends Component {
         <div className="App-footer">
           <div className="about">
             <Link to="/about"> {window.getString("aboutUs")}</Link>
+            <Link to="/policy"> {window.getString("policy")}</Link>
           </div>
-
           <div className="rights">
             <p>
               {window.getString("copyright")}<br />{window.getString("rights")}

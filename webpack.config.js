@@ -8,7 +8,15 @@ var plugins =[
 ]
 
 if(process.env.NODE_ENV === "production"){
-    plugins.push(new webpack.optimize.UglifyJsPlugin())
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
+        output: {
+          comments: false
+        },
+        compressor: {
+          warnings: false
+        }
+      })
+    )
 }
 
 module.exports = {
@@ -31,11 +39,12 @@ module.exports = {
       },
       {
         test: /\.svg$/,
+        exclude: /node_modules/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.png$/, loader: "url-loader?limit=100000" },
-      { test: /\.jpg$/, loader: "file-loader" }
+      { test: /\.css$/, exclude: /node_modules/,loader: "style-loader!css-loader" },
+      { test: /\.png$/, exclude: /node_modules/,loader: "url-loader?limit=100000" },
+      { test: /\.jpg$/, exclude: /node_modules/,loader: "file-loader" }
     ]
   }
 };

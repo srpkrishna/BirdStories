@@ -1,19 +1,19 @@
 'use strict';
 import React from 'react';
-import styles from '../../css/header.css';
-import Social from '../../util/social.js';
+import styles from '../css/header.css';
+import Social from '../util/social.js';
 import { Link } from 'react-router';
 
 const View = ({story,authorLink,updateSocial})=>{
   var shareUrl = window.location.href;
-  var title = story.displayName + " - "+"sukatha.com"
+  var title = story.displayName+ " | " + story.genre[0] + " | "+window.getString("companyPromo")
   var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/profile.jpg"
   const imageStyle = {
     background: 'url(' + imgSrc + ') no-repeat center',
     backgroundSize:'cover'
   }
 
-  var name = story.name.replace(/\s+/g, '').toLowerCase();
+  var name = story.name.removeSpaceAndCapitals();
   const coverImg = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
 
   return(
@@ -24,8 +24,8 @@ const View = ({story,authorLink,updateSocial})=>{
       </Link>
       <div className="title">{story.displayName}</div>
       <ul className="actions">
-        <li className="info">{story.social.views} Views</li>
-        <li className="info">{story.social.likes} Likes</li>
+        <li className="info">{story.social.views} {window.getString("views")}</li>
+        <li className="info">{story.social.likes} {window.getString("likes")}</li>
         <Social shareUrl={shareUrl} title={title} pic={coverImg} updateSocial={updateSocial}/>
       </ul>
 

@@ -16,6 +16,7 @@ const reducer = (state=defaultState, action) => {
         var newState = Object.assign({}, state);
         newState.author =  action.myData.author;
         newState.stories = action.myData.stories;
+        newState.series = action.myData.series;
         return newState;
       default:
         return state;
@@ -24,7 +25,7 @@ const reducer = (state=defaultState, action) => {
 
 const middlewares = [thunkMiddleware];// lets us dispatch() functions
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "dev") {
   const loggerMiddleware = createLogger();// neat middleware that logs actions
   middlewares.push(loggerMiddleware);
 }

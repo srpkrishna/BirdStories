@@ -2,11 +2,10 @@
 
 import React, { Component } from 'react';
 import Controller from './storiesController';
-import Viewer from './viewer/viewerController';
+import Viewer from './viewerController';
 import Store from './storiesStore';
 import  Actions from './storiesActions';
 import { Provider } from 'react-redux';
-
 
 class Stories extends Component {
 
@@ -31,7 +30,11 @@ class Stories extends Component {
     //can't load controller without these values
     if(authorId && id && name){
 
-      var obj = Actions.getStoryContent(authorId,name);
+
+      var obj = Actions.clearSelectedState();
+      Store.dispatch(obj)
+
+      obj = Actions.getStoryContent(authorId,name);
       Store.dispatch(obj)
 
       if(story){
@@ -49,13 +52,20 @@ class Stories extends Component {
       }
 
       Store.dispatch(obj);
+
+      if(story){
+        obj = Actions.getComments(story.author,story.timestamp);
+      }else {
+        obj = Actions.getComments(authorId,id);
+      }
+      Store.dispatch(obj);
+
       state.shdShowViewer = true;
 
     }else{
       var obj = Actions.fetchStoriesIfNeeded();
       Store.dispatch(obj)
-      document.title = window.getString("companyMain")+window.getString("companySub");
-    
+      document.title = window.getString("docTitle");
     }
 
     return state;

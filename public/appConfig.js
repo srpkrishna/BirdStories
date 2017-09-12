@@ -1,7 +1,7 @@
 require.config({
     baseUrl: '/lib',
     shim: {
-      'facebook' : {
+      facebook : {
         exports: 'FB'
       }
     },
@@ -13,7 +13,7 @@ require.config({
         stores: "../js/stores",
         views:"../js/components/views",
         controllers:"../js/components/controllers",
-        'facebook': '//connect.facebook.net/en_US/sdk'
+        facebook: "//connect.facebook.net/en_US/sdk"
     }
 });
 require(["jquery-2.2.1.min", "l20n.min"], function (jquery,l20n) {
@@ -30,6 +30,14 @@ require(["jquery-2.2.1.min", "l20n.min"], function (jquery,l20n) {
             return "/locales/" + locale + ".l20n";
         });
     window.l20n.requestLocales();
+
+    String.prototype.capitalizeFirstLetter = function() {
+      return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+    String.prototype.removeSpaceAndCapitals = function() {
+      return this.replace(/\s+/g, '').toLowerCase()
+    }
+
     window.l20n.ready (function () {
       require(["js/index"]);
     });

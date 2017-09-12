@@ -2,20 +2,19 @@
 import Styles from './storyList.css'
 import React from 'react';
 import { Link } from 'react-router';
-import styles from '../css/item.css';
 
 const View = ({ story,index,author }) => {
 
   const className = "list clr"+(index%4)
   const link = "/stories/story"
-  const query = {a:story.author,id:story.timestamp}
+  var name = story.name.removeSpaceAndCapitals();
+  const query = {t:story.timestamp,a:story.author,n:name}
   const linkObj = {
       pathname:link,
       query:query,
       state:{story:story,author:author}
   }
 
-  var name = story.name.replace(/\s+/g, '').toLowerCase();
   const imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+story.author+"/"+name+"/cover.jpg"
   const imageStyle = {
     background: 'url(' + imgSrc + ') no-repeat center',

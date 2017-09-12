@@ -4,6 +4,7 @@ import View from './authorView'
 const mapStateToProps = (state) => {
   return {
     stories:state.stories,
+    series:state.series,
     author:state.author
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Styles from './css/about.css';
+import SA from './util/analytics';
 
 class About extends Component {
 
@@ -14,6 +15,15 @@ class About extends Component {
 
     window.scrollTo(0, 0)
     document.title = window.getString("aboutUs") + " -"+window.getString("companyPromo");
+    SA.sendPageView('aboutUs');
+    window.onbeforeunload = () => {
+        SA.sendEvent('AboutUs','close','aboutUs');
+      }
+  }
+
+  componentWillUnmount(){
+    SA.sendEvent('AboutUs','close','aboutUs');
+    window.onbeforeunload = undefined;
   }
 
   render() {

@@ -18,7 +18,6 @@ class Profile extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0)
-    document.title = window.getString("companyMain")+window.getString("companySub");
   }
   render() {
     return (

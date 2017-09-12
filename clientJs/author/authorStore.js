@@ -16,6 +16,10 @@ const reducer = (state=defaultState, action) => {
         var newState = Object.assign({}, state);
         newState.stories =  action.stories;
         return newState;
+      case Constants.AuthorSeriesFetch:
+        var newState = Object.assign({}, state);
+        newState.series =  action.series;
+        return newState;
       case Constants.AuthorDetailsFetch:
         var newState = Object.assign({}, state);
         newState.author =  action.author;
@@ -27,7 +31,7 @@ const reducer = (state=defaultState, action) => {
 
 const middlewares = [thunkMiddleware];// lets us dispatch() functions
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "dev") {
   const loggerMiddleware = createLogger();// neat middleware that logs actions
   middlewares.push(loggerMiddleware);
 }

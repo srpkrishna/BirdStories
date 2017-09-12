@@ -8,19 +8,19 @@ import styles from '../css/search.css';
 const View = ({searchText,stories,authors,handleChange}) => {
 
   var noResultTag = ""
-  if(searchText.length>=2 && stories.length == 0 && authors.length == 0){
+  if(searchText.length >= 3 && stories.length == 0 && authors.length == 0){
     noResultTag =  <div>{window.getString("noResults")}</div>
   }
 
   var storiesDiv = ""
-  if(searchText.length >= 2){
+  if(searchText.length >= 3){
     storiesDiv = stories.map(function(story,i) {
       return <StoryItem story={story} key={i} index={i} />;
     })
   }
 
   var authorsDiv = ""
-  if(searchText.length >= 2){
+  if(searchText.length >= 3){
     authorsDiv = authors.map(function(author,i) {
       return <AuthorItem author={author} key={i} index={i} />;
     })

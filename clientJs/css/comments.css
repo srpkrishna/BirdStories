@@ -1,0 +1,83 @@
+.commentBox{
+  padding: 0.25em 2em;
+}
+
+.commentBox .header{
+  text-align: left;
+  padding-bottom: 0.25em;
+  color: #162b4d;
+  font-weight: bold;
+}
+
+.commentBox .textArea{
+  width: 100%;
+  font-size: 1.0rem;
+}
+
+.commentBox button {
+  float: right;
+  font-size: 1.0rem;
+  color: rgba(255, 255, 255, 0.8);
+
+}
+
+.comments {
+    background: #f0f0f0;
+    color: #0b192f;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    padding: 1.2rem;
+}
+
+.comments .title{
+  color: #4966a6;
+  font-weight: bold;
+  padding-bottom:0.25em;
+}
+
+.comments .comment{
+    background: #f6f7f9;
+    margin-bottom: 0.5rem;
+    float: left;
+    width: 100%;
+}
+
+.comment .userName {
+    color: #4966a6;
+    padding: 0.25rem;
+}
+
+.comment .text {
+    color: #0b192f;
+    text-indent: 5%;
+    padding-top: 0.25rem;
+}
+
+.comment .msg {
+    padding: 1rem 0.25rem;
+    color: #4d90fe;
+  }
+
+.comment button {
+    float: right;
+    font-size: 0.9rem;
+    color: #d12767;
+}
+
+.comments .moreComments{
+    text-align: center;
+    width: 100%;
+}
+
+.comments .moreComments button{
+  font-size: 1.0rem;
+  color: #d12767;
+}
+
+
+@media only screen and (min-width: 480px) {
+  .commentBox{
+    padding: initial;
+  }
+}

@@ -1,5 +1,4 @@
 var BaseURL = "/api/";
-var S3URL = "https://s3.ap-south-1.amazonaws.com/bsstory/"
 
 const serverCall = {
 	fetch:function(url,successFunction){
@@ -56,7 +55,14 @@ function makeServerCall(reqType,serviceUrl,reqdata,successFunction,errorFunction
 			timeout			    : 60000,
 			xhrFields       : {withCredentials: true},
 			success         : successFunction,
-			error						: errorFunction,
+			error						: function (jqXHR, exception) {
+													if (jqXHR.status === 429) {
+														window.location.replace("/tooManyReqs");
+													}else{
+														errorFunction();
+													}
+
+												},
 
 		});
 }

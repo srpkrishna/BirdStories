@@ -2,7 +2,7 @@
   text-align: center;
   margin: 0 auto;
   padding: 0 auto;
-  max-width: 71.25rem;
+  max-width: 80rem;
 }
 
 /*@media screen and (min-width:1024px) {
@@ -33,7 +33,6 @@
 .App-header ul{
   float: right;
   padding: 0;
-  padding-right: 1.0em;
 }
 
 .App-header li {
@@ -94,7 +93,8 @@
 }
 
 .App-header .social li{
-   padding-top: 0.1rem;
+   padding-top: 0.3rem;
+   padding-left: 0.3rem;
 }
 
 .App-header .social li a{
@@ -120,6 +120,13 @@
     border: 2px solid #B71757 !important;
 }
 
+.App-header .logout{
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #283d5f;
+    border: 1px solid white;
+}
+
 .App-footer{
   background: none repeat scroll 0 0 #162b4d;
   display: inline-block;
@@ -142,7 +149,6 @@
 .App-footer .about{
     float:right;
     text-align: center;
-    padding: 0.5rem;
     width: 100%;
     padding-bottom: 1rem;
 }
@@ -150,12 +156,33 @@
 .App-footer .about a{
   color: #637693;
   font-size: 0.9rem;
+  padding: 0.2rem;
 }
 
 .App-body{
   min-height: 32em;
 }
 
+.App-hide{
+  display: none;
+}
+
+.notifier{
+   text-align: center;
+   float: left;
+   color: white;
+   padding:1rem;
+   padding-top:2rem;
+   padding-bottom:1.5rem;
+   word-spacing: 0.2rem;
+   line-height: 1.6;
+   background: #0b192f;
+}
+
+.notifierIcon{
+    width: 1.8rem;
+    margin: -10px;
+}
 /*@media only screen and (max-width: 350px) {
   .App-logo{
      float: left;

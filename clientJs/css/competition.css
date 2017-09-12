@@ -1,0 +1,186 @@
+.competition{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  background: none repeat scroll 0 0 #fff;
+  color: #162b4d;
+  font-family: notosans;
+  float: left;
+}
+
+.competition .pageHeader {
+  text-align: center;
+  display: inline-block;
+  float: left;
+  width: 100%;
+  padding: 3vw;
+  background-image: url(../img/bg.png);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.competition .pageHeader .topLeftTitle {
+    float: left;
+    font-size: 1rem;
+}
+
+.competition .pageHeader .topRightTitle {
+    float: right;
+    font-size: 1rem;
+}
+.competition .pageHeader .mainTitle {
+  width: 100%;
+  padding: 1.4rem 0;
+  display: inline-block;
+}
+
+.competition .pageHeader ul.prizes {
+    padding: 0;
+    font-size: 1rem;
+    /* padding-bottom: 0.1rem; */
+    display: inline-block;
+    width: 100%;
+}
+
+.competition .pageHeader li.prize {
+    float: left;
+    display: inline-block;
+    width: 33%;
+}
+
+.competition .addressInfo {
+    display: inline-block;
+    padding: 3vw;
+    word-spacing: 0.2rem;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+.competition .highlight{
+  color: #4966a6;
+}
+
+.competition ul.characters {
+    display: inline-block;
+    padding: 0 5vw;
+    word-spacing: 0.2rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.competition li.character {
+    float: left;
+    width: 100%;
+    padding: 0.75rem 0;
+}
+
+.competition li.character.story{
+    float: left;
+    width: 100%;
+    padding: 1.5rem 0;
+}
+
+.competition ul.finalWords {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    width: 100%;
+    float: left;
+    display: inline-block;
+}
+
+.competition .ps{
+    display: inline-block;
+    padding: 2vw 3vw;
+    word-spacing: 0.2rem;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    float: left;
+    width: 100%;
+    text-align: left;
+}
+
+.competition .home{
+    padding: 1.5rem 0 0.5rem 0;
+    color: #d12767;
+    width: 100%;
+    float: left;
+    display: inline-block;
+}
+
+.competition img.winnerPhoto {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    float: left;
+}
+
+.competition div.authorDetails{
+    width: 75%;
+    padding: 5%;
+    padding-top: 0;
+    float: left;
+}
+
+.competition div.authorInfo {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+}
+
+
+
+.competition div.storyName {
+    color: #d12767;
+    text-align: center;
+    font-size: 1.2rem;
+    text-decoration: underline;
+
+}
+
+.competition .storyName.award{
+  color: #4966a6;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.competition img.coverImage {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+    width: 94%;
+    margin: 3% 3% 0% 3%;
+    border-radius:4px;
+}
+
+.competition div.storyDetails {
+    max-width:100%;
+    text-align: left;
+    display: block;
+}
+
+.competition .authorClick{
+  color: #d12767;
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 760px) {
+  .competition div.authorInfo {
+    margin-left: 15%;
+    width: 70%;
+  }
+
+
+}
+
+@media only screen and (min-width: 960px) {
+  .competition div.authorInfo {
+    margin-left: 30%;
+    width: 50%;
+  }
+
+  .competition div.authorDetails{
+    padding-top: 1.5%;
+  }
+}

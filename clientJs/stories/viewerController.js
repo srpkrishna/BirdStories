@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import View from './viewerView'
-import  Actions from '../storiesActions';
+import View from '../viewer/viewerView'
+import  Actions from './storiesActions';
 
 const mapStateToProps = (state) => {
 
@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
     content: state.selectedContent,
     story:state.selectedStory,
     author:state.selectedAuthor,
-    authorLink:state.authorLink
+    authorLink:state.authorLink,
+    comments:state.selectedStoryComments
   }
 }
 
@@ -16,6 +17,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updateSocial: (element) => {
       const obj = Actions.updateSocial(element);
+      dispatch(obj);
+    },
+    publishComment:(comment) => {
+      const obj = Actions.publishComment(comment);
+      dispatch(obj);
+    },
+    showMoreComments:() =>{
+      const obj = Actions.getMoreComments();
       dispatch(obj);
     }
   }

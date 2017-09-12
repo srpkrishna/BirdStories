@@ -1,14 +1,40 @@
+<docTitle "Telugu Stories - Comedy, Drama, Thriller, Romance | SuKatha">
 <companyMain "Su">
 <companySub "Katha">
 <write "Writer">
 <search "Search">
 <noResults "No results found">
-<companyPromo "sukatha.com">
+<companyPromo "SuKatha.com">
+<commentText "Loved it?">
+<commentPublish "Publish">
+<commentReply "Reply">
+<anonymous "Anonymous">
+<comments "Comments">
+<postSuccess "Comment posted successfully.">
+<postEmpty "Enter text to publish">
+<yes "Yes">
+<no "No">
+<more "Show more">
+<stories "More stories">
+<moreFrom "More from">
+<mins "Mins">
+<min "Min">
+<views "Views">
+<view "View">
+<likes "Likes">
+<like "Like">
+<stories "Stories">
+<series "Series">
+<share "Share">
+<home "Home">
+<authorStories "Author stories">
+
 
 <contactUs "Contact Us">
 <copyright "Copyright 2017. All rights reserved.">
 <rights "All content and images are owned by SuKatha.com">
 <aboutUs "About us">
+<policy "Privacy policy">
 <quote1 "“There's always room for a story that can transport people to another place.”">
 <auth1 "― J.K. Rowling">
 <quote2 "“If history were taught in the form of stories, it would never be forgotten.”">

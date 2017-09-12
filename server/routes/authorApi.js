@@ -11,7 +11,8 @@ api.route('/search')
   .get(function(req, res){
       const searchString = req.query.q
       searchByNames(searchString,function(authors){
-        res.send(authors);
+        var filtered = authors.slice(0, 3);
+        res.send(filtered);
       })
   })
 

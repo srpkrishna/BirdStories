@@ -4,7 +4,7 @@ import React from 'react';
 import styles from '../css/item.css';
 import { Link } from 'react-router';
 
-const View = ({ author,index }) => {
+const View = ({ author }) => {
 
   const className = "item clrWhite"
   const link = "/author/"+author.penName;
@@ -15,8 +15,8 @@ const View = ({ author,index }) => {
 
   var imgSrc = "https://s3.ap-south-1.amazonaws.com/bsstory/"+author.penName+"/profile.jpg"
   const imageStyle = {
-    background: 'url(' + imgSrc + ') no-repeat center',
-    backgroundSize:'cover'
+    background: 'url(' + imgSrc + ') no-repeat center top',
+    backgroundSize:'contain'
   }
 
   return (

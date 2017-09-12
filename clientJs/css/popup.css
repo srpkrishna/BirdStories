@@ -1,0 +1,43 @@
+
+.popup{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+}
+
+.content{
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #0b192f;
+  padding: 1em;
+}
+
+.content .closemark {
+    top: 0em;
+    right: 0.1em;
+    padding: 0.5em;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    color: white;
+    position: absolute;
+}
+
+.loader{
+    border: 1em solid #f6f7f9;
+    border-top: 1em solid #0b192f;
+    border-radius: 50%;
+    width: 6em;
+    height: 6em;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

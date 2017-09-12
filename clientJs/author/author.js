@@ -33,6 +33,9 @@ class Author extends Component {
     var obj = Actions.getAuthorStories(this.state.authorId);
     Store.dispatch(obj)
 
+    obj = Actions.getAuthorSeries(this.state.authorId);
+    Store.dispatch(obj)
+
   }
   componentWillReceiveProps(nextProps){
     this.state = this.getStateObject(nextProps)

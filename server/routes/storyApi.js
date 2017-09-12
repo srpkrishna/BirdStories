@@ -3,6 +3,8 @@ var api = express.Router();
 var storyDb = require('../dbFetch/storyDB.js');
 var AWS = require('aws-sdk');
 var fs = require('fs');
+var RateLimit = require('express-rate-limit');
+var BlockedStore = require('../utils/blockedStore.js');
 
 const conn = require('../utils/connections.js');
 const error = {
@@ -15,13 +17,67 @@ const alreadyUpdated = {
   msg:'alreadyUpdated'
 }
 
+var hackedIPStore = new BlockedStore()
+
+var hackHandler = function (req, res) {
+  hackedIPStore.addIp(req.ip)
+  res.format({
+    html: function(){
+      res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+    },
+    json: function(){
+      res.status(429).json({ message: "Your ip is temporarily blocked. Contact storyboard@sukatha.com"});
+    }
+  });
+}
+
+
+var limiter = new RateLimit({
+  windowMs: 60*1000, // 15 minutes
+  delayMs: 0,
+  max: 15, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again after two hours",
+  handler:hackHandler
+});
+
+var hackedIPStore = new BlockedStore()
+
+var hackHandler = function (req, res) {
+  hackedIPStore.addIp(req.ip)
+  res.format({
+    html: function(){
+      res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+    },
+    json: function(){
+      res.status(429).json({ message: "Your ip is temporarily blocked. Contact storyboard@sukatha.com"});
+    }
+  });
+}
+
+
+api.all('/*', function(req, res, next) {
+  if(hackedIPStore.shouldBlockIp(req.ip)){
+    hackedIPStore.print()
+    res.status(429).end("Your ip is temporarily blocked. Contact storyboard@sukatha.com");
+  }else{
+    next();  // call next() here to move on to next middleware/router
+  }
+})
+
 /* GET home page. */
 api.route('/search')
   .get(function(req, res){
       const searchString = req.query.q
       searchByNames(searchString,function(stories){
-        res.send(stories);
+        var filtered = stories.slice(0, 3);
+        res.send(filtered);
       })
+  })
+
+api.route('/filters')
+  .get(function(req, res){
+      var filters = ['comedy','drama','romance','thriller','suspense','fantasy']
+      res.send(filters);
   })
 
 api.route('/content/:authorId/:name')
@@ -41,7 +97,7 @@ api.route('/content/:authorId/:name')
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
-        res.send(error)
+        res.send(err)
       }else {
         var fileContents = data.Body.toString();
         var json = JSON.parse(fileContents);
@@ -50,7 +106,7 @@ api.route('/content/:authorId/:name')
     });
   })
 
-api.route('/story/:authorId/:id')
+api.route('/:authorId/:id')
   .get(function(req, res){
       const authorId = req.params.authorId
       const id = Number(req.params.id)
@@ -77,12 +133,20 @@ api.route('/:authorId')
 
 api.route('/')
   .get(function(req, res){
-      getStories(function(stories){
+      var tsFilter = req.query.lastts;
+      if(!tsFilter){
+        tsFilter = Date.now();
+      }else{
+        tsFilter = Number(tsFilter);
+      }
 
+      var genre = req.query.genre;
+      var limit = req.query.limit;
+      getStories(tsFilter,genre,limit,function(stories){
         res.send(stories);
       })
   })
-  .post(function (req, res) {
+  .post(limiter,function (req, res) {
       var id = req.body.id;
       var attr = req.body.updateAttr;
       switch(attr){
@@ -139,20 +203,33 @@ function getAuthorStories(authorId,callback){
     storyDb.query(params,docClient,callback);
 }
 
-function getStories(callback){
+function getStories(ts,genre,limit,callback){
     const docClient = conn.getDocClient();
     var params = {
         IndexName: "RecentIndex",
-        KeyConditionExpression: "#l = :lang",
+        KeyConditionExpression: "#l = :lang and #ts < :timestamp",
         ExpressionAttributeNames:{
-            "#l": "lang"
+            "#l": "lang",
+            "#ts" : "timestamp"
         },
         ExpressionAttributeValues: {
-            ":lang":"telugu"
+            ":lang":"telugu",
+            ":timestamp":ts
         },
-        Limit: 10,
-        ScanIndexForward:false
+        ScanIndexForward:false,
+        Limit:9
     };
+
+    if(genre){
+      params.FilterExpression = "contains(#genre, :v_sub)"
+      params.ExpressionAttributeNames["#genre"] = "genre"
+      params.ExpressionAttributeValues[":v_sub"] = genre
+    }
+
+    if(limit){
+      params.Limit = limit
+    }
+
      storyDb.query(params,docClient,callback);
 }
 
@@ -172,7 +249,19 @@ function searchByNames(sub,callback){
         },
         ScanIndexForward:false
     };
-   storyDb.query(params,docClient,callback);
+    storyDb.query(params,docClient,callback);
+
+  //   var params = {
+  //       FilterExpression: "contains(#name, :v_sub)",
+  //       ExpressionAttributeNames:{
+  //           "#name": "name"
+  //       },
+  //       ExpressionAttributeValues: {
+  //           ":v_sub":sub
+  //       }
+  //   };
+  //  storyDb.scan(params,docClient,callback);
+
 }
 
 function updateSocialElements(id,element,callback)

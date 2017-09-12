@@ -6,9 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var api = require('./server/routes/api');
 var storyApi = require('./server/routes/storyApi');
+var seriesApi = require('./server/routes/seriesApi');
 var authorApi = require('./server/routes/authorApi');
 var profileApi = require('./server/routes/profileApi');
-var session = require('cookie-session')
+var commentApi = require('./server/routes/commentApi');
+var userApi = require('./server/routes/userApi');
+var clientApi = require('./server/routes/clientInfoApi');
+var session = require('cookie-session');
+var AWS = require('aws-sdk');
 
 var app = express();
 
@@ -25,6 +30,7 @@ if("production" === process.env.NODE_ENV){
   domain = "sukatha.com"
 }
 
+app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 app.use(session({
   name: 'session',
   keys: ['checkkey'],
@@ -36,12 +42,129 @@ app.use(session({
     domain:domain
   }
 }))
+
+app.get('/', function(req, res, next) {
+
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'site.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next()
+  }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/stories', storyApi);
+app.use('/api/series', seriesApi);
 app.use('/api/authors', authorApi);
 app.use('/api/profile',profileApi);
+app.use('/api/comments', commentApi);
+app.use('/api/user',userApi);
+app.use('/api/client',clientApi);
 app.use('/api', api);
+
+
+
+app.use('/stories/story',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = req.query.a+'/'+req.query.n+'/story.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+app.use('/seriesList/series',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var episode = "";
+    if(req.query.e){
+      episode = "/"+req.query.e
+    }
+
+    var keyName = req.query.a+'/'+req.query.n+episode+'/story.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+app.use('/author/:id',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)){
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = req.params.id+'/author.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+
+app.use('/sitemap',function(req, res, next) {
+  var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+  var bucketName = 'sukathasamples';
+  var keyName = 'SEO/sitemap.xml';
+  var params = {Bucket: bucketName, Key: keyName};
+  s3.getObject(params, function(err, data) {
+    if (err){
+      res.send(err);
+    }else {
+      var fileContents = data.Body.toString();
+      res.set('Content-Type', 'text/xml');
+      res.send(fileContents);
+    }
+  });
+});
+
+app.use('/.well-known/assetlinks.json',function(req, res, next) {
+  res.sendFile('server/assetlinks.json' , { root : __dirname});
+});
 
 app.use('/*', function(req, res, next) {
   res.sendFile('public/index.html' , { root : __dirname});

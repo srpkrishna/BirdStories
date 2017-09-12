@@ -42,7 +42,7 @@ function search(value){
   return function(dispatch,getState) {
     dispatch(pendingSearch(value))
 
-    if(value.length<2){
+    if(value.length<3){
       return
     }
 

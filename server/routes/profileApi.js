@@ -2,6 +2,7 @@ var express = require('express');
 var api = express.Router();
 var authorDb = require('../dbFetch/authorDB.js');
 var storyDb = require('../dbFetch/storyDB.js');
+var seriesDb = require('../dbFetch/seriesDB.js');
 const conn = require('../utils/connections.js');
 const error = {
   code:'BS301',
@@ -34,7 +35,15 @@ api.route('/me')
       resBody.author = authData[0];
       getAuthorStories(authData[0].penName,function(stories){
           resBody.stories = stories;
-          res.send(resBody);
+
+          if(resBody.stories  && resBody.series )
+            res.send(resBody);
+      })
+
+      getAuthorSeries(authData[0].penName,function(series){
+          resBody.series = series;
+          if(resBody.stories  && resBody.series )
+            res.send(resBody);
       })
 
     });
@@ -66,6 +75,19 @@ function getAuthorStories(penName,callback){
         ScanIndexForward:false
     };
     storyDb.query(params,docClient,callback);
+}
+
+function getAuthorSeries(penName,callback){
+    const docClient = conn.getDocClient();
+    var params = {
+        KeyConditionExpression: "author = :id",
+        ExpressionAttributeValues: {
+            ":id":penName
+        },
+        Limit: 10,
+        ScanIndexForward:false
+    };
+    seriesDb.query(params,docClient,callback);
 }
 
 module.exports = api;

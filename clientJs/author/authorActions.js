@@ -32,10 +32,28 @@ function getAuthorStories(authorId){
   }
 }
 
+function authorSeriesSuccess(data){
+  return{
+    type:Constants.AuthorSeriesFetch,
+    series:data
+  }
+}
+
+function getAuthorSeries(authorId){
+  return function(dispatch){
+    Server.fetch('series/'+authorId,function(data){
+        dispatch(authorSeriesSuccess(data));
+    });
+  }
+}
+
 const Actions = {
     getAuthorDetails:getAuthorDetails,
     getAuthorStories:getAuthorStories,
-    authorDetailsSuccess:authorDetailsSuccess
+    authorDetailsSuccess:authorDetailsSuccess,
+    getAuthorSeries:getAuthorSeries
+
+
 };
 
 export default Actions

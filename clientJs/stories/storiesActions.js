@@ -1,19 +1,10 @@
 'use strict';
 import  Constants from './storiesConstants';
 import Server from '../util/server';
+import SA from '../util/analytics';
+import Utils from '../util/utilityFunctions';
 
 function fetchSuccess(stories){
-
-  if(stories && stories.length > 0){
-    var dt = new Date()
-    var index = dt.getDate() % stories.length
-    var count = 0;
-    while(count < index){
-      stories.push(stories.shift())
-      count++;
-    }
-  }
-
   return {
     type:Constants.StoriesChangeEvent,
     isFetching:false,
@@ -21,22 +12,12 @@ function fetchSuccess(stories){
   };
 }
 
-function updateSuccess(attributes,element){
-  return {
-    type:Constants.StoryChangeEvent,
-    attributes:attributes,
-    element:element
-  };
-}
-
 function shouldFetchStories(state) {
   const stories = state.stories
-  if (!state.isFetching) {
-    return true;
-  } else if (!stories || stories.length == 0) {
+  if (!stories || stories.length == 0) {
     return true;
   } else {
-    return stories.didInvalidate;
+    return false;
   }
 }
 
@@ -50,16 +31,157 @@ function fetchStoriesIfNeeded() {
 
 function fetchStories(){
   return function(dispatch) {
-    Server.fetch('stories',function(data){
+
+    var q = ""
+
+    if(Utils.isMobile()){
+      q="?limit=4"
+    }else if(Utils.isMobileOrTablet()){
+      q="?limit=6"
+    }
+
+    Server.fetch('stories'+q,function(data){
         dispatch(fetchSuccess(data))
     });
   }
+}
+
+function moreStoriesSuccess(data){
+  return {
+    type:Constants.MoreStoriesSuccess,
+    stories:data,
+  };
+}
+
+function getMoreStories(){
+    return function(dispatch,getState){
+      const stories = getState().stories
+      var story = stories[stories.length-1]
+      var q = ""
+      if(story){
+        q = "?lastts="+story.timestamp
+      }
+
+      if(Utils.isMobile()){
+        q=q+"&limit=4"
+      }else if(Utils.isMobileOrTablet()){
+        q=q+"&limit=6"
+      }
+
+      Server.fetch('stories'+q,function(data){
+          dispatch(moreStoriesSuccess(data))
+      });
+    }
+}
+
+function filtersSuccess(filters){
+  return {
+    type:Constants.StoryFiltersSuccess,
+    filters:filters,
+  };
+}
+
+function getGenres(){
+    return function(dispatch,getState){
+      Server.fetch('stories/filters',function(data){
+          dispatch(filtersSuccess(data))
+      });
+    }
+}
+
+function commentsSuccess(data){
+  return {
+    type:Constants.StoryCommentsSuccess,
+    comments:data,
+  };
+}
+
+function fetchComments(authorId,id){
+    return function(dispatch){
+      const postId = authorId + id
+      Server.fetch('comments/'+postId,function(data){
+          if(!data.code){
+              dispatch(commentsSuccess(data))
+          }
+        });
+    }
+}
+
+function moreCommentsSuccess(data){
+  return {
+    type:Constants.StoryMoreCommentsSuccess,
+    comments:data,
+  };
+}
+
+function getMoreComments(){
+    return function(dispatch,getState){
+      const story = getState().selectedStory
+      const postId = story.author + story.timestamp
+      const comments = getState().selectedStoryComments
+      var comment = comments[comments.length-1]
+      var q = ""
+      if(comment){
+        q = "?lastts="+comment.timestamp
+      }
+
+      Server.fetch('comments/'+postId+q,function(data){
+          if(!data.code){
+              dispatch(moreCommentsSuccess(data))
+          }
+        });
+      SA.sendEvent('Story','moreComments',story.name.removeSpaceAndCapitals());
+    }
+}
+
+
+function commentPostedSuccessfully(comment){
+  return {
+    type:Constants.StoryCommentPostSuccess,
+    comment:comment,
+  };
+}
+
+
+function publishComment(comment){
+    return function(dispatch,getState) {
+      const story = getState().selectedStory
+      const postId = story.author + story.timestamp
+      const author = getState().selectedAuthor
+      if(author && author.email){
+        comment.authorEmail = author.email
+      }
+      comment.authorName = story.authorDisplayName
+      comment.storyName = story.displayName
+
+      Server.connect('POST','comments/'+postId,comment,function(data){
+          if(data.code){
+            console.log("error publishing comments")
+          }else{
+            dispatch(commentPostedSuccessfully(data));
+          }
+
+      });
+      SA.sendEvent('Story','publishComment',story.name.removeSpaceAndCapitals());
+    }
+}
+
+function updateSuccess(attributes,element){
+  return {
+    type:Constants.StoryChangeEvent,
+    attributes:attributes,
+    element:element
+  };
 }
 
 function updateSocial(element){
 
   return function(dispatch,getState) {
     const story = getState().selectedStory
+
+    if(!story){
+      return
+    }
     const storyId = {
       author:story.author,
       timestamp:story.timestamp
@@ -74,6 +196,9 @@ function updateSocial(element){
         if(!data.code)
           dispatch(updateSuccess(data,element))
     });
+
+    if(!("views" === element || "reads" === element))
+      SA.sendEvent('Story',element,story.name.removeSpaceAndCapitals());
   }
 }
 
@@ -93,6 +218,10 @@ function getStoryContent(authorId,name){
 }
 
 function storyDetailsSuccess(data){
+
+  if(!data || !data.timestamp){
+    window.location.replace("/")
+  }
   return {
     type:Constants.StoryDetailsSuccess,
     story:data,
@@ -101,7 +230,7 @@ function storyDetailsSuccess(data){
 
 function getStoryDetails(authorId,id){
   return function(dispatch) {
-    Server.fetch('stories/story/'+authorId+'/'+id,function(data){
+    Server.fetch('stories/'+authorId+'/'+id,function(data){
         dispatch(storyDetailsSuccess(data))
     });
   }
@@ -122,6 +251,13 @@ function getAuthorDetails(authorId){
   }
 }
 
+function clearSelectedState(story){
+  return{
+    type:Constants.StoryClearSelectedState,
+    story:story
+  }
+}
+
 const Actions = {
     fetchStories:fetchStories,
     fetchStoriesIfNeeded:fetchStoriesIfNeeded,
@@ -130,7 +266,12 @@ const Actions = {
     getAuthorDetails:getAuthorDetails,
     storyAuthorDetailsSuccess:storyAuthorDetailsSuccess,
     getStoryDetails:getStoryDetails,
-    storyDetailsSuccess:storyDetailsSuccess
+    storyDetailsSuccess:storyDetailsSuccess,
+    publishComment:publishComment,
+    getComments:fetchComments,
+    getMoreComments:getMoreComments,
+    getMoreStories:getMoreStories,
+    clearSelectedState:clearSelectedState
 };
 
 export default Actions

@@ -4,6 +4,7 @@ import Controller from './searchController';
 import  Actions from './searchActions';
 import { Provider } from 'react-redux';
 import Store from './searchStore';
+import SA from '../util/analytics';
 
 class Search extends Component {
 
@@ -15,7 +16,18 @@ class Search extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
+    document.title = window.getString("search") + " -"+window.getString("companyPromo");
+    SA.sendPageView('search');
+    window.onbeforeunload = () => {
+        SA.sendEvent('Search','close','search');
+      }
   }
+
+  componentWillUnmount(){
+    SA.sendEvent('Search','close','search');
+    window.onbeforeunload = undefined;
+  }
+
 
   render() {
     return (

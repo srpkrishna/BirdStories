@@ -1,4 +1,16 @@
 
+
+.episodeTitle{
+  font-size: 1.2rem;
+  text-align: center;
+  background: white;
+  color: #0b192f;
+  width: 100%;
+  display: inline-block;
+  float: left;
+  padding-top: 2rem;
+}
+
 .contentBody{
   text-align: center;
   display: inline-block;

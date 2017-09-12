@@ -4,6 +4,7 @@ import FAuth from './secure/fAuth'
 import Login from  './secure/login.js'
 import styles from './css/app.css';
 import { Link } from 'react-router';
+import Utils from './util/utilityFunctions';
 
 import SA from './util/analytics';
 
@@ -14,6 +15,15 @@ import phoneSvg from './img/phone.svg';
 import searchSvg from './img/search.svg';
 
 import Popup from './util/popup';
+
+const msgIndex = Math.floor(Math.random() * 5);
+const msgNotifier = [
+  'కథలతో మీ అనుబంధాన్ని మరింత ముందుకి తీస్కుని వెళ్ళటానికి మా సరికొత్త యాప్ ఇక్కడ క్లిక్ చేసి ఇన్స్టాల్ చేసుకోండి. ',
+  'కొత్త కథలను ప్రచురింపబడిన వెంటనే చదవాలి అనుకుంటున్నారా! మా సరికొత్త యాప్ ఇక్కడ క్లిక్ చేసి ఇన్స్టాల్ చేసుకోండి. ',
+  'మీ అభిమాన కథలకు మా యాప్ తో మరింత చేరువకండి. ఇన్స్టాల్ చేసుకోవటానికి ఇక్కడ క్లిక్ చేయండి. ',
+  'కథల ప్రపంచానికి మరో పూల మార్గం మా యాప్. ఇన్స్టాల్ చేసుకోవటానికి ఇక్కడ క్లిక్ చేయండి. ',
+  'Be the first to read a new story! Install our user friendly app by a simple click. '
+]
 
 class App extends Component {
 
@@ -31,6 +41,9 @@ class App extends Component {
 
      window.addLoginObserver =  this.addLoginObserver;
      window.removeLoginObserver =  this.removeLoginObserver;
+
+     this.notifierAction =  this.notifierAction.bind(this);
+     this.removeNotifier=  this.removeNotifier.bind(this);
   }
 
   componentDidMount(){
@@ -40,6 +53,48 @@ class App extends Component {
       FAuth.init(this.userStateListener,this.fbLoadSuccess);
     }
 
+    SA.sendPageView('Home');
+    var component = this.props.children;
+    var isApp = false;
+    if(component && component.props.location && component.props.location.query && component.props.location.query.app){
+      isApp = true
+    }
+
+    if(Utils.isAndroid() && !isApp){
+      var that = this
+      setTimeout(function(){
+        SA.sendEvent('AppDownload','open',msgIndex);
+        that.setState((prevState, props) => {
+            var state = prevState;
+            state.showNotifier = <button onClick={that.notifierAction} className="notifier">{msgNotifier[msgIndex]}<img src="touch.png" className="notifierIcon"></img></button>
+          ;
+            return state;
+        })
+      },1000)
+    }
+
+  }
+
+  notifierAction(){
+    SA.sendEvent('AppDownload','openedLink',msgIndex);
+    window.open("https://play.google.com/store/apps/details?id=com.sukatha");
+    this.setState((prevState, props) => {
+        var state = prevState;
+        state.showNotifier = undefined
+      ;
+        return state;
+    })
+
+  }
+
+  removeNotifier(){
+    SA.sendEvent('AppDownload','close',msgIndex);
+    this.setState((prevState, props) => {
+        var state = prevState;
+        state.showNotifier = undefined
+      ;
+        return state;
+    })
   }
 
   toggleMenu() {
@@ -189,11 +244,22 @@ class App extends Component {
     if(this.state.loginListener){
       var content = <Login google={this.state.gApi} fb={this.state.fbApi} />
       popup = <Popup content={content} onClose={this.removeLoginObserver} />
+    }else if(this.state.showNotifier){
+      popup = <Popup content={this.state.showNotifier} onClose={this.removeNotifier} />
+    }
+
+    var headerClass = "App-header";
+    var footerClass = "App-footer";
+
+    // any change in this render please check all menu options. Here location doesnt come for every link/click
+    if(component.props.location && component.props.location.query && component.props.location.query.app){
+        headerClass = "App-header App-hide";
+        footerClass = "App-footer App-hide"
     }
 
     return (
       <div className="App">
-        <div className="App-header">
+        <div className={headerClass}>
           <ul className="menuIcon" onClick={this.toggleMenu}>
             <li><a><img src={menuSvg} /></a></li>
           </ul>
@@ -223,7 +289,7 @@ class App extends Component {
           {component}
           {popup}
         </div>
-        <div className="App-footer">
+        <div className={footerClass}>
           <div className="about">
             <Link to="/about"> {window.getString("aboutUs")}</Link>
             <Link to="/policy"> {window.getString("policy")}</Link>

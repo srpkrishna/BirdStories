@@ -11,6 +11,7 @@ var authorApi = require('./server/routes/authorApi');
 var profileApi = require('./server/routes/profileApi');
 var commentApi = require('./server/routes/commentApi');
 var userApi = require('./server/routes/userApi');
+var clientApi = require('./server/routes/clientInfoApi');
 var session = require('cookie-session');
 var AWS = require('aws-sdk');
 
@@ -71,13 +72,14 @@ app.use('/api/authors', authorApi);
 app.use('/api/profile',profileApi);
 app.use('/api/comments', commentApi);
 app.use('/api/user',userApi);
+app.use('/api/client',clientApi);
 app.use('/api', api);
 
 
 
 app.use('/stories/story',function(req, res, next) {
   var agent = req.get('User-Agent');
-  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)) {
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var keyName = req.query.a+'/'+req.query.n+'/story.html';
@@ -98,7 +100,7 @@ app.use('/stories/story',function(req, res, next) {
 
 app.use('/seriesList/series',function(req, res, next) {
   var agent = req.get('User-Agent');
-  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)) {
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var episode = "";
@@ -124,7 +126,7 @@ app.use('/seriesList/series',function(req, res, next) {
 
 app.use('/author/:id',function(req, res, next) {
   var agent = req.get('User-Agent');
-  if(agent.match(/Googlebot/)||agent.match(/Facebot/) ) {
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)){
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var keyName = req.params.id+'/author.html';
@@ -158,6 +160,10 @@ app.use('/sitemap',function(req, res, next) {
       res.send(fileContents);
     }
   });
+});
+
+app.use('/.well-known/assetlinks.json',function(req, res, next) {
+  res.sendFile('server/assetlinks.json' , { root : __dirname});
 });
 
 app.use('/*', function(req, res, next) {

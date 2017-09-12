@@ -3,6 +3,8 @@
 import React,{Component} from 'react';
 import  SeriesItem from './seriesItemView';
 import styles from '../css/series.css';
+import Loader from '../util/loading';
+import Utils from '../util/utilityFunctions';
 
 var timeoutSeries;
 
@@ -13,6 +15,11 @@ class View extends Component {
   }
 
   handleScroll() {
+    var element = document.getElementsByClassName("homeSeries")[0]
+    if(element && 0 === element.clientHeight){
+      return;
+    }
+
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;
@@ -43,9 +50,15 @@ class View extends Component {
       })
     }
 
+    var loaderDiv = ''
+    if(!this.props.reachedEnd && Utils.isMobile()){
+       loaderDiv = <Loader />
+    }
+
     return (
       <div className="series">
         {seriesDivs}
+        {loaderDiv}
       </div>
     )
   }

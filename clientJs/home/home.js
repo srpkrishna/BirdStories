@@ -26,7 +26,7 @@ class Home extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    SA.sendPageView('home');
+    SA.sendPageView('Home');
     window.onbeforeunload = () => {
         SA.sendEvent('Home','close','home');
       }
@@ -42,7 +42,7 @@ class Home extends Component {
 
   render(){
 
-    var img = <Link to="/competition"> <div className="adImage">‘పాత్రకి జీవం పోయండి’ కథల పోటిలో బహుమతి గెలుచుకున్న కథల కోసం ఇక్కడ క్లిక్ చేయండి.<img src="touch.png" className="adIcon"></img></div></Link>
+    var img = ""//<Link to="/competition"> <div className="adImage">‘పాత్రకి జీవం పోయండి’ కథల పోటిలో బహుమతి గెలుచుకున్న కథల కోసం ఇక్కడ క్లిక్ చేయండి.<img src="touch.png" className="adIcon"></img></div></Link>
 
     // if(!this.state.imageStatus){
     //   img = ""

@@ -21,7 +21,7 @@ const reducer = (state=defaultState, action) => {
         var newState = Object.assign({}, state);
 
 
-        if(action.seriesList && action.seriesList.length == 0){
+        if(action.seriesList && action.seriesList.length === 0){
           newState.reachedEnd = true;
         }else{
           newState.seriesList =  newState.seriesList.concat(action.seriesList);
@@ -73,6 +73,11 @@ const reducer = (state=defaultState, action) => {
       case Constants.SeriesCommentsSuccess:
         var newState = Object.assign({}, state);
         newState.selectedSeriesComments = action.comments;
+        newState.shdShowMoreComments = false
+        if(action.comments && action.comments.length % 5 === 0){
+          newState.shdShowMoreComments = true
+        }
+
         return newState;
       case Constants.SeriesCommentPostSuccess:
         var newState = Object.assign({}, state);
@@ -87,14 +92,18 @@ const reducer = (state=defaultState, action) => {
         return newState;
       case Constants.SeriesMoreCommentsSuccess:
         var newState = Object.assign({}, state);
-
-        if(!newState.selectedSeriesComments){
-          newState.selectedSeriesComments = [action.comment]
-        }else{
+        if(action.comments.length > 0){
           var comments = Object.assign([], newState.selectedSeriesComments);
-          newState.selectedSeriesComments = comments.concat(action.comments)
+          newState.selectedSeriesComments = comments.concat(action.comments);
+          newState.shdShowMoreComments = false
+          if(action.comments.length % 5 == 0){
+            newState.shdShowMoreComments = true
+          }
+          return newState;
+        }else {
+          newState.shdShowMoreComments = false;
+          return newState;
         }
-        return newState;
 
       case Constants.SeriesClearSelectedState:
 
@@ -108,6 +117,8 @@ const reducer = (state=defaultState, action) => {
         newState.selectedAuthor = undefined;
         newState.selectedContent = undefined;
         newState.selectedEpisode = undefined;
+        newState.shdShowMoreComments = false;
+        newState.reachedEnd = false;
         return newState;
 
 

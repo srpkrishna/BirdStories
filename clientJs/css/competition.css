@@ -56,7 +56,7 @@
 }
 
 .competition .highlight{
-  color: #d12767;
+  color: #4966a6;
 }
 
 .competition ul.characters {
@@ -70,9 +70,13 @@
 .competition li.character {
     float: left;
     width: 100%;
-    padding: 2rem 0;
-    border-bottom: 1px solid;
+    padding: 0.75rem 0;
+}
 
+.competition li.character.story{
+    float: left;
+    width: 100%;
+    padding: 1.5rem 0;
 }
 
 .competition ul.finalWords {
@@ -112,7 +116,7 @@
 .competition div.authorDetails{
     width: 75%;
     padding: 5%;
-    padding-top: 2%;
+    padding-top: 0;
     float: left;
 }
 
@@ -128,17 +132,26 @@
     color: #d12767;
     text-align: center;
     font-size: 1.2rem;
+    text-decoration: underline;
 
 }
 
 .competition .storyName.award{
   color: #4966a6;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  text-decoration: none;
 }
 
 .competition img.coverImage {
     max-width: 100%;
     display: block;
     margin: 0 auto;
+
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+    width: 94%;
+    margin: 3% 3% 0% 3%;
+    border-radius:4px;
 }
 
 .competition div.storyDetails {
@@ -149,6 +162,7 @@
 
 .competition .authorClick{
   color: #d12767;
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 760px) {
@@ -157,9 +171,6 @@
     width: 70%;
   }
 
-  .competition div.authorDetails{
-    padding-top: 6%;
-  }
 
 }
 
@@ -170,6 +181,6 @@
   }
 
   .competition div.authorDetails{
-    padding-top: 5%;
+    padding-top: 1.5%;
   }
 }

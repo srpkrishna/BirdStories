@@ -71,6 +71,11 @@ class View extends Component {
         backgroundSize:'cover'
       }
 
+      var intro = author.profile.intro
+      if(!intro){
+        intro = ""
+      }
+
       authorDiv = <div className="authorProfile" >
         <div className="authorImage a2" style={imageStyle}></div>
         <ul>
@@ -78,7 +83,7 @@ class View extends Component {
           <li>{author.profile.qual}</li>
           <li>{author.profile.prof}</li>
         </ul>
-        <p>{author.profile.intro} </p>
+        <p>{intro} </p>
         {storyDiv}
         {seriesDiv}
       </div>

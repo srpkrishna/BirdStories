@@ -23,12 +23,14 @@
     opacity: 1.0;
 }
 
+/* class name is used in handleScroll of StoriesView.js  so if you chnage it , handle there also*/
 .homeStories{
     width: 100%;
     float: left;
     display: inline-block;
 }
 
+/* class name is used in handleScroll of SeriesView.js  so if you chnage it , handle there also*/
 .homeSeries {
     width: 100%;
     float: left;

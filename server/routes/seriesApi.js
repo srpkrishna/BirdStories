@@ -116,8 +116,8 @@ api.route('/')
       }else{
         tsFilter = Number(tsFilter);
       }
-
-      getSeriesList(tsFilter,function(seriesList){
+      var limit = req.query.limit;
+      getSeriesList(tsFilter,limit,function(seriesList){
         res.send(seriesList);
       })
   })
@@ -128,7 +128,7 @@ api.route('/')
         case 'social':
           var key = req.body.updateKey;
           if(key === "reads" || key === "likes"){
-            var seriesId = id["author"]+id["timestamp"]+key
+            var seriesId = id["author"]+id["timestamp"]+id["episode"]+key
             if(req.session[seriesId]){
               res.send(alreadyUpdated);
               return;
@@ -178,7 +178,7 @@ function getAuthorSeriesList(authorId,callback){
     seriesDb.query(params,docClient,callback);
 }
 
-function getSeriesList(ts,callback){
+function getSeriesList(ts,limit,callback){
     const docClient = conn.getDocClient();
     var params = {
         IndexName: "RecentIndex",
@@ -194,6 +194,10 @@ function getSeriesList(ts,callback){
         ScanIndexForward:false,
         Limit:2
     };
+
+    if(limit){
+      params.Limit = limit
+    }
      seriesDb.query(params,docClient,callback);
 }
 

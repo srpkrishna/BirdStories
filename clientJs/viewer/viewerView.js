@@ -17,6 +17,7 @@ var timer_is_on = 0;
 var reachedBottom = false;
 var markedAsView = false;
 var markedAsRead = false;
+var episode;
 
 class View extends Component {
 
@@ -63,7 +64,7 @@ class View extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-      if(this.props.episode && nextProps.episode && this.props.episode != nextProps.episode){
+      if(episode && nextProps.episode && episode != nextProps.episode){
         window.scrollTo(0, 0);
 
         if(!shdDisableEvents){
@@ -75,8 +76,6 @@ class View extends Component {
           markedAsRead = false;
           this.timedCount();
         }
-
-        this.storyLoaded();
       }
   }
 
@@ -165,6 +164,7 @@ class View extends Component {
 
   storyLoaded(){
     this.markAsView()
+    episode = this.props.episode
     document.title = this.props.story.name + " -"+window.getString("companyPromo");
     window.onbeforeunload = () => {
         var name = this.props.story.name.removeSpaceAndCapitals();

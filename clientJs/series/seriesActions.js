@@ -2,6 +2,7 @@
 import  Constants from './seriesConstants';
 import Server from '../util/server';
 import SA from '../util/analytics';
+import Utils from '../util/utilityFunctions';
 
 function fetchSuccess(seriesList){
   return {
@@ -30,7 +31,15 @@ function fetchSeriesListIfNeeded() {
 
 function fetchSeriesList(){
   return function(dispatch) {
-    Server.fetch('series',function(data){
+
+    var q = ""
+
+    if(Utils.isMobile()){
+      q="?limit=3"
+    }else if(Utils.isMobileOrTablet()){
+      q="?limit=4"
+    }
+    Server.fetch('series'+q,function(data){
         dispatch(fetchSuccess(data))
     });
   }
@@ -50,6 +59,12 @@ function getMoreSeries(){
       var q = ""
       if(lastItem){
         q = "?lastts="+lastItem.lastUpdated
+      }
+
+      if(Utils.isMobile()){
+        q=q+"&limit=3"
+      }else if(Utils.isMobileOrTablet()){
+        q=q+"&limit=4"
       }
 
       Server.fetch('series'+q,function(data){
@@ -160,13 +175,14 @@ function updateSocial(element){
 
   return function(dispatch,getState) {
     const series = getState().selectedSeries
-
+    const episode = getState().selectedEpisode
     if(!series){
       return
     }
     const seriesId = {
       author:series.author,
-      timestamp:series.timestamp
+      timestamp:series.timestamp,
+      episode:episode
     }
 
     const body = {

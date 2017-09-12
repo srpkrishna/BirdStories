@@ -2,6 +2,7 @@
 import  Constants from './storiesConstants';
 import Server from '../util/server';
 import SA from '../util/analytics';
+import Utils from '../util/utilityFunctions';
 
 function fetchSuccess(stories){
   return {
@@ -30,7 +31,16 @@ function fetchStoriesIfNeeded() {
 
 function fetchStories(){
   return function(dispatch) {
-    Server.fetch('stories',function(data){
+
+    var q = ""
+
+    if(Utils.isMobile()){
+      q="?limit=4"
+    }else if(Utils.isMobileOrTablet()){
+      q="?limit=6"
+    }
+
+    Server.fetch('stories'+q,function(data){
         dispatch(fetchSuccess(data))
     });
   }
@@ -52,12 +62,32 @@ function getMoreStories(){
         q = "?lastts="+story.timestamp
       }
 
+      if(Utils.isMobile()){
+        q=q+"&limit=4"
+      }else if(Utils.isMobileOrTablet()){
+        q=q+"&limit=6"
+      }
+
       Server.fetch('stories'+q,function(data){
           dispatch(moreStoriesSuccess(data))
       });
     }
 }
 
+function filtersSuccess(filters){
+  return {
+    type:Constants.StoryFiltersSuccess,
+    filters:filters,
+  };
+}
+
+function getGenres(){
+    return function(dispatch,getState){
+      Server.fetch('stories/filters',function(data){
+          dispatch(filtersSuccess(data))
+      });
+    }
+}
 
 function commentsSuccess(data){
   return {

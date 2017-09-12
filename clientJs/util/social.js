@@ -63,31 +63,10 @@ class Share extends Component {
             className="Demo__some-network__share-button">
             <FacebookIcon
               size={size}
-              round />
+              round />{window.getString("share")} 
           </FacebookShareButton>
         </li>
-
-        <li onClick={this.shareClick}>
-          <TwitterShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button">
-            <TwitterIcon
-              size={size}
-              round />
-          </TwitterShareButton>
-        </li>
-
-        <li onClick={this.shareClick}>
-          <GooglePlusShareButton
-            url={shareUrl}
-            className="Demo__some-network__share-button">
-            <GooglePlusIcon
-              size={size}
-              round />
-          </GooglePlusShareButton>
-        </li>
-        <li onClick={this.likeClick} ><div style={likeStyle} ></div></li>
+        <li onClick={this.likeClick} ><div style={likeStyle} ></div>{window.getString("like")} </li>
       </ul>
     );
   }
@@ -95,3 +74,24 @@ class Share extends Component {
 }
 
 export default Share;
+
+// <li onClick={this.shareClick}>
+//   <TwitterShareButton
+//     url={shareUrl}
+//     title={title}
+//     className="Demo__some-network__share-button">
+//     <TwitterIcon
+//       size={size}
+//       round />
+//   </TwitterShareButton>
+// </li>
+//
+// <li onClick={this.shareClick}>
+//   <GooglePlusShareButton
+//     url={shareUrl}
+//     className="Demo__some-network__share-button">
+//     <GooglePlusIcon
+//       size={size}
+//       round />
+//   </GooglePlusShareButton>
+// </li>

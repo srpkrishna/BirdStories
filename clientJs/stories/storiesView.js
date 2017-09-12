@@ -13,7 +13,14 @@ class View extends Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  // this method is dependent on css
   handleScroll() {
+
+    var element = document.getElementsByClassName("homeStories")[0]
+    if(element && 0 === element.clientHeight){
+      return;
+    }
+
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;

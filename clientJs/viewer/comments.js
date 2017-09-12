@@ -47,7 +47,7 @@ class View extends Component {
       if(i === that.state.index && that.state.msg){
         msg =  <div className="msg">{that.state.msg}</div>
         tag = <button type="button"  onClick={() => that.reply(i)}>{window.getString("commentReply")}</button>
-      }else if(i != that.state.index || !comment.userEmail)
+      }else if(i != that.state.index)
         tag = <button type="button"  onClick={() => that.reply(i)}>{window.getString("commentReply")}</button>
       else{
         tag = <CommentBox replySuccess={that.replySuccess} publishComment={that.props.publishComment} title={window.getString("commentReply")} replyTo={comment.userEmail} mention={comment.userName}/>

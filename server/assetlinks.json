@@ -1,0 +1,12 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.sukatha",
+    "sha256_cert_fingerprints":[
+      "EF:A7:17:2E:95:44:62:8D:1F:49:C8:19:A2:B4:FD:ED:BE:B3:1E:7E:0C:19:5D:16:58:8B:4B:2C:F1:E0:D4:C9",
+      "80:BC:A8:31:11:E2:85:72:E4:C1:94:A2:B4:0A:8B:DB:3E:EC:FF:09:85:C6:6B:16:D4:9F:2D:96:5F:A3:4A:1D",
+      "8B:D4:9C:01:03:66:87:91:2E:D9:11:9A:13:86:20:B2:B1:59:0B:CC:A9:91:49:4C:77:88:38:FA:82:26:AC:91"
+    ]
+  }
+}]

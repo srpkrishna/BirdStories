@@ -48,26 +48,23 @@ api.route('/:id')
     postComment(comment,function(data){
       res.send(data);
 
-      if(req.body.authorEmail){
-         if(req.body.authorEmail){
+      if(req.body.authorEmail && req.body.authorEmail !== req.body.userEmail){
+        var storyName = ""
+        if(req.body.storyName){
+          storyName = req.body.storyName;
+        }
 
-           var storyName = ""
-           if(req.body.storyName){
-             storyName = req.body.storyName;
-           }
+        var authorName = ""
+        if(req.body.authorName){
+          authorName = req.body.authorName;
+        }
 
-           var authorName = ""
-           if(req.body.authorName){
-             authorName = req.body.authorName;
-           }
+        var userName = ""
+        if(req.body.userName){
+          userName = req.body.userName;
+        }
 
-           var userName = ""
-           if(req.body.userName){
-             userName = req.body.userName;
-           }
-
-           emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName,req.body.link)
-         }
+        emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName,req.body.link)
 
          if(req.body.replyTo && req.body.replyToName){
            emailClient.sendEmailToCommentOwner(req.body.replyTo, req.body.replyToName , storyName,userName,req.body.link)

@@ -9,6 +9,7 @@ const SA = {
       path = path +"="+ appendToPath.replace(" ","_")
     }
     ga('send', 'pageview',path);
+    ga('send', 'event', title, 'views', '');
 
     var content_category = title;
     if(category){

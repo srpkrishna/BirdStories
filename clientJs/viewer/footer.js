@@ -14,8 +14,8 @@ const View = ({story,authorLink, updateSocial,publishComment})=>{
   return(
     <div className="contentFooter" >
       <ul className="more">
-        <li className="home"><Link to="/"> ← {window.getString("stories")}</Link></li>
-        <li className="authHome"><Link to={authorLink}>{window.getString("moreFrom")} {story.authorDisplayName}</Link></li>
+        <li className="home"><Link to="/"> ← {window.getString("home")}</Link></li>
+        <li className="authHome"><Link to={authorLink}> {window.getString("authorStories")} →</Link></li>
       </ul>
       <Social shareUrl={shareUrl} title={title} pic={coverImg} updateSocial={updateSocial}/>
       <CommentBox publishComment={publishComment} title={window.getString("commentText")}/>

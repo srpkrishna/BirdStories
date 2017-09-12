@@ -74,6 +74,12 @@ api.route('/search')
       })
   })
 
+api.route('/filters')
+  .get(function(req, res){
+      var filters = ['comedy','drama','romance','thriller','suspense','fantasy']
+      res.send(filters);
+  })
+
 api.route('/content/:authorId/:name')
   .get(function(req, res){
     // var filepath = __dirname + '/story.json';
@@ -134,7 +140,9 @@ api.route('/')
         tsFilter = Number(tsFilter);
       }
 
-      getStories(tsFilter,function(stories){
+      var genre = req.query.genre;
+      var limit = req.query.limit;
+      getStories(tsFilter,genre,limit,function(stories){
         res.send(stories);
       })
   })
@@ -195,7 +203,7 @@ function getAuthorStories(authorId,callback){
     storyDb.query(params,docClient,callback);
 }
 
-function getStories(ts,callback){
+function getStories(ts,genre,limit,callback){
     const docClient = conn.getDocClient();
     var params = {
         IndexName: "RecentIndex",
@@ -211,6 +219,17 @@ function getStories(ts,callback){
         ScanIndexForward:false,
         Limit:9
     };
+
+    if(genre){
+      params.FilterExpression = "contains(#genre, :v_sub)"
+      params.ExpressionAttributeNames["#genre"] = "genre"
+      params.ExpressionAttributeValues[":v_sub"] = genre
+    }
+
+    if(limit){
+      params.Limit = limit
+    }
+
      storyDb.query(params,docClient,callback);
 }
 

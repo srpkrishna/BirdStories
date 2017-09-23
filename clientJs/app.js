@@ -60,7 +60,7 @@ class App extends Component {
       isApp = true
     }
 
-    if(Utils.isAndroid() && !isApp){
+    if(Utils.isMobile() && !isApp){
       var that = this
       setTimeout(function(){
         SA.sendEvent('AppDownload','open',msgIndex);
@@ -76,12 +76,20 @@ class App extends Component {
   }
 
   notifierAction(){
-    SA.sendEvent('AppDownload','openedLink',msgIndex);
-    window.open("https://play.google.com/store/apps/details?id=com.sukatha");
+
+
+    if(Utils.isIPhone()){
+      SA.sendEvent('AppDownload','openedLinkIOS',msgIndex);
+      window.open("https://itunes.apple.com/in/app/sukatha/id1286552286?mt=8");
+    }else{
+      SA.sendEvent('AppDownload','openedLink',msgIndex);
+      window.open("https://play.google.com/store/apps/details?id=com.sukatha");
+    }
+
+
     this.setState((prevState, props) => {
         var state = prevState;
-        state.showNotifier = undefined
-      ;
+        state.showNotifier = undefined;
         return state;
     })
 

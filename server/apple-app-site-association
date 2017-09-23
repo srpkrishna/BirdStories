@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "A3KT9AE73M.com.sukatha.app",
+                "paths": [ "/stories/*", "/seriesList/*","/author/*","/"]
+            },
+            {
+                "appID": "2X22KT9DMR.com.sukatha.app",
+                "paths": [ "/stories/*", "/seriesList/*","/author/*","/"]
+            }
+        ]
+    }
+}

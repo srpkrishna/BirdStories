@@ -63,7 +63,6 @@ api.route('/:id')
         if(req.body.userName){
           userName = req.body.userName;
         }
-
         emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName,req.body.link)
 
          if(req.body.replyTo && req.body.replyToName){

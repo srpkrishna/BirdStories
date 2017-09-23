@@ -14,13 +14,19 @@ function mobilecheck() {
 
 function isandroidphone(){
   var ua = navigator.userAgent.toLowerCase();
-  var isandroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+  isandroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
   return isandroid;
+}
+
+function isiosphone(){
+  var ios = /iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  return ios
 }
 
 var ismobile;
 var ismobileandtablet;
 var isandroid;
+var isiphone;
 
 const utils = {
   isMobile:function(){
@@ -43,6 +49,12 @@ const utils = {
       isandroid = isandroidphone()
     }
     return isandroid;
+  },
+  isIPhone:function(){
+    if(!isiphone){
+      isiphone = isiosphone()
+    }
+    return isiphone;
   }
 
 }

@@ -42,7 +42,7 @@ class WritersInfo extends Component {
         <div className="header">ప్రత్యేకంగా వెబ్ సిరీస్ కు సంబంధించిన మరిన్ని వివరాలు:</div>
         <ul>
           <li>మీ పూర్తి కథను మాకు ముందే పంపవలసి ఉంటుంది.</li>
-          <li>ప్రతి ఎపిసోడ్ <span className = "highlight"> 800-1000 </span> పదాల మధ్య ఉండాలి.</li>
+          <li>ప్రతి ఎపిసోడ్ <span className = "highlight"> 1000 </span> పదాలకు తగ్గకుండా ఉండాలిి.</li>
           <li>మీ కథ కనీసం <span className = "highlight">3 ఎపిసోడ్లు </span> కలిగి ఉండాలి.</li>
           <li>మీ కథ ఎంపిక గురించిన వివరాలు <span className = "highlight">4 వారాల</span>  లోపు తెలియజేస్తాము.</li>
           <li>మీ కథ మరెక్కడా ప్రచురింపబడలేదు అని, <span className = "highlight">{window.getString("companyPromo")}</span> లో ప్రచురించబడ్డ కథలు మారెక్కడా ప్రచురణకు పంపమని కూడా వ్రాత పూర్వకంగా ధృవీకరించండి.</li>

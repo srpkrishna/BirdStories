@@ -48,7 +48,7 @@ api.route('/:id')
     postComment(comment,function(data){
       res.send(data);
 
-      if(req.body.authorEmail && req.body.authorEmail !== req.body.userEmail){
+      if(req.body.authorEmail){
         var storyName = ""
         if(req.body.storyName){
           storyName = req.body.storyName;
@@ -63,9 +63,12 @@ api.route('/:id')
         if(req.body.userName){
           userName = req.body.userName;
         }
-        emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName,req.body.link)
 
-         if(req.body.replyTo && req.body.replyToName){
+        if(req.body.authorEmail !== req.body.userEmail && req.body.authorEmail !== req.body.replyTo){
+          emailClient.sendEmailToAuthor(req.body.authorEmail, storyName, authorName ,userName,req.body.link)
+        }
+
+        if(req.body.replyTo && req.body.replyToName){
            emailClient.sendEmailToCommentOwner(req.body.replyTo, req.body.replyToName , storyName,userName,req.body.link)
          }
       }

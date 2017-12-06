@@ -5,6 +5,7 @@ var AWS = require('aws-sdk');
 var fs = require('fs');
 var RateLimit = require('express-rate-limit');
 var BlockedStore = require('../utils/blockedStore.js');
+var UserAnalyticsUtils = require('../utils/userAnalyticsUtils.js');
 
 const conn = require('../utils/connections.js');
 const error = {
@@ -220,15 +221,22 @@ function getStories(ts,genre,limit,callback){
         Limit:9
     };
 
+    if(limit){
+      params.Limit = limit
+    }
+
     if(genre){
       params.FilterExpression = "contains(#genre, :v_sub)"
       params.ExpressionAttributeNames["#genre"] = "genre"
       params.ExpressionAttributeValues[":v_sub"] = genre
+
+      if(genre === 'thriller' || genre === 'fantasy'){
+        params.Limit = 100
+      }
+
     }
 
-    if(limit){
-      params.Limit = limit
-    }
+
 
      storyDb.query(params,docClient,callback);
 }
@@ -264,23 +272,25 @@ function searchByNames(sub,callback){
 
 }
 
-function updateSocialElements(id,element,callback)
-{
+function updateSocialElements(id,element,callback){
     const docClient = conn.getDocClient();
-    // let responseData
-    // function scoreSuccess(data){
-    //   callback(responseData);
-    // }
+    function generalSuccess(data){
+      //console.log(data,id)
+    }
 
     function socialSuccess(data){
-        //const score = getScore(data.Attributes.social);
         var responseData = data.Attributes;
         callback(responseData);
-        // responseData.score = score;
-        // updateScore(id,score,docClient,scoreSuccess);
+        const score = getScore(responseData.social,id.timestamp,responseData.time);
+        updateScore(id,score,docClient,generalSuccess);
+
+        if(id.user && id.user.email){
+          UserAnalyticsUtils.update(id,responseData,element,generalSuccess)
+        }
     }
 
     updateSocial(id,element,docClient,socialSuccess)
+
 
 }
 
@@ -298,7 +308,7 @@ function updateSocial(id,element,docClient,callback){
             ExpressionAttributeValues:{
                 ":incva":1
             },
-            ReturnValues:"UPDATED_NEW"
+            ReturnValues:"ALL_NEW"
         };
 
 
@@ -321,15 +331,43 @@ function updateScore(id,value,docClient,callback){
   storyDb.update(params,docClient,callback);
 }
 
-function getScore(social) {
-   var score =  social.views * 0.05
-       score = score + social.reads * 0.15
-       score = score + social.shares * 0.30
-       score = score + social.favs * 0.20
-       score = score + social.readLater * 0.10
-       score = score + social.comment * 0.20
+function getScore(social, timestamp,time) {
+  var views = social.views;
+   var percent = 0.15
+   if(timestamp < 1501545600000){
+     percent = 0.10
+   }
 
-    return score
+   var viewsPercent = 0.45
+
+   if(time <= 1){
+     viewsPercent = 0.75
+   }else if(time <= 2){
+     viewsPercent = 0.45
+   }else if(time <= 5){
+     viewsPercent = 0.30
+   }else if(time <= 9){
+     viewsPercent = 0.25
+   }else{
+     viewsPercent = 0.22
+   }
+
+   var score1 =  social.reads / (views * viewsPercent)
+   var score2 =  (social.likes + (social.shares * 1.2) + social.comments) / (views * percent)
+
+   if(score2 > 1.25){
+     score2 = 1.25
+   }
+
+   var score = ((score1*6)+(score2*4))/10
+   score = score * 100
+
+   if(score > 100){
+     score = 100
+   }
+
+  return score
 }
+
 
 module.exports = api;

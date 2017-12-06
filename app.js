@@ -12,13 +12,14 @@ var profileApi = require('./server/routes/profileApi');
 var commentApi = require('./server/routes/commentApi');
 var userApi = require('./server/routes/userApi');
 var clientApi = require('./server/routes/clientInfoApi');
+var wallApi = require('./server/routes/wallApi');
 var session = require('cookie-session');
 var AWS = require('aws-sdk');
 
 var app = express();
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'icon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -64,6 +65,48 @@ app.get('/', function(req, res, next) {
   }
 });
 
+app.get('/about', function(req, res, next) {
+
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)||agent.match(/WhatsApp/)) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'about.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next()
+  }
+});
+
+app.get('/contact', function(req, res, next) {
+
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)||agent.match(/WhatsApp/)) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'contact.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next()
+  }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/stories', storyApi);
@@ -73,6 +116,7 @@ app.use('/api/profile',profileApi);
 app.use('/api/comments', commentApi);
 app.use('/api/user',userApi);
 app.use('/api/client',clientApi);
+app.use('/api/wall',wallApi);
 app.use('/api', api);
 
 
@@ -83,6 +127,27 @@ app.use('/stories/story',function(req, res, next) {
     var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
     var bucketName = 'bsstory';
     var keyName = req.query.a+'/'+req.query.n+'/story.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+app.use('/stories',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)||agent.match(/WhatsApp/)) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'stories.html';
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){
@@ -109,6 +174,27 @@ app.use('/seriesList/series',function(req, res, next) {
     }
 
     var keyName = req.query.a+'/'+req.query.n+episode+'/story.html';
+    var params = {Bucket: bucketName, Key: keyName};
+    s3.getObject(params, function(err, data) {
+      if (err){
+        res.send(err);
+      }else {
+        var fileContents = data.Body.toString();
+        res.send(fileContents);
+      }
+    });
+  }else{
+    next();
+  }
+
+});
+
+app.use('/seriesList',function(req, res, next) {
+  var agent = req.get('User-Agent');
+  if(agent.match(/Googlebot/)||agent.match(/Facebot/)||agent.match(/facebookexternalhit/)||agent.match(/WhatsApp/)) {
+    var s3 = new AWS.S3({ region:"ap-south-1","signatureVersion":"v4",endpoint:"https://s3.ap-south-1.amazonaws.com"});
+    var bucketName = 'bsstory';
+    var keyName = 'seriesList.html';
     var params = {Bucket: bucketName, Key: keyName};
     s3.getObject(params, function(err, data) {
       if (err){

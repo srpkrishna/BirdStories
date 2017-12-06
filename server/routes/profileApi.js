@@ -29,7 +29,7 @@ api.route('/me')
     var resBody = {}
     getAuthorDetails(email,function(authData){
       if(authData.length < 1){
-        res.send("");
+        res.send("{}");
         return;
       }
       resBody.author = authData[0];
